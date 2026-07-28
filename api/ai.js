@@ -55,7 +55,7 @@ const { GoogleAuth } = require('google-auth-library');
 // ---------------------------------------------------------------------------
 // 可調整參數（環境變數，皆有合理預設值）
 // ---------------------------------------------------------------------------
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.6-flash';
 const GCP_PROJECT_ID = process.env.GCP_PROJECT_ID || 'jht-pm';
 const GCP_LOCATION = process.env.GCP_LOCATION || 'asia-northeast1';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
