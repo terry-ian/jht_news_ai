@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-07-06T08:00:00+08:00",
+  "articles": [
+    {
+      "id": 1,
+      "title": "Peloton 宣布將 AI 音訊健身指導內建至高階飛輪設備",
+      "url": "https://www.bloomberg.com/technology",
+      "source": "彭博社體育科技版",
+      "date": "2026-07-05",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton 正式推出基於邊緣語音模型的 AI Coach 訂閱功能，能分析用戶即時踩踏迴轉速（RPM）及心率，提供媲美真人教練的動態節奏指導。"
+    },
+    {
+      "id": 2,
+      "title": "智慧跑步機技術突破：邊緣運算 AI 即時跑姿優化專利解析",
+      "url": "https://www.wipo.int/portal/en/index.html",
+      "source": "WIPO 國際專利公報",
+      "date": "2026-07-04",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "最新專利顯示，頂級跑步機正全面裝配高速影像感測器與底盤壓力陣列，利用邊緣運算 AI 微調電磁阻尼避震器。"
+    },
+    {
+      "id": 3,
+      "title": "Technogym 於 2026 歐洲健身展發表全新 AI 智慧生態系",
+      "url": "https://www.technogym.com/newsroom",
+      "source": "FITNESS INSIDER REPORT",
+      "date": "2026-07-03",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Technogym",
+      "summary": "Technogym 推出全新 AI Cloud Suite，允許連鎖健身房業者一鍵追蹤全場所有設備的損耗與使用熱圖。"
+    },
+    {
+      "id": 4,
+      "title": "2026下半年全球商用健身設備採購趨勢：AI 增值服務成為首要考量",
+      "url": "https://www2.deloitte.com/",
+      "source": "Deloitte 德勤健身產業研究室",
+      "date": "2026-07-01",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "調研顯示，超過 78% 的中大型健身房經理在採購新設備時，會優先考量硬體是否具備智慧感測連網與 AI 個人化引導模組。"
+    },
+    {
+      "id": 5,
+      "title": "Life Fitness 更新品牌識別，強化商用連鎖數位化形象",
+      "url": "https://www.lifefitness.com/en-us/press-room",
+      "source": "Club Industry",
+      "date": "2026-06-29",
+      "category": "brand",
+      "categoryName": "品牌動態",
+      "brand": "Life Fitness",
+      "summary": "Life Fitness 宣布全新品牌識別系統與數位化商用連鎖旗艦店計畫，鎖定北美與歐洲高端俱樂部市場。"
+    },
+    {
+      "id": 6,
+      "title": "穿戴裝置巨頭進軍家用健身生態：智慧手錶無縫同步硬體轉型啟示",
+      "url": "https://techcrunch.com/category/wearables/",
+      "source": "TechCrunch 科技趨勢",
+      "date": "2026-06-28",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": "Apple",
+      "summary": "Apple Watch 與 Android 穿戴陣營紛紛釋出最新健身設備對接 SDK，硬體廠須確保亞秒級心率同步。"
+    },
+    {
+      "id": 7,
+      "title": "NordicTrack 推出全新互動式跑步機課程訂閱方案",
+      "url": "https://www.nordictrack.com/blog",
+      "source": "Retail Dive",
+      "date": "2026-06-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "NordicTrack 母公司 iFIT 宣布擴大互動課程內容庫，並與多位國際教練合作打造沉浸式訓練體驗。"
+    },
+    {
+      "id": 8,
+      "title": "Precor 攜手醫療院所打造復健用智慧阻力訓練系統",
+      "url": "https://www.precor.com/en-us/newsroom",
+      "source": "Rehab Management",
+      "date": "2026-06-20",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": "Precor",
+      "summary": "Precor 與復健醫療機構合作開發具生理回饋功能之智慧阻力訓練系統，鎖定術後復健族群。"
+    },
+    {
+      "id": 9,
+      "title": "全球健身器材市場規模預估 2030 年將突破 200 億美元",
+      "url": "https://www.grandviewresearch.com/industry-analysis/fitness-equipment-market",
+      "source": "Grand View Research",
+      "date": "2026-06-15",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "研究機構預估，受惠於智慧化與居家健身需求成長，全球健身器材市場將於 2030 年突破 200 億美元規模。"
+    },
+    {
+      "id": 10,
+      "title": "Technogym 股價因 AI 訂閱營收成長超乎預期而上漲",
+      "url": "https://www.reuters.com/markets/companies/",
+      "source": "Reuters",
+      "date": "2026-06-10",
+      "category": "brand",
+      "categoryName": "品牌動態",
+      "brand": "Technogym",
+      "summary": "Technogym 公布第二季財報，AI 訂閱服務營收成長超乎市場預期，帶動股價應聲上漲逾 8%。"
+    }
+  ],
+  "stats": {
+    "total": 10,
+    "by_category": { "competitor": 3, "tech": 3, "market": 2, "brand": 2 },
+    "by_brand": { "Peloton": 1, "Technogym": 2, "Life Fitness": 1, "Apple": 1, "NordicTrack": 1, "Precor": 1 },
+    "by_source": {
+      "彭博社體育科技版": 1,
+      "WIPO 國際專利公報": 1,
+      "FITNESS INSIDER REPORT": 1,
+      "Deloitte 德勤健身產業研究室": 1,
+      "Club Industry": 1,
+      "TechCrunch 科技趨勢": 1,
+      "Retail Dive": 1,
+      "Rehab Management": 1,
+      "Grand View Research": 1,
+      "Reuters": 1
+    },
+    "timeline": [
+      { "date": "2026-06-10", "count": 1 },
+      { "date": "2026-06-15", "count": 1 },
+      { "date": "2026-06-20", "count": 1 },
+      { "date": "2026-06-25", "count": 1 },
+      { "date": "2026-06-28", "count": 1 },
+      { "date": "2026-06-29", "count": 1 },
+      { "date": "2026-07-01", "count": 1 },
+      { "date": "2026-07-03", "count": 1 },
+      { "date": "2026-07-04", "count": 1 },
+      { "date": "2026-07-05", "count": 1 }
+    ],
+    "updated": "2026-07-06T08:00:00+08:00"
+  }
+}

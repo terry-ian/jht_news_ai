@@ -1,0 +1,233 @@
+/* 喬山 AI 產業情報看板 - 擴充版樣式 */
+:root {
+  --brand-color: #c8102e;
+  --brand-light: #fff5f6;
+  --border-color: #e2e8f0;
+  --text-muted: #4b5563;
+}
+
+body {
+  top: 0px !important; /* 防止 Google 翻譯強行下推整頁 */
+  position: static !important;
+}
+iframe.skiptranslate,
+.goog-te-banner-frame {
+  display: none !important; /* 隱藏 Google 翻譯頂部橫幅 iframe，避免版面被下推 */
+}
+.goog-logo-link {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------
+ * 語言切換元件（改版）
+ * 根本原因（前版問題）：直接把 Google 翻譯官方 SIMPLE 小工具（.goog-te-gadget）
+ * 用 font-size:0 / color:transparent 等方式硬套版面，導致原生 <select>
+ * 的可視／可點擊區域被壓縮甚至消失，使用者點擊沒有反應、選單彈不出來。
+ * 新方案：不直接讓使用者操作 Google 官方小工具，改為：
+ *   1. 保留 #google_translate_element（讓 Google 翻譯腳本正常初始化、
+ *      產生真正可用的 <select class="goog-te-combo">），但整個容器
+ *      移到畫面外（非 display:none，避免部分瀏覽器因此不初始化）。
+ *   2. 另外做一組乾淨的自訂「繁體中文 / English」按鈕，點擊時用 JS
+ *      找到 .goog-te-combo，設定 value 並 dispatchEvent('change') 觸發翻譯。
+ * ------------------------------------------------------------------ */
+.goog-te-hidden-widget {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+}
+.lang-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 8px 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: background-color .15s ease, color .15s ease;
+}
+.lang-btn:hover {
+  background-color: #f8fafc;
+  color: var(--brand-color);
+}
+.lang-btn.active {
+  background-color: var(--brand-color);
+  color: #ffffff;
+}
+.lang-btn.active:hover {
+  background-color: var(--brand-color);
+  color: #ffffff;
+}
+.lang-btn:disabled {
+  cursor: wait;
+  opacity: .6;
+}
+.lang-btn:focus-visible {
+  outline: 2px solid var(--brand-color);
+  outline-offset: 1px;
+}
+
+/* 手機 RWD：收斂 padding 與字級，避免與左側標題擠壓造成溢出 */
+@media (max-width: 480px) {
+  .lang-btn {
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+}
+
+/* --------------------------------------------------------------------
+ * 情報列表分頁「載入更多」按鈕
+ * ------------------------------------------------------------------ */
+.load-more-btn {
+  cursor: pointer;
+}
+.load-more-btn:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+
+/* 捲軸美化 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* 跑馬燈 */
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* 圖表卡片固定高度，避免 Chart.js 無限放大 */
+.chart-box { position: relative; height: 220px; }
+.chart-box-sm { position: relative; height: 180px; }
+
+/* 品牌聲量長條圖：品牌數較多時，內層維持最小寬度、外層水平捲動，避免標籤全部擠成一團 */
+.chart-scroll-x { overflow-x: auto; overflow-y: hidden; }
+.chart-box-inner { position: relative; height: 100%; min-width: 100%; }
+
+/* 雷達圖區塊：放大尺寸並置於合理欄寬（RWD：手機縮小高度） */
+.chart-box-radar { position: relative; width: 100%; height: 340px; }
+@media (max-width: 1024px) {
+  .chart-box-radar { height: 300px; }
+}
+@media (max-width: 640px) {
+  .chart-box-radar { height: 260px; }
+}
+
+/* 品牌近14日情報熱度小型熱力格 */
+.heat-cell {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .heat-cell { width: 9px; height: 9px; }
+}
+
+/* 排行列表的橫條 */
+.rank-bar-track {
+  background: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 8px;
+}
+.rank-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c8102e, #fda4af);
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kpi-card { transition: transform .15s ease, box-shadow .15s ease; }
+.kpi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+
+/* --------------------------------------------------------------------
+ * AI 輸出 Markdown 排版（單篇摘要 Modal／智庫對話／戰略報告 共用）
+ * 內容由 marked.js 轉譯 + DOMPurify 消毒後 innerHTML 呈現。
+ * ------------------------------------------------------------------ */
+.ai-markdown { font-size: 0.85rem; line-height: 1.75; color: #334155; word-break: break-word; }
+.ai-markdown > *:first-child { margin-top: 0; }
+.ai-markdown > *:last-child { margin-bottom: 0; }
+.ai-markdown h1, .ai-markdown h2, .ai-markdown h3, .ai-markdown h4, .ai-markdown h5, .ai-markdown h6 {
+  font-weight: 800;
+  color: #0f172a;
+  margin-top: 1.1em;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+.ai-markdown h1 { font-size: 1.25rem; border-left: 4px solid var(--brand-color); padding-left: .5rem; }
+.ai-markdown h2 { font-size: 1.1rem; border-left: 4px solid var(--brand-color); padding-left: .5rem; color: var(--brand-color); }
+.ai-markdown h3 { font-size: 1rem; }
+.ai-markdown h4, .ai-markdown h5, .ai-markdown h6 { font-size: 0.9rem; }
+.ai-markdown p { margin: 0.6em 0; }
+.ai-markdown ul, .ai-markdown ol { margin: 0.5em 0 0.5em 1.4em; }
+.ai-markdown ul { list-style: disc; }
+.ai-markdown ol { list-style: decimal; }
+.ai-markdown li { margin: 0.3em 0; }
+.ai-markdown li > ul, .ai-markdown li > ol { margin-top: 0.3em; }
+.ai-markdown strong { color: var(--brand-color); font-weight: 700; }
+.ai-markdown em { font-style: italic; }
+.ai-markdown code { background: #eef2f7; padding: .1em .35em; border-radius: 4px; font-size: .85em; color: #c8102e; }
+.ai-markdown pre { background: #0f172a; color: #e2e8f0; padding: .75em 1em; border-radius: 8px; overflow-x: auto; margin: .6em 0; }
+.ai-markdown pre code { background: transparent; color: inherit; padding: 0; }
+.ai-markdown blockquote { border-left: 3px solid #cbd5e1; padding-left: .75em; color: #64748b; margin: .6em 0; font-style: italic; }
+.ai-markdown table { width: 100%; border-collapse: collapse; margin: .75em 0; font-size: .85em; display: block; overflow-x: auto; }
+.ai-markdown th, .ai-markdown td { border: 1px solid #e2e8f0; padding: .4em .6em; text-align: left; }
+.ai-markdown th { background: #f8fafc; font-weight: 700; }
+.ai-markdown hr { border: none; border-top: 1px solid #e2e8f0; margin: 1em 0; }
+.ai-markdown a { color: var(--brand-color); text-decoration: underline; }
+
+/* --------------------------------------------------------------------
+ * 串流輸出捲動容器（AI 對話 / 摘要 Modal / 戰略報告 共用）
+ * 修正「AI 產出完成後往上滑會出現空白」問題：
+ * 這兩個容器的內容會在短時間內被 JS 大量、快速地重繪（串流／打字機效果），
+ * 瀏覽器預設的 scroll anchoring（overflow-anchor: auto）會嘗試依內容高度變化
+ * 自動校正捲動位置，此機制與我們自行管理的「捲到底 / 保留使用者捲動位置」
+ * 邏輯（見 app.js 的 isNearBottom / createStreamRenderer）互相搶奪捲動位置，
+ * 在使用者往上滑閱讀歷史內容時，容易造成畫面停在未完整重繪的中間狀態
+ * （視覺上呈現一片空白）。此處關閉瀏覽器原生 scroll anchoring，
+ * 捲動位置完全交由 app.js 主動管理。
+ * ------------------------------------------------------------------ */
+#chat-messages,
+#modal-body-content {
+  overflow-anchor: none;
+}
+
+/* 動態逐步展出（串流／打字機）游標效果 */
+.ai-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--brand-color);
+  animation: ai-cursor-blink 0.9s steps(1) infinite;
+}
+@keyframes ai-cursor-blink {
+  50% { opacity: 0; }
+}

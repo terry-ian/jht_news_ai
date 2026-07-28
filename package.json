@@ -1,0 +1,16 @@
+{
+  "name": "johnson-fitness-intel-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "喬山 AI 全球健身器材產業情報儀表板 -- 靜態前端 + Google Gemini AI 代理後端（Vercel Serverless Function / 本機 dev-server 共用同一份 api/ai.js）",
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "scripts": {
+    "dev": "node dev-server.js",
+    "dev:vercel": "vercel dev"
+  },
+  "dependencies": {
+    "google-auth-library": "^9.14.2"
+  }
+}

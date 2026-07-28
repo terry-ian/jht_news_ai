@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Johnson 喬山 AI 全球健身器材產業情報儀表板</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/5/51/JOHNSON_LOGO.png" type="image/png">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#c8102e',
+              dark: '#a00d24',
+              light: '#fff5f6',
+              soft: '#fda4af'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+  <!-- Markdown 渲染（AI 輸出用）：marked.js 轉譯 + DOMPurify 消毒，避免 XSS -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- 頂部導航欄 -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/JOHNSON_LOGO.png"
+             alt="JOHNSON 喬山健康科技 Logo"
+             class="h-8 w-auto object-contain"
+             onerror="this.src='https://placehold.co/120x40/c8102e/white?text=JOHNSON'">
+        <div class="h-6 w-px bg-slate-300"></div>
+        <div class="flex flex-col">
+          <span class="text-lg font-bold tracking-wider text-slate-900 flex items-center gap-2">
+            <span id="brand-name" class="notranslate" translate="no">喬山健康科技</span>
+            <span class="notranslate bg-brand text-white text-[10px] px-1.5 py-0.5 rounded font-mono" translate="no">AI INSIGHT</span>
+          </span>
+          <span id="brand-subtitle" class="text-xs text-slate-500 font-medium tracking-tight">全球健身器材產業情報決策儀表板</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-2 sm:space-x-4">
+        <!-- 系統時間 -->
+        <div class="hidden md:flex flex-col items-end text-xs text-slate-500 font-mono">
+          <span>系統時間</span>
+          <span id="current-time">--</span>
+        </div>
+        <!-- AI 設定按鈕（顯示目前使用模型與後端連線狀態；金鑰已改為僅存於伺服器端環境變數） -->
+        <button id="settings-btn" onclick="openSettingsModal()" title="AI 設定" class="flex items-center justify-center h-8 w-8 rounded-lg border border-slate-200 text-slate-500 hover:text-brand hover:border-brand transition-colors flex-shrink-0">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        </button>
+        <!-- 自訂語言切換（繁體中文 / English），實際翻譯由隱藏的 Google 翻譯元件驅動 -->
+        <div class="lang-switch" role="group" aria-label="切換頁面語言 Language switch">
+          <button type="button" id="lang-btn-zh" class="lang-btn active" aria-pressed="true" onclick="setSiteLanguage('zh-TW')">繁體中文</button>
+          <button type="button" id="lang-btn-en" class="lang-btn" aria-pressed="false" onclick="setSiteLanguage('en')">English</button>
+        </div>
+        <!-- Google 翻譯官方小工具容器（移至畫面外，僅用來驅動翻譯，不直接顯示給使用者操作） -->
+        <div id="google_translate_element" class="goog-te-hidden-widget" aria-hidden="true"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 核心看板數據快報列（跑馬燈，來自真實最新 3 則新聞） -->
+  <section class="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-3 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs sm:text-sm">
+      <div class="flex items-center space-x-2 min-w-0">
+        <span class="bg-brand text-white px-2 py-0.5 rounded text-xs font-bold animate-pulse flex-shrink-0">LIVE</span>
+        <span class="font-medium flex-shrink-0">市場快訊：</span>
+        <div class="overflow-hidden relative w-56 sm:w-[480px] h-5">
+          <div class="absolute whitespace-nowrap animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused] cursor-pointer notranslate" translate="no" id="ticker-text">
+            資料載入中，請稍候...
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4 text-xs font-mono">
+        <span class="text-slate-400">資料來源媒體數: <strong class="text-white" id="ticker-source-count">-</strong></span>
+        <span class="text-slate-400">追蹤品牌數: <strong class="text-white" id="ticker-brand-count">-</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主內容區 -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full space-y-6">
+
+    <!-- 資料狀態提示（載入中 / 錯誤 / 空狀態） -->
+    <div id="data-status-banner" class="hidden bg-amber-50 border border-amber-200 text-amber-800 text-sm rounded-xl p-4 flex items-start gap-3">
+      <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+      <div id="data-status-text">正在讀取情報資料...</div>
+    </div>
+
+    <!-- 情報總覽標題列 + 重新整理 -->
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <div>
+        <h1 class="text-xl sm:text-2xl font-bold text-slate-900">全球健身器材產業情報總覽</h1>
+        <p class="text-xs text-slate-500 mt-0.5">資料更新時間：<span id="data-updated-text" class="font-mono">--</span></p>
+      </div>
+      <button id="refresh-btn" onclick="refreshData()" class="flex items-center gap-2 bg-white border border-slate-200 hover:border-brand hover:text-brand text-slate-600 px-4 py-2 rounded-lg text-sm font-medium shadow-sm transition-colors">
+        <svg class="w-4 h-4" id="refresh-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+        重新整理資料
+      </button>
+    </div>
+
+    <!-- KPI 數字卡 -->
+    <section id="kpi-section" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <p class="text-[11px] text-slate-400 font-medium">總情報數</p>
+        <p class="text-2xl font-bold text-slate-900 mt-1" id="kpi-total">0</p>
+      </div>
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <p class="text-[11px] text-slate-400 font-medium">今日新增</p>
+        <p class="text-2xl font-bold text-brand mt-1" id="kpi-today">0</p>
+      </div>
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <p class="text-[11px] text-slate-400 font-medium">本週新增</p>
+        <p class="text-2xl font-bold text-slate-900 mt-1" id="kpi-week">0</p>
+      </div>
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <p class="text-[11px] text-slate-400 font-medium">追蹤品牌數</p>
+        <p class="text-2xl font-bold text-slate-900 mt-1" id="kpi-brands">0</p>
+      </div>
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <p class="text-[11px] text-slate-400 font-medium">涵蓋媒體數</p>
+        <p class="text-2xl font-bold text-slate-900 mt-1" id="kpi-sources">0</p>
+      </div>
+      <div class="kpi-card bg-white rounded-xl border border-slate-200 shadow-sm p-4 col-span-2 sm:col-span-1">
+        <p class="text-[11px] text-slate-400 font-medium">最後更新</p>
+        <p class="text-sm font-bold text-slate-900 mt-2 font-mono leading-snug" id="kpi-updated">--</p>
+      </div>
+    </section>
+
+    <!-- 圖表儀表區 -->
+    <section class="space-y-4">
+      <h2 class="text-sm font-bold text-slate-700 tracking-wide flex items-center gap-2">
+        <span class="w-1.5 h-4 bg-brand rounded-sm inline-block"></span>
+        產業情報數據儀表
+      </h2>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+        <!-- 分類分布 -->
+        <div class="lg:col-span-4 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <p class="text-xs font-bold text-slate-600 mb-2">情報分類分布</p>
+          <div class="chart-box"><canvas id="chart-category"></canvas></div>
+        </div>
+        <!-- 品牌聲量 -->
+        <div class="lg:col-span-8 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center justify-between flex-wrap gap-1 mb-2">
+            <p class="text-xs font-bold text-slate-600">各品牌聲量統計（提及次數）</p>
+            <span class="text-[10px] text-slate-400">涵蓋全部追蹤品牌，本次未命中以 0 呈現（共 <span id="brand-chart-total-count">-</span> 個）</span>
+          </div>
+          <div class="chart-box chart-scroll-x">
+            <div class="chart-box-inner"><canvas id="chart-brand"></canvas></div>
+          </div>
+        </div>
+        <!-- 時間趨勢 -->
+        <div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <p class="text-xs font-bold text-slate-600 mb-2">新聞情報時間趨勢</p>
+          <div class="chart-box"><canvas id="chart-timeline"></canvas></div>
+        </div>
+        <!-- 媒體來源排行 -->
+        <div class="lg:col-span-5 bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <p class="text-xs font-bold text-slate-600 mb-3">媒體來源 Top 排行</p>
+          <div id="source-ranking-list" class="space-y-2.5 text-xs">
+            <p class="text-slate-400 text-center py-8">尚無資料</p>
+          </div>
+        </div>
+        <!-- 主要競品多維度比較：雷達圖 + 聲量排行榜 + 近14日熱度 -->
+        <div class="lg:col-span-12 bg-white rounded-xl border border-slate-200 shadow-sm p-4 sm:p-5">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+            <p class="text-xs font-bold text-slate-600">主要競品多維度聲量比較</p>
+            <span class="text-[10px] text-slate-400">依提及次數排序，取前段主要競品</span>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- 雷達圖：Top 6~8 主要競品 -->
+            <div class="lg:col-span-5 flex flex-col">
+              <p class="text-[11px] font-bold text-slate-400 tracking-wide mb-3">Top 主要競品多維聲量雷達</p>
+              <div class="chart-box-radar flex-grow flex items-center justify-center">
+                <canvas id="chart-radar"></canvas>
+              </div>
+            </div>
+            <!-- 品牌聲量 Top 排行榜 -->
+            <div class="lg:col-span-4 flex flex-col">
+              <p class="text-[11px] font-bold text-slate-400 tracking-wide mb-3">品牌聲量 Top 排行榜</p>
+              <div id="brand-rank-list" class="space-y-2.5 text-xs flex-grow">
+                <p class="text-slate-400 text-center py-8">尚無資料</p>
+              </div>
+            </div>
+            <!-- 近14日情報熱度 -->
+            <div class="lg:col-span-3 flex flex-col">
+              <p class="text-[11px] font-bold text-slate-400 tracking-wide mb-3">近14日情報熱度</p>
+              <div id="brand-heat-grid" class="space-y-2 text-[10px] flex-grow overflow-x-auto">
+                <p class="text-slate-400 text-center py-8">尚無資料</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 情報列表 + AI 報告產生器 / AI 智庫對話 -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- 左側與中間：情報列表、篩選器與智慧報告生成器 -->
+      <div class="lg:col-span-2 space-y-6">
+
+        <!-- 搜尋與分類選單 -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm space-y-4">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <!-- 搜尋欄 -->
+            <div class="relative flex-grow">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 pointer-events-none">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </span>
+              <input type="text" id="search-input" oninput="filterArticles()" placeholder="輸入關鍵字（例如：Peloton、AI、市場...）" class="w-full pl-9 pr-4 py-2 text-sm bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition-all">
+            </div>
+            <!-- 特殊篩選：僅看收藏 -->
+            <button id="favorite-toggle-btn" onclick="toggleFavoriteFilter()" class="flex items-center justify-center space-x-1 px-4 py-2 border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 text-slate-600 transition-colors">
+              <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="fav-filter-icon"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.907c.961 0 1.36 1.25.591 1.813l-3.97 2.88a1 1 0 00-.364 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.971-2.88a1 1 0 00-1.176 0l-3.97 2.88c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.364-1.118l-3.97-2.88c-.768-.563-.369-1.813.591-1.813h4.907a1 1 0 00.95-.69l1.519-4.674z"></path></svg>
+              <span id="fav-filter-text">已收藏情報</span>
+            </button>
+          </div>
+
+          <!-- 類別標籤 -->
+          <div class="border-t border-slate-100 pt-3 space-y-2.5">
+            <div class="flex flex-wrap gap-1.5" id="category-tabs">
+              <button data-cat="all" onclick="switchCategory('all', this)" class="category-btn active px-3.5 py-1.5 rounded-lg text-xs font-medium bg-brand text-white transition-all">綜合情報</button>
+              <button data-cat="competitor" onclick="switchCategory('competitor', this)" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">競品情報動態</button>
+              <button data-cat="tech" onclick="switchCategory('tech', this)" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">健身科技研發</button>
+              <button data-cat="market" onclick="switchCategory('market', this)" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">全球市場趨勢</button>
+              <button data-cat="brand" onclick="switchCategory('brand', this)" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">品牌動態</button>
+              <button data-cat="finance" onclick="switchCategory('finance', this)" class="category-btn px-3.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">財經/股市</button>
+            </div>
+            <label class="flex items-center gap-1.5 text-[11px] text-slate-500 cursor-pointer select-none w-fit" title="開啟後，「綜合情報」頁籤將一併顯示財經/股市類新聞（預設關閉以突顯產業情報，避免個股快訊雜訊）">
+              <input type="checkbox" id="finance-noise-toggle" onchange="toggleFinanceNoise(this.checked)" class="accent-brand w-3.5 h-3.5 rounded">
+              綜合情報同時顯示財經/股市新聞
+            </label>
+          </div>
+        </div>
+
+        <!-- 情報卡片清單 -->
+        <div id="articles-container" class="space-y-4">
+          <div class="bg-white p-12 text-center rounded-xl border border-slate-200">
+            <svg class="w-8 h-8 text-slate-300 mx-auto mb-3 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+            <p class="text-slate-500 text-sm">正在載入情報資料...</p>
+          </div>
+        </div>
+
+        <!-- AI 研發決策報告生成器 -->
+        <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-xl p-6 text-white shadow-md relative overflow-hidden">
+          <div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+            <svg class="w-64 h-64" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+          </div>
+
+          <div class="relative z-10 space-y-4">
+            <div class="flex items-center space-x-2">
+              <span class="bg-brand text-white text-[10px] font-bold px-2 py-0.5 rounded">EXECUTIVE REPORT</span>
+              <h3 class="text-lg font-bold">AI 決策情報報告生成</h3>
+            </div>
+            <p class="text-xs text-slate-300">基於當前已載入之真實新聞情報，由AI模型整合分析，為喬山科技市場生成專業的戰略評估草案。</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div>
+                <label class="block text-xs text-slate-400 mb-1 font-medium">1. 選擇戰略焦點</label>
+                <select id="report-topic" class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand">
+                  <option value="智慧運動硬體產品線創新與 AI 阻尼優化方向">智慧硬體產品線創新</option>
+                  <option value="Peloton 與 Technogym 之軟體訂閱制 SWOT 與防禦策略">軟體訂閱防禦戰略</option>
+                  <option value="全球健身連鎖通路（商用器材）採購趨勢預測">商用連鎖通路採購趨勢</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs text-slate-400 mb-1 font-medium">2. 報告預設受眾</label>
+                <select id="report-target" class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand">
+                  <option value="喬山高層經營管理團隊決策依據">喬山高層決策團隊 (C-Level)</option>
+                  <option value="硬體與軟體研發部工程師可行性評估">產品研發團隊 (R&D)</option>
+                  <option value="全球市場拓展與行銷處本地化推廣指南">全球行銷與業務部門 (Marketing)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button onclick="generateCustomReport()" class="w-full sm:w-auto bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-colors flex items-center justify-center space-x-2 shadow-lg shadow-brand/20">
+                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <span>動態生成戰略報告</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右側：AI 智庫助理（實時 Google Gemini 對話區，透過本站後端 /api/ai 代理） -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-[650px] sticky top-24">
+          <!-- 助理頭部 -->
+          <div class="p-4 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-slate-50 to-slate-100 rounded-t-xl">
+            <div class="flex items-center space-x-3">
+              <div class="relative">
+                <span class="absolute right-0 bottom-0 block h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+                <div class="h-10 w-10 rounded-full bg-brand/10 flex items-center justify-center text-brand font-bold text-sm">JS</div>
+              </div>
+              <div>
+                <h3 class="font-bold text-sm text-slate-800">喬山 AI 產業智庫助理</h3>
+                <p class="text-[10px] text-slate-400">Powered by Google Gemini（<span id="chat-model-label">-</span>）</p>
+              </div>
+            </div>
+            <button onclick="clearChat()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-200 transition-colors" title="清除對話紀錄">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </button>
+          </div>
+
+          <!-- 聊天室內容 -->
+          <div id="chat-messages" class="flex-grow overflow-y-auto p-4 space-y-4 text-xs sm:text-sm">
+            <div class="flex gap-2.5">
+              <div class="h-8 w-8 rounded-full bg-brand/10 flex items-center justify-center text-brand text-[10px] font-bold flex-shrink-0">助理</div>
+              <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] text-slate-700 leading-relaxed">
+                您好，我是喬山 AI 智庫決策小助手。我已經載入最新的真實產業新聞情報。您可以隨時詢問我任何產業洞察。
+                <br><br>
+                您可以點選下方快捷提問，或直接於下方輸入框向我諮詢！
+              </div>
+            </div>
+          </div>
+
+          <!-- 推薦快捷提問 -->
+          <div class="p-3 bg-slate-50 border-t border-slate-100">
+            <p class="text-[10px] text-slate-400 mb-1.5 font-bold tracking-wider">快捷決策諮詢</p>
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="sendQuickPrompt('根據目前情報，分析 2026 健身器材 AI 化趨勢')" class="text-[10px] text-slate-600 bg-white hover:bg-brand-light hover:text-brand border border-slate-200 px-2 py-1 rounded transition-colors">🎯 2026科技趨勢</button>
+              <button onclick="sendQuickPrompt('根據目前情報，評估主要競品對喬山品牌的競爭威脅與防禦方案')" class="text-[10px] text-slate-600 bg-white hover:bg-brand-light hover:text-brand border border-slate-200 px-2 py-1 rounded transition-colors">🔥 競品威脅評估</button>
+              <button onclick="sendQuickPrompt('根據目前情報，如何將邊緣運算 AI 技術整合進喬山商用跑步機以降低售後維護成本？')" class="text-[10px] text-slate-600 bg-white hover:bg-brand-light hover:text-brand border border-slate-200 px-2 py-1 rounded transition-colors">💡 邊緣運算硬體創新</button>
+            </div>
+          </div>
+
+          <!-- 輸入欄 -->
+          <div class="p-3 border-t border-slate-100 flex gap-2">
+            <input type="text" id="chat-input" onkeydown="handleChatKey(event)" placeholder="向 AI 智庫進行提問..." class="flex-grow bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-brand">
+            <button onclick="sendChatMessage()" class="bg-brand hover:bg-brand-dark text-white px-3 py-2 rounded-lg transition-colors flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 transform rotate-90" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- AI 設定 Modal（僅顯示目前使用模型與後端連線狀態；金鑰已改為僅存於伺服器端環境變數，瀏覽器完全不接觸金鑰） -->
+  <div id="settings-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <h3 class="font-bold text-base text-slate-900">AI 設定</h3>
+        <button onclick="closeSettingsModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 space-y-3">
+        <p class="text-[11px] text-emerald-700 leading-relaxed bg-emerald-50 border border-emerald-200 rounded-lg p-2">
+          ✅ AI 金鑰／服務帳戶已改為僅存放於伺服器端環境變數，瀏覽器端不需要、也不會接觸到任何金鑰。所有 AI 請求皆透過本站後端 <code>/api/ai</code> 代理呼叫 Google Gemini。
+        </p>
+        <div class="grid grid-cols-2 gap-y-2 text-xs pt-1">
+          <div class="text-slate-400">目前使用模型</div>
+          <div class="font-mono text-slate-800 text-right" id="settings-current-model">-</div>
+          <div class="text-slate-400">認證模式</div>
+          <div class="font-mono text-slate-800 text-right" id="settings-auth-mode">-</div>
+          <div class="text-slate-400">後端連線狀態</div>
+          <div id="settings-key-status" class="font-medium text-right text-slate-400">檢查中...</div>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3 text-xs sm:text-sm">
+        <button onclick="refreshSettingsModalStatus()" class="px-4 py-2 border border-slate-200 hover:border-slate-300 rounded-lg font-medium text-slate-600 transition-colors">重新檢查狀態</button>
+        <button onclick="closeSettingsModal()" class="px-4 py-2 bg-brand hover:bg-brand-dark text-white rounded-lg font-medium transition-colors">關閉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI 一鍵摘要浮動 Modal -->
+  <div id="ai-summary-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden">
+    <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[85vh] flex flex-col transform scale-95 transition-all" id="modal-container">
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+        <div class="flex items-center space-x-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-brand"></span>
+          <h3 class="font-bold text-base text-slate-900" id="modal-title">AI 智能深度分析摘要</h3>
+        </div>
+        <button onclick="closeSummaryModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg hover:bg-slate-200 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-4" id="modal-body-content">
+        <div>
+          <h4 class="text-xs font-bold text-slate-400 tracking-wider mb-1">情報原文標題</h4>
+          <p class="text-base font-bold text-slate-800" id="original-article-title">-</p>
+          <a href="#" target="_blank" rel="noopener" id="original-article-link" class="text-xs text-brand hover:underline hidden">前往原文連結 →</a>
+        </div>
+        <hr class="border-slate-100">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-xs font-bold text-brand tracking-wider flex items-center gap-1">
+              <svg class="w-4 h-4 animate-spin text-brand hidden" id="modal-loading-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+              Google Gemini 決策情報局深度提煉：
+            </h4>
+            <span class="text-[10px] bg-slate-100 text-slate-500 font-mono px-2 py-0.5 rounded">模型：<span id="modal-model-label">-</span></span>
+          </div>
+          <div class="bg-slate-50 rounded-lg p-4 border border-slate-100 text-sm leading-relaxed text-slate-700 ai-markdown" id="ai-summary-text">
+            正在啟動 AI 產業洞察模型...
+          </div>
+        </div>
+      </div>
+      <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-end space-x-3 text-xs sm:text-sm">
+        <button onclick="copySummaryText()" class="px-4 py-2 border border-slate-200 hover:border-slate-300 rounded-lg font-medium text-slate-600 transition-colors">
+          複製摘要內容
+        </button>
+        <button onclick="closeSummaryModal()" class="px-4 py-2 bg-brand hover:bg-brand-dark text-white rounded-lg font-medium transition-colors">
+          關閉視窗
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-white border-t border-slate-200 mt-12 py-6">
+    <div class="max-w-7xl mx-auto px-4 text-center space-y-2 text-xs text-slate-400">
+      <p>喬山健康科技股份有限公司 © 2026 Johnson Health Tech. All Rights Reserved. AI 產業智庫模組版權所有。</p>
+      <p>本看板資料來源為自動化爬蟲蒐集之公開新聞，僅供內部決策參考，請自行查證原文之準確性。</p>
+    </div>
+  </footer>
+
+  <script src="./assets/app.js"></script>
+
+  <!-- Google 翻譯官方工具腳本 -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'zh-TW',
+        includedLanguages: 'en,zh-TW',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
