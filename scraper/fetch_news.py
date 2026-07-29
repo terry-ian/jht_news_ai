@@ -305,16 +305,10 @@ BRAND_STORY_SOURCES = {
                   "https://www.matrixfitness.com/en/blog"]},
     "Vision": {
         "feeds": [],
-        "pages": ["https://www.visionfitness.com/blog"]},
-    "Hammer Strength": {
-        "feeds": [],
-        "pages": ["https://www.hammerstrength.com/en/blog"]},
-    "Cybex": {
-        "feeds": [],
-        "pages": ["https://www.cybexintl.com/blog"]},
+        "pages": ["https://www.visionfitness.com/zht/insights"]},
     "Star Trac": {
         "feeds": [],
-        "pages": ["https://www.startrac.com/blog"]},
+        "pages": ["https://www.corehandf.com/blogs/shop-hs"]},
     "TRUE Fitness": {
         "feeds": ["https://truefitness.com/feed/"],
         "pages": ["https://truefitness.com/blog/"]},
@@ -323,7 +317,7 @@ BRAND_STORY_SOURCES = {
         "pages": ["https://www.bowflex.com/blog/"]},
     "SHUA": {
         "feeds": [],
-        "pages": ["https://www.shua.com/news", "https://www.shua.com/news/"]},
+        "pages": ["https://shuafitness.com/news/all/"]},
     "NordicTrack": {
         "feeds": [],
         "pages": ["https://www.nordictrack.com/learn"]},
@@ -332,8 +326,8 @@ BRAND_STORY_SOURCES = {
         "pages": ["https://www.onepeloton.com/press",
                   "https://www.onepeloton.com/blog"]},
     "Sole": {
-        "feeds": [],
-        "pages": ["https://www.solefitness.com/blogs/news"]},
+        "feeds": ["https://www.soletreadmills.com/blogs/news.atom"],
+        "pages": ["https://www.soletreadmills.com/blogs/news/"]},
     "Bowflex": {
         "feeds": [],
         "pages": ["https://www.bowflex.com/blog/"]},
@@ -357,19 +351,16 @@ BRAND_STORY_SOURCES = {
         "pages": ["https://www.roguefitness.com/the-index"]},
     "REP": {
         "feeds": [],
-        "pages": ["https://www.repfitness.com/blogs/news"]},
-    "Force USA": {
-        "feeds": [],
-        "pages": ["https://forceusa.com/blogs/news"]},
+        "pages": ["https://repfitness.com/pages/blogs"]},
     "Titan": {
         "feeds": [],
-        "pages": ["https://www.titan.fitness/blog"]},
+        "pages": ["https://titan.fitness/blogs/all-articles"]},
     "Eleiko": {
         "feeds": [],
         "pages": ["https://eleiko.com/en/news"]},
     "Concept2": {
         "feeds": [],
-        "pages": ["https://www.concept2.com/news"]},
+        "pages": ["https://www.concept2.com/blog"]},
     "Assault": {
         "feeds": [],
         "pages": ["https://assaultfitness.com/blogs/news"]},
