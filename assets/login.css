@@ -1,0 +1,234 @@
+/* ============================================================================
+ * assets/login.css — 登入頁專用樣式
+ * 獨立於 assets/style.css，避免影響既有儀表板頁面。
+ * ========================================================================== */
+
+:root {
+  --login-brand: #c8102e;
+  --login-brand-dark: #a00d24;
+  --login-btn: #eda8a8;
+  --login-btn-hover: #e08585;
+  --login-text-muted: #6b7280;
+  --login-error: #dc2626;
+}
+
+html, body.login-page {
+  height: 100%;
+  margin: 0;
+}
+
+body.login-page {
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* 右下角淡灰色斜向弧形裝飾（純 CSS/SVG，無外部圖片） */
+.login-bg-decor {
+  position: fixed;
+  right: -18vw;
+  bottom: -28vw;
+  width: 85vw;
+  height: 85vw;
+  max-width: 1000px;
+  max-height: 1000px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+/* 登入卡片 */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 555px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.10), 0 2px 8px rgba(15, 23, 42, 0.05);
+  padding: 44px 56px 36px;
+  box-sizing: border-box;
+}
+
+.login-logo-wrap {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.login-logo-svg {
+  width: 150px;
+  height: auto;
+}
+
+/* 子品牌文字列 */
+.login-subbrands {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 14px;
+  margin: 4px 0 26px;
+  color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.login-subbrands span:not(:last-child)::after {
+  content: '';
+}
+
+.login-title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+
+.login-subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--login-text-muted);
+  margin: 0 0 28px;
+}
+
+.login-field {
+  margin-bottom: 16px;
+}
+
+.login-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.login-input-wrap {
+  position: relative;
+}
+
+.login-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #111827;
+  background: #fafafa;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.login-input:focus {
+  border-color: var(--login-brand);
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+  background: #ffffff;
+}
+
+.login-input-wrap.has-toggle .login-input {
+  padding-right: 44px;
+}
+
+.login-toggle-pass {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-toggle-pass:hover { color: #374151; }
+.login-toggle-pass:focus-visible { outline: 2px solid var(--login-brand); outline-offset: 1px; border-radius: 4px; }
+
+.login-submit-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 13px 16px;
+  background: var(--login-btn);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .15s ease, opacity .15s ease;
+}
+.login-submit-btn:hover:not(:disabled) { background: var(--login-btn-hover); }
+.login-submit-btn:disabled { opacity: 0.7; cursor: wait; }
+.login-submit-btn:focus-visible { outline: 2px solid var(--login-brand-dark); outline-offset: 2px; }
+
+.login-error {
+  display: none;
+  margin: 14px 0 0;
+  padding: 10px 12px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  color: var(--login-error);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.login-error.show { display: block; }
+
+.login-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.login-footer-globe {
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.login-footer-links {
+  font-size: 12px;
+}
+.login-footer-links a {
+  color: var(--login-brand);
+  text-decoration: none;
+}
+.login-footer-links a:hover { text-decoration: underline; }
+.login-footer-links .sep {
+  color: #d1d5db;
+  margin: 0 8px;
+}
+
+/* RWD：手機版滿版卡片、縮小字級與留白 */
+@media (max-width: 480px) {
+  body.login-page {
+    padding: 0;
+    align-items: flex-start;
+  }
+  .login-bg-decor {
+    right: -30vw;
+    bottom: -22vw;
+    width: 120vw;
+    height: 120vw;
+  }
+  .login-card {
+    max-width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 32px 16px 28px;
+  }
+  .login-title { font-size: 30px; }
+  .login-subtitle { font-size: 13px; margin-bottom: 22px; }
+  .login-subbrands { font-size: 10px; gap: 5px 10px; }
+  .login-logo-svg { width: 120px; }
+}

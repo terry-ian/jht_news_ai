@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | JOHNSON 喬山 AI 全球健身器材產業情報儀表板</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='none' stroke='%23c8102e' stroke-linecap='round'><path d='M12 58 Q50 8 88 58' stroke-width='11'/><path d='M22 66 Q52 26 82 66' stroke-width='9' opacity='0.72'/></g></svg>" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/login.css">
+</head>
+<body class="login-page">
+
+  <!-- 右下角淡灰色斜向弧形裝飾（純 SVG 自繪，無外部圖片） -->
+  <svg class="login-bg-decor" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+    <g fill="none" stroke="#d9d9d9" stroke-width="26">
+      <path d="M420 -20 A 300 300 0 0 1 -20 420" opacity="0.55"/>
+      <path d="M420 60 A 260 260 0 0 1 60 420" opacity="0.4"/>
+      <path d="M420 140 A 220 220 0 0 1 140 420" opacity="0.28"/>
+    </g>
+  </svg>
+
+  <main class="login-card" role="main">
+    <div class="login-logo-wrap">
+      <!-- JOHNSON 品牌標誌：純 SVG 自繪（紅色雙弧屋頂 + 粗體 JOHNSON 字樣） -->
+      <svg class="login-logo-svg" viewBox="0 0 200 74" role="img" aria-label="JOHNSON 品牌標誌">
+        <g fill="none" stroke="#c8102e" stroke-linecap="round">
+          <path d="M22 44 Q60 4 98 44" stroke-width="8" opacity="1"/>
+          <path d="M36 49 Q68 16 100 49" stroke-width="7" opacity="0.72"/>
+          <path d="M50 53 Q76 28 102 53" stroke-width="6" opacity="0.5"/>
+        </g>
+        <text x="100" y="70" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="21" fill="#111827" letter-spacing="1">JOHNSON</text>
+      </svg>
+    </div>
+
+    <div class="login-subbrands" aria-label="喬山旗下子品牌">
+      <span>MATRIX</span>
+      <span>VISION</span>
+      <span>HORIZON</span>
+      <span>BowFlex</span>
+      <span>SCHWINN</span>
+      <span>FUJIIRYOKI</span>
+    </div>
+
+    <h1 class="login-title">Login</h1>
+    <p class="login-subtitle">Use your Johnson account to sign in</p>
+
+    <form id="login-form" novalidate>
+      <div class="login-field">
+        <label for="login-username">帳號 / Email</label>
+        <div class="login-input-wrap">
+          <input
+            type="text"
+            id="login-username"
+            name="username"
+            class="login-input"
+            placeholder="請輸入帳號"
+            autocomplete="username"
+            autofocus
+            required>
+        </div>
+      </div>
+
+      <div class="login-field">
+        <label for="login-password">密碼</label>
+        <div class="login-input-wrap has-toggle">
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            class="login-input"
+            placeholder="請輸入密碼"
+            autocomplete="current-password"
+            required>
+          <button type="button" id="login-toggle-pass" class="login-toggle-pass" aria-label="顯示密碼" aria-pressed="false" title="顯示/隱藏密碼">
+            <svg data-eye-open width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <svg data-eye-closed width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+              <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a18.6 18.6 0 0 1 5.06-5.94M9.9 4.24A10.4 10.4 0 0 1 12 4c7 0 11 7 11 7a18.6 18.6 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <line x1="1" y1="1" x2="23" y2="23"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <button type="submit" id="login-submit-btn" class="login-submit-btn">
+        <span id="login-submit-label">Sign In</span>
+      </button>
+
+      <div id="login-error" class="login-error" role="alert" aria-live="assertive"></div>
+    </form>
+
+    <div class="login-footer">
+      <div class="login-footer-globe" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+      </div>
+      <p class="login-footer-links">
+        <a href="https://www.johnsonfitness.com/tw/terms-of-use" target="_blank" rel="noopener">terms of use</a>
+        <span class="sep">|</span>
+        <a href="https://www.johnsonfitness.com/tw/privacy-policy" target="_blank" rel="noopener">privacy policy</a>
+        <span class="sep">|</span>
+        <a href="https://www.johnsonfitness.com/" target="_blank" rel="noopener">learn more about Johnson</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="./assets/login.js"></script>
+</body>
+</html>
