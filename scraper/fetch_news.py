@@ -111,6 +111,8 @@ RUN_DATE = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 _GN_EN = "https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
 _GN_TW = "https://news.google.com/rss/search?q={q}&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+# 中國地區（zh-CN / gl=CN）：使用者指定新增之來源沿用此樣板（不含 ceid，與原始 URL 一致）
+_GN_CN = "https://news.google.com/rss/search?q={q}&hl=zh-CN&gl=CN"
 
 
 def _en(query: str) -> str:
@@ -121,24 +123,28 @@ def _tw(query: str) -> str:
     return _GN_TW.format(q=quote(query))
 
 
+def _cn(query: str) -> str:
+    return _GN_CN.format(q=quote(query))
+
+
 # 27 個追蹤品牌（＋自家 Johnson）的查詢用名稱
 BRAND_QUERY_NAMES = [
     "Life Fitness", "Technogym", "Precor", "Matrix Fitness", "Vision Fitness",
-    "Hammer Strength", "Cybex", "Star Trac", "TRUE Fitness", "Nautilus",
-    "SHUA", "NordicTrack", "Peloton", "Sole Fitness", "Bowflex", "Schwinn",
-    "Horizon Fitness", "Tonal", "ProForm", "Sunny Health Fitness",
-    "Rogue Fitness", "REP Fitness", "Force USA", "Titan Fitness", "Eleiko",
-    "Concept2", "Assault Fitness", "Johnson Health Tech",
+    "Hammer Strength", "Cybex Fitness", "Star Trac", "TRUE Fitness", "Nautilus",
+    "SHUA Fitness", "NordicTrack", "Peloton", "Sole Fitness", "Bowflex", "Schwinn",
+    "Horizon Fitness", "Tonal Fitness", "ProForm Fitness", "Sunny Health Fitness",
+    "Rogue Fitness", "REP Fitness", "Force USA", "Titan Fitness", "Eleiko Fitness",
+    "Concept2 Fitness", "Assault Fitness", "Johnson Health Tech",
 ]
 
 PUBLIC_BRANDS = [
     "Peloton", "Nautilus", "BowFlex", "Technogym", "Life Fitness",
-    "Johnson Health Tech",
+    "Matrix", "Precor",
 ]
 
 LOW_VOLUME_BRANDS = [
-    "Star Trac", "Cybex", "Hammer Strength", "TRUE Fitness", "Vision Fitness",
-    "Force USA", "Assault Fitness", "Eleiko", "Concept2", "Sunny Health Fitness",
+    "Star Trac Fitness", "Cybex Fitness", "Hammer Strength", "TRUE Fitness", "Vision Fitness",
+    "Force USA", "Assault Fitness", "Eleiko Fitness", "Concept2 Fitness", "Sunny Health Fitness",
     "REP Fitness", "Titan Fitness", "Precor", "Matrix Fitness",
 ]
 
@@ -150,9 +156,20 @@ GENERIC_QUERIES = [
     "fitness equipment", "functional trainer", "power rack",
 ]
 
+# 「舒華體育」加雙引號做 phrase match：Google News 對未加引號的中文查詢不會強制
+# 詞組比對，過去曾造成「舒華」單獨比對命中南韓女團 (G)I-DLE 成員「葉舒華」的
+# 演藝新聞（見 CELEBRITY_NOISE_PATTERN / BRAND_WHITELIST_CONTEXT 二次過濾）。
 CHINESE_QUERIES = [
-    "舒華 SHUA", "岱宇 Dyaco", "喬山 健身", "有氧器材", "重訓器材",
+    '"舒華體育"', "岱宇 Dyaco", "喬山 健身", "有氧器材", "重訓器材",
     "跑步機", "健身器材", "橢圓機", "飛輪車",
+]
+
+# 使用者指定新增之中國地區（zh-CN / gl=CN）來源查詢，7 天時窗。
+# 第一條沿用「舒華體育」精確詞（同樣加引號避免歧義雜訊）；
+# 第二條為大陸健身器材品牌群組查詢（OR 群組）。
+CN_REGION_QUERIES = [
+    '"舒華體育" when:30d',
+    "(英派斯 OR 万年青 OR 麦瑞克 OR 亿健 OR DHZ健身) when:30d",
 ]
 
 # 新品發布導向查詢模板（每品牌 x4）
@@ -211,6 +228,10 @@ def build_feed_sources():
 
     for q in CHINESE_QUERIES:
         add(_tw(f'{q} when:1y'), "google_news")
+
+    # --- 中國地區來源（zh-CN / gl=CN，使用者指定新增）---
+    for q in CN_REGION_QUERIES:
+        add(_cn(q), "google_news")
 
     # --- 新品發布導向查詢：這些本質是 Google News 的「新品發表新聞」，
     #     一律標記 source_type=google_news（不再使用 product 這個類別）。---
@@ -378,7 +399,7 @@ BRAND_DETECT_PATTERNS = [
     ("TRUE Fitness", [r"true fitness", r"true treadmill", rf"true {_FIT_CTX}"]),
     ("Nautilus", [rf"nautilus {_FIT_CTX}", r"nautilus inc", r"nautilus, inc",
                   r"nautilus bowflex", r"nautilus\b.*\b(bowflex|schwinn|treadmill|home gym)"]),
-    ("SHUA", [r"\bshua\b", r"舒華"]),
+    ("SHUA", [r"\bshua\b", r"舒華", r"舒华"]),
     ("NordicTrack", [r"nordictrack", r"nordic track"]),
     ("Peloton", [r"peloton"]),
     ("Sole", [r"sole fitness", r"sole treadmill", rf"sole {_FIT_CTX}",
@@ -552,10 +573,42 @@ def source_matches(source: str, name_list) -> bool:
     return any(name in s for name in name_list)
 
 
+# ---------------------------------------------------------------------------
+# 品牌名稱歧義過濾
+# ---------------------------------------------------------------------------
+# 「舒華」同時是中國健身器材品牌「舒華體育」(SHUA, 股票代號 605299) 與南韓女團
+# (G)I-DLE 台灣籍成員「葉舒華」的中文藝名。即使 Google News 查詢已加引號做
+# phrase match（見 CHINESE_QUERIES / CN_REGION_QUERIES），仍以此二次過濾把關：
+# 1) 命中演藝圈雜訊關鍵字 -> 硬性剔除（優先於品牌命中）。
+# 2) 品牌詞有歧義者，標題/摘要需另外命中「品牌情境詞」白名單才收錄。
+# 目前僅「舒華」需要這層保護；未來如發現其他品牌有同名歧義，可比照擴充。
+# ---------------------------------------------------------------------------
+
+CELEBRITY_NOISE_KEYWORDS = [
+    "i-dle", "(g)i-dle", "葉舒華", "叶舒华", "女團", "女团", "愛豆", "爱豆",
+    "偶像團體", "偶像团体", "演唱會", "演唱会", "粉絲", "粉丝", "專輯", "专辑",
+    "綜藝", "综艺", "柯震東", "柯震东", "見面會", "见面会", "代言人", "時裝週",
+    "时装周", "走秀", "韓星", "韩星", "k-pop", "kpop", "cube娛樂", "cube娱乐",
+    "burberry", "巡演", "回歸專輯", "回归专辑", "韓團", "韩团",
+]
+CELEBRITY_NOISE_PATTERN = re.compile(
+    "|".join(re.escape(k) for k in CELEBRITY_NOISE_KEYWORDS), re.IGNORECASE)
+
+# 有歧義的品牌：標題/摘要需命中以下任一「品牌情境詞」才視為真正相關
+BRAND_WHITELIST_CONTEXT = {
+    "SHUA": re.compile(
+        r"舒華體育|舒华体育|shua fitness|健身器材|跑步機|跑步机|橢圓機|椭圆机|飛輪車|飞轮车|"
+        r"重訓器材|重训器材|有氧器材|健身房|運動器材|运动器材|喬山|乔山|dyaco|岱宇|605299",
+        re.IGNORECASE,
+    ),
+}
+
+
 def check_exclusion(title: str, summary: str, brand, source: str = "", relax: bool = False):
     """
     回傳 (excluded: bool, reason: str | None)。
-    硬性剔除（永遠生效）：spam 來源/內容、明顯 off-topic 主題。
+    硬性剔除（永遠生效）：spam 來源/內容、明顯 off-topic 主題、有歧義品牌命中演藝雜訊。
+    品牌歧義白名單（永遠生效）：品牌詞有歧義者，需另外命中品牌情境詞才收錄。
     正向保留閘門（relax=False 時生效）：不命中品牌且不含健身相關詞 -> no_relevance。
     官方/新品/新聞稿來源以 relax=True 呼叫（本質相關，不套用 no_relevance 閘門）。
     """
@@ -566,6 +619,12 @@ def check_exclusion(title: str, summary: str, brand, source: str = "", relax: bo
         return True, "marketplace_spam"
     if any(p.search(text) for p in MARKETPLACE_CONTENT_PATTERNS):
         return True, "marketplace_spam"
+
+    if brand in BRAND_WHITELIST_CONTEXT:
+        if CELEBRITY_NOISE_PATTERN.search(text):
+            return True, "celebrity_noise"
+        if not BRAND_WHITELIST_CONTEXT[brand].search(text):
+            return True, "brand_ambiguous_no_context"
 
     if not brand and any(p.search(text) for p in OFFTOPIC_PATTERNS):
         return True, "off_topic"
@@ -1290,13 +1349,43 @@ def clean_existing_noise(articles):
         # google_news / press_release：一律保留、日期不動
         kept.append(a)
 
+    # 4) 品牌名稱歧義回溯過濾（套用於「清理後的所有既有文章」，不分 source_type，
+    #    含 google_news / press_release）：
+    #    check_exclusion() 的 CELEBRITY_NOISE_PATTERN / BRAND_WHITELIST_CONTEXT 先前只在
+    #    build_new_articles()（本次新抓項目）套用，已入庫的舊雜訊（例如「舒華」誤命中
+    #    南韓 (G)I-DLE 成員「葉舒華」演藝新聞）從未被清除 —— 這正是 cleaned_noise 長期
+    #    全為 0 的根因：舊資料完全沒有機制回頭套用此過濾。此處對「所有」既有文章套用
+    #    同一組規則，確保每次執行都會即時反映最新的品牌白名單/藝人黑名單。
+    removed_celebrity_noise = 0
+    removed_brand_ambiguous = 0
+    filtered = []
+    for a in kept:
+        brand = a.get("brand")
+        if brand in BRAND_WHITELIST_CONTEXT:
+            text = f"{a.get('title', '')} {a.get('summary', '')}"
+            if CELEBRITY_NOISE_PATTERN.search(text):
+                removed_celebrity_noise += 1
+                if len(samples) < 40:
+                    samples.append(f"[品牌歧義-藝人雜訊移除] {a.get('title', '')[:60]}")
+                continue
+            if not BRAND_WHITELIST_CONTEXT[brand].search(text):
+                removed_brand_ambiguous += 1
+                if len(samples) < 40:
+                    samples.append(f"[品牌歧義-無情境詞移除] {a.get('title', '')[:60]}")
+                continue
+        filtered.append(a)
+    kept = filtered
+
     report = {
         "removed_howto": removed_howto,
         "removed_offtopic": removed_offtopic,
         "removed_no_real_date": removed_no_real_date,
+        "removed_celebrity_noise": removed_celebrity_noise,
+        "removed_brand_ambiguous": removed_brand_ambiguous,
         "date_corrected": date_corrected,
         "product_to_gnews": product_to_gnews,
-        "removed_total": removed_howto + removed_offtopic + removed_no_real_date,
+        "removed_total": (removed_howto + removed_offtopic + removed_no_real_date
+                           + removed_celebrity_noise + removed_brand_ambiguous),
         "samples": samples,
     }
     return kept, report
@@ -1509,6 +1598,8 @@ def run():
         log(f"既有庫存清理：官方非消息型(how-to/產品/分類)移除 {clean_report['removed_howto']} 筆；"
             f"官方補不到真實日期移除 {clean_report['removed_no_real_date']} 筆；"
             f"離題 product 移除 {clean_report['removed_offtopic']} 筆；"
+            f"品牌歧義-藝人雜訊移除 {clean_report['removed_celebrity_noise']} 筆；"
+            f"品牌歧義-無情境詞移除 {clean_report['removed_brand_ambiguous']} 筆；"
             f"合計移除 {clean_report['removed_total']} 筆；"
             f"官方日期補正 {clean_report['date_corrected']} 筆；"
             f"product 併入 google_news {clean_report['product_to_gnews']} 筆；"
@@ -1589,6 +1680,8 @@ def run():
                 "removed_howto": clean_report["removed_howto"],
                 "removed_no_real_date": clean_report["removed_no_real_date"],
                 "removed_offtopic": clean_report["removed_offtopic"],
+                "removed_celebrity_noise": clean_report["removed_celebrity_noise"],
+                "removed_brand_ambiguous": clean_report["removed_brand_ambiguous"],
                 "removed_total": clean_report["removed_total"],
                 "date_corrected": clean_report["date_corrected"],
                 "product_to_gnews": clean_report["product_to_gnews"],
@@ -1612,6 +1705,7 @@ def run():
         log(f"官方 stories/文章頁成功：{official_page_ok}")
         log(f"既有庫存清理：官方非消息型移除 {clean_report['removed_howto']} 筆、"
             f"官方無真實日期移除 {clean_report['removed_no_real_date']} 筆、"
+            f"品牌歧義(藝人雜訊+無情境詞)移除 {clean_report['removed_celebrity_noise'] + clean_report['removed_brand_ambiguous']} 筆、"
             f"官方日期補正 {clean_report['date_corrected']} 筆、"
             f"product 併 google_news {clean_report['product_to_gnews']} 筆")
         log(f"輸出檔案：{OUTPUT_FILE}")
