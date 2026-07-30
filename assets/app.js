@@ -22,6 +22,22 @@ const CATEGORY_COLORS = {
 };
 const FAV_STORAGE_KEY = 'fitness-dashboard-favorites-v1';
 
+// 產品分類（product_category）：與上方 category（market/tech/competitor/finance/brand）為不同維度，
+// 兩者互不覆蓋，可疊加篩選。值只有以下 4 種；缺欄位／未知值一律歸類為 other（向下相容舊資料）。
+const PRODUCT_CATEGORY_NAME_MAP = {
+  cardio: '有氧',
+  strength: '重訓',
+  wearable: '穿戴裝置',
+  other: '其他'
+};
+const PRODUCT_CATEGORY_ORDER = ['cardio', 'strength', 'wearable', 'other'];
+const PRODUCT_CATEGORY_COLORS = {
+  cardio: { bg: '#e0f2fe', text: '#0369a1', border: '#7dd3fc' },   // sky
+  strength: { bg: '#fce7f3', text: '#a21caf', border: '#f0abfc' }, // fuchsia
+  wearable: { bg: '#ede9fe', text: '#6d28d9', border: '#c4b5fd' }, // violet
+  other: { bg: '#f1f5f9', text: '#475569', border: '#cbd5e1' }     // slate
+};
+
 // 追蹤品牌總清單（含喬山自家品牌 Johnson）。用於品牌聲量圖表／KPI，
 // 即使本次爬蟲資料中某品牌命中 0 篇，也要在清單中完整呈現「共追蹤 N 個品牌」。
 const TRACKED_BRANDS = [
@@ -38,6 +54,7 @@ let newsData = null;      // 完整 news.json 內容
 let articles = [];        // 目前使用的文章陣列
 let stats = null;         // 目前使用的統計資料（含 fallback 補值）
 let currentCategory = 'all';
+let currentProductCategory = 'all'; // 產品分類篩選（獨立於 currentCategory 之外的另一維度）
 let onlyShowFavorites = false;
 let includeFinanceInAll = false; // 「綜合情報」預設排除 finance 分類雜訊，可由使用者切換
 const PAGE_SIZE = 10;      // 每個分類每次顯示的情報數量
@@ -139,16 +156,27 @@ function buildStatsWithFallback(rawStats, articleList) {
     by_category: (rawStats && rawStats.by_category) ? rawStats.by_category : fallback.by_category,
     by_brand: (rawStats && rawStats.by_brand) ? rawStats.by_brand : fallback.by_brand,
     by_source: (rawStats && rawStats.by_source) ? rawStats.by_source : fallback.by_source,
+    by_product_category: (rawStats && rawStats.by_product_category) ? rawStats.by_product_category : fallback.by_product_category,
     timeline: (rawStats && Array.isArray(rawStats.timeline) && rawStats.timeline.length) ? rawStats.timeline : fallback.timeline,
     updated: (rawStats && rawStats.updated) ? rawStats.updated : (newsData && newsData.generated_at) || null
   };
   return merged;
 }
 
+/**
+ * 回傳文章的「有效產品分類」。product_category 只允許 cardio/strength/wearable/other 四種值；
+ * 若欄位缺漏（舊資料 / 尚未重跑爬蟲）或出現未知值，一律向下相容歸類為 other，不可讓頁面報錯或空白。
+ */
+function getEffectiveProductCategory(art) {
+  const v = art && art.product_category;
+  return PRODUCT_CATEGORY_ORDER.includes(v) ? v : 'other';
+}
+
 function computeFallbackStats(articleList) {
   const by_category = {};
   const by_brand = {};
   const by_source = {};
+  const by_product_category = {};
   const timelineMap = {};
 
   articleList.forEach(a => {
@@ -156,6 +184,8 @@ function computeFallbackStats(articleList) {
     if (a.brand) by_brand[a.brand] = (by_brand[a.brand] || 0) + 1;
     if (a.source) by_source[a.source] = (by_source[a.source] || 0) + 1;
     if (a.date) timelineMap[a.date] = (timelineMap[a.date] || 0) + 1;
+    const pc = getEffectiveProductCategory(a);
+    by_product_category[pc] = (by_product_category[pc] || 0) + 1;
   });
 
   const timeline = Object.keys(timelineMap).sort().map(date => ({ date, count: timelineMap[date] }));
@@ -165,6 +195,7 @@ function computeFallbackStats(articleList) {
     by_category,
     by_brand,
     by_source,
+    by_product_category,
     timeline,
     updated: null
   };
@@ -578,6 +609,19 @@ function escapeHTML(str) {
     .replace(/"/g, '&quot;');
 }
 
+/**
+ * 產生單篇文章卡片上的「產品分類」小標籤（badge）HTML。
+ * 沿用既有卡片標籤的圓角/字級（text-[11px] font-bold px-2.5 py-0.5 rounded-full border），
+ * 僅以 inline style 依 PRODUCT_CATEGORY_COLORS 區分四種顏色，不另創視覺語言。
+ * 缺欄位或未知值一律以 getEffectiveProductCategory() 向下相容為 other，不會報錯。
+ */
+function renderProductCategoryBadge(art) {
+  const key = getEffectiveProductCategory(art);
+  const label = PRODUCT_CATEGORY_NAME_MAP[key] || '未分類';
+  const c = PRODUCT_CATEGORY_COLORS[key] || PRODUCT_CATEGORY_COLORS.other;
+  return `<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border" style="background:${c.bg};color:${c.text};border-color:${c.border}">${escapeHTML(label)}</span>`;
+}
+
 function renderArticles() {
   const container = document.getElementById('articles-container');
   if (!container) return;
@@ -594,26 +638,14 @@ function renderArticles() {
     return;
   }
 
-  const searchVal = (document.getElementById('search-input').value || '').toLowerCase();
+  // 先套用「產品分類」以外的所有既有篩選條件（分類頁籤/搜尋/收藏/財經雜訊開關），
+  // 用這份結果動態計算產品分類篩選器各選項的筆數（隨其他篩選條件即時變動）。
+  const baseFiltered = computeBaseFilteredArticles();
+  renderProductCategoryTabs(baseFiltered);
 
-  const filtered = articles.filter(art => {
-    if (currentCategory === 'all') {
-      // 「綜合情報」預設排除財經/股市雜訊，突顯產業情報；使用者可透過切換開關顯示
-      if (!includeFinanceInAll && art.category === 'finance') return false;
-    } else if (art.category !== currentCategory) {
-      return false;
-    }
-    if (onlyShowFavorites && !favorites.includes(art.id)) return false;
-    if (searchVal) {
-      // 搜尋比對來源：原文（英文）欄位 + 已即時翻譯完成的中文快取（若有），
-      // 不再依賴 news.json 預存但不完整的 title_zh/summary_zh 欄位。
-      const haystack = [
-        art.title, art.summary,
-        TRANSLATE_CACHE.get(art.title), TRANSLATE_CACHE.get(art.summary),
-        art.source, art.brand
-      ].filter(v => typeof v === 'string').join(' ').toLowerCase();
-      if (!haystack.includes(searchVal)) return false;
-    }
+  const filtered = baseFiltered.filter(art => {
+    // 產品分類篩選：與 category 為不同維度，可疊加使用，不覆蓋既有邏輯
+    if (currentProductCategory !== 'all' && getEffectiveProductCategory(art) !== currentProductCategory) return false;
     return true;
   }).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
@@ -642,9 +674,10 @@ function renderArticles() {
     card.innerHTML = `
       <div class="space-y-2">
         <div class="flex items-center justify-between flex-wrap gap-2">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 flex-wrap">
             <span class="text-[11px] font-bold text-brand bg-brand-light px-2.5 py-0.5 rounded-full border border-brand/10">${escapeHTML(categoryName)}</span>
             ${art.brand ? `<span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">${escapeHTML(art.brand)}</span>` : ''}
+            ${renderProductCategoryBadge(art)}
           </div>
           <div class="flex items-center space-x-2">
             <span class="text-xs text-slate-400 font-mono">${escapeHTML(art.date || '')}</span>
@@ -706,6 +739,74 @@ function renderLoadMoreFooter(container, shownCount, totalCount) {
 
 function loadMoreArticles() {
   visibleCount += PAGE_SIZE;
+  renderArticles();
+}
+
+// ------------------------------------------------------------------------
+// 產品分類篩選（product_category：cardio/strength/wearable/other）
+// 與既有 category（market/tech/competitor/finance/brand）為不同維度，可疊加篩選。
+// ------------------------------------------------------------------------
+
+/**
+ * 套用「產品分類以外」的既有篩選條件（情報分類頁籤 / 搜尋 / 收藏 / 財經雜訊開關），
+ * 供 renderArticles() 取得最終結果，同時也讓產品分類篩選器可依此計算各選項的動態筆數。
+ * 邏輯與原本寫在 renderArticles() 內的 filter 完全相同，僅抽出為共用函式，不改變既有行為。
+ */
+function computeBaseFilteredArticles() {
+  const searchInputEl = document.getElementById('search-input');
+  const searchVal = ((searchInputEl ? searchInputEl.value : '') || '').toLowerCase();
+
+  return articles.filter(art => {
+    if (currentCategory === 'all') {
+      // 「綜合情報」預設排除財經/股市雜訊，突顯產業情報；使用者可透過切換開關顯示
+      if (!includeFinanceInAll && art.category === 'finance') return false;
+    } else if (art.category !== currentCategory) {
+      return false;
+    }
+    if (onlyShowFavorites && !favorites.includes(art.id)) return false;
+    if (searchVal) {
+      // 搜尋比對來源：原文（英文）欄位 + 已即時翻譯完成的中文快取（若有），
+      // 不再依賴 news.json 預存但不完整的 title_zh/summary_zh 欄位。
+      const haystack = [
+        art.title, art.summary,
+        TRANSLATE_CACHE.get(art.title), TRANSLATE_CACHE.get(art.summary),
+        art.source, art.brand
+      ].filter(v => typeof v === 'string').join(' ').toLowerCase();
+      if (!haystack.includes(searchVal)) return false;
+    }
+    return true;
+  });
+}
+
+/**
+ * 依目前「產品分類以外」的篩選結果，動態渲染產品分類篩選器按鈕與筆數。
+ * 筆數不寫死，每次 renderArticles() 都會依當前其他篩選條件重新計算。
+ * @param {Array} baseList - computeBaseFilteredArticles() 的結果
+ */
+function renderProductCategoryTabs(baseList) {
+  const container = document.getElementById('product-category-tabs');
+  if (!container) return;
+
+  const counts = { all: baseList.length, cardio: 0, strength: 0, wearable: 0, other: 0 };
+  baseList.forEach(art => {
+    const key = getEffectiveProductCategory(art);
+    counts[key] = (counts[key] || 0) + 1;
+  });
+
+  const items = [{ key: 'all', label: '全部' }].concat(
+    PRODUCT_CATEGORY_ORDER.map(key => ({ key, label: PRODUCT_CATEGORY_NAME_MAP[key] }))
+  );
+
+  container.innerHTML = items.map(({ key, label }) => {
+    const active = currentProductCategory === key;
+    const activeClass = active ? 'bg-brand text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200';
+    return `<button type="button" data-prodcat="${key}" onclick="switchProductCategory('${key}')" aria-pressed="${active}" class="prodcat-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${activeClass}">${escapeHTML(label)} (${counts[key] || 0})</button>`;
+  }).join('');
+}
+
+function switchProductCategory(cat) {
+  currentProductCategory = cat;
+  visibleCount = PAGE_SIZE; // 切換產品分類篩選時，顯示數量重置回第一頁（與其他篩選器行為一致）
   renderArticles();
 }
 
