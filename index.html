@@ -253,6 +253,14 @@
               綜合情報同時顯示財經/股市新聞
             </label>
           </div>
+
+          <!-- 產品分類篩選（cardio/strength/wearable/other，與上方情報分類為不同維度，可疊加篩選） -->
+          <div class="border-t border-slate-100 pt-3 space-y-2">
+            <p class="text-[11px] font-bold text-slate-400 tracking-wide">產品分類篩選</p>
+            <div class="flex flex-wrap gap-1.5" id="product-category-tabs">
+              <!-- 由 assets/app.js 的 renderProductCategoryTabs() 動態產生，筆數依當前其他篩選條件即時計算 -->
+            </div>
+          </div>
         </div>
 
         <!-- 情報卡片清單 -->
