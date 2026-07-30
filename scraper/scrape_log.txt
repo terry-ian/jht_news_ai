@@ -1,0 +1,134 @@
+[2026-07-28 02:18:02 UTC] 本次新增 782 篇；合併後總數 4972 篇；失敗來源 24 個
+    FAIL: official:Precor
+    FAIL: official:Matrix
+    FAIL: official:Vision
+    FAIL: official:Hammer Strength
+    FAIL: official:Cybex
+    FAIL: official:Star Trac
+    FAIL: official:TRUE Fitness
+    FAIL: official:Nautilus
+    FAIL: official:SHUA
+    FAIL: official:NordicTrack
+    FAIL: official:Peloton
+    FAIL: official:Sole
+    FAIL: official:Bowflex
+    FAIL: official:Schwinn
+    FAIL: official:Horizon
+    FAIL: official:ProForm
+    FAIL: official:Sunny Health
+    FAIL: official:Rogue
+    FAIL: official:REP
+    FAIL: official:Force USA
+    FAIL: official:Eleiko
+    FAIL: official:Concept2
+    FAIL: official:Assault
+    FAIL: official:Johnson
+[2026-07-28 02:49:19 UTC] 本次新增 19 篇；合併後總數 4991 篇；失敗來源 24 個
+    FAIL: official:Precor
+    FAIL: official:Matrix
+    FAIL: official:Vision
+    FAIL: official:Hammer Strength
+    FAIL: official:Cybex
+    FAIL: official:Star Trac
+    FAIL: official:TRUE Fitness
+    FAIL: official:Nautilus
+    FAIL: official:SHUA
+    FAIL: official:NordicTrack
+    FAIL: official:Peloton
+    FAIL: official:Sole
+    FAIL: official:Bowflex
+    FAIL: official:Schwinn
+    FAIL: official:Horizon
+    FAIL: official:ProForm
+    FAIL: official:Sunny Health
+    FAIL: official:Rogue
+    FAIL: official:REP
+    FAIL: official:Force USA
+    FAIL: official:Eleiko
+    FAIL: official:Concept2
+    FAIL: official:Assault
+    FAIL: official:Johnson
+[2026-07-28 02:52:00 UTC] 手動清理 brand=SHUA 歧義雜訊（葉舒華/i-dle 演藝新聞、Shua 同名英文雜訊）：移除 107 篇；清理後總數 4822 篇
+    REMOVED id=5006 reason=brand_ambiguous_no_context :: 舒華最新近況引發熱議 網驚呼體重疑似已跌破40公斤
+    REMOVED id=5009 reason=celebrity_noise :: 舒華瘦到疑似不到40公斤?活動生圖曝光 粉絲憂心健康 | 自由電子報
+    REMOVED id=5012 reason=celebrity_noise :: i-dle 舒華身高 161 公分膚色白到韓國人也驚呆!2026 防曬推薦:5 款高人氣防曬新品一次看!
+    REMOVED id=4991 reason=celebrity_noise :: 影/i-dle 舒華動手術「成員不知情」 1回答全場笑翻姜虎東拍手讚:超酷
+    REMOVED id=4385 reason=brand_ambiguous_no_context :: 舒華也大推!賀歲片《雙囍》口碑爆棚 她感性喊:要和最愛的人去看
+    REMOVED id=165 reason=brand_ambiguous_no_context :: 2026 Yarden Shua Full FULL GAME LOG
+    REMOVED id=267 reason=brand_ambiguous_no_context :: Every Child Matters: Keeping Shua’s Light Shining
+    REMOVED id=4570 reason=brand_ambiguous_no_context :: Yarden Shua - Stats 26/27
+    REMOVED id=4571 reason=brand_ambiguous_no_context :: Yarden Shua - Player profile 26/27
+    REMOVED id=4573 reason=brand_ambiguous_no_context :: Yarden Shua
+    REMOVED id=3040 reason=celebrity_noise :: 影/i-dle 舒華驚傳確診A流! 雪梨巡演緊急宣布「五缺一」
+    REMOVED id=5000 reason=celebrity_noise :: 舒華高燒送醫確診A流!經紀公司證實了 宣布停工缺席雪梨演唱會
+    REMOVED id=425 reason=celebrity_noise :: i-dle 舒華身高 161 化身民國千金!紙片腰線曝光引粉心疼:「別再瘦了!」
+    REMOVED id=695 reason=brand_ambiguous_no_context :: ‘Shabbos Shua’ Expands to a New Crown Heights Location
+    REMOVED id=707 reason=brand_ambiguous_no_context :: 舒華首度站台寶格麗白皙到發光 細肩帶黑色洋裝超美超瘦
+    REMOVED id=5005 reason=celebrity_noise :: 舒華懶理祕戀柯震東緋聞 深V戰袍現身101:心情非常美麗| 影視
+    REMOVED id=803 reason=celebrity_noise :: 柯震東親揭舒華緋聞!私下零聯絡 笑看網軍攻擊:言論自由社會
+    REMOVED id=839 reason=celebrity_noise :: 柯震東才爆熱戀舒華!無預警拋喜訊「公布全新身分」2愛犬離世成關鍵
+    REMOVED id=5001 reason=celebrity_noise :: 遭爆秘戀柯震東見家長!舒華更新IG「連曬3照」甜喊:my loves
+    REMOVED id=878 reason=celebrity_noise :: 柯震東曾認想與大12歲蕭亞軒結婚爆秘戀舒華同年與中國「官三代」遊東京!豪刷百萬買包疑復合
+    REMOVED id=879 reason=celebrity_noise :: 演藝圈震撼彈!舒華爆秘戀柯震東「I LOVE YOU」成鐵證 他遭炎上道歉
+    REMOVED id=880 reason=celebrity_noise :: 熱戀ing?舒華被爆已見過柯震東父母 曖昧互動登韓媒
+    REMOVED id=881 reason=celebrity_noise :: 祕戀舒華媽助攻3/柯震東分手舊愛「能祝福就祝福」 自爆曾為她婚頭
+    REMOVED id=882 reason=celebrity_noise :: 舒華、柯震東爆祕戀1年半!傳「已見家長」獲認可 經紀人14字火速回應了
+    REMOVED id=4382 reason=celebrity_noise :: i-dle舒華是誰?16歲赴韓發展、曾因歌詞太少遭嘲狀聲詞擔當
+    REMOVED id=898 reason=celebrity_noise :: 柯震東爆已帶舒華見家長 1張「關鍵照片」洩秘戀端倪!藍勾勾狂刷
+    REMOVED id=899 reason=celebrity_noise :: 舒華、柯震東爆密戀⋯兩年前同框照被挖出「I Love You」互動太曖昧
+    REMOVED id=4987 reason=celebrity_noise :: 舒華、柯震東爆祕戀1年半!已見過家長 柯媽狂讚「落落大方有家教」
+    REMOVED id=5011 reason=celebrity_noise :: 祕戀舒華媽助攻4/最愛的女友「是她」! 柯震東曾嘆:確實很感謝她
+    REMOVED id=957 reason=brand_ambiguous_no_context :: Rabi Swain, Producer of Odia film 'Ki Heba Shua Poshile', pa
+    REMOVED id=975 reason=brand_ambiguous_no_context :: Biblioracle: Elisa Shua Dusapin’s novel ‘The Old Fire’ won’t
+    REMOVED id=1057 reason=celebrity_noise :: 舒華挑戰大銀幕盼不同面貌帶給粉絲驚喜| 娛樂
+    REMOVED id=4985 reason=celebrity_noise :: i-dle舒華進軍電影界!圓夢合作《美國女孩》導演 親吐最具挑戰的點
+    REMOVED id=1070 reason=brand_ambiguous_no_context :: 舒華銀幕處女作曝光!與金馬名導合作女神變身平凡妹妹 曝這些特質「跟我一樣」
+    REMOVED id=1166 reason=celebrity_noise :: 舒華美白秘訣是選對粉底!I-DLE化妝師親授同款底妝4大上妝技巧
+    REMOVED id=1226 reason=celebrity_noise :: 舒華率i-dle攻大巨蛋性感熱舞!小學生粉絲站椅子上搶看亂象百出
+    REMOVED id=1236 reason=brand_ambiguous_no_context :: 舒華翻童年舊照自嘲狗啃瀏海!觀光大使發音「ㄢㄤ不分」
+    REMOVED id=4998 reason=celebrity_noise :: 舒華SOLO辣翻首爾!體重52→44kg粉絲憂心過瘦 8個月戒澱粉飲食全解析 | CTWANT
+    REMOVED id=3041 reason=brand_ambiguous_no_context :: 盤點在韓發展台灣人!子瑜、舒華將登大巨蛋 CORTIS趙雨凡爆紅
+    REMOVED id=1343 reason=celebrity_noise :: 來桃園走春拿I-DLE舒華小卡!3地點即日起每天限量發放
+    REMOVED id=1350 reason=celebrity_noise :: 《雙囍》賀歲檔 i-dle舒華力推喊想二刷!劉冠廷楊貴媚全台拜年掀話題|TTshow 台灣達人秀
+    REMOVED id=1360 reason=celebrity_noise :: (G)I-DLE 舒華狂推想二刷! 蔡凡熙情人節陪看《雙囍》公開「求脫單」
+    REMOVED id=1361 reason=brand_ambiguous_no_context :: 《雙囍》口碑發酵舒華想二刷 導演領軍群星掃街發紅包
+    REMOVED id=1365 reason=brand_ambiguous_no_context :: 連舒華都喊想二刷!春節最神黑馬國片《雙囍》口碑爆棚,劉冠廷一日雙婚掀起笑淚風暴!
+    REMOVED id=1366 reason=brand_ambiguous_no_context :: 舒華力推國片喊:已經想二刷! 讚《雙囍》值得帶最愛的人一起看
+    REMOVED id=1414 reason=brand_ambiguous_no_context :: SHUA AT THE SUPER BOWL 😍 SEVENTEEN’s Joshua posted photos fr
+    REMOVED id=4994 reason=brand_ambiguous_no_context :: 舒華戒糖暴瘦8公斤:低碳飲食怎麼吃不傷身?營養師觀點一次看
+    REMOVED id=3042 reason=brand_ambiguous_no_context :: 舒華暴瘦、法令紋被4K放大!她回台公開真相 真實狀態記者看傻了
+    REMOVED id=4383 reason=brand_ambiguous_no_context :: 舒華回應「暴瘦」質疑!強調:健康最重要 分享保養秘訣與心態成長
+    REMOVED id=5008 reason=brand_ambiguous_no_context :: 桃園觀旅局機捷第一航廈站打造「舒華」主題牆 歡迎旅客遊家鄉
+    REMOVED id=4988 reason=celebrity_noise :: i-dle舒華新造型亮相! 瘦身後體態變化意外成關注焦點
+    REMOVED id=4992 reason=celebrity_noise :: 4K鏡頭太殘酷!i-dle〈Mono〉回歸 舒華暴瘦惹心疼
+    REMOVED id=4300 reason=brand_ambiguous_no_context :: Elisa Shua Dusapin Is The Real Deal
+    REMOVED id=5007 reason=brand_ambiguous_no_context :: 舒華化身運動系女神!長腿駕馭SKECHERS粉紫跑鞋 穿搭照美翻
+    REMOVED id=1673 reason=brand_ambiguous_no_context :: 舒華素顏近距離自拍洩「真實膚況」 網見1細節瘋猜:是要SOLO了嗎
+    REMOVED id=1674 reason=brand_ambiguous_no_context :: 舒華突曬素顏自拍!網挖「1細節」瘋猜:要solo了嗎?
+    REMOVED id=1692 reason=celebrity_noise :: 舒華粉絲問「長太漂亮有什麼困擾嗎?」 釣出本尊超直白回應
+    REMOVED id=1732 reason=brand_ambiguous_no_context :: 金主訓、舒華愛用單品找到了!跟著DIESEL帥一波
+    REMOVED id=1743 reason=brand_ambiguous_no_context :: In “The Old Fire,” Author Elisa Shua Dusapin Examines What I
+    REMOVED id=1753 reason=brand_ambiguous_no_context :: 舒華26歲生日快樂!微濕髮仙氣造型拍雜誌 一看下身卻超辣
+    ...（其餘 47 篇省略，完整清單見備份對比）
+[2026-07-30 03:22:12 UTC] 本次新增 489 篇；合併後總數 5007 篇；失敗來源 21 個
+    FAIL: official:Precor
+    FAIL: official:Matrix
+    FAIL: official:Vision
+    FAIL: official:Star Trac
+    FAIL: official:TRUE Fitness
+    FAIL: official:Nautilus
+    FAIL: official:SHUA
+    FAIL: official:NordicTrack
+    FAIL: official:Peloton
+    FAIL: official:Sole
+    FAIL: official:Bowflex
+    FAIL: official:Schwinn
+    FAIL: official:Horizon
+    FAIL: official:ProForm
+    FAIL: official:Sunny Health
+    FAIL: official:Rogue
+    FAIL: official:REP
+    FAIL: official:Eleiko
+    FAIL: official:Concept2
+    FAIL: official:Assault
+    FAIL: official:Johnson

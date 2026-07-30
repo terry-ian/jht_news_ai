@@ -378,30 +378,71 @@ BRAND_OFFICIAL_SOURCE = {name: f"{name} 官方" for name in BRAND_STORY_SOURCES}
 
 _FIT_CTX = r"(fitness|treadmill|elliptical|bike|bikes|gym|equipment|strength|cardio|rower|rowing|home gym|workout|exercise)"
 
+# ---------------------------------------------------------------------------
+# 品牌 vs 跨產業同名詞辨識：AND 條件 helper
+# ---------------------------------------------------------------------------
+# 部分品牌詞與其他產業（嬰兒用品、天文攝影、汽車零件、同名連鎖、人名等）同名，
+# 裸字 regex 會誤判。以下 helper 產生「品牌詞 AND 情境詞（不限順序、不要求相鄰）」
+# 的 regex 字串，用於降低誤判同時盡量保留真品牌召回率。
+# ---------------------------------------------------------------------------
+
+
+def _and(brand_regex: str, ctx: str) -> str:
+    return rf"(?:{brand_regex}.*{ctx}|{ctx}.*{brand_regex})"
+
+
+# 各歧義品牌的情境詞（刻意排除過於寬泛、容易與同名產業/連鎖巧合的詞，如 Nautilus/TRUE
+# Fitness 不用裸字 "gym"，避免命中同名健身房連鎖）
+_CYBEX_CTX = (r"(fitness|international|eagle|smart|vr3|prestige|bravo|squat|treadmill|"
+              r"elliptical|strength|gym|cardio|trainer)")
+_PROFORM_CTX = (r"(fitness|treadmill|elliptical|gym|equipment|strength|cardio|rower|rowing|"
+                r"home gym|workout|exercise|carbon|ifit|tour|cadence|studio|exercise bike|"
+                r"stationary bike|spin bike)")
+_TRUEFIT_CTX = (r"(treadmill|elliptical|rower|rowing machine|equipment|commercial fitness|"
+                r"cardio equipment|strength equipment|home gym equipment|technology|"
+                r"st\. louis|\bforce\b|manufacturer)")
+_SCHWINN_CTX = (r"(fitness|treadmill|elliptical|gym|equipment|strength|cardio|indoor cycling|"
+                r"exercise bike|spin bike|airdyne|ic\d|recumbent bike|upright bike|home gym|"
+                r"workout|exercise)")
+_STARTRAC_CTX = (r"(fitness|treadmill|elliptical|gym|equipment|strength|cardio|rower|rowing|"
+                 r"home gym|workout|exercise|core health)")
+_NAUTILUS_CTX = (r"(bowflex|schwinn|nautilus, inc|nautilus inc|treadmill|elliptical|"
+                 r"home gym equipment|strength equipment|cardio equipment|fitness equipment|"
+                 r"commercial fitness)")
+_PELOTON_CTX = (r"(fitness|treadmill|elliptical|bike|bikes|gym|equipment|strength|cardio|"
+                r"rower|rowing|home gym|workout|exercise|interactive|instructor|subscriber|"
+                r"subscribers|app|tread|nyse|pton|earnings|revenue|stock|shares|ceo|"
+                r"membership|studio|class|classes)")
+
 BRAND_DETECT_PATTERNS = [
-    ("Life Fitness", [r"life fitness"]),
+    ("Life Fitness", [r"\blife fitness\b"]),
     ("Technogym", [r"technogym"]),
     ("Precor", [r"precor"]),
     ("Matrix", [rf"matrix {_FIT_CTX}", r"matrix strength"]),
     ("Vision", [rf"vision {_FIT_CTX}"]),
     ("Hammer Strength", [r"hammer strength"]),
-    ("Cybex", [r"cybex"]),
-    ("Star Trac", [r"star trac"]),
-    ("TRUE Fitness", [r"true fitness", r"true treadmill", rf"true {_FIT_CTX}"]),
-    ("Nautilus", [rf"nautilus {_FIT_CTX}", r"nautilus inc", r"nautilus, inc",
+    ("Cybex", [_and(r"cybex", _CYBEX_CTX), r"cybex eagle", r"cybex international",
+               r"arc trainer"]),
+    ("Star Trac", [r"\bstar trac\b", _and(r"star trac", _STARTRAC_CTX)]),
+    ("TRUE Fitness", [_and(r"true fitness", _TRUEFIT_CTX), r"true treadmill",
+                       r"true trainer", r"trueform runner", r"true fitness technology"]),
+    ("Nautilus", [_and(r"nautilus", _NAUTILUS_CTX), r"nautilus inc", r"nautilus, inc",
                   r"nautilus bowflex", r"nautilus\b.*\b(bowflex|schwinn|treadmill|home gym)"]),
     ("SHUA", [r"\bshua\b", r"舒華", r"舒华"]),
     ("NordicTrack", [r"nordictrack", r"nordic track"]),
-    ("Peloton", [r"peloton"]),
+    ("Peloton", [r"\bpeloton\b"]),  # 2026-07-30: 辨識度高，唯一歧義(環法主集團)由 CROSS_INDUSTRY_NOISE 攔截
     ("Sole", [r"sole fitness", r"sole treadmill", rf"sole {_FIT_CTX}",
               r"\bsole [ef]\d\d\b"]),
     ("Bowflex", [r"bowflex"]),
-    ("Schwinn", [r"schwinn"]),
+    ("Schwinn", [_and(r"schwinn", _SCHWINN_CTX)]),
     ("Horizon", [rf"horizon {_FIT_CTX}"]),
-    ("Tonal", [r"tonal fitness", r"tonal home gym", r"tonal system",
-               r"tonal smart", r"tonal strength", r"tonal gym", r"tonal trainer",
-               r"\btonal 2\b"]),
-    ("ProForm", [r"proform", r"pro-form"]),
+    # Tonal（智慧重訓器材）與英文常用字 "tonal"（色調/劇情基調/配色）同名，實測
+    # null-brand 子集 43 筆命中中 23 筆為真品牌漏標。裸字偵測 + BRAND_WHITELIST_CONTEXT
+    # 二次把關（見下方字典），比原本要求特定詞組更能召回「Tonal Appoints ...」等純公司
+    # 動態新聞，同時靠情境詞白名單擋掉 "tonal shift/dressing/colorway" 等色調用法。
+    ("Tonal", [r"\btonal\b"]),
+    ("ProForm", [_and(r"proform", _PROFORM_CTX), r"pro-form fitness", r"proform carbon",
+                 r"proform ifit", r"ifit.{0,20}proform"]),
     ("Sunny Health", [r"sunny health"]),
     ("Rogue", [r"rogue fitness"]),
     ("REP", [r"rep fitness"]),
@@ -511,12 +552,89 @@ FITNESS_TERMS = [
     "stairmaster", "climbmill", "incline trainer", "connected fitness",
     "bodybuilding", "crossfit", "personal trainer", "resistance training",
     "健身", "器材", "跑步機", "橢圓機", "飛輪", "重訓", "有氧", "健身房",
+    # 穿戴裝置
+    "wearable", "wearables", "smart ring", "smart rings", "fitness tracker",
+    "fitness trackers", "heart rate monitor", "heart rate monitors",
+    "smartwatch", "smart watch", "garmin", "whoop", "運動手錶", "心率帶",
+    "穿戴裝置",
+    # 健身房營運
+    "health club", "health clubs", "gym opening", "gym openings",
+    "membership", "memberships", "franchise", "franchisee", "franchisees",
+    "展店", "會員數", "會員人數",
+    # App / 課程 / 訂閱制
+    "fitness app", "subscription", "subscriptions", "connected fitness app",
+    "on-demand fitness", "live class", "live classes",
+    # 營養補劑
+    "whey protein", "creatine", "pre-workout", "preworkout", "protein powder",
+    "乳清蛋白", "肌酸",
+    # 財報併購（喬山/Peloton/Planet Fitness/Technogym/Xponential 等器材公司財報屬相關）
+    "earnings", "revenue", "acquisition", "acquires", "acquired", "merger",
+    "營收", "財報", "併購",
+]
+# 2026-07-30 擴充：先前 808 筆正常健身產業新聞被判 no_relevance，主因下列詞缺漏
+FITNESS_TERMS += [
+    # 課程 / 訓練型態
+    "pilates", "yoga", "barre", "hyrox", "spin studio", "boutique fitness",
+    "group fitness", "personal training", "strength training", "recovery",
+    "瑜珈", "瑜伽", "皮拉提斯", "有氧運動",
+    # 器材（補漏）
+    "bench", "benches", "plate-loaded", "plate loaded", "weight plate",
+    "resistance band", "adjustable dumbbell", "leg press", "lat pulldown",
+    "nordic bench", "sled", "trap bar",
+    # 產業 / 營運
+    "studio", "studios", "club", "clubs", "wellness", "fit tech", "fittech",
+    "gyms", "fitness industry", "fitness brand", "fitness company",
+    "boutique studio", "big box gym", "健身工廠", "健身中心",
+    # 補劑（補漏）
+    "supplement", "supplements", "protein", "electrolyte", "amino acid",
+    "補劑", "保健食品", "高蛋白",
 ]
 FITNESS_TERM_PATTERNS = _compile_keyword_list(FITNESS_TERMS)
 
 
 def has_fitness_term(text: str) -> bool:
     return any(p.search(text) for p in FITNESS_TERM_PATTERNS)
+
+
+# ---------------------------------------------------------------------------
+# 產品分類（cardio / strength / wearable / other）
+# ---------------------------------------------------------------------------
+
+CARDIO_KEYWORDS = [
+    "treadmill", "treadmills", "elliptical", "ellipticals", "rowing",
+    "rower", "rowers", "exercise bike", "stationary bike", "spin bike",
+    "spinning bike", "recumbent bike", "air bike", "indoor cycling",
+    "cardio", "stair climber", "stairmaster", "climbmill",
+    "跑步機", "橢圓機", "划船機", "飛輪", "健身車",
+]
+STRENGTH_KEYWORDS = [
+    "dumbbell", "dumbbells", "barbell", "barbells", "kettlebell",
+    "kettlebells", "power rack", "squat rack", "smith machine",
+    "cable machine", "plate", "plates", "strength training",
+    "啞鈴", "槓鈴", "壺鈴", "龍門架", "深蹲架", "重訓",
+]
+WEARABLE_KEYWORDS = [
+    "wearable", "wearables", "smart ring", "smart rings", "fitness tracker",
+    "fitness trackers", "heart rate monitor", "heart rate monitors",
+    "smartwatch", "smart watch", "garmin", "whoop",
+    "運動手錶", "心率帶",
+]
+CARDIO_PATTERNS = _compile_keyword_list(CARDIO_KEYWORDS)
+STRENGTH_PATTERNS = _compile_keyword_list(STRENGTH_KEYWORDS)
+WEARABLE_PATTERNS = _compile_keyword_list(WEARABLE_KEYWORDS)
+
+
+def classify_product(title: str, summary: str = "") -> str:
+    """回傳 product_category：cardio / strength / wearable / other。
+    命中優先序：cardio > strength > wearable > other。"""
+    text = f"{title or ''} {summary or ''}"
+    if any(p.search(text) for p in CARDIO_PATTERNS):
+        return "cardio"
+    if any(p.search(text) for p in STRENGTH_PATTERNS):
+        return "strength"
+    if any(p.search(text) for p in WEARABLE_PATTERNS):
+        return "wearable"
+    return "other"
 
 
 MILITARY_KEYWORDS = [
@@ -544,6 +662,109 @@ OFFTOPIC_PATTERNS = (
     + _compile_keyword_list(ORGANIZING_KEYWORDS)
     + _compile_keyword_list(SMARTRING_KEYWORDS)
 )
+
+# ---------------------------------------------------------------------------
+# 跨產業同名詞黑名單（不分品牌是否命中，優先權高於「brand 命中即放行」，見
+# check_exclusion()）。針對實測人工覆核發現的跨產業誤收雜訊：育兒用品
+# (Cybex 嬰兒汽座)、建材(石膏板)、汽車零件/車款、天文攝影(Star Trac ->
+# star tracker)、人名/訃聞(Penny Schwinn)、古董單車拍賣、同名連鎖/金融
+# (Onelife Fitness / Irish Life / True Yoga)。保守實作：對於過於泛用、容易
+# 誤殺其他品牌新聞的詞（vintage / bmx / chopper / for sale / sting ray /
+# 車款），一律要求同時搭配對應品牌詞（schwinn / nautilus / proform）才算雜訊，
+# 不單獨當作全站黑名單。
+# ---------------------------------------------------------------------------
+
+CROSS_INDUSTRY_NOISE_KEYWORDS = [
+    # 育兒 / 汽座
+    "car seat", "car seats", "infant car seat", "infant car seats",
+    "stroller", "strollers", "pushchair", "pushchairs", "pram", "prams",
+    "highchair", "high chair", "baby gear", "booster seat", "booster seats",
+    "嬰兒", "汽座", "推車", "安全座椅",
+    # 建材
+    "drywall", "joint compound", "gypsum", "national gypsum", "sheetrock",
+    "wallboard", "spackling", "建材", "石膏板", "補土",
+    # 汽車
+    "proform racing", "brushless fan controller", "fan controller",
+    "lincoln nautilus",
+    # 天文攝影
+    "star tracker", "star trackers", "astrophotography", "camera mount",
+    "camera mounts",
+    # 人名 / 訃聞
+    "penny schwinn", "obituary", "obituaries", "訃聞",
+    # 同名連鎖 / 金融
+    "onelife fitness", "one life fitness", "irish life", "true yoga",
+    # 自由車競賽（Peloton = 主集團，非品牌）
+    "tour de france",  "yellow jersey", "general classification",
+    "peloton of riders", "stage win", "stage race", "cycling race",
+    "grand tour", "vuelta a espana", "giro d'italia",
+    # 軍事演習（"exercise"/"training" 單獨字樣會被誤判為健身詞而放行，故用複合詞
+    # 攔截，避免波及大量真健身文，刻意不加裸字 "exercise"）
+    "national guard", "air assault", "bilateral exercise", "joint exercise",
+    "military exercise", "war game", "wargame", "southern command",
+    "combat readiness", "field exercise",
+]
+CROSS_INDUSTRY_NOISE_PATTERNS = _compile_keyword_list(CROSS_INDUSTRY_NOISE_KEYWORDS)
+# 2026-07-30: "breakaway" 是自由車術語，但 Precor 有款跑步機叫 Breakaway，
+# 裸字會誤殺器材新聞，改為必須搭配自由車語境才算雜訊。
+CROSS_INDUSTRY_NOISE_PATTERNS += [
+    re.compile(r"BREAKAWAY(?=.*(?:peloton|tour de france|cyclist|rider|stage race|uci))"
+               .replace("BREAKAWAY", "\bbreakaway\b"), re.IGNORECASE),
+]
+
+# 過於泛用、需搭配品牌詞才視為雜訊的詞（古董單車拍賣 / 車款）
+_SCHWINN_VINTAGE_NOISE_CTX = r"(vintage|sting ?ray|chopper|\bbmx\b|for sale|auction)"
+CROSS_INDUSTRY_NOISE_PATTERNS += [
+    re.compile(rf"schwinn.*{_SCHWINN_VINTAGE_NOISE_CTX}", re.IGNORECASE),
+    re.compile(rf"{_SCHWINN_VINTAGE_NOISE_CTX}.*schwinn", re.IGNORECASE),
+    re.compile(r"(nautilus|proform).{0,20}車款|車款.{0,20}(nautilus|proform)", re.IGNORECASE),
+]
+
+
+def is_cross_industry_noise(text: str) -> bool:
+    return any(p.search(text) for p in CROSS_INDUSTRY_NOISE_PATTERNS)
+
+
+# ---------------------------------------------------------------------------
+# 服飾／鞋類過濾（使用者明確要求：運動服飾不算，除非與器材有關）
+# ---------------------------------------------------------------------------
+
+APPAREL_ONLY_KEYWORDS = [
+    "leggings", "legging", "sneaker", "sneakers", "footwear", "apparel",
+    "activewear", "sportswear", "athleisure",
+    # 鞋類（注意：不可加 "trainer"/"trainers"，會誤殺 personal trainer / functional
+    # trainer / arc trainer 等大量真健身內容）
+    "shoe", "shoes", "running shoe", "training shoe", "sports bra",
+    "yoga pant", "clothing line",
+    "緊身褲", "運動鞋", "運動服", "機能衣", "瑜珈褲", "瑜伽褲",
+]
+APPAREL_ONLY_PATTERNS = _compile_keyword_list(APPAREL_ONLY_KEYWORDS)
+# 2026-07-30: "jersey" 會誤中地名（New Jersey / Jersey City / Jersey Shore），
+# 導致 PureGym 展店、Technogym 新辦公室等正常新聞被誤剔，改用排除地名的 regex。
+APPAREL_ONLY_PATTERNS += [
+    re.compile(r"(?<!new )\bjerseys?\b(?! city| shore)", re.IGNORECASE),
+]
+
+# 器材豁免詞：若標題/摘要同時命中器材詞，即使命中服飾詞也保留
+# （特例：Lululemon Mirror 智慧健身鏡需保留 -> "mirror" 為豁免詞之一）
+EQUIPMENT_EXEMPT_KEYWORDS = [
+    "treadmill", "treadmills", "rack", "dumbbell", "dumbbells", "mirror",
+    "bike", "bikes", "machine", "machines", "gym equipment",
+    "elliptical", "rower", "rowing machine", "kettlebell", "barbell",
+    "home gym", "functional trainer",
+    "跑步機", "器材", "重訓架", "啞鈴", "健身鏡",
+]
+EQUIPMENT_EXEMPT_PATTERNS = _compile_keyword_list(EQUIPMENT_EXEMPT_KEYWORDS)
+
+
+def is_apparel_noise(text: str) -> bool:
+    """服飾/鞋類新聞判定：命中服飾詞且未命中器材豁免詞才視為雜訊剔除。
+    器材品牌自己出的純服飾新聞（如 Peloton 服飾線）預設也排除（使用者選擇）。"""
+    if not any(p.search(text) for p in APPAREL_ONLY_PATTERNS):
+        return False
+    if any(p.search(text) for p in EQUIPMENT_EXEMPT_PATTERNS):
+        return False
+    return True
+
 
 MARKETPLACE_SOURCES = {
     "santoandre.biz", "consumerthai", "tuitec.com", "ebay", "craigslist",
@@ -586,22 +807,132 @@ CELEBRITY_NOISE_PATTERN = re.compile(
     "|".join(re.escape(k) for k in CELEBRITY_NOISE_KEYWORDS), re.IGNORECASE)
 
 # 有歧義的品牌：標題/摘要需命中以下任一「品牌情境詞」才視為真正相關
+# 此白名單同時是既有庫存回溯清理的依據（見 clean_existing_noise()）：擴充此字典
+# 即可讓 clean_existing_noise() 自動對「已入庫」的舊資料套用同一組規則。
 BRAND_WHITELIST_CONTEXT = {
     "SHUA": re.compile(
         r"舒華體育|舒华体育|shua fitness|健身器材|跑步機|跑步机|橢圓機|椭圆机|飛輪車|飞轮车|"
         r"重訓器材|重训器材|有氧器材|健身房|運動器材|运动器材|喬山|乔山|dyaco|岱宇|605299",
         re.IGNORECASE,
     ),
+    # CYBEX GmbH（嬰兒汽座/推車/童裝，隸屬 Goodbaby International）與
+    # 健身器材 Cybex（原 Cybex International, Inc.）同名，實測 97.2% 雜訊。
+    "Cybex": re.compile(
+        r"cybex (fitness|international|eagle|smart|vr3|prestige|bravo|squat|treadmill|"
+        r"elliptical|strength|gym|cardio|trainer)|arc trainer|strength training equipment|"
+        r"fitness equipment|gym equipment|cardio equipment|exercise equipment|home gym|"
+        r"commercial gym|selectorized|plate-loaded|functional trainer",
+        re.IGNORECASE,
+    ),
+    # PROFORM 汽車風扇控制器品牌、ProForm Bike Shop 店名 與 ProForm 健身器材(NordicTrack
+    # 集團/iFit) 同名，實測 33.3% 雜訊。
+    "ProForm": re.compile(
+        r"proform (carbon|pro\b|tour|cadence|ifit|treadmill|elliptical|trainer|studio|"
+        r"fitness)|ifit|treadmill|elliptical|exercise bike|stationary bike|home gym|"
+        r"fitness equipment|gym equipment|cardio equipment|strength training|"
+        r"nordictrack|icon health"
+        r"|rowing machine|rowing|rower|air rower|bike|cycle",
+        re.IGNORECASE,
+    ),
+    # "true fitness level" 通用片語、斐濟/新加坡/台灣同名健身房連鎖 與 TRUE Fitness
+    # (美國商用跑步機/橢圓機製造商，St. Louis) 同名，實測 100% 雜訊。
+    "TRUE Fitness": re.compile(
+        r"true fitness (technology|treadmill|elliptical|equipment|commercial|inc)|"
+        r"true treadmill|true trainer|trueform runner|true force|st\. louis.{0,30}true|"
+        r"treadmill manufacturer|commercial fitness equipment|cardio equipment|"
+        r"strength equipment",
+        re.IGNORECASE,
+    ),
+    # Penny Schwinn（美國教育部官員）、訃聞、古董單車拍賣(Sting Ray/Chopper/BMX)、單車
+    # 失竊、品牌紀錄片 與 Schwinn Fitness（室內健身車/飛輪，隸屬 Nautilus/BowFlex）同名，
+    # 實測 89.5% 雜訊。
+    "Schwinn": re.compile(
+        r"schwinn (fitness|indoor cycling|exercise bike|spin bike|airdyne|recumbent|"
+        r"upright bike|elliptical|treadmill|ic\d)|schwinn ic\d|schwinn airdyne|"
+        r"indoor cycling bike|exercise bike|spin bike|fitness equipment|home gym equipment",
+        re.IGNORECASE,
+    ),
+    # star tracker 天文攝影器材 與 Star Trac 健身器材同名，實測 100% 雜訊（僅 1 筆但同樣套用）。
+    "Star Trac": re.compile(
+        r"star trac (fitness|treadmill|elliptical|strength|cardio|gym|equipment)|"
+        r"core health.{0,15}fitness|treadmill|elliptical|cardio equipment|"
+        r"fitness equipment|gym equipment",
+        re.IGNORECASE,
+    ),
+    # 同名健身房場館 與 Nautilus, Inc.（健身器材上市公司，現更名 BowFlex）同名，實測 66.7% 雜訊。
+    "Nautilus": re.compile(
+        r"nautilus (fitness|inc|treadmill|elliptical|bowflex|schwinn|strength|cardio)|"
+        r"nautilus, inc|nautilus bowflex|bowflex|schwinn fitness|treadmill|elliptical|"
+        r"home gym equipment|fitness equipment|gym equipment|exercise equipment",
+        re.IGNORECASE,
+    ),
+    # Onelife Fitness（另一連鎖）、Irish Life 壽險、"life"+"fitness" 通用片語巧合 與
+    # Life Fitness（健身器材品牌，隸屬喬山）同名，實測 ~32% 雜訊。
+    "Life Fitness": re.compile(
+        r"life fitness (inc|llc|equipment|treadmill|elliptical|strength|cardio|commercial)|"
+        r"life fitness, inc|hammer strength|les mills|commercial fitness equipment|"
+        r"gym equipment|fitness equipment|treadmill|elliptical|strength training equipment|"
+        r"cardio equipment",
+        re.IGNORECASE,
+    ),
+    # 環法自由車等賽事報導中的「主集團 peloton」與 Peloton Interactive（健身器材/App）
+    # 同名，實測僅 0.4% 雜訊，此處情境詞刻意放寬避免誤刪大量正常新聞。
+    "Peloton": re.compile(
+        r"peloton (interactive|bike|bikes|tread|app|instructor|subscriber|subscribers|"
+        r"membership|fitness|workout|class|classes|studio|row|rower|strength|earnings|"
+        r"revenue|stock|shares|ceo)|onepeloton|nyse: ?pton|\bpton\b|connected fitness|"
+        r"fitness equipment|home gym|exercise bike|stationary bike|indoor cycling",
+        re.IGNORECASE,
+    ),
+    # Tonal（智慧重訓器材）與英文常用字 "tonal"（色調/劇情基調/服裝配色/音調）同名，
+    # 裸字偵測後靠此白名單把關：僅命中公司動態/產品/健身情境詞才視為真品牌新聞。
+    "Tonal": re.compile(
+        r"appoints?|chief executive|\bceo\b|launch(?:es|ed)?|expand(?:s|ed)?|\badds?\b|"
+        r"\breport\b|refurbished|connected fitness|\bstrength\b|\bworkouts?\b|home gym|"
+        r"\bpilates\b|smart gym|takes helm|vs tonal|ankle straps?|"
+        r"generated workouts?|ai-powered|state of strength|\breformer\b|private equity",
+        re.IGNORECASE,
+    ),
 }
+
+
+# ---------------------------------------------------------------------------
+# 2026-07-30 過嚴修正（依 4,738 筆實測雜訊率調校）
+# ---------------------------------------------------------------------------
+# Peloton 實測雜訊率 0.4%、Life Fitness 的雜訊（Onelife Fitness / Irish Life）已由
+# CROSS_INDUSTRY_NOISE 與 "life fitness" 字界攔截，不需要「必須命中情境詞」的嚴格
+# 白名單。先前納入白名單導致 Peloton 誤剔 422 筆（財報/課程/器材評測皆被誤殺）。
+for _k in ("Peloton", "Life Fitness"):
+    BRAND_WHITELIST_CONTEXT.pop(_k, None)
+
+# Tonal：要求正面情境詞會誤殺大量真產品新聞（Tonal 2 Review / Tonal App / Drop Sets
+# 等 10/20 被誤剔）。改為移出白名單，另以「tonal 當普通形容詞」的負面詞組精準排除。
+BRAND_WHITELIST_CONTEXT.pop("Tonal", None)
+CROSS_INDUSTRY_NOISE_PATTERNS += [
+    re.compile(r"tonal (?:shift|shifts|balance|dressing|colorway|colourway|"
+               r"about-face|extremes|journey|range|quality|palette|contrast|"
+               r"variation|variations|language|nuance|nuances)", re.IGNORECASE),
+    re.compile(r"(?:experimented|experimenting|playing) with tonal", re.IGNORECASE),
+]
+
 
 
 def check_exclusion(title: str, summary: str, brand, source: str = "", relax: bool = False):
     """
     回傳 (excluded: bool, reason: str | None)。
-    硬性剔除（永遠生效）：spam 來源/內容、明顯 off-topic 主題、有歧義品牌命中演藝雜訊。
+    硬性剔除（永遠生效，優先權高於「brand 命中即放行」，即使有品牌也照樣檢查）：
+        spam 來源/內容、明顯 off-topic 主題、有歧義品牌命中演藝雜訊、跨產業同名詞雜訊
+        （CROSS_INDUSTRY_NOISE，如嬰兒汽座/建材/天文攝影/人名訃聞/古董單車/同名連鎖）、
+        純服飾/鞋類新聞（APPAREL_ONLY_NOISE，除非同時命中器材豁免詞）。
     品牌歧義白名單（永遠生效）：品牌詞有歧義者，需另外命中品牌情境詞才收錄。
     正向保留閘門（relax=False 時生效）：不命中品牌且不含健身相關詞 -> no_relevance。
-    官方/新品/新聞稿來源以 relax=True 呼叫（本質相關，不套用 no_relevance 閘門）。
+    官方/新品/新聞稿來源以 relax=True 呼叫（本質相關，不套用 no_relevance 閘門，但仍套用
+    上述所有硬性剔除規則）。
+
+    根因修補（2026-07-30）：舊版「if brand: return False, None」會讓任何命中品牌 regex 的
+    項目直接跳過健身相關性/跨產業黑名單檢查，導致 Cybex(嬰兒汽座)、ProForm(汽車風扇控制器)、
+    Schwinn(人名/訃聞/古董單車) 等跨產業同名詞雜訊被誤收。現在跨產業黑名單與服飾過濾一律
+    優先於 brand 放行邏輯執行。
     """
     s = (source or "").strip().lower()
     text = f"{title} {summary}"
@@ -616,6 +947,13 @@ def check_exclusion(title: str, summary: str, brand, source: str = "", relax: bo
             return True, "celebrity_noise"
         if not BRAND_WHITELIST_CONTEXT[brand].search(text):
             return True, "brand_ambiguous_no_context"
+
+    # 跨產業同名詞黑名單 / 服飾鞋類過濾：優先權高於「brand 命中即放行」，
+    # 即使偵測到 brand 也要先過這兩關（修補根因 B）。
+    if is_cross_industry_noise(text):
+        return True, "cross_industry_noise"
+    if is_apparel_noise(text):
+        return True, "apparel_noise"
 
     if not brand and any(p.search(text) for p in OFFTOPIC_PATTERNS):
         return True, "off_topic"
@@ -1166,7 +1504,9 @@ def fetch_brand_stories(brand, cfg):
 
 def load_existing():
     """讀取既有 news.json，回傳 (articles, existing_url_set, existing_title_set, max_id)。
-    對缺欄位的舊資料補回填 source_type / first_seen（不更動既有 first_seen）。"""
+    對缺欄位的舊資料補回填 source_type / first_seen（不更動既有 first_seen）/
+    product_category（依標題/摘要重新分類，backfill 既有 4,700+ 筆資料；欄位缺失時
+    不會報錯，一律以 classify_product() 現算補上）。"""
     if not OUTPUT_FILE.exists():
         return [], set(), set(), 0
 
@@ -1206,6 +1546,9 @@ def load_existing():
             "source_type": a.get("source_type", "google_news"),
             # 補回填：舊資料 first_seen 以其發佈日期為準（不再變動）
             "first_seen": a.get("first_seen") or a.get("date") or RUN_DATE,
+            # 補回填：舊資料原本沒有 product_category -> 依標題/摘要重新分類
+            "product_category": a.get("product_category") or classify_product(
+                title, a.get("summary", title)),
         })
     return normalized, url_set, title_set, max_id
 
@@ -1466,6 +1809,7 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
             "summary": summary,
             "source_type": item.get("source_type", "google_news"),
             "first_seen": RUN_DATE,
+            "product_category": classify_product(title, summary),
         })
         next_id += 1
 
@@ -1488,6 +1832,7 @@ def compute_stats(articles, generated_at):
     by_source = {}
     by_source_type = {"google_news": 0, "official": 0, "press_release": 0}
     by_date = {}
+    by_product_category = {"cardio": 0, "strength": 0, "wearable": 0, "other": 0}
 
     for a in articles:
         cat = a.get("category", "market")
@@ -1499,6 +1844,11 @@ def compute_stats(articles, generated_at):
         st = a.get("source_type", "google_news")
         by_source_type[st] = by_source_type.get(st, 0) + 1
         by_date[a.get("date", RUN_DATE)] = by_date.get(a.get("date", RUN_DATE), 0) + 1
+        # product_category 欄位缺失時（理論上 load_existing/build_new_articles 都已補上），
+        # 現算一次，避免報錯或漏統計。
+        pc = a.get("product_category") or classify_product(
+            a.get("title", ""), a.get("summary", ""))
+        by_product_category[pc] = by_product_category.get(pc, 0) + 1
 
     timeline = [{"date": d, "count": c} for d, c in sorted(by_date.items(), key=lambda kv: kv[0])]
 
@@ -1508,6 +1858,7 @@ def compute_stats(articles, generated_at):
         "by_brand": by_brand,
         "by_source": by_source,
         "by_source_type": by_source_type,
+        "by_product_category": by_product_category,
         "timeline": timeline,
         "updated": generated_at,
     }

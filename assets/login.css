@@ -62,9 +62,13 @@ body.login-page {
   margin-bottom: 14px;
 }
 
-.login-logo-svg {
-  width: 150px;
-  height: auto;
+.login-logo-img {
+  display: block;
+  margin: 0 auto;
+  height: 68px;
+  width: auto;
+  max-width: 100%;
+  image-rendering: auto;
 }
 
 /* 子品牌文字列 */
@@ -230,5 +234,5 @@ body.login-page {
   .login-title { font-size: 30px; }
   .login-subtitle { font-size: 13px; margin-bottom: 22px; }
   .login-subbrands { font-size: 10px; gap: 5px 10px; }
-  .login-logo-svg { width: 120px; }
+  .login-logo-img { height: 54px; }
 }
