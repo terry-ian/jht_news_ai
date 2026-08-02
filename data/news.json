@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-01T01:19:24.692122+00:00",
+  "generated_at": "2026-08-02T01:21:12.437569+00:00",
   "sources_ok": [
     "https://news.google.com/rss/search?q=%22Life%20Fitness%22%20when%3A1y&hl=en-US&gl=US&ceid=US:en",
     "https://news.google.com/rss/search?q=Life%20Fitness%20fitness%20when%3A1y&hl=en-US&gl=US&ceid=US:en",
@@ -429,6 +429,62 @@
   },
   "articles": [
     {
+      "id": 5932,
+      "title": "Sand Stone by Technogym is redefining the home gym",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9SMnZwTlJKRWp1enB3ZmhpRnJEell4QkZGTGU1M3FjMDJWWXdBTW9uRmRxQ0hMZFJtRkR1c1Nlekx5QWJSSDFGbnQ3b283WUVESVpfUGhqOGpMeVQ1N1BqYVdVV1VkRlE?oc=5",
+      "source": "Vogue Adria",
+      "date": "2026-08-01",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Technogym",
+      "summary": "Sand Stone by Technogym is redefining the home gym Vogue Adria",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5954,
+      "title": "I've tested home treadmills for years, and these are the 6 features I consider dealbreakers when buying one",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxORFVwekxQSlI1cGx1RVFIUWt3eVZWNEtTVFZEUlVTNXJGMkNoMTBKMW9wd09wZFpVSGFNM0Jsa1E0eGdTajNreHJrTXRDU3FySlRfMHlUeHQtOF9MVnFDQ08td2pwbzFkUndVX0FnZkpUSXRwQ2FjZEZIWVBkRmw3ZWt0bkRTMnc0WkdiVVNGQ1ZWVFB2VTNNSnFiMG1TN1poNXdTQ2xJWkpSNEZ6RkVCeEE2ZDB6RXhMWWZ4TUZiRnN4bUcwdG9CVUlBQzU2Sng5NmFFaUVSSzJvZ1dtUHZkRFZB?oc=5",
+      "source": "Tom's Guide",
+      "date": "2026-08-01",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "I've tested home treadmills for years, and these are the 6 features I consider dealbreakers when buying one Tom's Guide",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5975,
+      "title": "Your Employer Might Pay You to Exercise. Here’s Why.",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOY3NaaEoyV04zTUliZ29XSXQ4RHplVHJkYnBpdV9XVk5HSkxSSlJ5Z05FYzRRTzJUaGlJbnh2MW81U21GUko4TlhBdmNCNU5QTWI3QWVfcTlxdk5mZTF6ZkxzOFdtcWt3MFQ0YU80ZGRvMGgtaTR2QmZVQXlCcDhCNndOdkltQzRzckE?oc=5",
+      "source": "Men's Fitness",
+      "date": "2026-08-01",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Your Employer Might Pay You to Exercise. Here’s Why. Men's Fitness",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5989,
+      "title": "Speediance Showcases the Future of Intelligent Home Fitness at HomeGymCon 2026",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPeVlkQkhSRTIxQkZMTkE2TG9VQm90RGpnV2lDNm11YWg4UU5aSnd0aFlZbU5xazRoSm5DVjJvMWlOSWt2RnViNC1NWGh0ck1fb0VFRDh5SlRYNk5pSWRtZGw3WjhZWG5tOWtlRngyamtyWmYwRUlyaHRzZUFKUDNqRjhjN1VJMjRERnYwa0tEejQ0VmZVQ1VDNEZ1NkltOEVYMjhVQ3Jwdi03TGtn?oc=5",
+      "source": "Yahoo Finance",
+      "date": "2026-08-01",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Speediance Showcases the Future of Intelligent Home Fitness at HomeGymCon 2026 Yahoo Finance",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 5786,
       "title": "This Air-Magnetic Rowing Machine Is Built for HIIT-Level Workouts, Not Just Cardio",
       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQbTZpdW11TDdzcU5kbjZXdDZ5QVBhWjhlQ1ExamlfM0Q4U1BiMU1ISE1Hd2VmUjl6dHd5cktyNUk5Nk9yVzZDUHVIUlU4Y1ZkU0tFV2RrTzdoSU9EYkY1THZEQWgySmJHd3FQeHpKUDktMGxLS1NwNFBRX2Q0LXVjb2xYWW9LY3pQMkZmdDJqYnVMN0VDUUIwTk9uQjFINDJCUURJZm9QR2Q3YzBPbzAtbFdFLVFrQnJuRjZpemRWaXRtSGfSAcMBQVVfeXFMUG02aXVtdUw3c3FOZG42V3Q2eUFQYVo4ZUNRMWppXzNEOFNQYjFNSEhNR3dlZlI5enR3eXJLcjVJOTZPclc2Q1B1SFJVOGNWZFNLRVdka083aElPRGJGNUx2REFoMkpiR3dxUHh6SlA5LTBsS0tTcDRQUV9kNC11Y29sWFlvS2N6UDJGZnQyamJ1TDdFQ1FCME5PbkIxSDQyQlFESWZvUEdkN2MwT28wLWxXRS1Ra0JybkY2aXpkVml0bUhn?oc=5",
@@ -748,6 +804,76 @@
       "summary": "With standardized benchmarks and market-wide intelligence, FitGrid helps operators understand where they stand and what to do before members disappear",
       "source_type": "press_release",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5930,
+      "title": "Fitness coach shares 30-minute treadmill routine for staying active",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOYW9sMm1JamdlRUJRYmx5YUg1MVZKSEN6c29nTENEWm9RelVVQkVUcUhEZEVXN3JIb2VvSHRwV0p4RTkxT3JBYllfWC1QZFp1bnFoMGxyQkN6LXI5cXIzdWI0cXEtTFg2V0xpZ0ZaQWRNakVlX3B6TkFxSW8tT2dzU29IVW5RSm04LUNCaGRZeldjV0k2MkZJNkU4MGNiMW5sWksxY09TdlNnZGdGWEQzcXNB?oc=5",
+      "source": "United News of Bangladesh",
+      "date": "2026-07-31",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Fitness coach shares 30-minute treadmill routine for staying active United News of Bangladesh",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5934,
+      "title": "Technogym (BIT:TGYM) Stock Slides As Revenue Drop Clouds Profit Strength",
+      "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOUjQ4MVZSZnAzWU8xWmtXMlBsZF9fMGZkd2p2dHVacmJvdHMwYVQyRk1mNXJscFpsUGVwY083Q3N3enByRTI0RlZFcHlPMWEzNE1YNDNzMmhXSTcyejRQbXkxQ0lJMGM1eUdXMTJ0U1doNkx5dWhOUVlPM3cwaXc5a25mbzQ1a3JzX3pBbXFyYzltaVRjZzFCYTdwRWVJQnZ1eTU2MXVLbVNNaXVsenplS0trVlRDZWdYZEE1R1BtNmlGSnJTbHQwY3ZnakpiQzBFNmRJM1ZKY1fSAd4BQVVfeXFMTlMtV0pOc1VSVGtGZEVkVHNYT0VwcUhMenNnbmtUNWliY2UyejNSTlNSSzBzTFJGaFlWYUI0OGxiWktiLVBaMy1sY2czaVluTE13QVFfZlNSb1RRUzJxQXZ6SzBHSzhaY0pxLVZkeDlJMkxoX2FxVUxZeFZUTGFoWm1wTjVsa2REbDVNSW8tUUFKM3hRcm1PMURFNVB3TmJScVVqN1BWdjBlT2c2TnNxeTBlcDJvT3o2V05MUElMUGJ5OGpPSkVKdkVUd3ByYm5YRW5KVlA5T1phMTg0OG53?oc=5",
+      "source": "simplywall.st",
+      "date": "2026-07-31",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": "Technogym",
+      "summary": "Technogym (BIT:TGYM) Stock Slides As Revenue Drop Clouds Profit Strength simplywall.st",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5944,
+      "title": "Peloton hit with $20.5 mln for infringing NEC streaming patent, US jury says",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPRV9oRE9JdlBKS1RnSTNPMWF1elBuakhzY1ZIUFlvQzhfemhDY1FtZXd4OERDZVo5V0NmWmNNWTI2YTBZdkJKUFBKaVp3SzhhdjdGdF9yRS1UWjFCeUNMV3I1b29ialJmbGw0b2piTnNQZFFucC12eTd4X3Y2MzRfZUhjNGR3OVJSR3h5VFo5MEZ0ODNxRGo5OVBPUjU2VmhRMlJ5blVobTc5TDh3a0RJcHVpYklnRGJfakQ3OHJqeFNpSFE?oc=5",
+      "source": "Reuters",
+      "date": "2026-07-31",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton hit with $20.5 mln for infringing NEC streaming patent, US jury says Reuters",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5952,
+      "title": "BowFlex Inc. Revenue Breakdown – LSX:887012",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5sQ2RFd2c4elpvOU9HcnRERXZZY2s3VXNnWWs5bHRJcU9ZTGp4QVdVVVJuOXRMSWJnSm43LVAtVldSTXBsc0JVbE5oS2I1Sk5hNkI1dk5QUTR6NUZvTkVSZlU3RTJiNEh5STdObWs0QUdVdERaMWc?oc=5",
+      "source": "tradingview.com",
+      "date": "2026-07-31",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": "Bowflex",
+      "summary": "BowFlex Inc. Revenue Breakdown – LSX:887012 tradingview.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5967,
+      "title": "Nautilus Biotechnology, Inc. Revenue Breakdown – NASDAQ:NAUT",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBhQUdrckt1Mi1ybWg5V24tTjNzQUFQTzFxc1VYOTltWDdZTFNGVk01MENqX2JDNUNMWGs2T1hTalVFaFlsNmp4Y1VBVVFKVXFNT3BqeU1STHRnVHFhcFBxdjRjM1pHakV1c09LQnQ0MUdpSmo4QU1z?oc=5",
+      "source": "tradingview.com",
+      "date": "2026-07-31",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Nautilus Biotechnology, Inc. Revenue Breakdown – NASDAQ:NAUT tradingview.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -1227,6 +1353,62 @@
       "product_category": "strength"
     },
     {
+      "id": 5931,
+      "title": "Technogym reports first-half revenue of €493 million",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPREVPZE16LVExWTdyUDJGME8ydThCT3BFNEE5MWN2U2FUMjl0VEZYczZkaTg5bnhPenNqTzRXMU92T2pqUTlkbWlFUWxMVDZNVVVfcGRtTE1mTDdKZlBDRjFlbkpxU19UZDBNU0dCQmpraGFZS2JiTTBRNjNlTHN3VUd1SUV2UWJBLTVwV2FxaS1USGdiYl81RExycFlCdjYzZkE4MVNubTdyQW5wWm03TA?oc=5",
+      "source": "Investing.com",
+      "date": "2026-07-30",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": "Technogym",
+      "summary": "Technogym reports first-half revenue of €493 million Investing.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5937,
+      "title": "Horizon vs NordicTrack Treadmill (2026): Who Will Reign Supreme?",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBDVExoSDkzV093b29XVHJiaFZXN2pmS3JDZlpxaG9qQmMwY3Y0UjNXeFhVYU5KN1ZJejVqVHNEaGRWV0tFQ3dfcTZyZTFUalhwcUh6OVFpaUNlTXRaLXhBOG9qQklQbENjNWoxRUFtN3ZOS2M?oc=5",
+      "source": "garagegymreviews.com",
+      "date": "2026-07-30",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Horizon vs NordicTrack Treadmill (2026): Who Will Reign Supreme? garagegymreviews.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5957,
+      "title": "What Size Kettlebell You Need to Crush Your Workout Goals",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNcXdtcnpIaGdwS2RVNk9PSW14R3l6b1hpcURMc0JURS1hTllDalIyZS1kWng4TFd3ckZTQzl3dnlybmlwNTRnY2oyV1hfS0JnYzRWekstVWZXNENFVFFHNHpsRU11NkFSZXFzYTVWdFktTUNVOTd1c25haHByUlkwck9jUkQzdw?oc=5",
+      "source": "Men's Health",
+      "date": "2026-07-30",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "What Size Kettlebell You Need to Crush Your Workout Goals Men's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "strength"
+    },
+    {
+      "id": 5974,
+      "title": "Wave Life Sciences (WVE) Reports Q2 Loss, Misses Revenue Estimates",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQdU04dlNGRTlpZ2J5aTRJWVA4UWtXVE5ueWNzYWlrR2ltZk9nMGZNTW5yc2U2V1NRVkVpQkcybmlpUnJORi1HZU9hVzZzaVM3aGs5UnVWS1VaSEJibnVUWnpydjRYX1pGM0hYS3RMcklVSVFWR3Y3cGF5MjBvVG5TT291LUxrSzhLZGUxY0dORk83OWdkUkE?oc=5",
+      "source": "Yahoo Finance",
+      "date": "2026-07-30",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Wave Life Sciences (WVE) Reports Q2 Loss, Misses Revenue Estimates Yahoo Finance",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 5243,
       "title": "No gym? No problem: Home fitness gets smarter with Technogym",
       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPTW1TR2VUQzVuelFrZ3ZNdmJVX21pZ1F6YnBkTTF6eHYxUzU0REVzLWdacjEzek1HMlVkNDZ4OTJOR1o2Ri1CS2VobEpnLWpFN0tWMjl1ZVctN3dseWpmZmRYNFRZTGxZNjFTal82bldJR25OeHR6TUI5bUFhSEVwV1FtcjJLUlJKdm54U19XNWYydDh4X2QtT0hGeDQwMjU5b0E?oc=5",
@@ -1686,6 +1868,34 @@
       "summary": "Earnings To Watch: Life Time Group Holdings Inc (LTH) Q2 2026 -- GF Value Sees 31% Downside finance.yahoo.com",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5947,
+      "title": "Peloton Interactive Number of Employees 2026 | Employee Count & Headcount Data",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE80dXl4NlVYb2wxSDVlWVpYb3YtNmFzWFZ3akwycTBnQmU0Wk9YMzd5ODUza09SXzBOSGViN1VIUTZrVGl1QTcxN05FZFdPZHZMS1NwdjdCaC1KME5abjJhZDNVU0s2V0RUbFFDcWJ3a1l1cU5wb0E?oc=5",
+      "source": "Revelio Labs",
+      "date": "2026-07-29",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Interactive Number of Employees 2026 | Employee Count & Headcount Data Revelio Labs",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5963,
+      "title": "Johnson Health Tech North Number of Employees 2026 | Employee Count & Headcount Data",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBXMG56Vm1jOWZnRGl5NU5yVWNRT09KZDRQRWdZVGcweTZ1UEw1Y3ppZmV0MTM4ZFhvbnFJNXUxY3ZaVklXT21WNGZJZWIzdk42TkVfQkRkbXFsM3dqY0VoNkt1TWU1RXhCUzFkMW9STk1zYnp4T0JTcmJ0aENEdw?oc=5",
+      "source": "Revelio Labs",
+      "date": "2026-07-29",
+      "category": "brand",
+      "categoryName": "喬山品牌動態",
+      "brand": "Johnson",
+      "summary": "Johnson Health Tech North Number of Employees 2026 | Employee Count & Headcount Data Revelio Labs",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -2165,6 +2375,20 @@
       "product_category": "other"
     },
     {
+      "id": 5997,
+      "title": "舒华体育(605299):中标新昌县教育体育局采购项目,中标金额为121.00万元",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPT0I1ckdxLS1uUXh6R3BZSnNzTmlVZVp4RXdEWXVpaExuckxWWXEzT1IzallSYS1KUEN5NGdoUFBZNGl3SVE5N2tha2tWVjdtNWx4QWp3clVpd29kdjhlVy1TZ2FCRXBfZk5UazFJODMtb2FIOVFydk8yUWllQmV5Z1VxNjg1eUIw?oc=5",
+      "source": "新浪财经",
+      "date": "2026-07-28",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "SHUA",
+      "summary": "舒华体育（605299）：中标新昌县教育体育局采购项目，中标金额为121.00万元 新浪财经",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 4463,
       "title": "Major Companies Driving Innovation And Expansion In The Home Fitness Equipment Market",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOWGF2elhrNk1aRWdObVk0dTl3aTVXbmdGWDhWVXZ0RnZ6SHRUSkE0V0tOamNPdEstUGp4OENHcE8xS0txZXRmS1JqRUQ3QjlVbWVnM1NvSzc3RkFac3RpQ3Y2Z0h3bUtJMjBJLTBMcFJhcTlKdHNjdGdiUWVSclZTMVZpa1BuN1hCdTgtMFpiWnNrWXRRRGtUbm0xUFE?oc=5",
@@ -2513,6 +2737,20 @@
       "source_type": "google_news",
       "first_seen": "2026-07-31",
       "product_category": "strength"
+    },
+    {
+      "id": 5982,
+      "title": "Can You Really Train for a Marathon on a Treadmill? Here's How to Make It Work",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQRTU0bnpIeEFfdllUOGp4RTBtZTRtY3d0blhXdDJ4QkRoLThhemVkZWoycEdMdWZBUEJ5X0VGWVZNazJVME1ld2RqRFJKNDZORC1SYmxxckEyQldvcFo0SFZ0bmN2MFdaQXlTbF93U0dOT3dsaVdsUlJSc2xPbDFZTFNB?oc=5",
+      "source": "runnersworld.com",
+      "date": "2026-07-27",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Can You Really Train for a Marathon on a Treadmill? Here's How to Make It Work runnersworld.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
     },
     {
       "id": 4489,
@@ -3173,6 +3411,20 @@
       "product_category": "other"
     },
     {
+      "id": 5960,
+      "title": "Video - B-Roll: USVs participate in RIMPAC 2026 sinking exercise",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOLU1qaW4tLXk5RnM0Wm9ZN2laUVB0STUyalZ5dEI3Q1RheHdlY2JnN1I3MWVjYUxyXzBqU2g1WGRPN1MzWGRPMlRUYjRUeWdUeXVpTmlkb3JjOTc4LVBzMFlvS1VhX24wVGpsRFhKei1PQ0twZ29SN0I1ZlFZazhvZWI5QWxMNmxxdVg2b3NiSkVHT0VidEE?oc=5",
+      "source": "DVIDS",
+      "date": "2026-07-24",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Video - B-Roll: USVs participate in RIMPAC 2026 sinking exercise DVIDS",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 4433,
       "title": "New 24-hour gym set to open in Dorset town in late autumn",
       "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQOGUyVFBjRlZKTkpyRmpYNEN6dHVRaVMxOExkSjFBNWVtbkJEdlE4ZHFZcU9qeUZfUlByTHg0NVZzZ3hFWndoNGFwbnpaOWhibGlDWjhUOW9hQXR6amN6NTBjM3Y2OE1uMTByenV2MHZKTDFXUlJtT1ZCVzFGVFBhaFFPaVZELVhNUHo4empyRzRSNncwbUNBMHZDcFdLY0U?oc=5",
@@ -3551,6 +3803,20 @@
       "product_category": "other"
     },
     {
+      "id": 5972,
+      "title": "Xponential Fitness sets Aug. 6 webcast to discuss second-quarter results",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOTGpSYnRaSFhlWVpGdHlPVjJ3WWRlV1VKaHZDNEdWeEo2OGczYm1yeDZRdmUtR2IzMDVtQUV1V3ZjNkNQVkUwR205aHBvam1LYkJsZGZta1g4Q1RRcVVwcW1OR2Nhejdlbkw4WUdjd2VCM3MzWlpJeEVibWdHZDRqVlZTMHFiTzMwSTg5d0F0VFRWVlRpeWNDVGhvdkVGYnBLTTJqUklzU2dFNnNoc1QyRjhLYzhJNS1KRUE4?oc=5",
+      "source": "Stock Titan",
+      "date": "2026-07-23",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Xponential Fitness sets Aug. 6 webcast to discuss second-quarter results Stock Titan",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 4447,
       "title": "Best Commercial Treadmills for Home (2026)",
       "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE81UDdsMld6eW5HOThFWmpYWU9RcHVrTV9BQjZ5QzdfTlFyVFZTMW01djhJSU84bnpyZGkwYkgtbDFMUmwyMDhGVjljaFhzRUpTOERaMGRvdFZHNk1sMEFSdXd6bUNwMVAyc0E?oc=5",
@@ -3885,6 +4151,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-01",
       "product_category": "other"
+    },
+    {
+      "id": 5990,
+      "title": "The Best Fitness Trackers We've Tested for 2026",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE15SE0zNThmMzk3LTlGTG5UejhGRXFESW56WVFXT3ZvQkRvdUcwdlA4QnNic0NrM19aUm5ZaTM0dXJuNTkwdHdJVGRJMjNBTFBVU1V4amE0U3BucG1QSnZYWnJFaw?oc=5",
+      "source": "PCMag",
+      "date": "2026-07-22",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "The Best Fitness Trackers We've Tested for 2026 PCMag",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "wearable"
     },
     {
       "id": 4467,
@@ -4979,6 +5259,20 @@
       "product_category": "other"
     },
     {
+      "id": 5984,
+      "title": "I’m a Personal Trainer Who Tried 20 Rowing Machines—These Are the Best",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBYekFQZGxzWlBTcWFvZE5RYTVPY1ZQbW8yOFF1MzgzYXRVLWg3eVhnQjVGZzZHSnZZT3EwVG1XeDZfSVp1NmxPYzN4eFpfZE5xUDJLeTJuSG8xbTRBSF9MTkFHZzVOeXhjOFEwdG9BWWRlcF9BRXhsNGtEYw?oc=5",
+      "source": "AOL.com",
+      "date": "2026-07-16",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "I’m a Personal Trainer Who Tried 20 Rowing Machines—These Are the Best AOL.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
       "id": 4469,
       "title": "Enterprise value to revenue forward of Technogym S.p.A – MIL:TGYM",
       "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSFlwOHp2UHVpUzdIWWFDTUJZeGZZX25UWGdIR1hDS3NidVBnVjJSSVphZktSVm8tdUZzU1llT2pZVXAzSE51Umxaamw1eVpYdzVDTHkzWGxwbXFJbm9nNTBVVG9BRE00a3NubWxxVjNRY3RQbjI5OEhmNlBfZ2hJQU5RVXJGd2dKaDRHcjUzV25obldUS2tTY1p2NnNXSkRfQ1Q2NUs2cE8?oc=5",
@@ -5985,6 +6279,20 @@
       "source_type": "google_news",
       "first_seen": "2026-07-30",
       "product_category": "other"
+    },
+    {
+      "id": 6002,
+      "title": "Garmin CIRQA trademarks in Europe and Canada point to new sensor",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNSkhFdEU4ZEZabW9RUjM1LWQxWGk5bVdSaDZJWGdXdHdCNjVWSnVGZUZibkJ2YTFlY2UxWWl2YkF3ZUxaWHV0QlFrTFRFUUZsMlVRaVhRZkFTbE1KUHI2V1FQVnB4NXByMHZxUjRURGJodWNKNTM5NUpnc2NneGxmRWhBRjFTMGpVTlpDaUhYSnlqaUpzX0lMSkZXR0dqLXMxN0dTZE5FcmhQRjNZM2c?oc=5",
+      "source": "Notebookcheck",
+      "date": "2026-07-08",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Garmin CIRQA trademarks in Europe and Canada point to new sensor Notebookcheck",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "wearable"
     },
     {
       "id": 4580,
@@ -7594,6 +7902,20 @@
       "summary": "Winners And Losers Of Q1: Xponential Fitness (NYSE:XPOF) Vs The Rest Of The Consumer Discretionary - Leisure Facilities Stocks Yahoo Finance",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5950,
+      "title": "Fitness influencer pleads guilty in violent gym attack after beating man with weightlifting belt",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNRkNUYnVMM0dKU3FnMjlKcWJxa082al83c2t4U1FEaUN5WnNTV3REWC1IYnNfMEt4dmZHLU9rX0Fsd2M0QUpQY0FrSHdnV25zQnJIQnV6a0xobks0SWlZOHNwdEdVdGM1T253UmZFU2psV0xKdzZSaHJDSjVfblJjX2J1QkxJbTBGdXlYU2pwRElsSUFHUmRXNUZ2SUpTd01lUTVZOUxXTzZaTktHX2V4TDhSNzdmcmZuSkxxRjROUVhDLU1Ea1BaNg?oc=5",
+      "source": "wfmd.com",
+      "date": "2026-07-02",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness influencer pleads guilty in violent gym attack after beating man with weightlifting belt wfmd.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -11909,6 +12231,20 @@
       "product_category": "other"
     },
     {
+      "id": 5986,
+      "title": "15 Amazon Workout Essentials That You Need ASAP—Starting at $9",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNdi1Td0RIUlkwWHRJOEVBVEljT1ZIX3U5a3h4cTNPVmwxQVlyUVJ2QXI5cWhidl92OW1tY0VCUTRiUVE0UXRMNG1hcnRHdGNkcG5xclBScmhmU2o5aU0zd2RCWnlPWXQwWVdkeGdfQmkwTUFkQXR5Q0RWVUFOYi1rTDdIbw?oc=5",
+      "source": "Women's Health",
+      "date": "2026-06-16",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "15 Amazon Workout Essentials That You Need ASAP—Starting at $9 Women's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 4071,
       "title": "Shropshire, UK Thomas Telford School delivers new refreshed fitness facility with Technogym solutions",
       "url": "https://www.technogym.com/en-US/stories/thomas-telford/",
@@ -13223,6 +13559,20 @@
       "source_type": "google_news",
       "first_seen": "2026-07-28",
       "product_category": "cardio"
+    },
+    {
+      "id": 5973,
+      "title": "Xponential Fitness to pay over $3.9 Million for misleading New York workout franchise owners",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNV2VvUkp4NU9rc1hrRUREdHdoQ1FxS1VuY2xKQ2p1ZWIyclpCYUZQVThQLUlFVTNOZjl5dW83TGYxUUN0SlExT1lYandaaXpXay03RE1hb2t2Q09MeUotYlJTckZqUy0zZ1hEcGxLdXJvZmhUS2UtcWpmYzlGcnZWLU9wakkwYTBJejBROXI3S0pHdXdZUzZ5WDJxZkhraEZza1E?oc=5",
+      "source": "brooklyneagle.com",
+      "date": "2026-06-10",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Xponential Fitness to pay over $3.9 Million for misleading New York workout franchise owners brooklyneagle.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
     },
     {
       "id": 283,
@@ -14636,6 +14986,20 @@
       "summary": "Zia Cyber Force USA unit pays tribute to Ziaur Rahman on martyrdom anniv Bangladesh Sangbad Sangstha (BSS)",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5992,
+      "title": "City of Girard hosts survey about potential park exercise equipment",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPTUFxUTZhdWFNSXRRWGZPa2lLX3BHZkdBSlVxTWhfWThqbEhnaWhhTF8ycy1PaWhOQ28yb1RGaEItbmFGbm43SXhmbkd0SG9nbTdUdWdhU0VwbXNUc2xiNzJfUG51eDJkNnp0eEU0MXpDaWEwMlo2QTl4aHYtX0txb1NOZFp1ZXdhSGVlXzFPTkdvNElsS2V3c2ZkTnVQbkNTUjN2b3VnQTFNa1RCbEpLeU1mQ3hUWGhVVEdKZE1SRVpLdTVvUkpqUW5BeVRYQ3FVNUVfY0c2WEotay1WZGwxbmJQdVFTbU8tTHpKYndoOHd4QlE?oc=5",
+      "source": "WFMJ",
+      "date": "2026-06-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "City of Girard hosts survey about potential park exercise equipment WFMJ",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -16907,6 +17271,20 @@
       "product_category": "other"
     },
     {
+      "id": 5970,
+      "title": "Diversified Energy Company (DEC) Q2 2024 Earnings: Strong EPS Beat Bolsters Operational Performance Narrative",
+      "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPVWxISmlvOFo2ZVJjMnZiZUNOTGh4cnA0RjJKb0dsNmExSGgzX2ZsT05yaG5UblJlMW5rTWJLc3pxOEJIYm5wZzZ0d2NfUjVwRXMwTzJ5d0NJYlFmOWxqWDlrbEtCOU1WejdXZ1F1V2tFNGNwNFBEdzNma1NwVFpKUjU0NElUQzNxZGpsamhVRUdNMXloT0U3ek81OEVMaS02ZWl4WW95Rnc4ZlVXNmdzRmwwYmdBdGFEdHpBWGxNekxFc0dKYkFJbE83ZjJlbk1iS0xvQ2NxamtYNnpkMUcxN2NfQ2VLUQ?oc=5",
+      "source": "dars.gov.et",
+      "date": "2026-05-27",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Diversified Energy Company (DEC) Q2 2024 Earnings: Strong EPS Beat Bolsters Operational Performance Narrative dars.gov.et",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 451,
       "title": "The best cross trainers and ellipticals for home workouts in 2026, tested by experts",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQSVhhSHZpSXEwYTU2Skd2TUY1YkNDSFBFTWdwS0sxRTYwdkhLaGtKbDh1NjdJcWg3cThvVnBabld4VE9qSGRvN0tqb1FHaXZWcFNveEJlc0lpdG9HTmdzVUxURFp6em0zNEIwQ0RvTkhrQkRhdjFVaFpFTVlxRXo2ZTFLLWNhN0Z3YUJLczZRS0pPX25aclhyS2RwNGw?oc=5",
@@ -17215,6 +17593,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5940,
+      "title": "Fitbit Air In-Depth Review: A True Whoop Competitor for $99?",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5iakthU3lCV2xzRUNRSks5X0ZrU28xRmNONVdZcXZUM2wwVFdhM3VGY0FmbEYzVVhXczR1X1BOUm9zbmJRZHc5MW5XekkzTEhRMUlXdVY1NDB4Sjhod2dlM08yTnpHa1laazNTSXZZYVc?oc=5",
+      "source": "DC Rainmaker",
+      "date": "2026-05-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Fitbit Air In-Depth Review: A True Whoop Competitor for $99? DC Rainmaker",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "wearable"
+    },
+    {
       "id": 461,
       "title": "590 Apartments, New Life Time Fitness Planned for Upcoming “Montgomery Pearl” Development",
       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPMGxIZjd5TDV1VlF6QVRrNXhwMzg1WjEwN2pWNG9kamlXaU9aY2ppSnhNbTJ4WEVMLVZqUVN0SzRkS2FMVlF5Z0xDNU5ldzZGTGJNcFhUY3lhRWRHUGlaM1Z1YU5HZDVjcFBHTVdMRGVFLWJMeWdYOTd2el9jTHZSZHFVeU5JdzA4TlNfSGFzVTNFZjRaWGtvVzkzQy16UzI0djNQbVlOWUFlUUJJYXNZRVpsVW4tdTVBTHhZ?oc=5",
@@ -17436,6 +17828,20 @@
       "summary": "Conor McGregor’s net worth in 2026: Earnings, endorsements, investments, car collection, and luxury lifes The Times of India",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5988,
+      "title": "This equipment-free workout is designed to be done at your desk to build strength and muscle",
+      "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNUUI4akNSV2VSbWZRT3hkYm1xRFBzR3NnUUZUZXNzcGMzcmhONVpuYjhCRjZTZ3h4QXdoa3k2U1E1VFJ2a1hSZ1Myc3JWXzhUc3AzWTVmSGx1OWVYeDBPSHJXU1J4NjE1X2FfZ1NITFU5NHF6NkNxY1I1WUV0eFdmdDhtTFd3OVh0QzdwbV9YdS1VQ21nNzRwZ2EyWXNqd0k5QW92SlM4SGVMSjlISExHMGQxdTJHYVpMVEFrQWdsLVpXZEl1anJ3VHFWNWtVQUZwMk9LVkRFSWVGai0zTGtRM2ZMRQ?oc=5",
+      "source": "Fit&Well",
+      "date": "2026-05-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "This equipment-free workout is designed to be done at your desk to build strength and muscle Fit&Well",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -17786,6 +18192,20 @@
       "summary": "11 Best Resistance Bands of 2026, Lab-Tested and Reviewed Consumer Reports",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5956,
+      "title": "Summer's Almost Here. These Workouts Will Get Your Body Ready Now.",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFAxMEJCZnNZb1ZtUzE2UkE0a2FnR3BnelVBMVdxMGoya1hEZExRSzZZcHJ0aGJoNzEweW1ud3BTV0dEQ2s3SWpDSkFwbWcwT0ZMWmt3LXZXZGxVTExkdkJkSk1XRnlBZXR3eGlzY0xjRzI0WWpI?oc=5",
+      "source": "Men's Health",
+      "date": "2026-05-22",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Summer's Almost Here. These Workouts Will Get Your Body Ready Now. Men's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -18979,6 +19399,20 @@
       "product_category": "other"
     },
     {
+      "id": 5948,
+      "title": "I Tried These Four Fitness Watches to See Which Was Best for Hyrox Training",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQTk0zMWwyZDlJT3JKbmRyeEZzTjFJOTlvbERoNk9DdnBSdXJrNjNTUHlEYllreUQ1LUxXLTJIcWtNdDB4c2stdFBueW5WUTdoUkc2ZWZSYm9qRFJNX0xNay00alNNd2tUSjM4ZzI5cXN1ODJCMzlpZk5YdlROMlV5dlVR?oc=5",
+      "source": "Lifehacker",
+      "date": "2026-05-15",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "I Tried These Four Fitness Watches to See Which Was Best for Hyrox Training Lifehacker",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 545,
       "title": "The 7 Best Commercial Treadmills of 2026, Tested by Experts",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBpS1NOaHNtZUR1M0xKMFdxWDZSVTVJQVhmNmJ4czZfaEdMZGlSQjBMZVh5ZHZvYVh6N1ZNSk1pSWZqYkoyVVF2S3NKdS10S0p6dHlUZV9jVjZBUjg?oc=5",
@@ -19903,6 +20337,34 @@
       "product_category": "other"
     },
     {
+      "id": 5968,
+      "title": "NeuroPace reports Q1 2026 revenue $22.1M, raises 2026 guidance to $99M–$101M",
+      "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPNVF4ZUR3NU1aZTQ2LS1zeVZTa3Vjdi11bXUyNldzbG5BUWhhNThVZUUzWXlTUVVlTzljT0VFZFMtOHh0aWxvR2xud2NsQmVQQ3owZC1iOGdMRGFHbGxaWHdPOXpTZHUzYmU3RXRUdndaUC1fOHpDa2pVSzdacU1XUEpucjVRMm1SZUxfVUl3Q1cxRnhlM0tKOUJueWhaR2FLWGk1TEh6NU8tSDRNQlBSQzJhUnZoSFRCRl9CVjY5TlJHZHVqV3M5TW8zYW1mX0U?oc=5",
+      "source": "tradingview.com",
+      "date": "2026-05-12",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "NeuroPace reports Q1 2026 revenue $22.1M, raises 2026 guidance to $99M–$101M tradingview.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5969,
+      "title": "Nautilus acquires 8.63% stake in Lake Shore Realty",
+      "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOblNiQk5yVW9iQW1KbUp2TjN4N0NzX0FkeW1kRDQwYnBoeFVqbDFUUGJKQ21mM3FSYlQ0ODBKNk43bkdUb25SM2FoeE5EZTUxTDY2TmF0aDRpVGZkZXQzeXU2YkxhQVFhdmd6NC0zS0lpVTVWbTJ6WE1NbS1Tb2R5T294V3Byd0oxalppeU1EeS1FTEl5cDZBWWROeDVsSDRsM25ScS1CWUw2YTFwOVZOMUo3SVBaSEpZMUY2QUpCSFQzUnVId1N0M2pqNFA4Rm1GM0hVWkJpbGI2Z3RWR1dERjZsWnI5UDg?oc=5",
+      "source": "scanx.trade",
+      "date": "2026-05-12",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Nautilus acquires 8.63% stake in Lake Shore Realty scanx.trade",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 581,
       "title": "PICTURE SPECIAL: Hundreds Attend As ‘Big’ Joe Egan Officially Opens New Elev8 Fitness Gym",
       "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNYWVHcWhBYWlxNEJldXV6RjRQNzlWbWNlVVRKRWpKRlAzTjVqbUdiNHZOTWF3aFZUOVg2azN6REk0RnBJWkJUVWxQN25xWjJHc3NMQzZ3OG8xdXFsdzdIYl9iRWdrc01nMU1zeVJIMjM3YUpsVkJhb2ZTZWE3ZFBUVDRacFp3R3ZqTGVYUmdFbHpfQ3hVVjZkbFN5b3RiQS1lY3NTWm9BTHhncWtuaWFFZldFS2JqOERHUU5WMzlnOTE?oc=5",
@@ -20740,6 +21202,34 @@
       "summary": "喬山4月合併營收年增6% 歐美市場報捷 經濟日報",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5946,
+      "title": "PELOTON TRUENO by Theo MONTOYA – Trailer",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPb0ExN2ZJVTdvUXhIeDVudHlHakF6YnZBbW1WNVdvTXNselpwTGdoQ1BhZHhOb1VHU3pWVUFXX2s2Mkd6RnVFQ0U4WldkeE94dEJoYzk1eEZLbVFtQnR3bjlBc0RxUkNzbEdJNHRXcTdhY3Q2Ym9Jd2lzVkxPeGR6VXAxMTZoYWpLWFp4cHZCZV8?oc=5",
+      "source": "Festival de Cannes",
+      "date": "2026-05-08",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "PELOTON TRUENO by Theo MONTOYA – Trailer Festival de Cannes",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 5961,
+      "title": "Bareilly Gym Case: Hindu Doctor alleges drugging, sexual assault, and blackmail by Akram & Alam; Arrested",
+      "url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxOR2VlQjZYRERDYVNEdTVFRGY4WFlqdWU0aXlMXzBMU2xmMFRJdkRmV082cnRqVGFTNGxOQ2VNem56b2ZHaENMamNtc29HNW1Bd1BNM05Ud1dLcGI1OEZ5bm85THBQdkVxOHFaeFh6dnpwLXpHQTdTMVdNcm1PdER3c3RWbWYxdFc2ZXFGSDNLVEJBYy1HTFM3aTV2WDNIMnhVSXZKSjE3LUdOZVFibzhiNEktOVlxeWhfUmRLN3A1UTZLcmFNM0p0RXM5SWNVdDJHMmFRZTZNdFJ4ekpwY3poYm5sU2nSAeoBQVVfeXFMT3Vzd3JOaTJuaU5QYm9DQzQycGdUcUcwblRBODdWS0tjTkhveGVfVG5xcDIteWxkanQtcUsxNkRwNVdRNHJDSmxSLUJaemVxVXU4cW5aUFBaMGRrbnQ4MlFJb3B1SWllU0o3ekd2VkIxejYtTWZfZzFUbzB2ZzdlNHFaZDMxalpLOE05TkFuZnl6Mk5EYkNtSEdYTVFkdkp6QVJaOWM3Z0drNGRmYnBvRG14d282cU5Wc3FkR1N0NXJxamFvRHJsSk96NHlobzFPTHBndlFWTVkxTTJFZWVHOWxNM2NxbV9qbUpn?oc=5",
+      "source": "organiser.org",
+      "date": "2026-05-08",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Bareilly Gym Case: Hindu Doctor alleges drugging, sexual assault, and blackmail by Akram & Alam; Arrested organiser.org",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -22336,6 +22826,20 @@
       "summary": "Technogym and Google Cloud enter multi-year AI deal Sporting Goods Intelligence Europe",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5941,
+      "title": "The one piece of gym equipment that can lead to real distance gains on the golf course",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPdUM3cUJCQmlDTTUwRTNRRkRjYkhrQXZkM1gtZWtua0JxN0JDSG5mU2RQQzNLU3ROWmJiaWUxWml5LTdYOVpFcHVLTFN4dmxzYmEzenJSMU1VaEJZWDg3c000R0NLallPU29IZnIzWVlhQUx0a1dkSnc0SmhKTzVtZDZMSjEwY3hBa0xjNWpjSXZjVURQZkI4dDFEcXo1MVRVMm5sOUlMeWQ?oc=5",
+      "source": "Australian Golf Digest",
+      "date": "2026-05-01",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "The one piece of gym equipment that can lead to real distance gains on the golf course Australian Golf Digest",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -24605,6 +25109,34 @@
       "source_type": "google_news",
       "first_seen": "2026-07-30",
       "product_category": "wearable"
+    },
+    {
+      "id": 5933,
+      "title": "My Technogym: Inside Kerem Bürsin's Technogym Home Gym (Short 2024) - Photos",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNSG9YVEoxTURtdUV6SUc1U2w5Y0VfcDlBdzZzbzNuUWw4eTl4Vk96UHNXaEd4MjBITnpxVmczQUt1SXdMSXlWb244MWhxcG1ZcC1xX1hYMFdmVmtRemFBbGl6U3RxN0JHODNyZHAwQlU3WEJobkkwTnN1bVVidGNYd0JxbUlraW9qR3pMalB2aU85SnNETHNmQzRpSVd5a3BGREZJaXhqdEtXUDNIOGlZ?oc=5",
+      "source": "IMDb",
+      "date": "2026-04-23",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Technogym",
+      "summary": "My Technogym: Inside Kerem Bürsin's Technogym Home Gym (Short 2024) - Photos IMDb",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
+      "id": 6001,
+      "title": "Peloton sets Q3 FY2026 earnings release for May 7 with a live conference call.",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOenE0MG1ncTc5RDBOS0otc2JXTVlaOVgxVGdmUTJvMkhFNWljQmN3cWlxZ2wxc2QzTmRDOTRKc2VSMlE1OU1QWkgycnJfMm1reG5GdEtBWjBuU0VyMEpiaGVldHc5YVRyZTZOb25EU0Y1eUlFRmE3RHFBbDhTamYwM1pKMmU4M2NiUV9ic1BVeVNnQTl5aUNac1pzWTNRcnd2d3lmNGcySF92dw?oc=5",
+      "source": "Pluang",
+      "date": "2026-04-23",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": "Peloton",
+      "summary": "Peloton sets Q3 FY2026 earnings release for May 7 with a live conference call. Pluang",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
     },
     {
       "id": 799,
@@ -28919,6 +29451,20 @@
       "product_category": "other"
     },
     {
+      "id": 5993,
+      "title": "Youth fitness equipment coming to three Greater Midland facilities through Kiwanis grant",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNQl9FU2M2aTdjTVE4QkktUzE5T3A4OF94RnBVOFhMTlB6QzIwSlYzWkZqaDgteTdGT0xCN0xmaWJuT0RxSE9WcEwwdUdHemhTR2o3VnVxSWFYQ2dtbU0xRkUxNmhPdV93MElzUWRRek5BQ0J0WEdCTHZEU2tLdDRqOE9uczJGZmsxTXNEUl9WNFIzUGFBOG4xM1VpODNBYVdzUW9qdjRXWXgyYlBFUzZkcE5kelRaZVNUWW1sWXNIT20tQ1E5U00yX3dhei1icVFOZ2tDVGdDQXlGaS1sNmfSAfIBQVVfeXFMT3hYWmhEUHMycEZqeUFhRUJKbnRDRmtZTEVzTGpJY2NZd2FCaE4tdlRDcldJZEhYdC1vWDZkMEd2eUcxUGdBamhMQXd4QV8zWVk1V0NMWHVuVlBaYmJ6Q0lCQWVyOTRhUWFCaHhpUWhxY24zRzZZU3N2TFNqSFNyTUdsLVNTUm5pcVJyQWpqQU5KOTc0VmV0TEt1YmlFZXZuMnVFNEdKT3EzX0dxSmtmdkJISHhUWlVEOFVRUVIwOWZ0ankyMXBDQlhqTEFnQU0wOVpIZWU2cXowWkdGSW1KVWpNZVBjMVlSMkJFUjhZdUp5eFE?oc=5",
+      "source": "MLive.com",
+      "date": "2026-04-03",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Youth fitness equipment coming to three Greater Midland facilities through Kiwanis grant MLive.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 982,
       "title": "Technogym’s global social campaign ‘Let’s Move & Donate Food’ campaign generates record levels of engagement",
       "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOQ0tjc1BfQUZfV3J1R2s1aktfUUwtbjdMRzF6dFVMdmNfQ2MxcUlJN2psVm1NWEkycnJLdHhUR3BqMXFuYjV6bVVKSktGb2JxRUJUZTdaU25YTWxFWmpFTV9xTE5OeUl6aUpSd0prc1BsT2hQLUJnbER2cVpydVRHVktKTmJadXZsQk9tel9ibDc1TXh5ZXJIQk5OcUg2eTFsNzJlQUh6V0VrbW9PaF85YkhkNkhISnFBaS0wdWhrVXRGTnFfSFdqbTVTRzJBWnkyN2hr?oc=5",
@@ -29336,6 +29882,20 @@
       "summary": "Peloton Escapes Investors' Suit Over Recalled Bikes Law360",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5945,
+      "title": "Peloton Introducing Netflix-Style Ad-Supported Membership Tier & More (April Fools)",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5nUkozUnZZeUZxTXRoN2lMTm44NldyemFsUzdHb1hzenRTNDFUazM1NkZIc0pSY00yYTdfcWlycmVsamNmcnhHX3V5bTBWUGpoTmlvV2FtTXVJT2RQbUswUER5LXg?oc=5",
+      "source": "pelobuddy.com",
+      "date": "2026-04-01",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Introducing Netflix-Style Ad-Supported Membership Tier & More (April Fools) pelobuddy.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -30795,6 +31355,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5929,
+      "title": "Home Fitness Equipment Market Size to Reach USD 18.99 Billion by 2032, Reveals Maximize Market Research Analysis",
+      "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxQVkIwcmlUYXkwUmlpN2ZKRmxlUmFIcWFLdWFHODdLelROaktTRjlreW84S1FBWXc1bktObW5XNjgtZEhyano1dDJjQmJGTjZwRW9ndXFmeldaVWdCc2ZQSHhNY1VlSkNCdVdvWjFNMG9mODhQV0NkN2hxX0Vxb0l1ZlF0OXRTeWRvYV9BaGxveXVNY3hWNXVGZzJUSzBsdGhXTG05NmRQRDU2QkhLbG5hbUx5bTBhVjBuaUJBRWVRUkZxTnUzeHp1U05iTE1rb2FxbjlIVVhLdWFIdUc4czZIamgzVTByUlJfSU5KS1pRdlZuQWRKQXRmWGxreUVFVXc?oc=5",
+      "source": "PR Newswire UK",
+      "date": "2026-03-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Home Fitness Equipment Market Size to Reach USD 18.99 Billion by 2032, Reveals Maximize Market Research Analysis PR Newswire UK",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1071,
       "title": "The French gym chain taking Europe by storm opens in Madrid: DJs, boxing, weightlifting, and memberships starting at €7.99",
       "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxPb0NUdmF4b0YzQUVFM2gxSk1ock8yS3AwN255VThYNFIyUTE2UDd0eXNXbmgyaS1VVWVqdFFfWV9fNmNra1k2QmpQMkRQWDN1Ym9KVTdQX2NTdFcwNmFLRVVWcFpmbEhkMHg5V0pBNmZhbS1ybl9sVTZZVWVRZDBCWVBmSzcxSWFFYXFSbEcwdEtvWnU3bmJOYWtzNTlldVJpaFdtX0xyVnZnY3Z3YWhTSnhFeGdPVEJOckJnSGVUbDh1YVYtalIxaU1vRFQ2eHdOa1NGTTYzcWxldzdMNFRaRQ?oc=5",
@@ -30988,6 +31562,20 @@
       "summary": "【Editor's Cart】2026 居家運動「必入手清單」：編輯嚴選10+ 款高效健身好物，這幾樣買了絕對不後悔！ Women's Health",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5966,
+      "title": "UBS reiterates Peloton stock Buy rating on improved profitability",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPa3NlNnVXQTU2Tnp6ZlM0Uk5qZC1NWXMyX0E1SDRwa3dwanRScnV6UGc0MGRJTnlmZ2RnRFp0TXkxTlpYQUhRNXhhMUdsRkgyaUxtX2lJRk9aTXNZd2xJa0ttRFVza2NwQWlvampqbkkzemd1eWJvT191SEhKQTdCNFEzMzBySzRTbTJQZy1iVWY2WUhLZHNfdG1vVWc5amkxUWNCSGN6a0J3dGdEN0FCbFJldmFoRlIydDFucmYwZDBaMzA?oc=5",
+      "source": "Investing.com",
+      "date": "2026-03-24",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": "Peloton",
+      "summary": "UBS reiterates Peloton stock Buy rating on improved profitability Investing.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -31436,6 +32024,20 @@
       "summary": "健身教練：運動流越多的汗，並非燃燒更多卡路里？ Vogue Taiwan",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5987,
+      "title": "Just in: The first new guidelines for exercise in 17 years reveal what matters most to staying healthy and golf fit",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPcU9ZSW9iOVdZa2Z3d2tJUUlNSXBqRXR2MjF5RXNjSUNKdkdSZFozQ0xNSGo2ZXV4N3JKWkVvWkxRY3FNZXFLdUU5RWZWOHdMZldZakVFUnh4MnFxNUJZVGFwdk5oTnp3bTg5eTl0dlNZMXV1UUItX2NXZXVmNmhrZGVXTWdoV0JCak1Rdk5ka3VFYUo2anl5eE5CSXFzQQ?oc=5",
+      "source": "Golf Digest",
+      "date": "2026-03-20",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Just in: The first new guidelines for exercise in 17 years reveal what matters most to staying healthy and golf fit Golf Digest",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -34323,6 +34925,20 @@
       "product_category": "other"
     },
     {
+      "id": 5998,
+      "title": "Metro Wellness Round-Up: Upgrades for a Healthier, Happier Life",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYUdEa2FUSl9zaXJJT1dldTNkVWNjNk1reFFpSEE2ZGVqdE94OWRFYjBycHZSM3ZZSnFpTFNmWl9PWUtXMGhFZU1aT2N0elNSV2ExemYxT0ZvTEFwdTVhaXAwaVBpRWhwODFBZGEtQlRDSmpOdjgxOVlDT2NmeGR5VU9OTQ?oc=5",
+      "source": "Metro.Style",
+      "date": "2026-03-07",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Metro Wellness Round-Up: Upgrades for a Healthier, Happier Life Metro.Style",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1227,
       "title": "Stop Storing Your Dumbbells on the Ground. Use These Home Gym Storage Racks Instead.",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1iV3dEeV94TExwRHdXMHNGSFZocWVlQ05iOVlFRHVMRjNNNlJoRWpPeGtzM3NhdUUxd0ZMWTE1enNTM0x2eHpBdHhOMDR0eHNQdEVlUWhqM1MyZjZaX2wycEtKSHR3TjQ3XzljeHhfT3Q3dw?oc=5",
@@ -34922,6 +35538,20 @@
       "summary": "Lenexa City Center to get new ‘Ninja Warrior–style’ outdoor fitness park and course FOX4KC.com",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5927,
+      "title": "Why Golf Clubs Are Investing in Wellness Tech & Racket Sports",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxONmNBOVZhWjBhaHNBR2hoaks1eHBNNEg1T3RYS1BwRWpXMHhlMHByZV9ncVRUaExYcElaTWRTNnlKbG5ORlNWVENEcXdKVV9nVDFkYjdGem5PQ2ZBMklQWnpHRUNWRWlSZHFxNFREV0tRZUI1QTA0UzRZR2l4SlBoZjBjUmVpWWxUYncxM0tPNFpfbHlGZ21iSWd3SDM1N2Q4NWtSbkZ1UQ?oc=5",
+      "source": "Athletech News",
+      "date": "2026-03-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Why Golf Clubs Are Investing in Wellness Tech & Racket Sports Athletech News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -36115,6 +36745,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5979,
+      "title": "All eyes on Novavax earnings as Matrix-M licensing gains steam",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQUnhSdFdkR0dOdGxGeDBGWHZqeXBkY1V5b1Z6bHFNSnhmWWlDbFVGYTFGaDc0QXhiejNDa25IVDluWFhIRmpJN2xfMUhwOFFIMl9ybTZWSWNTZ3JLc29zYTNoMk9fX19IZVRmN0xFR1R6SHhodmhBMlRVWVNndHA0cHhFaS05M2FFdVJYQ0ZZdzBWT2RELUVrRlcxNGpscWR1cGJxVnhtUk44bkJBc3Q5OHRaVTk?oc=5",
+      "source": "Investing.com",
+      "date": "2026-02-25",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "All eyes on Novavax earnings as Matrix-M licensing gains steam Investing.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1298,
       "title": "Arnold Schwarzenegger Reveals The Simplest Diet Change That Can Add Years to Your Life",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOT1NpUGNxU3JpS1o0SFZiLTB1dU9Ga2p6REtMaWk4S3FjdFRvZzN3bkZhT0JYMS1HbUdocGtrc1RydEY3a3Eyd3BweEZnUVRuYm9STFE4STkzRWpnMC1lRGFXRVN2NmVNSFdPTWhpLUJ5LVg2ZjNRaVpmbVRNM0ctdEgyMGp1RUtYZnI4TmN3?oc=5",
@@ -36728,6 +37372,20 @@
       "summary": "Suffolk spa unveils plans for big investment in facilities East Anglian Daily Times",
       "source_type": "press_release",
       "first_seen": "2026-07-06",
+      "product_category": "other"
+    },
+    {
+      "id": 5971,
+      "title": "Planet Fitness Stock: Too Heavy Debt And Valuation (NYSE:PLNT)",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPZTFoNnlfdzFJcW9IR01mR1dnRlhXQUhKaHAzNENDZUlMOVByNmNpcW1VbGhaWmFZOXJfREtWZEZHa0l3eVMtWXRUc044XzFpc1FObS1sanNJVFppN0JzV1FzbzFQb1oxY3JMM3pvWERMUzU1b2RnQlJKaHBobV9IU1F1MEF5dTRCeTA2SA?oc=5",
+      "source": "Seeking Alpha",
+      "date": "2026-02-21",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Planet Fitness Stock: Too Heavy Debt And Valuation (NYSE:PLNT) Seeking Alpha",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -37739,6 +38397,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5983,
+      "title": "Sick of getting inaccurate data from your watch during treadmill runs? This clever Coros feature fixes it",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPS0ZVQ2M5NkljRGxfNjFTNGdMMk9CUzZWZEZwcFBYcmFia0NOUW5Lelo1QkdwQ3dIeVB6eWNSLWxFVW1aUmdOaXpIMW1sX1VFMURYTmRqSGYxQWtiUVdmd05CYjdhTGZoVTN0Q0RZZGlSSUp4LWZXdnR5Qzg4X1d4WTk2OV9DM3ZRcGNKOGVnZXpVcWtld1VlTWpEczVtUExtZXUtNkxFM1FWcC00TG5EbXRsYWNXS1ZiYVIzU1p6OHc3RWtNenNWYmFIYjJKSWRTUzRuaXRIYmtBLUtYcktucHdjcVMwZjdrcFIxY3pOcGY2RXNva1E?oc=5",
+      "source": "Tom's Guide",
+      "date": "2026-02-16",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Sick of getting inaccurate data from your watch during treadmill runs? This clever Coros feature fixes it Tom's Guide",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
       "id": 1364,
       "title": "Argus Research Downgrades ​Peloton Interactive (PTON) Due to Continued Challenges",
       "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNQ3B5aEJmYWdwSHc0NXpGU1BuMmVMaWwwZERVMW9PWENQdWtpS2FzcWdqcExsQ1FTb2pGc3MtSHprNEhQSHhfTFlaODVGNm1wWUxPN0dMQ19vcjRwVWF2bGxSUURJaEdtSXhWb2FxdS1xZVBza2JsNkNySXJUc181YVFOUnA0R3draFZ3aWpqNUdna2F1SFE?oc=5",
@@ -38058,6 +38730,20 @@
       "summary": "Home Multi Gym With Weights for Sale Launched for Fitness Lo... Aspen Daily News",
       "source_type": "google_news",
       "first_seen": "2026-07-31",
+      "product_category": "other"
+    },
+    {
+      "id": 5977,
+      "title": "The One Workout Mistake Most Guys Make in Their 30s and Pay for in Their 40s, According to a Veteran Trainer",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOSnJrMVJPRkhiMm5CX0p0dFlweXpBR2cyNE45a3o1blFxZVNITXgwVkpJUHlHZ3BqSjV1NkdxS2lhSGU0ZVF1NmpPdURTMG4wclR3NzdvWGE4cHFNWDhPbk9BaVJLeHk0NUwzSGdYZWM3Nnd6YnFWcU45Z0xyMkVsUVlxYlRFeDFoMFVvVk5aY1VJTmgwTkpxVG1JTUk2bE9xX1Y2TjVJMzdDQU5ranlCMzNPakV6RzYxSlJPc1FvWkJxOTRrQzVUd0VYdzNhYWs2Wkg1SzlzakZLams?oc=5",
+      "source": "Men's Journal",
+      "date": "2026-02-13",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "The One Workout Mistake Most Guys Make in Their 30s and Pay for in Their 40s, According to a Veteran Trainer Men's Journal",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -42947,6 +43633,20 @@
       "product_category": "wearable"
     },
     {
+      "id": 5999,
+      "title": "Exercise Can ‘Significantly’ Improve Menopause Symptoms After Just 2 Months, Landmark Study Shows",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPNlg5ODd6Mjk3b3VTRG9fODFQLWRtQWpVRURRa3Bhd05ENkhJQkZISFRrQVVzdTl4UzFjOU15VFRFd0EtWTN1bkYxb1JyX1REQUZiOTZNSGZoT2JBbGZITnRJdzNFaFRLbDFjeG5GTXpJUjlnQlVUWTVidXo0SEs4Zjk4RXB4R0c2MXBfSnNwczlZejctVXB2QzV0XzRkS1ZFRXBrOEZXNm9VUUszV3pQR0pzazg?oc=5",
+      "source": "theflowspace.com",
+      "date": "2026-01-20",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Exercise Can ‘Significantly’ Improve Menopause Symptoms After Just 2 Months, Landmark Study Shows theflowspace.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1618,
       "title": "Connected Gym Equipment Market Driven by Digital Fitness Adoption, Smart Training Technologies, and Evolving Consumer Wellness Trends - Market Research Intellect",
       "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNdksyNDZIZ3Njd29XT1BCZVRTOExSM2JvREJzNHY2V1dGMXl1V1Q2YzJ2bDVRVl9OMk5UT3lyQWMtOTZaS0hucGE3VHhEcVBiejJmb1hqWkpidkMtQnA3Zlh2NHVEU2MtUXVKbHFtbmszQUwzREJ5VHB4bGR5Mm1YTWhPSV9leVNCNEtn?oc=5",
@@ -43098,6 +43798,20 @@
       "summary": "RAIN二度攻蛋開唱「半裸登跑步機狂奔」 五大彩蛋獨寵台粉 鏡新聞",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5996,
+      "title": "韓流天王RAIN亞洲首站 -脫了!從健身跑步機現身,尖叫穿透小巨蛋屋頂",
+      "url": "https://news.google.com/rss/articles/CBMitwNBVV95cUxQUFNVMDRIM3VjUjhNcnJSeEVSWVYxdFZaNFZxTFFWaHhlaWdPczFYcVYtdkYzNE12bjJhVFRzYjlEakFzSjZiRzRFOEJRQk9VN3pTWGt0Y3pYWkpENjNFakxHWjNTNFEwOWR0T3NzalFKRl9zcVVLUU81X0VzME5ZcnhjZF9idVpHcS1fQ0xBZ3RlNFQ5ZWJIQlZ4ZU43ZjI4cy05NXZybDhrcmNLLWlUa25POUIwZlhLQ3J1X0ZIejNWdVNKYk5KRm1jaXdGMEVldVk2U0pZSEEwcVd5SzF4WFFtcUhLdWJQV1VpbEI0WkFDOFJvZkdVbjlZbVRfY1duckE2bWdfdURjZTJaUzZ5RU1XR1JUTnhBTVFXdDdWVXppZXhzNjhoNjJKTXpka3hQS2k0R2Z2anpmOE51VzVId3JjZm5vWFAxamhMT01xbEdzcVhFQVZpbFlrTFFCSnc5WnZ4eXE3bFJRcnVySDRhSzd3bTFFVXhzRDAwYVdKR2lKb3c1a2xJeG1PT29lUVBlbzBkWENoSGU3TlZOMHQ1eG8yeGJGTE5lX3pvbDhhY3RkVkhGNmJR?oc=5",
+      "source": "Yahoo新聞",
+      "date": "2026-01-19",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "韓流天王RAIN亞洲首站 -脫了！從健身跑步機現身，尖叫穿透小巨蛋屋頂 Yahoo新聞",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "cardio"
     },
     {
@@ -44039,6 +44753,20 @@
       "product_category": "other"
     },
     {
+      "id": 5936,
+      "title": "Modern Luxury Cardio Lines",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBZUDBjd0gtcUZ5bXpnaTBpTk84WnRpaTVqREtqQXlBbWJ0WFNFb3dTc09KZ0laejNnSWFzdWZTdnJ3Q1JtRjByM0w4UlhqcXNBQl9oTUoyOTVDZzh3MEHSAWNBVV95cUxQTlRnaHY2OEVOWEJSTW1yaDI5S3JxM0FIaWEtOTkzaVR2REJZNjN5RE1JNzQ1ekYtQXdVNjQtdFlsR0xiWGpGTG1rMjdIN2psTXgyeVVLNnhuQnRsV3NmN0JLNzQ?oc=5",
+      "source": "trendhunter.com",
+      "date": "2026-01-14",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Modern Luxury Cardio Lines trendhunter.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
       "id": 1663,
       "title": "Peloton Hyrox Training Program (12 Weeks) Teased for February 27th",
       "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE05YTl2SGRZMUpobkI3Y2JCeXREdkJtTVdiX0hERmRMb243QXdraGI3NnpXbVdFMl9qaTdLLUNsNHVWVFJubDd0ZHVPWURhdkNwd0w1aDN5YXdMMjQ?oc=5",
@@ -44501,6 +45229,20 @@
       "product_category": "other"
     },
     {
+      "id": 5953,
+      "title": "Bowflex Max Trainer M8 Performance Pack Reviews: Is It Worth the Investment?",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNMmllX2lZQlc2Smw0U0ZSWkNBX181aWxVVFdlZkFuUFYzTEg1Z3ZMLW9aMFdzcmFNSnBXNUpIQnlXMlNabmNVWTNKZ2tTaGtPbGtaZkR1dnlTUjlXSDFwclpSM1FMNFMwVjd4NkpUZmNQNEx2LUhScUU3RUhFXzZhdWM1YXZIMldSRFNZcEtfUGpMSUp3dS1YXzd6a3VCZEViSDIweGphTjMySkJqTHVNQlFPa2NvZFhrbmc?oc=5",
+      "source": "Appalachian Voices",
+      "date": "2026-01-12",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Bowflex",
+      "summary": "Bowflex Max Trainer M8 Performance Pack Reviews: Is It Worth the Investment? Appalachian Voices",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1685,
       "title": "Fitness: Take advantage of the best of winter to get in shape",
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxOcDNVNzVUUUQ5TFhMOG9Wb1RhRnVtaHFJemMwZUgwblU0YlBqNDlxWGMtLXhGT3dkVEJVaVhfNUl4T3E0ekt0cUllbXlSY1U4WHNWcFo3UXM5X1ZHSGhMZzM1NXp4VEMxMjJ3RGNlOU1LMEo1T1BnQVEzTWF2YXdsbkM4eXZKOG9HRkN1TWtnUzZ5Y2NIRmJ0M0VPZUo0Vk9xdm9jeHNVeFI0OGpY?oc=5",
@@ -44596,6 +45338,20 @@
       "summary": "Speediance Brings the Future of Smart Home Fitness to Life at CES 2026 GlobeNewswire",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5959,
+      "title": "The 6-12-25 workout promises to get you stronger quickly—here’s how it works",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQR1hlbXBwdTlrS1ZkT1RKWXRTeW80VDRVemVlZEJpZmdfWFdRWldGUnhBMDU5ZnVsQkh1MVRmMTQyVUpaNmVZZGJIS2MtV1ZBXzl3eU9ESzhLdS00UmF6TWZJdHBSRUdWb09pdElUajhjSzZ4UjRKUjRfSUMtVVgyMmdLRDJmdWFuQVI5Yw?oc=5",
+      "source": "GQ India",
+      "date": "2026-01-11",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "The 6-12-25 workout promises to get you stronger quickly—here’s how it works GQ India",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -45047,6 +45803,20 @@
       "product_category": "other"
     },
     {
+      "id": 5994,
+      "title": "喬山2025年合併營收年成長13% 競爭力 up",
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBDazcweTY4YTdHS05SWm8tZWtjajY5WjlYcjNuYkdfeTd6ZGMtVUR4SGRiMnk2VEFQeG9uNnF0V2c5RWlFWGczQUhuWnB6T21NYXlFYWhsajE5Z9IBX0FVX3lxTE50UFFUZm9hMnBtOElkektxemxuc0tnYmNYeVZOZy1MeVQzZ3VoWnlQa1NvU3hocGRRNGFNWHhmeGNOX1FaVjJ5SWlFejBCWWFDVnpYRTJyNnZyRm9lUlR3?oc=5",
+      "source": "經濟日報",
+      "date": "2026-01-09",
+      "category": "brand",
+      "categoryName": "喬山品牌動態",
+      "brand": "Johnson",
+      "summary": "喬山2025年合併營收年成長13% 競爭力 up 經濟日報",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 1707,
       "title": "24 Hour Fitness Lawsuit Alleges Treadmill Malfunction Resulted in Serious Brain Injury",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbDZpUXFqbGdSZF9iZ3RGN3pCMXcxWkZ4WjBkLVBGZWg4YlpGMTRVUGJSYk9hV1p1TUhGZEFkbnZOSGhFdExfaHhESkt4LXJjX2ctNkpESlBjMGlMXzRhNEk0R0hjWVRwS3FUUWZROS0yM0E1RkctNlFPdXhfREEwTGNwODVmcjVwdE96UTN6em1oWms?oc=5",
@@ -45338,6 +46108,20 @@
       "summary": "13 Products To Achieve Your Fitness, Health And Sleep Goals This Year The Weather Channel",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5949,
+      "title": "Peloton Referral Program Now Limited To 4 Per Year in 2026 (And Reward Is Now One Month Membership)",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAxNW9nTk5ULXIzT1kwWjl2dHpPR25QZDgtX0FVTF8wcWhMek90dTZKWkV4bU9jX1lRVlk2TmIxSUN6SkV5VXFiUXZlak5UWDhiaU1aMldlTEkzX3FpQnlxRmVlbw?oc=5",
+      "source": "pelobuddy.com",
+      "date": "2026-01-08",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Referral Program Now Limited To 4 Per Year in 2026 (And Reward Is Now One Month Membership) pelobuddy.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -45660,6 +46444,20 @@
       "summary": "The best-selling fitness products on Amazon right now Seattle Refined",
       "source_type": "google_news",
       "first_seen": "2026-07-31",
+      "product_category": "other"
+    },
+    {
+      "id": 5955,
+      "title": "France Fitness App Market Size & Outlook, 2026-2033",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOYWc0Z2hrTkFndGNvUnJxUHE5ajJXLUhVZjlaQjJDT1pjMDVyeFozWmNlS1lpeHNKUDQxWnY2R3hFLUxWa3U4aTQ0Q3ljMjJuVFg2cGlCcnpPbXkySDhZYVNHSmVTTGZPZnN2RDhSWWg5NXV1dFFDTHZ6aFJWQmtmaw?oc=5",
+      "source": "Grand View Research",
+      "date": "2026-01-07",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "France Fitness App Market Size & Outlook, 2026-2033 Grand View Research",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -46066,6 +46864,20 @@
       "summary": "Space Force publishes further guidance on physical fitness spaceforce.mil",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5928,
+      "title": "News | W.P. Carey works out deal for national portfolio of Life Time fitness clubs",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOU0h6WDFEa3VFZkJvaVRmR2p4d0M0YkdQRXc0ZEk5NVhtRHJkLUxBdXBnN2VmUVl2MXg4M2szNklKOVFmOGVLd1RsODRrUUVzaGdiZHlMZHVhRHJ0ZHpobEJVZXdBNmhEQjZnMkxXZjFnMTlqOEpaLS1GWUk1U0V3dEhmZkM3Y2hGdkVlcFV2aTd5NEl2eWFOb1piM01VYjBfbTFFaG1JR2NleEtVbi1RcTdFS0pBQQ?oc=5",
+      "source": "CoStar",
+      "date": "2026-01-06",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "News | W.P. Carey works out deal for national portfolio of Life Time fitness clubs CoStar",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -46599,6 +47411,20 @@
       "source_type": "press_release",
       "first_seen": "2026-07-30",
       "product_category": "other"
+    },
+    {
+      "id": 5951,
+      "title": "We Tried This Compact Treadmill with Built-In Coaching and Bluetooth — and It's on Sale for a Limited Time",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1IQUJfcUxnanRpdmdUTVJ2YS0xRTlZdkFzRy13WF9PUTY1QnduNzhVZkpTVUVwSmN2Z21Fd0pBOGZrMWR3Zm5tbjNycl9kUWJiRTNqUl9BcTNVUzVMVkR6alJfU29rNjhIcTdpQ3NsVER6MTFEM29wSmRB?oc=5",
+      "source": "People.com",
+      "date": "2026-01-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "We Tried This Compact Treadmill with Built-In Coaching and Bluetooth — and It's on Sale for a Limited Time People.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
     },
     {
       "id": 1776,
@@ -52285,6 +53111,34 @@
       "product_category": "strength"
     },
     {
+      "id": 5942,
+      "title": "I Love This Foldable Treadmill, and It's $350 Off for Black Friday",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQRkluQVl4dmtPeVJMQUE1WG9YcmpxdnZRNnFEZ2lTRFpfLWNtWm52dkpCZzE2QmwwTUhXYnVibDFnekxXMHVqcDNKVjU4NEJLNF9NZ3NWV0RaQVJBeDhVZ09QU05KVFRISjRRUG5KTUI1eWtiZVpMR2JPdDRsNGJXMzMwVzNDWWZLRFhWM3F0MW9Sdw?oc=5",
+      "source": "Lifehacker",
+      "date": "2025-11-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "I Love This Foldable Treadmill, and It's $350 Off for Black Friday Lifehacker",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5985,
+      "title": "Don't buy this crazy £10,000 marble exercise bike just because it's on sale - Buy these instead and you'll still impress Bond villains and the super rich",
+      "url": "https://news.google.com/rss/articles/CBMipAJBVV95cUxQZ2xpdlF3dW5XWmttSC1JNWpkMjRYT0RDZ3REeTc2UElVSTJRZEhweVdfcjdUWF96czhJbmR4dnR2REd0OWlwa3dUSm8yaHptN1MzWFl5dkp2c1VZU1hzUzFTRThFbXE0M0puYXIwRGVibFVsdW1TeUVCLVBhOTZaN3c4NzNSd1NBNHRKQngyWTlkcW5TdzFiLURUN1dITmp0TjNLUktYRjZjaXRHMkNyZ2FLaDJoLWkyb0JXc1FYbWp0TTFNT2hyMzRoUXh3Q0plbGRvblB5ZG5PTGJqalNSM2labm5INEFQUWQ1c0hCWS13ZXo0dnJRVTdMWU5fYzA4NUpXQmlFenZ2WjRNM3NqTmNVbXZlREhmT25MRTk4dnhCaXNG?oc=5",
+      "source": "Cyclingnews",
+      "date": "2025-11-25",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Don't buy this crazy £10,000 marble exercise bike just because it's on sale - Buy these instead and you'll still impress Bond villains and the super rich Cyclingnews",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
       "id": 2026,
       "title": "YESOUL G1M PLUS Bike: An Affordable Peloton Alternative for Home Cycling",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQNmZ6cjZqdzgxWHZQWnlod3g0SW80X3Q0NERid25lOGl0ZDNmWlFZcnBWamVtV2FTQTFuTHl2RWRqODk0RHBMNDVodUZ0OWhjTXhad2M3N05ONnREaWhpWFg4LTNVRXh3R0FrQXNlUFdOVURrRXEzaEZhXzV3N2VISTE1YUU0aEl4S2Y2RHFrdlJuOTFicHQxaVpoTQ?oc=5",
@@ -52492,6 +53346,20 @@
       "summary": "焦點股》喬山：旺季增溫 股價強彈 自由財經",
       "source_type": "google_news",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5938,
+      "title": "Maxpro Fitness Expands its Nationwide Presence by Leading Home Fitness Solution with Innovative Designs",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOMUxCUW03dkswSEtMemZFV2Jia0VpSk1SUTh5WDlobWsxTmpmQ19HVjhzWXozSnpINlBVT2FzZ1ZtTEhBYjRUcXAwaERnUzZxOUpJbU9TMHBVWkQ3Zno1eTN5cmgyZF9ZNVdrX3BwLVlvQldlMGY1N2twaTRCM0ltM3NVTXJaSG9nUWNqX0xYYWFMVzkxRlhfWGNLTE15b294SzVuaHNhSjdoUkhEYXJUb19ycUN1ZXBUN3BZQ3dzQjlNZmZRRDgzVE9URERlMk1RZHF4TWN3WUY5WW5EdC1CcnJ1Y19NaWJ5cEE?oc=5",
+      "source": "ANI News",
+      "date": "2025-11-24",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Maxpro Fitness Expands its Nationwide Presence by Leading Home Fitness Solution with Innovative Designs ANI News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -52845,6 +53713,20 @@
       "product_category": "other"
     },
     {
+      "id": 5976,
+      "title": "‘Stop the Insanity’ Susan Powter exposes truth behind fitness empire’s collapse and life driving for Uber Eats",
+      "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNODc3X2ttZ252Umdkcmc3alNxWk9JOUIxZEUtZ2YydmZ3SjJTZEVEV1V4YTBrZkUzVTd5MmpWRlBfZnhobi1vVmdubmluMEt1NE1WY1A2aDRvZ0lzeEdFWXhMZTZHVlhzR0FOUlBwU3pKdDR6U3FGX0djNHZDSTFaSjNDQlJrRW1QeDl3eTc4MFE3M3h2UkduRmVnOC1GaXJqMmVpTjRLQUpiQ2lzRU9zU2UxWHhXNUxSejh2OVY5YUlsZFZHRlBEZnkwdG1qUdIB0wFBVV95cUxNMXpGdWcxVkRzeTc5YjR2UlZDMDFHUmRoNnZDY1ExQ0xvX0t3OGh2dnd5RmV2V012THBUX18xUDJUeWpJdlNFVXZXSXQ4bGcxY25xZFFGeGZWWlN6TVVFMHVMS2dFOGtBT25COGhPNGF2UWQzVV92bklQRkZxdThINXNQcllXZ1RXdlRLZDJCQ1VRdFhLTEloaFlzN1RTc05jLXBFZGE3a0RyWVprclhUYk0zMWhaWWRvRXJYVm5oc3RWalJoelpPdDNjRUo4U0VJVGJB?oc=5",
+      "source": "Fox News",
+      "date": "2025-11-20",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "‘Stop the Insanity’ Susan Powter exposes truth behind fitness empire’s collapse and life driving for Uber Eats Fox News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 2050,
       "title": "The 21 Best Fitness Gifts—From $12 Stocking Stuffers to Big-Ticket Upgrades",
       "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1EZE5fTEFPaWtvZ090Yk1qcUJRb3JUWnA1bEpXTGtLTktqdWFhY2ZSa0g5NUNNZHlRUzZ5TkxfZi1EeGdBRW8tZUdjbEpxSkNZbWY3YkFoNHRsMVA3VFdTSWZfRnhaYW13ZDBzd2haQVB1LWtXeXc?oc=5",
@@ -53066,6 +53948,20 @@
       "summary": "Kendall Toole Launches Holistic Fitness and Wellness App Fitt Insider",
       "source_type": "google_news",
       "first_seen": "2026-07-28",
+      "product_category": "other"
+    },
+    {
+      "id": 5978,
+      "title": "Feel the burn: Quadrant PE seeks buyer for Fitness & Lifestyle Group",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOamoyWllfTGhJTnUtT0ZGcTBGYjRCcFpiRFpQYWk3ZjZ5R2RfYS1iR0VYNllaTC10ZmxfVmZfeGRuTVh2SjNzQzRnZGx0OTdSM2JZMWRTSVhMbE51ZTA0RDRyUzBKN1hvelVxc25aNHJ0WG1GQnNQdDFxWHRXZEFTQjhIOUxDekZDTjBIeUJyRDZES2hSMnpldFdVQjBsV0dyazdzSzc2Z0tyaXZBR01lSDNQaHRJcjVQ?oc=5",
+      "source": "AFR",
+      "date": "2025-11-19",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Feel the burn: Quadrant PE seeks buyer for Fitness & Lifestyle Group AFR",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -53951,6 +54847,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5943,
+      "title": "Health Matters: Health Canada recalls NordicTrack rowing machines",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQbkFpYWpyd2NpVGZFMURjS2NueDJMcER0b0RHSDdmdzlkNF9pcWc4OXRORFFNc1RvRkFjZzZOTUV4VmFJaHZDNW9GZ2tVQTlYR1Jqb0txOTJwMmVwa1hyOUdLOHNFcFZWbExEc2Rfb2VwVElqX3lrODJDZ1F5bF9KUWZXd0NDelVmYVBQZnR2a1pOOGZBMm5oY1hicDBQa1IzSzRN?oc=5",
+      "source": "globalnews.ca",
+      "date": "2025-11-13",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Health Matters: Health Canada recalls NordicTrack rowing machines globalnews.ca",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "cardio"
+    },
+    {
       "id": 2094,
       "title": "Wade Diebner & Mark Mastrov Allegedly Enter into Agreement to Acquire CrossFit, LLC",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNRmlCd3hHQ1ZvSGNHNGdZMlJfcHRPaVVLMzFMVENvQUxiZ2tJMFBDSGt6cUtSZDF1RmI1ajdRRC0wNTYyUWhQTWhmS3B3dVl5TmtRZTNNSlByQjZvRURUYkhlcUs3N1lrNTFrQ2VJdTE2OG1uQ1JLdTkyeU5hRGN4cWhmNmtadGE1V3BXTjJJQzlqTTZzdmZHS2s0enhmZ2JhYTRiVE5ZWG5vUHU0WWtrVGJIclV2Z2c?oc=5",
@@ -54623,6 +55533,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 6000,
+      "title": "Peloton Instructor Callie Gullickson Announces Book Tour for \"Mocktail Hour\"",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5sclNRazU4RVBZVFdxX1hWYUZzVjJLbkJ0eWxjVUZqR1RBUk5aWDdjZElwVU9DR2JjVF9JOEMtUWpFZEF1U2x6VWd1bjN5UTdGWEdIZjBn?oc=5",
+      "source": "pelobuddy.com",
+      "date": "2025-11-08",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Instructor Callie Gullickson Announces Book Tour for \"Mocktail Hour\" pelobuddy.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 2122,
       "title": "Jessica Herrick Oversees Spa, Fitness, and Wellness at The Vintage Club",
       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdUVTZFZTd3NDclBiUkphTnJlelhoczBIV0MxQ0J1ZEpMMWhoTWlIS3NuOG4yM3J0aWZlZ1A5TGtfYmF4ZnJmamMwOWU2VEwzR3lXQ1V4NkhPRXZtazdzbzlDeGxaZWNNYW9sbVdHaEtnRzVrbGM1TEdBamswd0F3QnhaMmdmMkcxRThXd1VNQm4zMUtuR2tQWHZ2cG5ET3l2akRpQkw3QS1GX2M2blE?oc=5",
@@ -55278,6 +56202,20 @@
       "summary": "Peloton issues new recall tied to seat post defect, affecting 833,000 bikes Reuters",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5991,
+      "title": "5 arrested after woman found chained to exercise equipment, held captive in home for several months, police say",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPZmIxWXY2b2FTRGNHSHZwWVRRazdFcDV5QUZPRW9Kb0M3dm52TEt2TEs5Z2E5NUYwblpOeXJhN3h0bllIZHJDM1MxR1drTkZrcU4yTld4SU5YSGk2NmhfTmR2ZThVeHV5VFdXVHdRdzgxWFNYZnJza0Y2MjRIa3Foa1Ria2RWay1kVHRxUjVxSGZCU2wzM0Z2aW03aFRaamtoaS1EVWQyVDlzMnFlWFQ0YUI3dDFqemxudkJPTXFzZ1ZrdGdxRGV6NEdkdw?oc=5",
+      "source": "KGNS",
+      "date": "2025-11-06",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "5 arrested after woman found chained to exercise equipment, held captive in home for several months, police say KGNS",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -56303,6 +57241,20 @@
       "product_category": "other"
     },
     {
+      "id": 5958,
+      "title": "East Yorkshire gym will have 'state-of-the-art equipment' following 'major refurbishment'",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPWFBsOEpBcFpUMTVPdVFSanRnTjBXWTg2ejZlS3NoR2g2SGJZUlJyQURIODN1MVYzRVl2ZWRiVks5bjVvVF9fWGUzNG5lWk83WndwSERCWDRLLTV4cXZ3cm5PYU83NlNyT2tKVFZvUF9pUkp6QTBCTWhucDVBYndoVXdQbzF6MjNHVFF0c2VGSExyb1VFMHhDcDBUTU9nWFBq0gGmAUFVX3lxTFB3WS1nYW16enJxWUI3VERQXzJfZVh4dnBpU1QtVTdOR1lJTEs5ZXpCRW9xZWhPNGlpNUgzZXRheERGOUVHczZsRENfYUNVcG8wZGtmLV9PVlF1VWlWOWdNT1FhcS1sdTMtLTV1VERFUGlzc0otajVoT0pPbFBBM3VuaGx3c29CcmFsdDliRTZUMDRfWnJVdUlJTFlKZlBjdUpySjA4WHc?oc=5",
+      "source": "Hull Live",
+      "date": "2025-11-01",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "East Yorkshire gym will have 'state-of-the-art equipment' following 'major refurbishment' Hull Live",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 2191,
       "title": "How the AEKE K1 AI Powered Smart Home Gym Fits Into My Busy Life - And Made Fitness Feel Easy Again",
       "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNWWV2aUg1Ukw5eDhHTDdDODZRQ0YyOW1xNUM4TjJMcG9iOXZCaURhMmdydXN6aWl6dzF3RnpfN0NGa0MxaTlWeVFLRnNWLV9vbnBuR0ctYTFHeGRWSjFHZERndVJXNE9hMXZPbVM2OHlrN0pQTzBtQ3JtS1Y3cGEyQVg2aUhmYVRpNkJRZVp4SEdxZjdnNTl0THNyRUQzVXJVd21Vck5oN3VwWTUzUlMzdmgtVy1RWm5yb3NkT01fMlZHWGdRZ0FWaGJsTUthaUc1?oc=5",
@@ -56846,6 +57798,20 @@
       "summary": "‘Super easy’ exercise hack solves common office worker problem News.com.au",
       "source_type": "google_news",
       "first_seen": "2026-07-28",
+      "product_category": "other"
+    },
+    {
+      "id": 5964,
+      "title": "24 Fitness Gadgets That Actually Work Gifts (Multi-tester)",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9NSDVHWElmU2RHbEdCT2g4Mk5iTnl0bklfNGFXaE9zMWVzSHhhNzhaOVk3RENfWFNWSlFycGMzVEFxVjd4LXFaZzdyOVpNU0xyNFVCY08zNGVVcm9pOVQ5VjB2TDU?oc=5",
+      "source": "RunToTheFinish",
+      "date": "2025-10-29",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "24 Fitness Gadgets That Actually Work Gifts (Multi-tester) RunToTheFinish",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -60122,6 +61088,20 @@
       "summary": "This Rowing Machine Delivers a Full-Body Workout, and It's 25% Off for Prime Day Lifehacker",
       "source_type": "google_news",
       "first_seen": "2026-07-28",
+      "product_category": "cardio"
+    },
+    {
+      "id": 5995,
+      "title": "他改造跑步機成「烤肉神器」!網笑「減肥變增肥」:極度羞辱",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE11eTd1d3JuaVpzRlcwUVNwcmI4MU9VQTdOS2ctbVlVTWo4cTNLbnV3akViV1hUMjY2dWQzOWcyNnBRVEQ5WXNndmxuTVR6ZWFBdmF2UnRVemIxb2VnY1HSAUtBVV95cUxNR0ZTR3pHNG54Wlh5U2NaQllYQjdVaUxRUm9HbE5rcVU3TzFtMGNMMEs2WDVRSVBzelkwZFpwaXZXU0pENmRyNjBLVnM?oc=5",
+      "source": "ETtoday新聞雲",
+      "date": "2025-10-07",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "他改造跑步機成「烤肉神器」！網笑「減肥變增肥」：極度羞辱 ETtoday新聞雲",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "cardio"
     },
     {
@@ -63569,6 +64549,20 @@
       "product_category": "other"
     },
     {
+      "id": 5962,
+      "title": "Jessi Returns With Gym Update After Year-Long Break, Fans Flood Comments",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTE1GZjlUOVcyUXpiQmIwVmU3TGtBbmVEM05Tb3VLRlVpUHJ5LVJuNnFNOWh6dlUwTTNhX0tlbTFuNFRCQVUtczg2SndSODljTGlwQV90cG5Nckg3N0JTeGpGYlYtcno4U2RlQll5eTBXaWNOb2RmdkVwYUxKTTBzZmhDa3FGOWNlOEdzeA?oc=5",
+      "source": "KbizoOm",
+      "date": "2025-09-16",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Jessi Returns With Gym Update After Year-Long Break, Fans Flood Comments KbizoOm",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 2502,
       "title": "Technogym Brings Corporate Wellness Solutions to Formula 1’s UK Tech Center",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNajZ1UEpfMURqbngydGJSLWhTaTFyZlZiWnNnYUs3SjB6WFlqY3p2Ymw5bEw0R0dCN1dGMFNPcndmNXJUeEZpN0puUHlTWmpxVGVuYmQyRVYzWU93a25TVG1HeTFNckpadXROOFVqRDJjR2t5Z04wRXQzY253MWFLOG1hVVFkVVUtcDFWRHUzYk9lXzIxUkQw?oc=5",
@@ -63889,6 +64883,20 @@
       "source_type": "google_news",
       "first_seen": "2026-07-28",
       "product_category": "cardio"
+    },
+    {
+      "id": 5965,
+      "title": "My mates have been brainwashed by the men’s wellness movement",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNLTJ0R3J6Q1M5QTdOV0pqOUh3U1FXUGlOSU5GRUFxM2VwQ2Yzc0o1ZnpYZ0dYMWo4U3pQS01COENyTm1VWG9GdmtraDBydGdtN2VDQ1Biak5KcEhyNXVYUDQ2bDRZVWM4WTBJeVl6bzB1X0xURGstVFJIaE5pXzZHTG8wdU4yX0RZYU9qbUo5UWgzN3JqaHBLSEFoSEJnVzdXQ0xUeTdhdHJMd3BQdXZuaDg4ZjVqNDdJREFvcTd30gHDAUFVX3lxTE5uamg0Q3lsRTRlN3laLTdVU2I0Q05wXzExNVFoTVpxNkZpOGxvaFY0ODBiSE1OU2JPS25VQmkxMmFodkx5Ny1mSDJKWjhLS1FIYkdFRExOVldUZW5kd3BjNVM3dGxXQU8yWWpKVE9xb0t0dlptNmNoSkpveFJqT0FRME9nVVg2Rjc2ZVkxRmdTM1NQbWptV3U1OWs1SmgyZGw4eXd2dDBXN1F6cWtuRlB6YWxOaHljdXYyNXByM1Rnblp6QQ?oc=5",
+      "source": "The Australian",
+      "date": "2025-09-11",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "My mates have been brainwashed by the men’s wellness movement The Australian",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
     },
     {
       "id": 2520,
@@ -64532,6 +65540,20 @@
       "summary": "BTS Taehyung & Jungkook's Incredible Fitness Transformation: The Workout Secrets That Have Fans Going Crazy TechnoSports Media Group",
       "source_type": "google_news",
       "first_seen": "2026-08-01",
+      "product_category": "other"
+    },
+    {
+      "id": 5939,
+      "title": "ATN Week in Review: Everyone Wants To Be a Wellness Company",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOazBMQkY2Qms3WFBMNy1uQUJQS0Vic2s5Wjlub3M2UGg4VFF2SjhUeGd4N1E2dUU0MkdDX2piU1ctOXJqMVJnUEcyd1VmWm0xWkl3YWcwdjVrWGxNT1dnLUFRWU5uU1hKa05FX1pndGQwWkE1ZnNUTk1yZGl4NFcyaWhpTHJSQUp5dzJYMTdn?oc=5",
+      "source": "Athletech News",
+      "date": "2025-09-05",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "ATN Week in Review: Everyone Wants To Be a Wellness Company Athletech News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -65932,6 +66954,20 @@
       "summary": "Best Golf Fitness Equipment 2025 - 9 devices that could improve your golf Golf Monthly",
       "source_type": "press_release",
       "first_seen": "2026-07-30",
+      "product_category": "other"
+    },
+    {
+      "id": 5935,
+      "title": "Technogym focuses on AI: intelligent equipment for personalised care",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNeUtqWVdQeTNybjg5WXd6c3N3NlVVYWV0VGQ5MXg3QkdkQ1ZhaUR4STFyWGFzcEdMeklLYkRIdGVRMmFVU19vQ0hnM3BHNDQ4ek8zRjBQaklkalFRMFVtQnplY3AzVElDVUNBZmRLcy1ua0paU1dabWQ4R2J5RzQ3eVZRclNRTEtGSmNTT2dmUmYyOXc?oc=5",
+      "source": "en.ilsole24ore.com",
+      "date": "2025-08-20",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Technogym",
+      "summary": "Technogym focuses on AI: intelligent equipment for personalised care en.ilsole24ore.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
       "product_category": "other"
     },
     {
@@ -71465,6 +72501,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 5980,
+      "title": "Amazon Reviewers Love This Mini Stepper For an Easy, Low-Impact Workouts — On Sale for $60",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQV0lXeWhrT094S2JDdkFLRTFjZVlMb2xQcjhQbWE0LU9FNEVWTVNrcTFiTy1tV0lXeTU5LThMb2xRbTNCRWRJUEdNLTd3eURsQmFVWHlURXpvc3QwUE1reHhvSlZmX1JMQzJKd09lMTNuUFg0SllFVjBNU0tvUndZWVNPRWw3SDA?oc=5",
+      "source": "Kansas City Star",
+      "date": "2025-04-11",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Amazon Reviewers Love This Mini Stepper For an Easy, Low-Impact Workouts — On Sale for $60 Kansas City Star",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "other"
+    },
+    {
       "id": 2879,
       "title": "Rep Fitness Launches Direct-to-Consumer Business in the UK",
       "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPSWMyMEpPc1d0aHhPbWM2Z0pFcmhhU1h5MmhZY0FjM195Ylk2V0ttbW5saUNYS0o2UXoyU19HbjhMejhiV05mczllcERaZ1pYejdNc1VLTkppbXM5N3ZQRDJQUWNwYXlHTmpDaG5KSGxaZ0ViY3hZQ1ltMnRDbnB3c3FGc1h3Y2V2VWsyRHZ3?oc=5",
@@ -72093,6 +73143,20 @@
       "source_type": "google_news",
       "first_seen": "2025-02-10",
       "product_category": "other"
+    },
+    {
+      "id": 5981,
+      "title": "Expert-Tested: Aviron Loadable Dumbbells Review (2026)",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFA0NWowbWdVVjBaLUNWU0xZU0RhSTJMUHNBcDBOUjJGVFFmYUpYSEc2VGhNX0psMG9zS1N4dmplclZKUmh3SXc2ajdHbXRDYjlucEl6a040RFo0YUZLSlJHMXBtRkw2NFo1RkF3ZEszMV92Sm8?oc=5",
+      "source": "garagegymreviews.com",
+      "date": "2025-02-08",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Expert-Tested: Aviron Loadable Dumbbells Review (2026) garagegymreviews.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-02",
+      "product_category": "strength"
     },
     {
       "id": 2928,
@@ -73524,17 +74588,17 @@
     }
   ],
   "stats": {
-    "total": 5221,
+    "total": 5297,
     "by_category": {
-      "competitor": 1006,
-      "tech": 915,
-      "market": 2710,
-      "brand": 157,
-      "finance": 433
+      "competitor": 1019,
+      "tech": 929,
+      "market": 2744,
+      "brand": 159,
+      "finance": 446
     },
     "by_brand": {
       "Life Fitness": 43,
-      "Technogym": 151,
+      "Technogym": 156,
       "Precor": 20,
       "Matrix": 25,
       "Vision": 6,
@@ -73543,11 +74607,11 @@
       "Star Trac": 0,
       "TRUE Fitness": 0,
       "Nautilus": 3,
-      "SHUA": 25,
-      "NordicTrack": 61,
-      "Peloton": 721,
+      "SHUA": 26,
+      "NordicTrack": 63,
+      "Peloton": 729,
       "Sole": 5,
-      "Bowflex": 43,
+      "Bowflex": 45,
       "Schwinn": 3,
       "Horizon": 2,
       "Tonal": 28,
@@ -73560,16 +74624,20 @@
       "Eleiko": 7,
       "Concept2": 23,
       "Assault": 8,
-      "Johnson": 127
+      "Johnson": 129
     },
     "by_source": {
+      "Vogue Adria": 1,
+      "Tom's Guide": 22,
+      "Men's Fitness": 5,
+      "Yahoo Finance": 140,
       "Yanko Design": 4,
       "NewMediaWire": 1,
       "Trend Hunter": 32,
       "The Argus": 1,
       "SussexWorld": 5,
       "BW Disrupt": 1,
-      "Athletech News": 269,
+      "Athletech News": 271,
       "Yahoo": 33,
       "Prevention": 20,
       "ABC7 Los Angeles": 1,
@@ -73580,6 +74648,10 @@
       "stock.stockstar.com": 1,
       "中华网科技频道": 2,
       "Democrat and Chronicle": 2,
+      "United News of Bangladesh": 1,
+      "simplywall.st": 12,
+      "Reuters": 11,
+      "tradingview.com": 3,
       "Well Nation": 15,
       "TradingView": 33,
       "marketscreener.com": 8,
@@ -73588,17 +74660,19 @@
       "Whalesbook": 1,
       "FinanceBuzz": 1,
       "qz.com": 4,
-      "Stock Titan": 31,
+      "Stock Titan": 32,
       "Style Rave": 1,
       "KTLA": 5,
       "UK Defence Journal": 1,
       "Investing.com Canada": 1,
-      "Yahoo Finance": 138,
-      "Women's Health": 66,
+      "Women's Health": 67,
       "Business Research Insights": 1,
       "证券之星": 1,
       "MarketBeat": 6,
       "La Cosa Rosa": 1,
+      "Investing.com": 33,
+      "garagegymreviews.com": 2,
+      "Men's Health": 90,
       "BusinessMirror": 1,
       "t3.com": 8,
       "Yahoo Tech": 2,
@@ -73618,32 +74692,33 @@
       "Garage Gym Reviews": 108,
       "news.bloomberglaw.com": 1,
       "Health: Trusted and Empathetic Health and Wellness Information": 10,
+      "Revelio Labs": 3,
       "Lake Chelan Mirror": 1,
       "visiontimes.com": 1,
-      "Lifehacker": 70,
+      "Lifehacker": 72,
       "Fitt Insider": 52,
       "gadgetbridge.com": 1,
       "Financial Times": 2,
       "Reddit": 1,
       "Limerick Leader": 1,
-      "Investing.com": 30,
       "Yahoo Finance UK": 2,
       "Athlon Sports": 1,
       "中华网": 1,
       "businesstraveller.com": 1,
       "Kalkine Media": 1,
+      "新浪财经": 3,
       "openPR.com": 6,
       "The Guardian": 8,
       "Mashable": 10,
       "Santa Barbara News-Press": 1,
-      "Fit&Well": 29,
+      "Fit&Well": 30,
       "Yahoo Life UK": 1,
       "LehighValleyLive.com": 3,
       "EdgeProp": 2,
       "RiverBender.com": 1,
       "SNS Insider": 2,
       "ELLE": 1,
-      "simplywall.st": 11,
+      "runnersworld.com": 1,
       "Mobile01": 6,
       "Manila Bulletin": 1,
       "FloElite": 1,
@@ -73663,6 +74738,7 @@
       "buzzfeed.com": 1,
       "Forbes": 21,
       "AD HOC NEWS": 14,
+      "DVIDS": 10,
       "Bournemouth Echo": 1,
       "ABC17NEWS": 1,
       "CNET": 40,
@@ -73686,10 +74762,11 @@
       "kaaltv.com": 1,
       "af.mil": 11,
       "The New York Times": 30,
-      "People.com": 12,
+      "People.com": 13,
       "fitandwell.com": 3,
       "PRLog": 1,
       "Leisure Opportunities Jobs": 1,
+      "PCMag": 12,
       "portsmouth.co.uk": 4,
       "BBC": 9,
       "Chase Bank": 2,
@@ -73700,7 +74777,6 @@
       "中央社 CNA": 7,
       "Esquire君子雜誌": 1,
       "97.5 WOKQ": 1,
-      "新浪财经": 2,
       "spaceforce.mil": 4,
       "LINK nky": 2,
       "Real Simple": 6,
@@ -73731,12 +74807,12 @@
       "WESH": 1,
       "Generation Iron": 2,
       "The National Law Review": 5,
-      "Notebookcheck": 9,
+      "Notebookcheck": 10,
       "WRAL": 1,
-      "dars.gov.et": 4,
+      "dars.gov.et": 5,
+      "AOL.com": 6,
       "Campus Rec Magazine": 5,
       "SUNY Brockport": 1,
-      "Men's Health": 88,
       "Mercer Island Reporter": 1,
       "New York Magazine": 7,
       "influencermarketinghub.com": 1,
@@ -73753,7 +74829,7 @@
       "Treasure Coast News": 1,
       "Life Fitness 官方": 1,
       "Business Wire": 29,
-      "Seeking Alpha": 7,
+      "Seeking Alpha": 8,
       "pna.gov.ph": 3,
       "WAFB": 1,
       "The Telegraph": 6,
@@ -73781,13 +74857,12 @@
       "po-news-eg.net": 4,
       "IndexBox": 10,
       "Indian Startup Times": 1,
-      "Men's Fitness": 4,
       "InsideHook": 13,
       "News4JAX": 2,
       "Fortune Business Insights": 14,
       "Honeycombers": 1,
       "Harper's BAZAAR": 4,
-      "scanx.trade": 4,
+      "scanx.trade": 5,
       "Montreal Gazette": 21,
       "facilitiesmanagement-now.com": 1,
       "sepolia.net": 1,
@@ -73795,7 +74870,6 @@
       "HackMD": 1,
       "BoxLife Magazine": 6,
       "Shropshire Star": 1,
-      "AOL.com": 5,
       "Escape Collective": 1,
       "Stocktwits": 2,
       "Carroll County Mirror-Democrat": 1,
@@ -73803,7 +74877,7 @@
       "CNN": 5,
       "For Women First": 1,
       "StockStory": 9,
-      "Yahoo新聞": 24,
+      "Yahoo新聞": 25,
       "Good Housekeeping": 18,
       "NJ.com": 4,
       "Yahoo News UK": 2,
@@ -73811,13 +74885,14 @@
       "WPLG Local 10": 2,
       "KevinMD.com": 1,
       "Chard and Ilminster News": 1,
-      "Men's Journal": 32,
+      "Men's Journal": 33,
       "deltanews.tv": 1,
       "am730": 1,
       "TAPinto": 17,
       "Sacramento Bee": 2,
       "Newton Daily News": 1,
       "Epixel MLM Software": 1,
+      "wfmd.com": 1,
       "Oxford City Council": 1,
       "MSN": 4,
       "AGEIST": 1,
@@ -73847,7 +74922,6 @@
       "North Dakota State Government (.gov)": 1,
       "鏡報": 1,
       "The Sun": 1,
-      "DVIDS": 9,
       "The Killeen Daily Herald": 1,
       "CTWANT": 5,
       "Insider Paper": 1,
@@ -73873,7 +74947,7 @@
       "WIRED": 3,
       "PRWeb": 1,
       "Bikerumor": 3,
-      "經濟日報": 13,
+      "經濟日報": 14,
       "streamlinefeed.co.ke": 1,
       "PennLive.com": 7,
       "Sky & Telescope": 1,
@@ -73884,7 +74958,7 @@
       "glossy.co": 3,
       "MoneyDJ": 12,
       "東森電視": 1,
-      "Grand View Research": 7,
+      "Grand View Research": 8,
       "Reti di Giustizia": 2,
       "Road to VR": 3,
       "hrnews.co.uk": 1,
@@ -73906,12 +74980,11 @@
       "Fairmont Sentinel -": 1,
       "Wyre Council": 1,
       "generationiron.com": 9,
-      "Tom's Guide": 20,
       "BarBend": 58,
       "World Intellectual Property Organization": 1,
       "Dailyhunt": 1,
       "Blackpool Gazette": 2,
-      "Fox News": 5,
+      "Fox News": 6,
       "ET BrandEquity": 3,
       "TMZ": 3,
       "Cycling Weekly": 7,
@@ -73921,7 +74994,7 @@
       "The Des Moines Register": 2,
       "edhat": 1,
       "UMass Lowell": 1,
-      "RunToTheFinish": 26,
+      "RunToTheFinish": 27,
       "The Knockturnal": 1,
       "Meet創業小聚": 1,
       "新頭條": 2,
@@ -73975,6 +75048,7 @@
       "Resident Magazine": 3,
       "MyJoyOnline": 1,
       "好房網News": 1,
+      "brooklyneagle.com": 1,
       "The Pennsylvania State University": 2,
       "Row2k": 5,
       "The Courier": 1,
@@ -74015,6 +75089,7 @@
       "Kitsap Sun": 1,
       "Tameside Correspondent": 2,
       "Bangladesh Sangbad Sangstha (BSS)": 1,
+      "WFMJ": 1,
       "worldathletics.org": 3,
       "Canadian Running Magazine": 8,
       "Drexel": 1,
@@ -74033,7 +75108,6 @@
       "PR Newswire Canada": 2,
       "Cape Town ETC": 1,
       "Nashville Guru": 1,
-      "PCMag": 11,
       "Kiplinger": 1,
       "North Country Now": 1,
       "Business Standard": 4,
@@ -74073,7 +75147,8 @@
       "Marine Business News": 1,
       "councillorsantos.ca": 1,
       "Sustain Health Magazine": 3,
-      "Pluang": 1,
+      "Pluang": 2,
+      "DC Rainmaker": 4,
       "The MoCo Show -": 1,
       "Gadget Review": 2,
       "Winnipeg Free Press": 1,
@@ -74114,7 +75189,7 @@
       "PrintIndustry.news": 1,
       "Williams-Grand Canyon News": 1,
       "Inquirer.net": 2,
-      "ANI News": 3,
+      "ANI News": 4,
       "Luxury Bazaar": 5,
       "The Washington Post": 2,
       "Daily Express": 1,
@@ -74172,6 +75247,8 @@
       "UF Health": 1,
       "Global Times": 2,
       "shropshirelive.com": 1,
+      "Festival de Cannes": 1,
+      "organiser.org": 1,
       "WSJ": 8,
       "Barron's": 9,
       "Brut": 1,
@@ -74185,11 +75262,10 @@
       "Yahoo Finance Singapore": 1,
       "Cult of Mac": 1,
       "Sassy Mama Singapore": 1,
-      "DC Rainmaker": 3,
       "TVBS新聞網": 7,
       "TheWire.in": 3,
       "Scott Coop": 1,
-      "AFR": 2,
+      "AFR": 3,
       "Enhanced": 1,
       "TEEPR 亮新聞": 1,
       "Healthcare Digital": 1,
@@ -74204,6 +75280,7 @@
       "Қазақстан Футбол Федерациясы": 1,
       "Lowestoft Journal": 1,
       "Influencer Marketing Hub": 2,
+      "Australian Golf Digest": 1,
       "News On 6": 2,
       "PCMag Middle East": 3,
       "桃園電子報": 2,
@@ -74267,9 +75344,9 @@
       "Hodinkee": 2,
       "Franklin County Free Press": 1,
       "ZDNET": 1,
+      "IMDb": 1,
       "News-Medical": 1,
       "Hotel Designs": 1,
-      "Revelio Labs": 1,
       "Laughing Squid": 1,
       "The Havering Daily": 1,
       "Neuroscience News": 1,
@@ -74326,7 +75403,7 @@
       "Watchonista": 2,
       "Robb Report": 2,
       "SJX Watches": 1,
-      "GQ India": 1,
+      "GQ India": 2,
       "Outlook Luxe": 1,
       "CNA Luxury": 1,
       "Tatler Asia": 1,
@@ -74337,7 +75414,7 @@
       "Page Six": 2,
       "Glamour": 1,
       "Derby City Council": 1,
-      "The Australian": 5,
+      "The Australian": 6,
       "thehoneycombers.com": 1,
       "Glasgow Times": 1,
       "天下雜誌": 4,
@@ -74346,7 +75423,7 @@
       "The Manual": 7,
       "Glasgow 2026 Commonwealth Games": 1,
       "Bella.tw儂儂": 1,
-      "ETtoday新聞雲": 3,
+      "ETtoday新聞雲": 4,
       "EatingWell": 4,
       "KeepTrack": 1,
       "thechannels.org": 1,
@@ -74380,7 +75457,7 @@
       "WBZ NewsRadio 1030": 1,
       "San Luis Obispo Tribune": 1,
       "lockhaven.com": 1,
-      "MLive.com": 3,
+      "MLive.com": 4,
       "Dallas News": 1,
       "台灣民眾電子報": 1,
       "County of San Luis Obispo (.gov)": 1,
@@ -74394,10 +75471,10 @@
       "The State News": 1,
       "Traders Union": 1,
       "Market Data Forecast": 3,
-      "Reuters": 10,
       "thestreet.com": 7,
       "The Santa Clara": 1,
       "CT Insider": 1,
+      "pelobuddy.com": 3,
       "The AI Journal": 1,
       "Flow Space": 3,
       "Popsugar": 7,
@@ -74423,6 +75500,7 @@
       "bestlifeonline.com": 1,
       "H&M Group": 1,
       "Yahoo體育:新聞": 1,
+      "PR Newswire UK": 1,
       "Madrid Secreto": 1,
       "revolt.tv": 3,
       "Women's Running": 1,
@@ -74437,6 +75515,7 @@
       "Medical News Today": 2,
       "WDTV 5": 3,
       "Retail Dive": 3,
+      "Golf Digest": 1,
       "Rowing News": 1,
       "WITN": 1,
       "Il Sole 24 ORE": 3,
@@ -74449,7 +75528,7 @@
       "Jacksonville Daily Record": 1,
       "masters expo": 3,
       "Rolling Out": 1,
-      "Cyclingnews": 3,
+      "Cyclingnews": 4,
       "康健雜誌": 1,
       "Phoronix": 1,
       "Montgomery Advertiser": 1,
@@ -74476,7 +75555,7 @@
       "365retail.co.uk": 1,
       "Bleacher Report": 1,
       "Marketing-Interactive": 1,
-      "Metro.Style": 1,
+      "Metro.Style": 2,
       "PerthNow": 1,
       "Sunday World": 1,
       "TODAY.com": 8,
@@ -74693,6 +75772,7 @@
       "Reporter-Times": 1,
       "緯來新聞網": 2,
       "menshealth.com": 3,
+      "theflowspace.com": 1,
       "Business Eye": 1,
       "Australian Photography magazine": 1,
       "mashable.com": 1,
@@ -74714,6 +75794,7 @@
       "Fratello Watches": 1,
       "Mid-Day": 1,
       "Urban List": 1,
+      "trendhunter.com": 1,
       "Wright State Newsroom": 1,
       "The State Journal-Register": 1,
       "自由健康網": 4,
@@ -74724,6 +75805,7 @@
       "The Quinntessential Review": 1,
       "Austin American-Statesman": 2,
       "Galerie Magazine": 4,
+      "Appalachian Voices": 1,
       "42 Freeway": 2,
       "Swindon 24": 1,
       "ABP Live English": 1,
@@ -74752,6 +75834,7 @@
       "KKTV": 1,
       "Bicycle Retailer & Industry News": 2,
       "PBS": 1,
+      "CoStar": 1,
       "The Malaysian Reserve": 1,
       "The Points Guy": 1,
       "Telegraph India": 1,
@@ -74914,6 +75997,7 @@
       "singtao.ca": 1,
       "PCGamesN": 3,
       "Investor's Business Daily": 2,
+      "globalnews.ca": 1,
       "UNITED24 Media": 1,
       "Texas Border Business": 1,
       "Pal-Item": 1,
@@ -74940,6 +76024,7 @@
       "Argus Leader": 1,
       "thehealthy.com": 1,
       "nbcchicago.com": 1,
+      "KGNS": 1,
       "Northern Virginia Magazine": 1,
       "Westminster City Council": 1,
       "House & Garden": 1,
@@ -74955,6 +76040,7 @@
       "Independent Observer": 1,
       "PIB": 2,
       "The Age": 2,
+      "Hull Live": 1,
       "The Gadgeteer": 2,
       "KXAN Austin": 1,
       "WUSA9": 1,
@@ -75082,6 +76168,7 @@
       "EIN Presswire": 1,
       "Fortune India": 1,
       "global.t3.com": 1,
+      "KbizoOm": 1,
       "IAMABIKER": 1,
       "Southend Echo": 1,
       "Indian Television Dot Com": 1,
@@ -75129,6 +76216,7 @@
       "Chief Marketer": 1,
       "ScripType Publishing": 1,
       "Golf Monthly": 1,
+      "en.ilsole24ore.com": 1,
       "Reading Chronicle": 1,
       "DurhamRegion.com": 1,
       "Witham and Braintree Times": 1,
@@ -75212,6 +76300,7 @@
       "The Art of Manliness": 1,
       "University of Warwick": 1,
       "Alpine Cars": 1,
+      "Kansas City Star": 1,
       "Paralympic.org.": 1,
       "British Rowing": 1,
       "Breaking Muscle": 5,
@@ -75232,15 +76321,15 @@
       "GeauxPreps": 1
     },
     "by_source_type": {
-      "google_news": 4876,
+      "google_news": 4952,
       "official": 18,
       "press_release": 327
     },
     "by_product_category": {
-      "cardio": 932,
-      "strength": 278,
-      "wearable": 77,
-      "other": 3934
+      "cardio": 945,
+      "strength": 280,
+      "wearable": 80,
+      "other": 3992
     },
     "timeline": [
       {
@@ -75524,6 +76613,10 @@
         "count": 2
       },
       {
+        "date": "2025-02-08",
+        "count": 1
+      },
+      {
         "date": "2025-02-10",
         "count": 2
       },
@@ -75617,7 +76710,7 @@
       },
       {
         "date": "2025-04-11",
-        "count": 1
+        "count": 2
       },
       {
         "date": "2025-04-14",
@@ -75897,7 +76990,7 @@
       },
       {
         "date": "2025-08-20",
-        "count": 9
+        "count": 10
       },
       {
         "date": "2025-08-21",
@@ -75957,7 +77050,7 @@
       },
       {
         "date": "2025-09-05",
-        "count": 8
+        "count": 9
       },
       {
         "date": "2025-09-06",
@@ -75981,7 +77074,7 @@
       },
       {
         "date": "2025-09-11",
-        "count": 7
+        "count": 8
       },
       {
         "date": "2025-09-12",
@@ -76001,7 +77094,7 @@
       },
       {
         "date": "2025-09-16",
-        "count": 17
+        "count": 18
       },
       {
         "date": "2025-09-17",
@@ -76085,7 +77178,7 @@
       },
       {
         "date": "2025-10-07",
-        "count": 7
+        "count": 8
       },
       {
         "date": "2025-10-08",
@@ -76173,7 +77266,7 @@
       },
       {
         "date": "2025-10-29",
-        "count": 11
+        "count": 12
       },
       {
         "date": "2025-10-30",
@@ -76185,7 +77278,7 @@
       },
       {
         "date": "2025-11-01",
-        "count": 15
+        "count": 16
       },
       {
         "date": "2025-11-02",
@@ -76205,7 +77298,7 @@
       },
       {
         "date": "2025-11-06",
-        "count": 27
+        "count": 28
       },
       {
         "date": "2025-11-07",
@@ -76213,7 +77306,7 @@
       },
       {
         "date": "2025-11-08",
-        "count": 4
+        "count": 5
       },
       {
         "date": "2025-11-09",
@@ -76233,7 +77326,7 @@
       },
       {
         "date": "2025-11-13",
-        "count": 19
+        "count": 20
       },
       {
         "date": "2025-11-14",
@@ -76257,11 +77350,11 @@
       },
       {
         "date": "2025-11-19",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2025-11-20",
-        "count": 12
+        "count": 13
       },
       {
         "date": "2025-11-21",
@@ -76277,11 +77370,11 @@
       },
       {
         "date": "2025-11-24",
-        "count": 15
+        "count": 16
       },
       {
         "date": "2025-11-25",
-        "count": 17
+        "count": 19
       },
       {
         "date": "2025-11-26",
@@ -76437,7 +77530,7 @@
       },
       {
         "date": "2026-01-04",
-        "count": 6
+        "count": 7
       },
       {
         "date": "2026-01-05",
@@ -76445,19 +77538,19 @@
       },
       {
         "date": "2026-01-06",
-        "count": 29
+        "count": 30
       },
       {
         "date": "2026-01-07",
-        "count": 23
+        "count": 24
       },
       {
         "date": "2026-01-08",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2026-01-09",
-        "count": 19
+        "count": 20
       },
       {
         "date": "2026-01-10",
@@ -76465,11 +77558,11 @@
       },
       {
         "date": "2026-01-11",
-        "count": 7
+        "count": 8
       },
       {
         "date": "2026-01-12",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-01-13",
@@ -76477,7 +77570,7 @@
       },
       {
         "date": "2026-01-14",
-        "count": 15
+        "count": 16
       },
       {
         "date": "2026-01-15",
@@ -76497,11 +77590,11 @@
       },
       {
         "date": "2026-01-19",
-        "count": 11
+        "count": 12
       },
       {
         "date": "2026-01-20",
-        "count": 23
+        "count": 24
       },
       {
         "date": "2026-01-21",
@@ -76597,7 +77690,7 @@
       },
       {
         "date": "2026-02-13",
-        "count": 10
+        "count": 11
       },
       {
         "date": "2026-02-14",
@@ -76609,7 +77702,7 @@
       },
       {
         "date": "2026-02-16",
-        "count": 11
+        "count": 12
       },
       {
         "date": "2026-02-17",
@@ -76629,7 +77722,7 @@
       },
       {
         "date": "2026-02-21",
-        "count": 2
+        "count": 3
       },
       {
         "date": "2026-02-22",
@@ -76645,7 +77738,7 @@
       },
       {
         "date": "2026-02-25",
-        "count": 19
+        "count": 20
       },
       {
         "date": "2026-02-26",
@@ -76673,7 +77766,7 @@
       },
       {
         "date": "2026-03-04",
-        "count": 9
+        "count": 10
       },
       {
         "date": "2026-03-05",
@@ -76685,7 +77778,7 @@
       },
       {
         "date": "2026-03-07",
-        "count": 6
+        "count": 7
       },
       {
         "date": "2026-03-08",
@@ -76737,7 +77830,7 @@
       },
       {
         "date": "2026-03-20",
-        "count": 14
+        "count": 15
       },
       {
         "date": "2026-03-21",
@@ -76753,11 +77846,11 @@
       },
       {
         "date": "2026-03-24",
-        "count": 14
+        "count": 15
       },
       {
         "date": "2026-03-25",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-03-26",
@@ -76785,7 +77878,7 @@
       },
       {
         "date": "2026-04-01",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-04-02",
@@ -76793,7 +77886,7 @@
       },
       {
         "date": "2026-04-03",
-        "count": 10
+        "count": 11
       },
       {
         "date": "2026-04-04",
@@ -76873,7 +77966,7 @@
       },
       {
         "date": "2026-04-23",
-        "count": 15
+        "count": 17
       },
       {
         "date": "2026-04-24",
@@ -76905,7 +77998,7 @@
       },
       {
         "date": "2026-05-01",
-        "count": 12
+        "count": 13
       },
       {
         "date": "2026-05-02",
@@ -76933,7 +78026,7 @@
       },
       {
         "date": "2026-05-08",
-        "count": 24
+        "count": 26
       },
       {
         "date": "2026-05-09",
@@ -76949,7 +78042,7 @@
       },
       {
         "date": "2026-05-12",
-        "count": 24
+        "count": 26
       },
       {
         "date": "2026-05-13",
@@ -76961,7 +78054,7 @@
       },
       {
         "date": "2026-05-15",
-        "count": 17
+        "count": 18
       },
       {
         "date": "2026-05-16",
@@ -76989,7 +78082,7 @@
       },
       {
         "date": "2026-05-22",
-        "count": 20
+        "count": 21
       },
       {
         "date": "2026-05-23",
@@ -77001,15 +78094,15 @@
       },
       {
         "date": "2026-05-25",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-05-26",
-        "count": 22
+        "count": 23
       },
       {
         "date": "2026-05-27",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2026-05-28",
@@ -77041,7 +78134,7 @@
       },
       {
         "date": "2026-06-04",
-        "count": 25
+        "count": 26
       },
       {
         "date": "2026-06-05",
@@ -77065,7 +78158,7 @@
       },
       {
         "date": "2026-06-10",
-        "count": 12
+        "count": 13
       },
       {
         "date": "2026-06-11",
@@ -77089,7 +78182,7 @@
       },
       {
         "date": "2026-06-16",
-        "count": 25
+        "count": 26
       },
       {
         "date": "2026-06-17",
@@ -77153,7 +78246,7 @@
       },
       {
         "date": "2026-07-02",
-        "count": 37
+        "count": 38
       },
       {
         "date": "2026-07-03",
@@ -77177,7 +78270,7 @@
       },
       {
         "date": "2026-07-08",
-        "count": 10
+        "count": 11
       },
       {
         "date": "2026-07-09",
@@ -77209,7 +78302,7 @@
       },
       {
         "date": "2026-07-16",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-07-17",
@@ -77233,15 +78326,15 @@
       },
       {
         "date": "2026-07-22",
-        "count": 24
+        "count": 25
       },
       {
         "date": "2026-07-23",
-        "count": 27
+        "count": 28
       },
       {
         "date": "2026-07-24",
-        "count": 33
+        "count": 34
       },
       {
         "date": "2026-07-25",
@@ -77253,25 +78346,29 @@
       },
       {
         "date": "2026-07-27",
-        "count": 25
+        "count": 26
       },
       {
         "date": "2026-07-28",
-        "count": 34
+        "count": 35
       },
       {
         "date": "2026-07-29",
-        "count": 33
+        "count": 35
       },
       {
         "date": "2026-07-30",
-        "count": 34
+        "count": 38
       },
       {
         "date": "2026-07-31",
-        "count": 23
+        "count": 28
+      },
+      {
+        "date": "2026-08-01",
+        "count": 4
       }
     ],
-    "updated": "2026-08-01T01:19:24.692122+00:00"
+    "updated": "2026-08-02T01:21:12.437569+00:00"
   }
 }
