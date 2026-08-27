@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T00:04:40.787753+00:00",
+  "generated_at": "2026-08-27T05:08:05.675036+00:00",
   "sources_ok": [
     "https://news.google.com/rss/search?q=%22Life%20Fitness%22%20when%3A1y&hl=en-US&gl=US&ceid=US:en",
     "https://news.google.com/rss/search?q=Life%20Fitness%20fitness%20when%3A1y&hl=en-US&gl=US&ceid=US:en",
@@ -429,6 +429,692 @@
   },
   "articles": [
     {
+      "id": 7890,
+      "title": "Ningjin muscles way into gym niche",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1WMmpMQVdCRDhaeTg5ZTRZWXdRLWhydks4YlQwbE0tN3dPMWQtTmI5Y0xlUUZHMmpoWC0wRHlzc0tsREZvZi1TamRSRnJ0MS05OVlnQzFKSXk5a2ZsX2xEQ0lQdk40SmZ1ZlROXzY0TGh1SkhfRWdjTjV5b3VJQQ?oc=5",
+      "source": "China Daily",
+      "date": "2026-08-27",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Ningjin muscles way into gym niche China Daily",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7904,
+      "title": "triplebond Launches Science-Based Luxury Wellness Members Club at The BoTree in London",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNdFctOGFEX1Q3Zi1JSU5jazJmcGxQSXk3U0pDVE1GMW5ucG5kNDJyaDc3WEY4Z2praWVURkdIaXNFeG96TW41bGNXMjdyVHpXenpXcExWWXVWSU9rVTBBclREaWplOUFFbExWalR2azNEVWROWFh2ekRkTzhmSGlocXVlREZ6N3RaSGVzcjcyNE41dTA?oc=5",
+      "source": "Nomad Lawyer",
+      "date": "2026-08-27",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "triplebond Launches Science-Based Luxury Wellness Members Club at The BoTree in London Nomad Lawyer",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7910,
+      "title": "IISM and Total Sports & Fitness Launch Sports Retail Knowledge Book at SPORTSCOM - Giving Wings to Dreams 2026",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPUWVGQ1JWR3FoOEctSlF5WmlNSmxxR25FWkdjRnNiaC10SF9RSmZkcW5QRnNwTTlXY25zTGRlZXdXRnFBTFBlcklQRXZaczZFd2x5dXFsMVJYRjN2OHlqTHYyYXpQNGtmZ01OeU5pbTE1YnJEM1poQ3BSYTQzTFF5NlNHUjdUNll4ZTlmVENaSlpnNG5Qa25qeUw1QXFaT3F0eDNVYVB2U2gzZG1GMWIycnBsbXprRHRpTTBaQnNmWkxiSW85SFFIbEZ3bURxSEVMVGRCcGlxZzhxQ1JyMGxILXlxUXk5NXBCWVExN3VIakZRZlU?oc=5",
+      "source": "ANI News",
+      "date": "2026-08-27",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "IISM and Total Sports & Fitness Launch Sports Retail Knowledge Book at SPORTSCOM - Giving Wings to Dreams 2026 ANI News",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7911,
+      "title": "New life for village's free outdoor gym as replacement plans explored",
+      "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNVWtMNjZtWnc2UzA0MEhIcUpGMmFLejFIZVJXOHRsbXYwbEJkcTlnN0l6c2tWMmRlY1kxUnVVTlRpWHRBVUJZbW1LUDRwRUo1R3p3d215bzZFQjMxWTQ5TDEtYWhCMUxOdkNnSXdYakN5Mmo5eGlIdFA4YmtkNjBhaXBRckpzajNHZGxkM0txQUt2b1BYeTAxc3pMWQ?oc=5",
+      "source": "The Bolton News",
+      "date": "2026-08-27",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "New life for village's free outdoor gym as replacement plans explored The Bolton News",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7913,
+      "title": "Kick start your summer body goals with Amazon Haul slashing prices on all your at home workout essentials",
+      "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPYkRRRHhNNXhTc2FsR2lKUFVCcUJLWVRyNDlXbndfU1k4U3RGWUhJYnVTaFhnNGoxMzJfNUhCbGhtU2VQRVBTb2JHVEZ3Y1B4Sk1lcXo0bmhRZzVGQXBUc1h2UHNHQklia0k5X3hSMmhnS0s1MUhzOHhFb25kYzhiNndybzlKbTZlR2wzcFhsSTR0N25ZekdaNk9nRTRycVNuVm9rdlhJektOSDBVWTFWTjgtQmVSR0UxRzByYnZaR2RCVzZMMTg2Z01qM0g5NWFXbXVVZjZKZlFkTXE3Vi1mQ2Z4UUN2ZTZMU0lSR0xB0gHzAUFVX3lxTE9UbWg1ellvTURtVnBOR0RPSXB4VG1POHJSZmdmaFd4X0JjTEN1RmxhTWZqN2FQQnVQeFdWNVZXemxtd285TEFWbTgxX1FyN0lFemsxcl8zLVNLZkhFdHNwdzEzNXhmMjdCVk52U3d2d1hsVElqa1lmSzh5cWFULXNxSXNNVXhnek54UVFlaWdVN1BhYWt0TVJnNlJIYThOZFhqdVp3U2FETHRibHNYbkxNSDBhYkdSTl92ZkFBNzdpUEVEY3BhajlVb1RJb2drNXZyWnh2em9mUWdqOHlaUWlUQjRDTXFrN0YxTHE2ZkNpemlCTQ?oc=5",
+      "source": "7NEWS",
+      "date": "2026-08-27",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Kick start your summer body goals with Amazon Haul slashing prices on all your at home workout essentials 7NEWS",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7785,
+      "title": "Real-life Gladiator to hit the new gym at Stratford Leisure Centre",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQdUo0eHRFRHR5WXAxRDdsLTN5aEF6eHdjbk9sbC1zUk9jRmgwaWVoLVI0TDdxWmFMcDlPanNVMzI1eHJZNjU1NUdQTlNoMHpuM1ZjYzJHOTZSZk5oYjY1bmJWdHA5VXRNRnQwWWJFQTRTWEJfcTdjX1UzVzkwZTNMSC1YLTM2QXo3VWdSOGpVWENveEx5XzkxR29NLW40c1c5eFQ1U3k3ZHFYQk5GVlRxRXJWbHBvZWE0Zzk5Nw?oc=5",
+      "source": "The Leamington Observer",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Real-life Gladiator to hit the new gym at Stratford Leisure Centre The Leamington Observer",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7788,
+      "title": "Precor C240 Stretching Equipment Precor Stretch Trainer Used Precor Stretching Machine Used 2025",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1VWHMxRTRXWlowejdQSFRQS3IyczhzUU03VmgySEg4R1h4azI4bC1WNGFtRVV2bUdzaEgxZEo2eWItZDAzVWFSS0Z1TWpjcm4wSnE4R1lDQ0U0dDNxbFFCWmZqa2JNb1hkQ3o0R21HNU81TmswOEN0SnlWLW4?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Precor",
+      "summary": "Precor C240 Stretching Equipment Precor Stretch Trainer Used Precor Stretching Machine Used 2025 fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7791,
+      "title": "X22i Incline Treadmill Treadmill Review Nordictrack 32 NordicTrack Commercial X22i Treadmill Review Consumer Reports",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBtYllZVVF3SXlEWGJmZEhhTTFQNTgwWkJWMk45TVdoNGZHcHRyNzRFeWQ2UE9ha1l6OUVNMG05Z1gzYWZRNzRxV1FEVXQwek83eE5TVDN2aFdSNTRHQzFIeUhxd2dmb25NbUZDS1JkaUhfWnhwV043cGI3SEE?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "X22i Incline Treadmill Treadmill Review Nordictrack 32 NordicTrack Commercial X22i Treadmill Review Consumer Reports fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7795,
+      "title": "Machine Matrix Ascent Trainer Matrix Fitness A30 Ascent Trainer New Mexico's Largest Selection",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE52dVJwYmZOdll3b3dXVnZYYmNUZlhSUkN2Q0RxYVI4cGxMaDExRklIWVhGci1Ra0d1RTBnQVl0ZUE3bEQwODZYWWpsTjNiQ3Y3MWh6SzZaYw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "brand",
+      "categoryName": "喬山品牌動態",
+      "brand": "Matrix",
+      "summary": "Machine Matrix Ascent Trainer Matrix Fitness A30 Ascent Trainer New Mexico's Largest Selection fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7802,
+      "title": "Incline Xterra Trx2500 Folding Treadmill Weight Limit Xterra Fitness TRX2500 (6 Stores) See The Best Price »",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0zazk0VGhIbTdZWGJkalBSR2M1WFNkeURsNUFzNVZ4SXhpR2E4Wmc0dk13SU9CbHJEZmRWa0c0dlVvQWUxUjM3MFVyZDd2VU15eHZtTVFXOA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Incline Xterra Trx2500 Folding Treadmill Weight Limit Xterra Fitness TRX2500 (6 Stores) See The Best Price » fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7804,
+      "title": "Hammer Strength Back Pullover Machine Nautilus Inspiration Pull Over 9-IPPO5-60BZ Fitness Superstore",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE0zazFQdHlwNzVoNUx2WE9uTzlvQmJ1cmp1UnRIWGRnRktDZm4zZmo2RU9iSlJ4ZjVmNHRCUWIyMUxrUllBNFhsZ1MzcjNYV2ZYNXJRR0tia0J4czV6VzVZWFJ4OXRYSHU4YVQ3WDdCTDVzT05QM3JOUHd0Tnk?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Hammer Strength",
+      "summary": "Hammer Strength Back Pullover Machine Nautilus Inspiration Pull Over 9-IPPO5-60BZ Fitness Superstore fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7808,
+      "title": "Swimming Belt Static Swimming Workout Resistance Bands Swim Tether Stationary Swimming, Swim Harness Static Swimming Belt",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5lRXhmV3FsalRMU0lkQkY5TVl3RU1BRnBFU01HMlJhT2t5WkZhcFlRUkNnSXIzQU5Lem91LS0xaHFmelVnQmIzSEpybnhtTTJ5emJjOTJQVGc?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Swimming Belt Static Swimming Workout Resistance Bands Swim Tether Stationary Swimming, Swim Harness Static Swimming Belt fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7810,
+      "title": "13 Actresses Who Are Total Fitness Powerhouses",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE4xMkFBZFZSeXhoUFBkTi1TTjZNdEE0RUszRllNVjdCX3dxOU9VUTZ4RktXM2xJR25hV3dCT2ZqVFluU092UjBuc190VERFTUxYZE82dEl3VmVtVFpjZGtZM05uOHJzWVM4azB5d09CZWxVWnBiamVNN1lNLXpsUQ?oc=5",
+      "source": "For Women First",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "13 Actresses Who Are Total Fitness Powerhouses For Women First",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7816,
+      "title": "Nordictrack X11i Incline Trainer Nordictrack Sled Push NordicTrack X11i Review (2026) Garage Gym Reviews",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB1ck1kV3A4cFo1LXdJTWRZUmVMSkpYdTVFR2V3OWhYZkxNa19TVzRaVVQ1WFhicDc1UkN0WUk1X2owR3Zqc2p4WkU5Q2ZWRWlyMVQ3c0dmQzk?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack X11i Incline Trainer Nordictrack Sled Push NordicTrack X11i Review (2026) Garage Gym Reviews fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7817,
+      "title": "Nordictrack Treadmills Exp2000i Treadmill NordicTrack Treadmill EXP2000i EXP2000 L&R Pulse/heart Rate Assembly’s",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5oc21DMWh3S29QQjh0X2Zma0RvS25JT0xjZHU1Zk1kNnFsa0llYUptTU9xdFVmbGVJLTJydHJfTExVZmZnVTloZWZHOG9iLWNLZWFaNEdvZw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack Treadmills Exp2000i Treadmill NordicTrack Treadmill EXP2000i EXP2000 L&R Pulse/heart Rate Assembly’s fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7822,
+      "title": "Caminadora Nordictrack Nordictrack Treadmill Cinta De Correr Con Inclinación Caminadora Elu00e9ctrica",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1kUjJhbVRCclZQVGlha004MmtrOGprUWxJaDVXWTlTMGxJMFpUSnBtM0pwOWVTU3h1TjEzcTlBRUJpNHNwcjVieER2TWVDNzlYd01yWVJvSQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Caminadora Nordictrack Nordictrack Treadmill Cinta De Correr Con Inclinación Caminadora Elu00e9ctrica fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7824,
+      "title": "Octane Fitness Nordictrack Recumbent Elliptical Octane XRide XR6xi Recumbent Elliptical Trainer – Body Basics",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1tRDJXbDFVWHhlM2cwenN1dF83RDBIR2JfUkRhLW9JYW5POEVoOHBpUHNCVzRiN0pNVno2ei1kNnBvelVlTnJ5QXhXa25ycnp3Q1JFUnl5TQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Octane Fitness Nordictrack Recumbent Elliptical Octane XRide XR6xi Recumbent Elliptical Trainer – Body Basics fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7835,
+      "title": "Best Treadmill Treadmills For Heavier Runners Branx Fitness 23km/h 'Elite Runner Pro' Treadmill Motor",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE91bVJQSE1ZVXlCT2hRS2t5Z2hsRUo2VE0wNlpyMmp0OVdmaVN4TF9sTnFVLTl4Zi1OUzhBNHBYQ3c4bmt2cER3b2Jxcjd1clYwSTM4S2x0MA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Best Treadmill Treadmills For Heavier Runners Branx Fitness 23km/h 'Elite Runner Pro' Treadmill Motor fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7842,
+      "title": "Wiring Diagram Inside A Treadmill Treadmill Doctor Proform 445i Treadmill Clearance Proform",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBQQzRfRlUzQ1E3bFEzWkZCRm1weTRUSXJpekNpS01tQTNZZ1kxNWZ5NHAtQ01WMG15cUtRZjdTeTd0NHZ1NmFQWnJZMG1YYjVxazQ2RjRpcw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Wiring Diagram Inside A Treadmill Treadmill Doctor Proform 445i Treadmill Clearance Proform fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7846,
+      "title": "Bicycle Spin Bike Sunny B1203 Shop Sunny Health And Fitness Indoor Bike New Arrivals Sunny Health Fitness Indoor Cycling Exercise Bike Workout",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5fcC01TW9hZ3dhdlpsZ0dHdlJKMWM3MzVxQU5yWUd5T1M3N1A0N1FNcktUNjFhQXZway1PTHJkSjdpNTVRNjRTMTFGTWxlb0x4Q1VMX3VyMHNZQzZOY2p4Z2xncjRHWkpKX2MzWUhoSVlGbVg2TlJtOTV1alVqZw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Sunny Health",
+      "summary": "Bicycle Spin Bike Sunny B1203 Shop Sunny Health And Fitness Indoor Bike New Arrivals Sunny Health Fitness Indoor Cycling Exercise Bike Workout fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7856,
+      "title": "Titan Celestor Swift Launched in India as the Best Badminton Smartwatch at Rs 9,499",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQUW1Zd1V2dkNzS2xOZ2VOMzN0Z050NXVBU083M0REd1ZlMWFLb0dyNmxLZUh5eW5DT2h4cFhMYWtqR2IxZ25PaUV2bV9WRllVTWpFS1hSS1JVWTZVX2dTbGt1M19ZYzB2M0dtVmVVcWFGcTlFQ2d2Q05hdktzYlROWWJWX1NkdHk0UThWeGdUTVk2dERhcXNha3VoZkxURk1rU3NVMjR1ZXZxNFXSAbABQVVfeXFMTURNeXlTZHNnUGpmNVBhWHhheVN0UjhDcVVGV01uZm01WFZIcXlZV283QW5iYzE3ZUJsZm1oYlFyQUVOLUNtTzRMRGl0RXVtMmNOMVRac3VmYmlKcjl0SUNwZTd0TXVpU1hWTlhpRlpiZmpYMWQyc05wQUpPWFIwUFd5X3RNMHpyTGJsWHZhT0xjOGtIczZtcmh4TTFvU1RZNU5JRGVacmZhMTl0eklUVzY?oc=5",
+      "source": "Gogi Tech",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Titan Celestor Swift Launched in India as the Best Badminton Smartwatch at Rs 9,499 Gogi Tech",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "wearable"
+    },
+    {
+      "id": 7859,
+      "title": "45 Minute Treadmill Tabata Workout Minute Treadmill Workout 45 Minute Fartlek Run Week 30 Minute",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE45WFI2b2lZTFJFbzJEaXY3RkZOeHJ1d3p0ZUxhVWJyU0ktNkZrT1NKY1JSTmU3b184c05tTXlyVXNCZDJLMFlTNHhHRkhfb05kSnQtNEVDM3E?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "45 Minute Treadmill Tabata Workout Minute Treadmill Workout 45 Minute Fartlek Run Week 30 Minute fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7864,
+      "title": "Nautilus (NAUT) Q2 2026 Results: EPS Exceeds Its Estimate for the Current Session; Trading Move: The Stock Records a 0.69% Increase at the Close - Earnings Trend Analysis",
+      "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxOaVlPYU5mS19Bal9TR3FVd1BUUU1TSVhCV1lEWktvV0tOdnV6MlBTMDNTUnp6RGVFZ2ZSSDJVVTI5eEI2dXhqYm1tYUpGbVBWMlRJczVnc0tLeW1oMV8yMTdQOURuVFYxaWVqYlUxQTEwUlZueG5HZnpfVDA3bm5HOVE3c182S0UzcGhIVk0tTGVEM2RVeDVhalI3WFRVZXdTLTJEUG5MVUxKUGUtMFdtNm1sUWtpRWJRYTFtR2ppcXpVemdKVnlVZ25YQmtHUjlnZWdDdk1aZDJmR1hrb2gwQXI5eVdTbjE4cDlXSUhmRFpqc1VfN3FkWFFKNENHWk5KWDBjY2xIX3dXaEww?oc=5",
+      "source": "dars.gov.et",
+      "date": "2026-08-26",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Nautilus (NAUT) Q2 2026 Results: EPS Exceeds Its Estimate for the Current Session; Trading Move: The Stock Records a 0.69% Increase at the Close - Earnings Trend Analysis dars.gov.et",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7866,
+      "title": "Matrix Service (MTRX) Projected to Announce Earnings on Wednesday",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOcjRhZDJ5RWUyOVlDdHdXcVFBOS1BM21mMnNsbUpTQ21MQUdINURGNF9zU0tETkFJbzFDOFE4VW1TZFJ2RFMwVDVSNG5oanAxXy03MklIRkpwc1ByeW5ablh4cDJaMFdLemdQdUYxYVdZNGp1eVhpaVA3WHRXemp6RkNucUJWNVZ5X2JkVkhDOVFIYVVwdWJfaUpzVGl6QjdLdGJrdGxvdF9BV2Uyd3ZsVHVQSnpGUXV2OXRwRFdRa1BPRFVz?oc=5",
+      "source": "MarketBeat",
+      "date": "2026-08-26",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Matrix Service (MTRX) Projected to Announce Earnings on Wednesday MarketBeat",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7869,
+      "title": "Exercise Bike Calories Burned Elliptical Machine Vs Treadmill For Weight Loss Expert Tested: The Best Ellipticals Under $1,000 (2025) Garage",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBVaVh2UGltRUdzV0hDdF9jbjQzSFBGblk5eU5COHNDOElpS042dnlHc3JvVGJHQmExd1FNa3NLR2ZNUXE1bkVZR0ZERmlsRW1KMDlNR3VPeEhWcDBsdnlLODFKYlRla0NSWnkzRS1YNEoza0F1NWRFdWhrbHQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Exercise Bike Calories Burned Elliptical Machine Vs Treadmill For Weight Loss Expert Tested: The Best Ellipticals Under $1,000 (2025) Garage fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7870,
+      "title": "Komeri Card Nordictrack Elite Nordictrack Elliptical Machine Elliptical Cross Trainers FITKING E-676, Motorized At ₹ 92400 In",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBrSkp1ejlOcGlfME5BRE1SOVRodlhJTWp2TGIxdFB3bWp6R2xRYnhNQUo1RnVWTzBsVndyYWpISHFUVVBqTzJSdXhwQ0paYzV4ZVprYmlnSGlad0ZaMm5EWkFfcjItbDNr?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Komeri Card Nordictrack Elite Nordictrack Elliptical Machine Elliptical Cross Trainers FITKING E-676, Motorized At ₹ 92400 In fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7872,
+      "title": "Nordictrack Elliptical Best Low Cost Elliptical Nordictrack Elliptical Stride Length Best Affordable Ellipticals",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5COERLdFFSLU9RbHdqRWRTQkhCUG81WWlvWjhMMUpUcDNKOU90T0habTVrS0lZN0hrTGt6akRRVnRsYWhVSlNneTNyOEpMcEE5NHJJdUltdzU?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack Elliptical Best Low Cost Elliptical Nordictrack Elliptical Stride Length Best Affordable Ellipticals fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7877,
+      "title": "Elliptical Machines Fitness Proform Ce Elliptical ProForm Trainer",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFB0aUxBQ3YwM09LRHQtVFphYXl6eGhZS0dWYmRpN3JhSlR4UlFvbGZ3LWFUdkxjREVfX1RtQ29XRTdaVktRU0JKMzh2SHJMYXE4N2RMZWZaTDl0YlZ1dGdTeWZudWg4YUhTX0lreWVkNWtLNWk0SG5MNW5ES04?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Elliptical Machines Fitness Proform Ce Elliptical ProForm Trainer fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7880,
+      "title": "Calories Burned Better Than A Treadmill Elliptical Machine Which Is Better A Treadmill Or Stationary Bike",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1YZDlGOEdLNUJlbmxPWksyM3JaRWNfUWhDUGt3SzZDR3p3TEVTQm9Ob3NWOW1lU212ZmxVTXRLTHRweU5Wa0ZMeVU4dWEtWUxJR3JMOHk2cFdaTWdUYUI5MTNYVmdLNExFRzhDUW9FN1F3amJ5Y3ZN?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Calories Burned Better Than A Treadmill Elliptical Machine Which Is Better A Treadmill Or Stationary Bike fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7881,
+      "title": "Machine Work Rowing Machine Muscle Benefits Cardio Workout Machine Benefits Best Workouts For Rowers What",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1wS0N5MzNUZEtyMmcyQVlYZGdHLWVDbDh6RVJEVTdrdG9kT3k2NjFPOHMySTlzQzNJRVFOX1hhbXdUbzZiaEwtY1oxbjU0NENsZktjZHU5VHg?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Machine Work Rowing Machine Muscle Benefits Cardio Workout Machine Benefits Best Workouts For Rowers What fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7882,
+      "title": "Foldable Rower Home Rowing Machine Compact S For Home Use ONETWOFIT Foldable LAT Pull Down Machine In",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE4tVENMdF9wdWxiRElvMW5tTE9tY2QwV2IzUWZBTldMaFBZQUtPYzlMMWI1Rm1qbTdGVmpOdjFCbW02UV9HTThuVFBTdEtMV1VzeU9hSTZjcw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Foldable Rower Home Rowing Machine Compact S For Home Use ONETWOFIT Foldable LAT Pull Down Machine In fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7887,
+      "title": "7ft Olympic Barbell Weight Set Restocked for Comprehensive Home Fitness Equipment Setup by Strongway Gym Supplies",
+      "url": "https://news.google.com/rss/articles/CBMivwJBVV95cUxONFJ5cFU5LTFyNThWRVdyZzFnYW5QcVdVUjJJMmM2bFpoUHpYOVpMckJ1VkFwbDZKZm43YXM1dEtUVUlDQ0FQOEEyakRVQ0V3UHFGSzAzUW1idjBQU0hCd3N1dnMzNGxoTlQxX2pHWndBajZSTnVCNktBaXpDVWZSdnB2dTZaRERxQ25PbEZEZFBxSW5PdTVhc2g2V3p2YTRMVE9wcHFDdzFUdHlEWEVXTWtZTEJvWDVzMWpsS2tkblRrbENNOE9BVFU3bUMzMFNoTlVIeFF3OHc1aFRybVRIazU5VE9LeWJZNGMzTVJaNlJxRFloVHdOSExZNzBLMlc1QW5QQXczVllCOTJuRWdhUUpmcmFBc2ZzM1VVQUxPbkxvU2Q5Qy04S0lpNE9raGlyS1V1dkoyRVhtVUNFNXpB?oc=5",
+      "source": "The Malone Telegram",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "7ft Olympic Barbell Weight Set Restocked for Comprehensive Home Fitness Equipment Setup by Strongway Gym Supplies The Malone Telegram",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
+      "id": 7891,
+      "title": "Why Smart Home Technology Is Now Transforming the Home Gym",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFByeDlJby1GeGlFZW5qX3VyMTlOd29wWkVmLUlPcEVsRkVBbFVJejNxSWJpVXY0ZDBldUdzLUdBSGFqVkY0RTdyNWJrQ1VUeWtlR3J3NHpqVjR6c2lmeTV0N01SSHdxclYyYUtxa1RJS1VEZw?oc=5",
+      "source": "Intelligent Living",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Why Smart Home Technology Is Now Transforming the Home Gym Intelligent Living",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7895,
+      "title": "Gonzales Fire Department receives fitness equipment from Planet Fitness",
+      "url": "https://news.google.com/rss/articles/CBMilwJBVV95cUxPVG1DcFFnazFhVHVLUXpNazhPVENfVEdNMThUY1ZNS21KOGduWjM4M2czWlZVc3plTUVjbzFzbmFOY3JtZnhsdU91WTZGSFF0Nm1PMngwTnRnMFVWM19JUlZPeVQ1TFkzTno0RHdUMS1hUVFZTFNJMXZZemdxRHE1UXRybVN2TWxFOVZ2Q3JiMnNoUzhPSF9hRTRvUEFCcE9SWjFmTTIzUkdNQm9uRm05bW9TbVFwc3ozYzI1cVFoWnhwYm55b2NXWW1iY2ZxOXR1Vkc3clQydk01cnlmYmFueXJpdjFHZ1Z4Z2IxX1ptNnR2T2RLSkZEaXUxTjJmXzVBdHBseXVnRVNHbm5BcEI3OHA5b29yRTA?oc=5",
+      "source": "The Advocate",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Gonzales Fire Department receives fitness equipment from Planet Fitness The Advocate",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7897,
+      "title": "力山擁健身器材、無人機兩動能;今日舉行法說會- 新聞",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxONzZIci1uNTJ6S2ppamQwR1FWNW9zREs4QldrNGw1WEcyNTRnOU9JaTAwenY1T040cWNzVWNmT05MbUZhLTBsVnNjZUpCOXZDRXRpVFZEV2NYYm9DVkFPRE0xXzBhSHhIbzFXZXhVRFVKWkNia0dFS2w5YXczVEhZZlFEN2NNUm1UVHpWQnRLQUpIdw?oc=5",
+      "source": "MoneyDJ",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "力山擁健身器材、無人機兩動能；今日舉行法說會- 新聞 MoneyDJ",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7898,
+      "title": "力山擁健身器材、無人機兩動能;今日舉行法說會 | MoneyDJ理財網",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNM2RRYXFVZ3FQV1ZmRFJqQlpTY0dxSUF1NExobDd2NEhvdGdiT0RtOHZnRFVObjE3OS12TkJpVWNaNzl5TVpDU3RPT1VObXBOYnVyWVRWRXM3X0NGN29UbTVERkFkdmFJLTdKVVU4dm1YQ3JWc1BuSXV3dlFXLVJFQQ?oc=5",
+      "source": "LINE TODAY",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "力山擁健身器材、無人機兩動能；今日舉行法說會 | MoneyDJ理財網 LINE TODAY",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7900,
+      "title": "討論牆 | 力山擁健身器材、無人機兩動能;今日舉行法說會",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5tTjE1Tld4S2E0V3o4WEFIYWxVczhQTjVHN190OGNSRWlLVlVqa25oTnY1UHQ1eWVuUmh6WWlHdWVMTlExXy11MGt3M2VCeVNPUHNiUEpnNi1OXzhEdjFxNFVmZEg?oc=5",
+      "source": "LINE TODAY",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "討論牆 | 力山擁健身器材、無人機兩動能；今日舉行法說會 LINE TODAY",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7902,
+      "title": "股票行情快报:舒华体育(605299)8月26日主力资金净卖出78.01万元_主力研究",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1Fb0xpcXFlSHJaV2tPZENqcG4xRlZydGhfVEVsYXVQTExkdHlUNWhzVVc4V1FVeU1RQXcyUk84UnF0MEc2am44ZWtQS2Q2VzY5LUFGX3pNaUZLRTlOcERjSlhn?oc=5",
+      "source": "证券之星",
+      "date": "2026-08-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "SHUA",
+      "summary": "股票行情快报：舒华体育（605299）8月26日主力资金净卖出78.01万元_主力研究 证券之星",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7903,
+      "title": "布局海南自贸港,英派斯智能健身康养设备研发制造基地项目启动_个股资讯_市场",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9qMnk3WktOQjBWU2QzdFZwUy1qY2NBQi02NENiT3ZrQlp4N0EwakdETWp3QjhreDhkN045elFWcDNFbkFzQUFrMFFhYV9zTHdQdTZiQ0k4OEVBSHZzYlU5T2ZMTy0zNE5Z?oc=5",
+      "source": "中金在线",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "布局海南自贸港，英派斯智能健身康养设备研发制造基地项目启动_个股资讯_市场 中金在线",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7914,
+      "title": "YMCA Unveils Wellness Crypto Coin to Reward Members for Fitness",
+      "url": "https://athletechnews.com/ymca-wellness-crypto-y-coin/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "The non-profit fitness giant is pairing its new YMCA Wellness Café with the launch of a Y Coin native to the Rubix Blockchain",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7915,
+      "title": "Phillip Mills of Les Mills Talks the Power of Community",
+      "url": "https://athletechnews.com/phillip-mills-of-les-mills-joins-disrupt-by-athletech-news-podcast/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Phillip Mills joins the show to discuss where the fitness industry is headed from the perspective of one of its most enduring brands.",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7916,
+      "title": "Life Time Launches Application-Based Social Club",
+      "url": "https://athletechnews.com/life-time-launches-application-based-social-club-lt-social/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "LT Social, a members-only community of parties and wellness events in major U.S. cities, is Life Time's latest move to push further upscale to stand out from competitors",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7917,
+      "title": "CEO Corner: Balanced Body’s Ken Endelman on Building a Pilates Empire",
+      "url": "https://athletechnews.com/ceo-corner-balanced-body-ken-endelman-on-building-a-pilates-empire-exclusive-interview/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Ken Endelman founded Balanced Body in 1976 thanks to a chance encounter. Over 50 years, the company has served as a key driving force behind Pilates' meteoric rise",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7918,
+      "title": "Playlist Launches Custom Website Builder for Fitness & Wellness Operators",
+      "url": "https://athletechnews.com/playlist-custom-websites-fitness-wellness-operators/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Playlist’s second major AI launch this summer, Customized Websites gives Mindbody and Booker customers fully managed sites with built-in booking tools",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7919,
+      "title": "What To Pay Your Trainers & Instructors",
+      "url": "https://athletechnews.com/what-to-pay-your-trainers-instructors/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "The fitness industry often pays trainers by the session and wonders why they burn out, walk away or poach clients on the side. Active Life founder Sean Pastuch makes the case for paying them like the assets they are.",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7920,
+      "title": "Fitbit Creators Unveil Screenless Wearable to Help Track Aging Parents",
+      "url": "https://athletechnews.com/fitbit-creators-unveil-screenless-wearable-to-help-track-aging-parents/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Luffu announced its first hardware product Tuesday, prioritizing a jewelry-like design over the clunky appearance of traditional medical devices",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "wearable"
+    },
+    {
+      "id": 7921,
+      "title": "What’s Behind JETSET Pilates’ New Classes & Longevity-Friendly Approach",
+      "url": "https://athletechnews.com/whats-behind-jetset-pilates-new-classes-longevity-friendly-approach/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "With adaptable workouts and new class formats on the way, JETSET Pilates is leveraging longevity to forge loyalty",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7922,
+      "title": "Gym Shakes Maker Applied Nutrition Lifts Target on Protein Hype",
+      "url": "https://athletechnews.com/gym-shakes-maker-applied-nutrition-lifts-target-on-protein-hype/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Growing appetite for protein is providing a major boost to sports nutrition firms as both GLP-1 users and health-conscious consumers increasingly opt for protein-rich products",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7923,
+      "title": "Amazon Makes Biggest Fitness Push Yet With Hyrox Deal",
+      "url": "https://athletechnews.com/amazon-makes-biggest-fitness-push-yet-with-hyrox-deal/",
+      "source": "Athletech News",
+      "date": "2026-08-26",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "The tech and retail giant is launching Hyrox storefronts, race-day activations and training playlists across Europe, with expansion to markets including the U.S. on the table. The deal marks the biggest validation yet of the fitness-racing boom",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 7714,
       "title": "$5.5 Billion Modular Fitness Furniture Market Opportunity, 2035 - Core Health & Fitness, Eleiko, Life Fitness, Matrix Fitness, Peloton Lead the Industry",
       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOd0VrT0d6dk9oZFRPMW9NODVTUDRBUzlvenc5VnZhYzdDUEFtR0ZSQTdQbnBsVkdkX2tIQm5ENGNlTjBMNmJXRlRnaFBwYVRRSnBSZmpQZVBoa3ZhVlZsUmw1ZUxzZ2xzMWgwd1ljT1R6MW84OVBvX09JZnFLcTZCVlJiZGhBYXFTTmo3bUVLbS1mVEN1Qno0?oc=5",
@@ -821,6 +1507,118 @@
       "product_category": "other"
     },
     {
+      "id": 7793,
+      "title": "Lower Body No Equipment Bodyweight Workout Plan Bodyweight Workout Beginner Workout Plan No Equipment Beginner",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5SMnJ2WW41Y0xqSkVwRkgtTUxCUXVJU1NxV09CM0xsb2hZYjRxWmpLNEozVzNSUTI4Y1ZrdTRRNEd5TWpDWDhadjFGSUo1ZVN6M1Z3STBaNA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Lower Body No Equipment Bodyweight Workout Plan Bodyweight Workout Beginner Workout Plan No Equipment Beginner fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7794,
+      "title": "Nordictrack C990 C990 Treadmill Review Nordictrack Commercial Nordictrack C990 Treadmill Review",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5MaTZQT1dSekxKY053eVFRakZfX3A4dmhjbFFrd2pQQzhqaWZIeE8yWTBHV0k3eHY1MjJMRExGNGZ4Q3lqNVE4OGE4dVo3MklqRmdPZUs2aw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack C990 C990 Treadmill Review Nordictrack Commercial Nordictrack C990 Treadmill Review fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7811,
+      "title": "20 Minutes of Exercise Is as Good as a 90-Minute Nap If You’re Sleep Deprived",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNWHpzaGtVbm54QVAtckhxX1RjeS05eHNMRTBOSWNVMnVpQUVJYXVicWFMT2plWlNWWDhpekpHTTlhaHBHTjU1TVF2elJ4dmFXNDByZGU5a1NhVHdoZ3JJWVJEbEVhaHhLUG9Ya3BYTk55aWljREcwcFd3a2toOGtvTzNCU0VwcmVYMVF6V2ZuczJBd1NBZXlpa3hYTmktLW1jTXdqUA?oc=5",
+      "source": "Nautilus | Science",
+      "date": "2026-08-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "20 Minutes of Exercise Is as Good as a 90-Minute Nap If You’re Sleep Deprived Nautilus | Science",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7815,
+      "title": "Best adjustable dumbbell deal: The NordicTrack Select-A-Weight Dumbbells are 62% off",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB3bk1xUENpWGN2bzRrTzBDZV9fXzczVHU1SVpVRUlwaXBqbGhtSTBXV1lOR0twLVQxR0E4QUV4eEY0cnhjRmUzMVlqV0VGQVRBXzRqR0ZNajVCNWNrSTJRbFlxazRzYTczTTFHYmlwMFpzUG8?oc=5",
+      "source": "Mashable",
+      "date": "2026-08-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Best adjustable dumbbell deal: The NordicTrack Select-A-Weight Dumbbells are 62% off Mashable",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
+      "id": 7826,
+      "title": "Nordictrack C990 C990 Treadmill Review C 1070 Nordictrack C990 Treadmill Review Nordictrack C 1070 Pro Store",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBHZ1pFbF9ubjZiVGlZNmRMNWV0SG4zUjRpeng1eEhCXy1NVjlrMTJ0WEZheDFJeHRSWW9zdWM2WWtwZ3lMaGZlTGVwWE5nMW5TMnJOYkVpQQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack C990 C990 Treadmill Review C 1070 Nordictrack C990 Treadmill Review Nordictrack C 1070 Pro Store fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7845,
+      "title": "Best fitness deal: Get the Sunny Health & Fitness Mini Stepper for under $63",
+      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB0dkUzVTNiY3IzRUJOSTJTaHdsV0RWWTRhTUREMl93d2xsazE5blh6LVMwdWFnNE9VZXp3cmdnTWFMRndOWmJTZVpuMGRiS2RJYnVpTzlrb294QjlJYXZMbDBNNA?oc=5",
+      "source": "Mashable",
+      "date": "2026-08-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Sunny Health",
+      "summary": "Best fitness deal: Get the Sunny Health & Fitness Mini Stepper for under $63 Mashable",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7871,
+      "title": "Ifit Proform 895 Cse Smart Strider Elliptical Proform Cse Elliptical 2025",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBQZG5JNk5WYkhNZ1pLN3RpVjhiQy1Eb0pyZUNEYjZYZDVFYnRrZDljY2lEc0NPSkg5S2NSTEZzdmd4S2l5YU16djNMcDJfbUdoWGNWYXdhdw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-25",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Ifit Proform 895 Cse Smart Strider Elliptical Proform Cse Elliptical 2025 fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7896,
+      "title": "Gym equipment to $100M+ DTC",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9aRTNqT21naVJuWERobTQwMXNTVDU1dnVWcG4xQzltZWF1UmxPYzY2OUdITVItdzJrT1lZeUUxSWRBa0ZCanNpQ3c1MjJGNkV3NTNGbFJhSXJDNV9nM1BEUnEwVG05RDhxUVJBS2FvQmdVMTJ2Q3hTLQ?oc=5",
+      "source": "Yahoo Finance",
+      "date": "2026-08-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Gym equipment to $100M+ DTC Yahoo Finance",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 7664,
       "title": "Technogym stock supported by upbeat analyst view and recent earnings growth",
       "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPLThwR2ZyVFQ1V2ktRWpCamIySTFremVKWkhsSjBOQkw0bFhod2tuSUhSb1RORW5wOFZzdlZKNFJLT2JtTU1vRG1DZU5wNmVNVjRWa0dzSUpWLVgwMTNtYWlhMkxIM0RJdHFSZzh3QVZBMnIzZkZDS0phUjhxZ01uYTF6ekd6THNibGYtN1lkYzc2Q0g4ZVJpOE5SN2ltZW90MkpYUjB2eEVqWTBzWExFdVE0cVd3ajBJYldlMHNmOE5VaWtRSXFZR21COA?oc=5",
@@ -1157,6 +1955,20 @@
       "product_category": "other"
     },
     {
+      "id": 7867,
+      "title": "Matrix Concepts’ 1Q profit slips despite higher revenue",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSE8zV1RqWmx0T0MtNHdsM0VsWXdmem1HdGdKdUNXaG9lcWZYaWZ4eHU3VS02WnJzRTE2cmxQUUVlMlVtamFES0ZpUEMzWUVhQl8wTmZXTkVlOU5JUUliVGVkVjVuUUs0YjRlaGtjcHYxWkRDYjJucko2OEtlWEpiQmhNWmdLWVJsSTJQNXVnc1Y5Mk9ZUUp2dEFmN011RWttSVpQODJB?oc=5",
+      "source": "EdgeProp",
+      "date": "2026-08-24",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Matrix Concepts’ 1Q profit slips despite higher revenue EdgeProp",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 7621,
       "title": "ACSM Redefines What True Physical Fitness Is: Here’s What Changed",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQZ2tfNWtNaHEwQ1ZmNFBaT2wzQV9xU2x6NUJmbU4tdGZxY0YwLWhGLUhGeXhaczhXUmNMOXlZS3Q5ZkhLN01ObDg0U1pTTHIxdzRDMmFrbEtOb2hkeG5jZ0N2WEx5ekJqRzRWS1R2a1psS0xpdkd5YUMwYVcweGZiWklOQndLX3dMVjJqQ2hiN0JPRUJ3d0w0Q1BYLVo?oc=5",
@@ -1294,6 +2106,20 @@
       "summary": "Stationary Bike Indoor Cycling Classes Near Me Cycling Classes The Wheel Soulcycle Exercise Bike Soul Cycle Class fuelcarmagazine",
       "source_type": "google_news",
       "first_seen": "2026-08-25",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7814,
+      "title": "Incline Treadmill Best Nordictrack Treadmills Incline Treadmill Treadmills For Low Ceiling Heights NORDICTRACK",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE14MEhwaXgzeEUzUEcweFBFMUcyU1J5OUtNa01BYVpLcVcyd2hBZ3l6SElzc1dJeHR0RGlWXzFMTTJZa0FMY3JZeTlMWmt1Nm0tNS1WZGdmTQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-22",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Incline Treadmill Best Nordictrack Treadmills Incline Treadmill Treadmills For Low Ceiling Heights NORDICTRACK fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -1995,6 +2821,34 @@
       "source_type": "google_news",
       "first_seen": "2026-08-25",
       "product_category": "strength"
+    },
+    {
+      "id": 7836,
+      "title": "Schwinn 130 Upright Bike Schwinn Biofit Stationary Bike Exercise Bike",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1yaTBjMGYtcG44c0IxT21hSFBZVWVaOS1NZF9aaTdtTHREZ1VEQ1o1YXBXX1ZlcDVOdWhFN3lJdlZNU0w4SzZXcElva0hja0Q1VkVULUZFOGQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-20",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Schwinn",
+      "summary": "Schwinn 130 Upright Bike Schwinn Biofit Stationary Bike Exercise Bike fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7841,
+      "title": "Fitness Equipment Lifespan Tr3000i Treadmill Review Commercial Treadmill Lifespan Fitness Tr3000i Commercial Treadmill",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9WamV2MWU3U0R1LTVKeF9LQzdPbmRHUXZDdkFMM2xLQlpKaUEtdzY1bG9fZkNlem5nMS1iRkNzb2ZKRzFfTVl4cEY0RlhNU05ucWtEZy04UQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-20",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness Equipment Lifespan Tr3000i Treadmill Review Commercial Treadmill Lifespan Fitness Tr3000i Commercial Treadmill fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 7328,
@@ -3131,6 +3985,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7832,
+      "title": "Vertical Climber Vs Stair Stepper Home Gym Product Comparison Guide Released",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQLWRpd3dfcjZtQV9QeWlRenZVbzFYVHhJekZJZnhXZkxPOVdrRnJQeFVqODRiU1RQVmJkTWFBMU8wdjRoam05RWtKOEJCVUlTUlMzUmh1a0x6UU4zb1ExUW1BTHZSemI5ZFd6S3lpS281aGE3eWRBSVJsX1ItWThzSXE3dGFWdE9sOXVOV1NOc0hFbGk3ZUp3Q1M0MjllUHdvRDFMWjZ6cG90WUt3eDFMRHN5UDdleTNmRXNUMTFCUFF6WU1jMW1qNHcwdUNyZ3BNNUYzZXhtcHhpUQ?oc=5",
+      "source": "FinancialContent",
+      "date": "2026-08-18",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Vertical Climber Vs Stair Stepper Home Gym Product Comparison Guide Released FinancialContent",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 7175,
       "title": "World Gym launches in the ACT with flagship Belconnen club",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQX0pMU3VZVjlPd2xFSUhtQmtnbzNsZ0FDWkctVjJMT2NQcFpQeWdmTTBYbFg2X1IxcFNWaGZRdjlGXzk2ck5mMW9CeHFsdEdtUVpxS2hLdTFPVUZHSnBuM0xHRzVtN2U5S1JmWHo4dXVvUGhpWGhWSnFPUXpJWFlxTWNEMWhEVkJybVQ2WmZZWXQyZWZqS2VXVQ?oc=5",
@@ -3747,6 +4615,20 @@
       "product_category": "other"
     },
     {
+      "id": 7878,
+      "title": "Seated Elliptical Costco Cubii Hot How Much Is The Cubii At Costco Factory Sale",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBxa2dtdlI0T2MwenBoNi15V1pOSDZlQ3FWMk1BZE5tdkNtSWgyUEtvTXZVWkVyZV9LRkdzUUhNSHB3MW50Q2J6R0JJYW91OEhUOVpLLUdaOA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-17",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Seated Elliptical Costco Cubii Hot How Much Is The Cubii At Costco Factory Sale fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 7116,
       "title": "Nightclub-Style Immersive Fitness Competitions: METRIX Returns to London’s Magazine Venue",
       "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE92eWxOakRTWnB2NTBFc0FVRktXellfU3YyQmtkV2pSb2YzTmRtckYyTmFmQ0xEdlNZSXVGbXJXYXpEOWVWZ1NaTmVySTJJSHFtSkx3RDZZalhtSHBZQWhPRmdMUFRlWi1jREdIdUdfMnVZdw?oc=5",
@@ -3954,6 +4836,34 @@
       "summary": "高雄三民運動中心一開幕就掉漆 運發局速回血：跑步機增至15台、健身房免費體驗延至9/15 Yahoo新聞",
       "source_type": "google_news",
       "first_seen": "2026-08-24",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7830,
+      "title": "Fitness Peloton Running Machine Price Peloton Tread Running Machine Offers A Total Body Workout Key",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5IUHgxR2ZoUTRodmVIcFQ4WjZNV3hXeTdfUFJ4YnpTSXU5eGJXMXlMbHlsT3FobzZYVW1SMzZtVDhRQk80WjZobkVIeGxUZ1ljTEdOQnVVX3g?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-16",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Fitness Peloton Running Machine Price Peloton Tread Running Machine Offers A Total Body Workout Key fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7843,
+      "title": "Budget Treadmill Best Motorized Treadmill Under $200 Top Walking Sport Machines Quality Treadmill Pedometer",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1lek1oVkVIUnlhbTVldzZnMzJzeXAzWlFiME56by1BcG9MdUFGTHZkakQtZ2FKOHpoTG1Bd3dsaWtZZWw1bjVZT2E3OVF0cmlZWDBZSG5sSQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-16",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Budget Treadmill Best Motorized Treadmill Under $200 Top Walking Sport Machines Quality Treadmill Pedometer fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -4206,6 +5116,48 @@
       "summary": "「12-3-30」真的有效？不愛跑步就跑步機上快走，醫提醒4族群勿照表操課- 股市爆料同學會 CMoney",
       "source_type": "google_news",
       "first_seen": "2026-08-19",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7777,
+      "title": "Leg Strength Seated Life Fitness Seated Calf Raise Primal Performance Series Plate Loaded Seated Calf Raise – Primal Strength",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE45ZVUwcGJ4b3VtOXFtZ3dpRk1oUEU1OUF3dG1uODcxVEpRaWt3d2VXblNmOWtYR1hVdUVuNVF5T01ZaGY5UmJpdERQajZIWnZTWk0ycGpJdVh2eHVXbWNyNnBHN0RKZ2d6OFBKUVRjTHdRcjFzUzk3WVZKWGVRUQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-15",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Life Fitness",
+      "summary": "Leg Strength Seated Life Fitness Seated Calf Raise Primal Performance Series Plate Loaded Seated Calf Raise – Primal Strength fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
+      "id": 7821,
+      "title": "Treadmill Review Buy Nordictrack Commercial 1750 Treadmill Commercial 1750 Treadmill A2155 Nordictrack Treadmill Review",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBaWFRKaUhjcE10cENPMldVYy1VLWdBY1MtNUNCZmhoSjQ4WU8xOVRucDNFRUZzMHIwXzJ1YjZzRG9HSkYzZy1TUktldWhwZFRhUm95OHVDYw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-15",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Treadmill Review Buy Nordictrack Commercial 1750 Treadmill Commercial 1750 Treadmill A2155 Nordictrack Treadmill Review fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7873,
+      "title": "Seated Elliptical New Octane Elliptical Octane XR6 XI Console Recumbent Elliptical – Gronk Fitness Products",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9wai1XeWc3T1JFdTl4WUUySVpMMktVWjV2ZkVkQi0ydVRsSWVtVE1lcTNBRG1sS3hhdHQybU5xM0FmRU9xbG1GOHVqNmRVZzFXcGNhSm9vbw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-15",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Seated Elliptical New Octane Elliptical Octane XR6 XI Console Recumbent Elliptical – Gronk Fitness Products fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -4825,6 +5777,48 @@
       "product_category": "strength"
     },
     {
+      "id": 7820,
+      "title": "Treadmill Motor C2400 Nordictrack Treadmill NordicTrack Incline Motor 249516 USED – FitnessGraveyard",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBiWUJiMVFUY0MxbWdDcWQ0UnRRQ182VmRaa09YV090d2h5RFlhVFV6OGRjX1FVQmMtZ05scWsyS1I4dEdEaGNXWnRZc3dyYzJ5Y1Jia2xueU14UHExeDdVemdn?oc=5",
+      "source": "Diócesis de Salamanca",
+      "date": "2026-08-14",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Treadmill Motor C2400 Nordictrack Treadmill NordicTrack Incline Motor 249516 USED – FitnessGraveyard Diócesis de Salamanca",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7885,
+      "title": "7 Best Studio Exercise Bikes of 2026 for Classes, Intervals, and Home Cardio",
+      "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA0VXdoVm8tX0RVVi00TUlLZnRSRVl4amVzeGVaVUhKZjhIRFFQNFI1WUpXN0hIRW8zei01OHVPWGNVc25WMGVfOEFPSzdFRXNSU09PREM3S09OOHEtaEF5VA?oc=5",
+      "source": "Fitness Volt",
+      "date": "2026-08-14",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "7 Best Studio Exercise Bikes of 2026 for Classes, Intervals, and Home Cardio Fitness Volt",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7886,
+      "title": "Bike Rack Stationary Bike Sunny Health And Fitness Magnetic Indoor Cycling Bike MERACH Fitness Bicycle Spin Stationary Exercise Bike, Indoor Cardio Workout With Magnetic Bluetooth",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9PeXBqbEhpdXhwQVdzWXZJWktkMFh5dEFkY2h4c1hYVC1QX1JfTTZnTTRKNnZoS0tpSktmY0dvNllCMDlZWjRPRzZ3TWFVeDVtamtNbHJnMTdDR3JMZFVNNEdhenQwT1RKcGpmVE9QOG1wYlVK?oc=5",
+      "source": "Diócesis de Salamanca",
+      "date": "2026-08-14",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Sunny Health",
+      "summary": "Bike Rack Stationary Bike Sunny Health And Fitness Magnetic Indoor Cycling Bike MERACH Fitness Bicycle Spin Stationary Exercise Bike, Indoor Cardio Workout With Magnetic Bluetooth Diócesis de Salamanca",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 6892,
       "title": "Hoop dreams: How a coach’s vision for a high-tech basketball gym is inspiring kids to aim for the perfect shot",
       "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQa3hqUGxYdUE2Vkk1Vk9HNTVFdDVsRVVqc1ZXU2Z6Wjl2Njh4TEpETzh0ZFFrQ2FKc1RqTVY3YVgyRnZRSDN4cFNGSG1BMV82ZDZmUmY1ZXN1UjV6c1djdndYQXBiSEUxU0h0aF9DSDhTUGZZeGp3aWcyVmhweE1SRnRmU1BBTjdMXzRiVmFYbWxDaElEX3g5ZXI3WkdXODljZjdkcTJQQTVXdFJYZlJvYkRFUmVGQkZDUk8zeU9KdzByMXBKVjlHZU9aT3VaTzYzRWd5cml1a0JBSEhFamRZWktLMlhndWZKMmMxSHNkQS0tN1NzNGZoQnZuMVZWdkVlanlJWE5B?oc=5",
@@ -5385,6 +6379,48 @@
       "product_category": "cardio"
     },
     {
+      "id": 7789,
+      "title": "Compact Treadmill Treadly Pro Reviews Treadmill Review Does Treadly Incline Treadmill Trail Running",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9hX2xTXy1FVi1ZNjhlUzVjaTBWTVFZOE5CUnE4ZlhoOXJ1Y3F2Znk3MExRMzZiWDVpQXpwQUthX0M2U3h5OTU1RWlEMlJtRnhQNjhZY1N3cw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-13",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Compact Treadmill Treadly Pro Reviews Treadmill Review Does Treadly Incline Treadmill Trail Running fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7798,
+      "title": "Gym Equipment Pace Reacting Ultraslim Treadmill Small Treadmill For Home Use Quiet Portable Fitness",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB5T0pyUnZYVHlVUjV1NHRVQ3lPZXF2VHZGeGxQSnl3NVE1WDNDVGJJSjBiaHdJRzBKa0RHeUNqbmhlTkFmSi1HN1V5QzJrYWxtQlcxRndjNA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-13",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Gym Equipment Pace Reacting Ultraslim Treadmill Small Treadmill For Home Use Quiet Portable Fitness fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7860,
+      "title": "Foldable Treadmill Walking Pad Treadmill Walkingpad R1 Pro Max Speed WalkingPad R1 Pro 2-in-1",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1SeERLVWZBWTNPdC1qMndCcUtHQnpsbTNKYXpLS1BXbVB0dldLLVZLdkp5RGVCVC13aTBybmF4TVhDeUM3NEdielI5VlJsWm5RLUZWRmtrRQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-13",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Foldable Treadmill Walking Pad Treadmill Walkingpad R1 Pro Max Speed WalkingPad R1 Pro 2-in-1 fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 6772,
       "title": "Planet Fitness donates gym equipment to Sioux Falls Fire Rescue",
       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPYUdmT3BMOHJucjhSUWFLVDkwVEFjZVFQWWx5RVpfc1JfWXl2Wm8yRkVqVS1fOGNuTFFJUTU4TFdoMTNvd0lYbHpqRDhxVGVmY0ZGUDZqSl9xaks1Z3I4OE91NVFLUEp0aXNQc3h2bDVJOU9kdWNKOEZnQV9lcnFjaVZzOXl3a3hPMWJ5UWtUblZ6X0U5SkZZUFZkQkdPNnBnRXRoX040TW1ZSEtL?oc=5",
@@ -5929,6 +6965,76 @@
       "source_type": "google_news",
       "first_seen": "2026-08-19",
       "product_category": "other"
+    },
+    {
+      "id": 7787,
+      "title": "Adjustable Bench Sam's Club Weight Bench Set Sliding Bench Press Bar Sam's Club Sam's Weight Bench",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1DOWtvUjBmVmdqTFctRlpFWURxTTR0X2IxTFZwQkdkeVVJSWNWTTlHNzBVSlB2eXZOanN4T1I0cG1NaXNTUExRYUFDU2FranFzUWY4bzRFaFM?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-12",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Adjustable Bench Sam's Club Weight Bench Set Sliding Bench Press Bar Sam's Club Sam's Weight Bench fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7807,
+      "title": "Weight Lifting Tonal Fitness Canada Smart Gym Machine Tonal Machine Review Tonal Gym Canada",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1waFY4cHliZmNtQnkycWVMSm8zLXItSEF0dDQ4Qlh3ckJQYnJQTVNnZjdGU3dTM0t2Q2dLT2MxN0d1ZXlySjdhakdTUEdqaEVCWk9SSEFYLWg?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-12",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Tonal",
+      "summary": "Weight Lifting Tonal Fitness Canada Smart Gym Machine Tonal Machine Review Tonal Gym Canada fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7813,
+      "title": "T S Nordictrack Treadmill Nordic Track T S Order NordicTrack Treadmill T S Now",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE44UXpPM3d1REVFaXU1bXoxcklKbmZLb013QWlXS293Nk84VU5MN0pLR3IyMmpfWDNJZVpIUXFSRVNXb19La2Z1NFVBSUFTOUJ6Nk93bDZBdw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-12",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "T S Nordictrack Treadmill Nordic Track T S Order NordicTrack Treadmill T S Now fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7827,
+      "title": "Chris Sports Trax Ultra Slim Runner Review Nordictrack T Series Treadmill Assembly Nordictrack T S Treadmill",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBwREtLWGdKXzBrUTZ4Vi1mUGZZRmdIMXFDVTIzNXM5QU1VN1pXVy1jbkZVY0JVUEc3TTJjMkw3R3Y2UVV5OVl6OWlUZVdYZWpXOVVGeUs1dw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-12",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Chris Sports Trax Ultra Slim Runner Review Nordictrack T Series Treadmill Assembly Nordictrack T S Treadmill fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7875,
+      "title": "Bicycle Elliptical Peloton Bicycle Elliptical Trainer Peloton Peloton Studio Cycling At Home",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBnVS1rUkZqWURDLVlfYUhRdVZiVkp5dDdHWS0xYWVQcWpneHJZUFZyQ09rWElyVzFINS1lcWliYk5jR2o5NG9zdkx5RU85WTR5ZVVkQmd4NA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-12",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Bicycle Elliptical Peloton Bicycle Elliptical Trainer Peloton Peloton Studio Cycling At Home fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 6716,
@@ -6687,6 +7793,34 @@
       "product_category": "other"
     },
     {
+      "id": 7812,
+      "title": "Luxury Vinyl Flooring Luxury Home Rubber Flooring 10 Gym Ideas To Save Today Gym Room At Home, Home Gym Decor, Gym Room And More",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9OR3VYSFBzbzFpX1FiQ2c3VFppbHh1eURRR201NWtxdnk0eG51Wk1oQmNsVTBpZ2NXdTBOX25FYllnd2RLN2dMd0lCVDBUN1hWU280OWV6UDdSZG5QSDJDcmpMa09TRzl3Vmc?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-11",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Luxury Vinyl Flooring Luxury Home Rubber Flooring 10 Gym Ideas To Save Today Gym Room At Home, Home Gym Decor, Gym Room And More fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7823,
+      "title": "Ifit S22i Nordic Workouts Nordictrack Ifit Bike Ifit Nordictrack S22i Test",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5KTkxuZUpVbDZhN0dWb2U1NW1WN1FlN3FCUjh3Z3BLUktfVmpvdXdIcXdWckN2d1BQcUdRMzJsUEN0OGRNaFpkU1ZNVWpKNldBcTh1aktGdmQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-11",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Ifit S22i Nordic Workouts Nordictrack Ifit Bike Ifit Nordictrack S22i Test fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 6656,
       "title": "FirstVideoChallenge #life #fitness #tiktok #viral #trending #scoopz” #scoopzreels #scoopz #viralvideos #viralvideo #fyp #foryou #follow #foryoupage #trendingnow #trendingscoopz",
       "url": "https://news.google.com/rss/articles/CBMixAJBVV95cUxOZkJFT0YwNVBBVE5oem12aDB1NGNoSzJvMndjdl9OWklpRmVKN2kxeThtbXh0Zks3elBselZMVTAwSnAxNHZrQnZnOGxJYmYtRllmMHVQM1l5RWdMdERLaFZGWU1ZMXc2aHZGOGlkUGpLYnlGeUx3Qm5pMTktOVZNcTNPaEl5SmNlZy1NR2xPSlJFaS04b2FMMlMzbmtoLVlSRWVORlRRZXNTbEtLQkF1aGgwZzhqS3ZvZERMTUZBQU9QazBrNFY3anVEQ2xDVU9iTkcxUFk3VWJNX2RQVzdJYUxoNkQ1MjNvcDZucnNIclZaQ3FqbmlrZFBZNGpBdFlmaVNGT2Q2cEtPTjhXLWttcGpmQ3VZeWwxWjNXYXZlX0ZFd2FyTklRTVdOeDl5OV80ZGVrNUNQeTl6N1RoWHVIRGU3VTA?oc=5",
@@ -7261,6 +8395,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7909,
+      "title": "Apple could be the next company to launch a Whoop rival",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNLXdUam9iRkk5R0k0cEMtTmxIRmQzdm15eEZWRlVPdklaSTZTMTBhZm9uZDV6bFVhN0htOUJXWjdsVEFpWTY0RUUwb0ItSWpnbm0wYm1xa215dnFYWWFtUjhMTmw0Y0hGU2ZSb081Y0F6cUpvOTlrOWN1Y3lvTTJhVkRPU2NXNlFwUWo3VmJfWVNkZm01U1Y0?oc=5",
+      "source": "The Independent",
+      "date": "2026-08-10",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Apple could be the next company to launch a Whoop rival The Independent",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "wearable"
+    },
+    {
       "id": 6613,
       "title": "Home Workout Weight Loss Day Workout Plan For Beginners Repeatable Weekly Only Takes 15-20 Minutes And Rotates",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNS0VBeGNwd200X2tPM3h5TTNkbElac1lZWW9INVllVnpmdEF2WkNFZkcwWkhpeG5PeTNSNDBKNzZhRzZ2VU5qMW5ZVURDR1RzUUsxQmVMdFlhZS1DaXp3dXctWHQzT0dFbk81X0l3djZCd3B0dkJSRTRpamtaWmY0YUZHLXBhMElS?oc=5",
@@ -7441,6 +8589,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-23",
       "product_category": "other"
+    },
+    {
+      "id": 7876,
+      "title": "Small Compact Elliptical Trainer Stamina Products Compact Elliptical Strider 55-1621: Australian",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB3aVFMNkJUa01OMlhYYmpBd0JYNm9pOGcxR2V4YTNjNUxEeHRyb2tTeE5VamtnRTVETlg2ekN6SHdwRDZpOERsMmhnMFhNV1lOclZFQTFoSQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-09",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Small Compact Elliptical Trainer Stamina Products Compact Elliptical Strider 55-1621: Australian fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 6534,
@@ -7678,6 +8840,34 @@
       "summary": "Stationary Bike Schwinn Airdyne SCHWINN AIRDYNE AD7 – Syracuse Fitness fuelcarmagazine",
       "source_type": "google_news",
       "first_seen": "2026-08-22",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7819,
+      "title": "Nordictrack Treadmill Review Nordictrack 1750 Review 2021 NordicTrack Commercial 1750 Folding Treadmill 2022 Model Fitness",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5sZEZYVWdfOC1iN0hxNEVubm9JdVRiSEZLN2FzT0VfUUZrcXhDVHNXaGZwUTB6MUNNYzVrVnVaVjAwNFpObHE2MUU5MTZNRS1Pb3p4Z2VIRQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-08",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack Treadmill Review Nordictrack 1750 Review 2021 NordicTrack Commercial 1750 Folding Treadmill 2022 Model Fitness fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7883,
+      "title": "Concept The Best Rowing Machine Concept Best Home Rower Concept Best Rower Machine For Home",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5xX3RjaWgycjZRU3FRMkhGczV1ZFgwY1UtdnZZbWR6LVBxR0k3MGVVZ0VfQnpTYlQxcUNZM1BUZzVQeDdqcTUwM2g3Y0JTdzBDb1BDbm9DSFE?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-08",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Concept The Best Rowing Machine Concept Best Home Rower Concept Best Rower Machine For Home fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -8365,6 +9555,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-25",
       "product_category": "strength"
+    },
+    {
+      "id": 7844,
+      "title": "Proform Bike Costco Canada Spin Bike Spin Bike Costco Canada Costco Echelon Deal Fitness Costco Echelon",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE05SW5pZk1hdUZ1ZTI0WWVKQ0J2aGdHQmw1bWQ1NGlNZHNwcC0zMjBFeWFoYnVHLUZ0MjZQOTRsdk44TEgwQWpMb0kwUWx6eW1jbTE0NURwaw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-07",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Proform Bike Costco Canada Spin Bike Spin Bike Costco Canada Costco Echelon Deal Fitness Costco Echelon fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 6335,
@@ -10341,6 +11545,34 @@
       "product_category": "cardio"
     },
     {
+      "id": 7792,
+      "title": "Walkslim 570 Walkslim 470 Walking Treadmill Review Walkslim 570 Foldable Walking Treadmill Store",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1aYlBHVVlKZmNXaFU0Y0FQNXc3cDMyUks2OHh3QkgwU3M5NzJ4b3dJb255b05kWldZU0xzN3lsRTJka0VXa0d3bVkwRzMxTXg2dnZFQ2NySQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-05",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Walkslim 570 Walkslim 470 Walking Treadmill Review Walkslim 570 Foldable Walking Treadmill Store fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7839,
+      "title": "Exercise Equipment Proform 350 Treadmill Manual Proform Cadence Proform 350 Treadmill Parts Proform Maintenance",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5zV0tnS0dfNVIxM1VpNVUxQUxZVVpRRW5iTGxTNXFLcUZWeUVmMW1fbzU2TW1SRVVTZG94MGNpQzJNdWh0allSbFJfZlh6TzlYT1owYlJZSQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-05",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Exercise Equipment Proform 350 Treadmill Manual Proform Cadence Proform 350 Treadmill Parts Proform Maintenance fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 6152,
       "title": "Life Fitness / Hammer Strength Opens Nieto-Jones Innovation Cente",
       "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNRG1zN2Z3dzRFckxFdkZRTnVSeFAtRDZseG04RUhfUUpxNnU3U1VFYTFWcEQyS2JrMzlZaUkzbTN4cmI3eDFQbkdTOGJIODhQNGVwd083NUZQSldEbkdvVFRPcUpJNWZsUktmVTRNbFo4ekNSZDU4N29MT0l5a0cwUF8yZEx3NEM1X0FKUjExdXRWa3FtVG9jdkdiNC10dFBPNXhoRXpuaW1oOGduTVJJazV6WQ?oc=5",
@@ -11727,6 +12959,20 @@
       "product_category": "other"
     },
     {
+      "id": 7825,
+      "title": "Fitness Stationary Bike Nordictrack Commercial S22i Studio Cycle Reviews NordicTrack X24 Bike 23500746 HSN",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9DVlp6djhZS0NfQ0JhVXJlWXBhNXB0ZHR4eVFDM3hXcF9rTmg5YW1TVHZpTFJjaDlmY2N1TlVyQTFBSG5wTUFjY3pMX1pfSWFrLVZYYnBEYkNOR2JxQUNSeXV2S1FzcjVp?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-03",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Fitness Stationary Bike Nordictrack Commercial S22i Studio Cycle Reviews NordicTrack X24 Bike 23500746 HSN fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 6008,
       "title": "Hotel unveils fully refurbished health and fitness club",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPVkxqaTJrdm1zZjdQUTg1ejdjcmZvbUg0U2xINnpveDBlRGdabFhRZFBiUVFxT29LcTV3X1dVMVVRRk9zQW1SNXBLbWZ2Wk80d1VWSFBiY2F4aFFyY2xkaVdQcU1zOHVrbnBxSGx1S2tRVTRhOGVBX2ZydzBydVhjb3N0Qk5XWnRQNEhXSkQ5TXpseTRwbHUwcXhn?oc=5",
@@ -11935,6 +13181,34 @@
       "source_type": "google_news",
       "first_seen": "2026-08-19",
       "product_category": "other"
+    },
+    {
+      "id": 7784,
+      "title": "Marcy Apex Apex Home Gym Apex Fitness Equipment TOTAL GYM APEX G3, Slim-Frame Incline Bodyweight Training Home Exercise Machine, W/ Levels Of Resistance, Squat Stand, Basic Accessory Set Sports Outdoors",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1Bb29KaWg1UEROMVNfaUdLRWsxcDdkaUUycS1EUFJyVGVLWFdJLVVndUV5dmM5bldOQi1wdVQ5VmxkT2d6ZVI0TTlSZWpCTFZuUExrQUJISzQ2YnZEdllKNF9NYWNVbmE2?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-01",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Marcy Apex Apex Home Gym Apex Fitness Equipment TOTAL GYM APEX G3, Slim-Frame Incline Bodyweight Training Home Exercise Machine, W/ Levels Of Resistance, Squat Stand, Basic Accessory Set Sports Outdoors fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7852,
+      "title": "Weight Lifting Bella Barbell For Sale The Bella Rogue Women's Bar Cerakote Rogue Fitness Australia",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9nVUVzX3dta2pkUDdmWWY5NGdIY3BZMTktSWplQTBvZzFYOFF3WXVYT1gtMTNNLU15aHlCMU4xbktDeEdmR0hDandjdE13V2p2TnZGa3AzOA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-08-01",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Rogue",
+      "summary": "Weight Lifting Bella Barbell For Sale The Bella Rogue Women's Bar Cerakote Rogue Fitness Australia fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
     },
     {
       "id": 5786,
@@ -12494,6 +13768,20 @@
       "summary": "Nordictrack Elite Fitness Equipment C2400 Nordictrack Treadmill 2024 Treadmill Buying Guide: Everything You Need To Know diocesisdesalamanca",
       "source_type": "google_news",
       "first_seen": "2026-08-14",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7879,
+      "title": "Elliptical Machine Best Gym Belly Fat Workout Gym Machines Adjustable Stainless Exercise Machine With Smart Counting Foldable Design For Home Gym Multi-Functional Full Body Workout Quiet, Ergonomic Seat Band Ideal For Women's Day Mother's",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5vdG5FT2tvZ3hFcGFwazNKb2QyMXFHOXF6aWNtaFJla0czdmhPYWxEQ0o3YmdXeXV0emZjZWZhU3E3TXhCYUUtXzlZcHM0NTBpOVllVWNMZlJWZUstLUlVZ0RiWWF2cUhpNWViWTBPTEJ5TXdBQ0RhRmlDSmE?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-31",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Elliptical Machine Best Gym Belly Fat Workout Gym Machines Adjustable Stainless Exercise Machine With Smart Counting Foldable Design For Home Gym Multi-Functional Full Body Workout Quiet, Ergonomic Seat Band Ideal For Women's Day Mother's fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -13153,6 +14441,34 @@
       "source_type": "google_news",
       "first_seen": "2026-08-25",
       "product_category": "strength"
+    },
+    {
+      "id": 7778,
+      "title": "Exercise Bikes Life Fitness Ic3 Indoor Cycling Exercise Bike Shpock Ic3 Indoor Cycling Exercise",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1KckhZRS1IRTdzVUM0U2J0dVlrRU56ZmJQM3hiS0R6ZUJUeG1hNk15dm9Vd2V6WDBtMFdvbHAyOXpSNnVULW9iWm5IdDhFT3hwdkw4TkRobEs?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-30",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Life Fitness",
+      "summary": "Exercise Bikes Life Fitness Ic3 Indoor Cycling Exercise Bike Shpock Ic3 Indoor Cycling Exercise fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7801,
+      "title": "Motorized Treadmill Matrix Tf30 Treadmill Review Folding Treadmill Tf30 Treadmill MATRIX 'TF30' COMMERCIAL FOLDABLE",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1BamFERnNYM2M3OU9MTUNETF91NWVzbXA3MHF2eVVYVWRNbmlXSHpDNjlsRHk5XzdYSjBTSlpQMFpQQXpfS1IzNldMa3NJQmhTZkt5R3dUYw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-30",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Motorized Treadmill Matrix Tf30 Treadmill Review Folding Treadmill Tf30 Treadmill MATRIX 'TF30' COMMERCIAL FOLDABLE fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 5243,
@@ -14443,6 +15759,20 @@
       "product_category": "other"
     },
     {
+      "id": 7790,
+      "title": "Fitness Proform Treadmill Belt Replacement Proform Treadmill Treadmill Belt Replacement For ProForm Crosswalk",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBFQ2RpX2xrTjVOODlvdldnUGZsMWZfR0x5M1lfWGkzNFd5OFdDS0xOdjdyUU51cks5UVhGUU95OG5SN094c2RSNUl1YjhISjh3N1JrUGtXYw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-28",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "ProForm",
+      "summary": "Fitness Proform Treadmill Belt Replacement Proform Treadmill Treadmill Belt Replacement For ProForm Crosswalk fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4463,
       "title": "Major Companies Driving Innovation And Expansion In The Home Fitness Equipment Market",
       "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOWGF2elhrNk1aRWdObVk0dTl3aTVXbmdGWDhWVXZ0RnZ6SHRUSkE0V0tOamNPdEstUGp4OENHcE8xS0txZXRmS1JqRUQ3QjlVbWVnM1NvSzc3RkFac3RpQ3Y2Z0h3bUtJMjBJLTBMcFJhcTlKdHNjdGdiUWVSclZTMVZpa1BuN1hCdTgtMFpiWnNrWXRRRGtUbm0xUFE?oc=5",
@@ -14989,6 +16319,20 @@
       "product_category": "other"
     },
     {
+      "id": 7809,
+      "title": "Spirit Elliptical Used Elliptical Machine Best True 200 Elliptical Sale TRUE Fitness Elliptical Machines For",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBmdnM1SjdDVER1RExIalFieUhIbnR0cmlIZGZ1WDE2X0t2eGhEOXpma3VwWWxqMFlyX0szVUp1WHItSEZmaTk2bEEzbjlvZW0xOTdHR0w0WQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-26",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "TRUE Fitness",
+      "summary": "Spirit Elliptical Used Elliptical Machine Best True 200 Elliptical Sale TRUE Fitness Elliptical Machines For fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4457,
       "title": "How smart fitness is changing the way we work out",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOTWEtbFByZENEaWRIYy1RX0wyYVlGZGNLeG1NX3FMM1JBX3dka0ZLRWtvTThyZHVTSXFWREZ3NlEwd1diZGs4RHBCdjNpVXdJaWVhRl94TzlpNk0xbTdIVG1PT0pkV1l1dzRhN0pFaWZocU1VVDFUd3JKSnlRMEtOWEFJNTQ?oc=5",
@@ -15211,6 +16555,34 @@
       "source_type": "google_news",
       "first_seen": "2026-08-22",
       "product_category": "other"
+    },
+    {
+      "id": 7803,
+      "title": "Exercise Bikes Reviews Of Myx Fitness Fitness My X Bike Indoor Cycling Myx Fitness Review Bike Review",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5BRWZkMXFNU1pLYUlzTTd1Q2lZR2hCR3ZBSFVSd1VYN2MxVHF4UmdlUjk1MURCQ0RtRTdCc2RmZWF4M0JISjVxX3VmZExBbG1VNWszeFBfcw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-25",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Exercise Bikes Reviews Of Myx Fitness Fitness My X Bike Indoor Cycling Myx Fitness Review Bike Review fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7850,
+      "title": "Cerakote Bella Barbell For Sale Toomey Rogue Bella Cerakote The Bella Bar Cerakote Tia-Clair",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9IUVc2djV5Qlh1TUZpTzZsODhRZWFVbkpldDdvMVVGN19hZmVGLTA4aG5rWXBUcEhEMkxPY3drcEdnNHltMjlHNEl5UnhyRTFBZVBNTlBYTQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-25",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Cerakote Bella Barbell For Sale Toomey Rogue Bella Cerakote The Bella Bar Cerakote Tia-Clair fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
     },
     {
       "id": 4510,
@@ -17313,6 +18685,48 @@
       "product_category": "other"
     },
     {
+      "id": 7797,
+      "title": "Fitness Equipment Marketplace C2400 Nordictrack Treadmill Matrix T3x Treadmill (Reconditioned)",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE16emZLRjNGc3ZkUUYzZExtVWZncDZiZzV5aVpndDRpS0Z5azhJTFFJaDhtN2lZcXBJUFJuQW9QMnFCUDZqMDVBdXdmZklyS3VQLUxwdFhyQkMxeFNCYnBiSFBQV0E3RW5MWDU1eE1WWmFTejA3QVI2WVhYVjU?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-21",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Fitness Equipment Marketplace C2400 Nordictrack Treadmill Matrix T3x Treadmill (Reconditioned) fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7858,
+      "title": "Foundry Fitness Celebrates 15 Years of Serving the Kentlands Community",
+      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOejc3VS10VXFKazVNelJ2V0xtNkhNMEtLOUx6U0pRN1dOQW9EU0hSRmEwOUY0aE5HOXN2a1diLWdkb3RQYkYzeEdaTDZGWm1BNlVBaWxRbUstUXRUVVNKVnZGYlk1VGFLSlFqNU9Cd1BNYkFOOWxPQXJfMy1iTGwzRzhBblFPR2ktb1pTYWZtdWdIdUEzYmNSd0EzM3FlVE14NFdsaGl3?oc=5",
+      "source": "The MoCo Show -",
+      "date": "2026-07-21",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Foundry Fitness Celebrates 15 Years of Serving the Kentlands Community The MoCo Show -",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7874,
+      "title": "Exercise Bike Elliptical Peloton Peloton Bike Elliptical Trainer Peloton Peloton Bike What Muscles",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBhOUlPbk5mbU1LUGxKaF9GMjVtbGZQNnZHVFhTQk12czlTcEw0cHhaVUF1QTlOSjZYWVJ2LUdrbjhZX0xSTVpJMGg3dlhmRkcxR0lnVVYyOA?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-21",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Exercise Bike Elliptical Peloton Peloton Bike Elliptical Trainer Peloton Peloton Bike What Muscles fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4451,
       "title": "6 Simple Exercises to Help You Live Longer—No Gym Equipment Needed",
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5wbDExU3pxWEtvaTVQYWV1SGVWSkJVWERFUTJQZ0NVYUNCTllnWWFfb2hqTk9qeXA5S0lfRkhaLUpBWUV0N1ZfT1NxcnBiMlJwS0QyM3o5cU5kdWZUNHQ0OW5idkwwb0hMYVdN?oc=5",
@@ -17663,6 +19077,34 @@
       "product_category": "other"
     },
     {
+      "id": 7786,
+      "title": "Experience connected fitness at Technogym's 'Wellness in Focus' pop-up at Power Plant Mall",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE92MWIwdFV4cVhFbWpHYXFFSzNDZlJMT1JYYnhpTUJCWU41ZUliTzZEeTg3clE3eURIdFQwWVdnNnhTZ0YycEdrZTlodEhBbXFDbzQ1QlViZzR6aTBSQk54T0NRUWs4LTlsRklqYXpxcTVYQ2JHWVpTRk92bVYtdw?oc=5",
+      "source": "speed.ph",
+      "date": "2026-07-20",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Technogym",
+      "summary": "Experience connected fitness at Technogym's 'Wellness in Focus' pop-up at Power Plant Mall speed.ph",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
+      "id": 7806,
+      "title": "Nordictrack Peloton Alternatives Reddit Motorised Treadmill Reddit Manual Treadmill Nordictrack Treadmill",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9ONUYwcDR5c1psOXdVVzVQdFg5WVR5RzBxenpoSkVseEpzLXgzc3FrX3p3MTB3Z0phbnl2alpPTU1uZmFBTGhlZm9VVHU5OE9fSW5uVkxuSQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-20",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Nordictrack Peloton Alternatives Reddit Motorised Treadmill Reddit Manual Treadmill Nordictrack Treadmill fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4746,
       "title": "A personal trainer says these are the four exercises every walker should be doing to build walking strength",
       "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPcUg4UnJYc0NTNkxEZE5ManpaU1pYLUZLRVpfeUxRSkM2YkRwQ1hHQXBhTk05Z1ltR3Q5T0YzbkxNWXJsZ2ZnSE9LM2ZxbjIyOXR2dFJaU3VxaHBUd1pVU2t3T0duN3JwWmZMZDFiTW5OaHNkb2Y4b1dXY2tfbmd5RDlmeHdVcy16N0lIM0hFV080WEdJMzhURFBFZi03M1RobVhLZmJ5czMwQlQxRWp3Nm5mUEpvVG8tQ3h6VEtkQnl2YWtnYnBRcGVVanZrMDhFNU11SzhZVVhzR0xMZk1VNVlNNk9mQQ?oc=5",
@@ -17747,6 +19189,20 @@
       "product_category": "other"
     },
     {
+      "id": 7840,
+      "title": "Warm Up Aerobic Treadmill Fitness Woman Doing Stretching Exercise Her Stock Photo 1334544173",
+      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1VcWh5cGx1V1E1Qm9VUURnSnQ3M2NlZTRRTFBXT3dIM1lEZjlNMTlteTlKdzBpc2d2YTFZa2lWODJwSW5sQTl3Q2hiVnozU2lsX3lvWUtHNVQtendUUllIMW93?oc=5",
+      "source": "Diócesis de Salamanca",
+      "date": "2026-07-19",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Warm Up Aerobic Treadmill Fitness Woman Doing Stretching Exercise Her Stock Photo 1334544173 Diócesis de Salamanca",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4631,
       "title": "New Feature: Peloton Tread Shortcuts Now Follow Your Pace Targets (And Show Automatically) with New Instructor-Guided Option",
       "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE53X3FqYVlhYmdWU051ZmFpOHRVWXRPZFFzRElWQUdMM09RQVIzRG9mS2hjdGp6N1pIdEs1a3RZU3JaWC1aNDJTUXg5akNJWWRBcWZRQUpmYUJZU0pReWVJMUUyeFFmSzZTbWNWVA?oc=5",
@@ -17828,6 +19284,34 @@
       "summary": "Why is it important to wipe down gym equipment? Dr Kunal Sood warns against ringworm infection | Health Hindustan Times",
       "source_type": "google_news",
       "first_seen": "2026-08-25",
+      "product_category": "other"
+    },
+    {
+      "id": 7818,
+      "title": "Treadmill Review C2400 Nordictrack Treadmill Treadmill Review Basic Nordictrack Treadmill Nordictrack X32i",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5nZ2R3STNsZDl1YnZ4bW5MSVBDemdpMWNBVWlRejBZbjVob3d1OW96VXBpc0NQLUZqSHVIVHdVZkR5cEV3M2tYZFY0T1ZYLWFFY2ZEc1g3dw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-18",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Treadmill Review C2400 Nordictrack Treadmill Treadmill Review Basic Nordictrack Treadmill Nordictrack X32i fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7862,
+      "title": "ABC Secret Savings: Wellness tech",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOR0FPc29YQXdlb2p4eng4TlZwQWdiNGVPR2trM1FHRjlXNzhhWmNZaWx6RXlPNVF6X25xemQ4ai1tVjV6eFVudU83TTZRaDBWNVZTSWJDNDMyUVp4WVpMZkpYcUg4YmZoVTJyTndFNWxnUFRNcHdTNUhqaVIxbnhMWHR6MHdpdXZrQUNQSm5lMDIxZ9IBlwFBVV95cUxOVVFtZUNkVDg2TnJKM1FFaUFkbG03VWdMNEZ1bklYYzVCRFF2dlRaSV9EWHYySE5fdW9VQnZrUVg4Tm91cEQwTG1aRWd2TmktU0l6bjhJTEwtYXc0Q2E0X3o2UkJYRGZDOGNGM1FNbFBFdFRhMHJGOVdfRk5pbmVxQWdUUlBqNzZPOVFjSHEtUXdmT2hoNE5F?oc=5",
+      "source": "Good Morning America",
+      "date": "2026-07-18",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "ABC Secret Savings: Wellness tech Good Morning America",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -18755,6 +20239,20 @@
       "product_category": "other"
     },
     {
+      "id": 7833,
+      "title": "Trimline Treadmill Exercise Equipment Sportcraft Tx400 Treadmill Manual Treadmill Safety Key Compatible With Various Sole Treadmills (F60 F80 AF83 AF85 AF63) N100013-A5 In Oman Whizz Treadmills",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE81RHNMNW5UdDlVTmJUN3cxRFduN0dOM2FfZmFhN3hwSVN2Zm5PWGlVclM4YUtuTjNGREt5RC1lNFNHZm1EZmFDZlBocC1RRHBQeDlUaHJfanphb0ZkU0RhQkV5UVJmV0VHY2hLZ3NHakF6eV94OXE4SkFkQ2Y?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-15",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Sole",
+      "summary": "Trimline Treadmill Exercise Equipment Sportcraft Tx400 Treadmill Manual Treadmill Safety Key Compatible With Various Sole Treadmills (F60 F80 AF83 AF85 AF63) N100013-A5 In Oman Whizz Treadmills fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4877,
       "title": "How Martin Lewis, 54, Builds Cardio Fitness on the Elliptical – and Why it's Ideal for Men Over 50",
       "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPN1dxUjVyVlJFM3lIZ242YWdqOXgtRDVZQWdreS1hNVVFOVNRTDRwckZlYjNDQ1lueUh0bS1UbExHYXoxNUJUZ2xiVmNVWnVESjVsTzBNMWZDRWQ0UDA4UzNDbEpPa3NERU5DXzhXTElZblFPUEhsanBoRUFYN1liWTJ6M3BsY0FDT2FLNnMwVmlrUQ?oc=5",
@@ -19005,6 +20503,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-23",
       "product_category": "other"
+    },
+    {
+      "id": 7783,
+      "title": "Motorized Treadmill Where To Buy Precor Treadmill Professional Cardio Gym Equipment Electric Commercial Machine",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBZOEFzR084QWVteDhNcWkyVUtUNk8zUjRxSWhCeGVycDd4TnIwRHhUVEJUX3JzZnlTdDg1MkhoQV9rNFlzRE5xTV96SjUyMjBXYVdralN2Zw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-14",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Precor",
+      "summary": "Motorized Treadmill Where To Buy Precor Treadmill Professional Cardio Gym Equipment Electric Commercial Machine fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 4642,
@@ -19469,6 +20981,34 @@
       "product_category": "other"
     },
     {
+      "id": 7796,
+      "title": "Motorized Treadmill Matrix Tf30 Treadmill Review Matrix Buy Refurbished Treadmill Matrix Fitness TF30 Folding",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE95amdlSFlOTTFxU01YN0VKdHotRmpBdEE2a1hnajVlWms3dGRrMkF2S2VhXzdVMEpFbWI1UzZrdVV5cE0wckFoNkZwQ0FpZGJVNmlKNHc2Yw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-12",
+      "category": "brand",
+      "categoryName": "喬山品牌動態",
+      "brand": "Matrix",
+      "summary": "Motorized Treadmill Matrix Tf30 Treadmill Review Matrix Buy Refurbished Treadmill Matrix Fitness TF30 Folding fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7799,
+      "title": "Magnetic Resistance Fitness Equipment X 868 Spin Bike Spinning Bike With 10kg Flywheel صقر للرياضة Saqrfitness",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5LZVRuM2ZBZjRKLVlhbTRBazM3anRFenl4anh2dlhzUnZ1b2NrMkxqeHRIcElucFJ0MU51YmJjZWxTY0p1RGpORTRybE1Ldm5XTHRNT2NEZnR2ZnBIREhDMTNFanZkaW9TUWVtYnVZTWt6bDZUWHZMMjhtWWVQUQ?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-12",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Magnetic Resistance Fitness Equipment X 868 Spin Bike Spinning Bike With 10kg Flywheel صقر للرياضة Saqrfitness fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4632,
       "title": "Peloton Lawsuit 2026: Claims, Payouts and Deadlines",
       "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE0wanNqWVYtOTdyTkNLVVJtVGY5S0ZKY3lmWHBuRUFPbUNHejlzd1ZIam1Jai1Dck43VlZoZFlXX2NYZXNVa0xrb05BMWw?oc=5",
@@ -19523,6 +21063,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-19",
       "product_category": "other"
+    },
+    {
+      "id": 7834,
+      "title": "The Treadmill Weight Loss Benefits Of Having A Treadmill At Home Incline Walking Burns 7% More Fat Than Running, Scientists Confirm – Here's How To Do It Right",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFBjcFJNenByY2JfUTItQzlLeVVRTkR3cktEV0Z0aEM1bnNHS0lURWl5a2VyVWp4YUpxSlVEeUVwaDVGeVZrZTM2OUNMa3c3WmxSeVhQS3RtRlpKUG1FQVQ2cGhfYV84LVdLdzBIUy1kXy1FYW82RVBpaS1oN2Q?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-11",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "The Treadmill Weight Loss Benefits Of Having A Treadmill At Home Incline Walking Burns 7% More Fat Than Running, Scientists Confirm – Here's How To Do It Right fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 4515,
@@ -19691,6 +21245,34 @@
       "source_type": "google_news",
       "first_seen": "2026-08-20",
       "product_category": "other"
+    },
+    {
+      "id": 7838,
+      "title": "Workout Moves Health Gear Functional Fitness Training System XFT Strength Training System BODYCRAFT",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE10SDBkNWdoT0tjY2NCemxWWVM2SmpkaXNjSnFWcl9XVlMwM0RYYk5lZXdLbEpIRUJJa08yMFFyLVRnb2VJdUktSEtTU2VVRTFzdExOUzFMcw?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-10",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Workout Moves Health Gear Functional Fitness Training System XFT Strength Training System BODYCRAFT fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
+      "id": 7847,
+      "title": "Water Rowing Best At Home Rowing Machine 2021 Merach Rowing Vilobos Water Rowing Machine Workout Equipment Best",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5aa3F6YXNFWGZQZGJWRmpOU0gxR1ZEUDZXNnFnUlpReEZIUVJpeVVZenhBUWhuUEpUMDR6THBkcTRueDVwSVhFRGVXV1oySXRYbGVULTZXX1I?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-10",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Water Rowing Best At Home Rowing Machine 2021 Merach Rowing Vilobos Water Rowing Machine Workout Equipment Best fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 4551,
@@ -20418,6 +22000,34 @@
       "summary": "Acl Rehab Single Leg Broad Jump Single Leg Horizontal Jump Exercises Leg Workouts New To Help fuelcarmagazine",
       "source_type": "google_news",
       "first_seen": "2026-08-17",
+      "product_category": "other"
+    },
+    {
+      "id": 7828,
+      "title": "Peloton Prioritizes Low-Impact Strength Training",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOOFpCN0pJTzlrN1BnbHQ5eGVvVEhqNmlxb3N6ajFsVlI1OGd0bDdyTU5lUkh1TEFZRnduOGd0d2k2Ql8xaW4xWF9JcXhhYjBxbTEzQ1ZtaGtJdmZSZ3hOQ0p1N05palN2OEpvU2pJYjY0a1ZOVmUxelZfdGVjSDZkR2E0X1VqMlAtenl2T0JB?oc=5",
+      "source": "Athletech News",
+      "date": "2026-07-07",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Prioritizes Low-Impact Strength Training Athletech News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
+      "id": 7893,
+      "title": "Build your home gym for $100 or less! A fitness trainer's advice for productive at-home workouts",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5qUHJFQ2c1X2E3UXgtcHpqT0xfMHcyYmdyS0ZWX2VSbFdpVWUtSWFuOHpOR0xaUzFjSEQ0bFRKVkc5ZG53TVRKbE9BZVNDa0JwSHRTWERIMFBMV3pX?oc=5",
+      "source": "KSL News",
+      "date": "2026-07-07",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Build your home gym for $100 or less! A fitness trainer's advice for productive at-home workouts KSL News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -21300,6 +22910,34 @@
       "summary": "從Colnago車架到陀飛輪機芯！RICHARD MILLE新作展現極致輕量 限量50只 自由時報",
       "source_type": "google_news",
       "first_seen": "2026-08-21",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7837,
+      "title": "Treadmill Review Nordictrack X11i Review Clearance Nordictrack X11i Stores 2026 NordicTrack X11i Incline",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9kUHpWdkJyMmZpenRGY3lMc0NLbGVQX3hyajhhRDZYdzBJNkpSbzI3LTdBMkdobnpUVnliZFdOZVhTWnByQ01KT2xqYUt4VUVBQ0RDeEtlMmI?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-07-04",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "NordicTrack",
+      "summary": "Treadmill Review Nordictrack X11i Review Clearance Nordictrack X11i Stores 2026 NordicTrack X11i Incline fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7868,
+      "title": "You don’t have to run to get fitter—this 20-minute treadmill walking workout is a great cardio session that’s gentle on your joints",
+      "url": "https://news.google.com/rss/articles/CBMigwJBVV95cUxQSHJzWTJfQnFsOXBTZGh4Rkk2X1JHbjJMRTV4ek1MYnotWFRibVdEY3hrRi01WllXSFVzVmxBdDBxYng3RnExS2dKdkk3a05yUG9vM19MSHBZaF9GR0k3NUhNMnBIXzJ3dnVsZFlyWGY4R1dQX2ZEcXV3UEpJMkNQQ3RzeVAxd2hMOGZYbmlyVHFaLVhyR0czT2xlUkFYdkNfbkRFa3hfWHRvQ293QnVNREhCa1hPT3Z5dDBybllvZS1CLWEyWHc5LWZiRnBmVWxjQUNSaE5RRElsSzZON2xmR0hWSkdraTBwVGZ6dFVRWklQRkZsNkFXcHNEclRBWFR5dHZ3?oc=5",
+      "source": "Fit&Well",
+      "date": "2026-07-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "You don’t have to run to get fitter—this 20-minute treadmill walking workout is a great cardio session that’s gentle on your joints Fit&Well",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -23221,6 +24859,20 @@
       "product_category": "other"
     },
     {
+      "id": 7855,
+      "title": "Running Through Tires Tire Run Exercise 1961 Royal Tires Vintage Ad \"Too Much Flexing\"",
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9rTVo1aWNhdHdhSU16RGM3b1ZfRDZ6dWdiaXlzR0U1N1RtbUcxN0tueEQ1c1R4X1Q0OUd1bzF0MDFSN3FxUTFoZzBsY3JyN0UxcTZLMFlZZVo?oc=5",
+      "source": "fuelcarmagazine",
+      "date": "2026-06-30",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Running Through Tires Tire Run Exercise 1961 Royal Tires Vintage Ad \"Too Much Flexing\" fuelcarmagazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 89,
       "title": "Fitness: Be smart if exercising when it’s steaming hot",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOcjRxaEQ0UkxQejJaN0gzOFNoWkRtRVpqTmMyV0d6c0VCNGQwaEhiWUNRRU1EemxGaW1lbjctbXJHRU0ydDZId2xlRmRHbEZWOWdfZmhMWm9UM1VaWGZmN0gwTlBlY0MzUEpHb2Q2TDBfakpVa3E4WXBzejhQa2cwdE9rR3F0cmxSWUdnYVdvWWFFT1pmTWM4MmRR?oc=5",
@@ -23947,6 +25599,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-21",
       "product_category": "strength"
+    },
+    {
+      "id": 7899,
+      "title": "屠穎是誰?跑步機跌倒撞頭過世〈天空〉、〈過火〉都是他做的| 娛樂",
+      "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5KQ2ZtTUNHSTV1RFpjZ08wNzY1akltYUtKRFpBWDEzbWt6bjl1QjcyMjdnbGtsMndJMkJmYk5GcHBEaWt4a2FuaEtFdjA?oc=5",
+      "source": "NOWnews今日新聞",
+      "date": "2026-06-27",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "屠穎是誰？跑步機跌倒撞頭過世〈天空〉、〈過火〉都是他做的| 娛樂 NOWnews今日新聞",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 112,
@@ -25234,6 +26900,20 @@
       "summary": "Peloton Interactive, Inc. expands platform with personalized movement and recovery tools Traders Union",
       "source_type": "google_news",
       "first_seen": "2026-08-15",
+      "product_category": "other"
+    },
+    {
+      "id": 7805,
+      "title": "Grip Strength Will Make or Break Your Workouts. Use These Exercises to Build Up Your Forearms.",
+      "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE54NVp3Q1dUUldja2pFR2ZGX3Itc0FDOG5zSjFXd0xnbXpQRUQxNjBTSVJHRHhJR3pXU3BBX19BTkM1Tm04bXlwU19MMDIzTEVyVGNWeWU0enhvTlJtRGp5cXNuOEtuekdSd2o4MkxkQQ?oc=5",
+      "source": "Men's Health",
+      "date": "2026-06-24",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Grip Strength Will Make or Break Your Workouts. Use These Exercises to Build Up Your Forearms. Men's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -29633,6 +31313,20 @@
       "product_category": "other"
     },
     {
+      "id": 7848,
+      "title": "Behind the Scenes: Programming the 2026 CrossFit Games, Episode 1",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQNEdrUERiYi01clBiZWFYNEI3cUxPTHRvVU9CZ0lzMmFtcWNxZlRoejBqbVJvRHlSZm9ULXNDRHhBYUlLLUNSZU5yMXl1ZG5CV1d6cUExY2Frand6cUFCZWtUUG1oMlpKNGo0TXpuN3ctUlBoek4yOGctSnMxV1RudFBkdjlBRzB5VG5QRUJqZ2JWMnB1WEVlSzJneUI?oc=5",
+      "source": "CrossFit Games",
+      "date": "2026-06-08",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Behind the Scenes: Programming the 2026 CrossFit Games, Episode 1 CrossFit Games",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 313,
       "title": "Jennifer Aniston’s favorite workout Pvolve is the low-impact method that defined my abs",
       "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE4xMXUwZVR6U01kcHUzM2d5V3JkTzhtMkxPMjJDdllmYlhRMk1VY2pILW1oQzIwVXVtVHh2TF96TUh4Y0dYSlVXNHFOSk12aGw0dWpB?oc=5",
@@ -30149,6 +31843,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-24",
       "product_category": "cardio"
+    },
+    {
+      "id": 7857,
+      "title": "Alison Brie’s Workout for ‘Masters of the Universe’ Took Her Training to the Next Level",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQYW50bU9VSlVUM0NzZ2V3ZXVhMU1TVlRoVGNfXzVfZVJPWW90ZnR4ZTVoWVF2TXppYXp5TE1lUk9JWE5ISkIxeHBzNHNFVW9DMXRmdmNvVGxJdDl0ZmVkSUFPZWwxNFd2SHo5SEl6U083QVBtd3c2YVktNFBQUzNjUmtLdnkwUlE?oc=5",
+      "source": "AOL.com",
+      "date": "2026-06-05",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Alison Brie’s Workout for ‘Masters of the Universe’ Took Her Training to the Next Level AOL.com",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
     },
     {
       "id": 4072,
@@ -39363,6 +41071,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7901,
+      "title": "汪東城鐵粉險害飛輪海出車禍!「炎亞綸留言認證」 火大下車開罵",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE03ZXhhR3dZaVZMV3JhblhhTzhDMWVOdkNoUHFLb09CT3ZJUkcwUHhMWXBzUWMwZ2JfZDlSWTlXcktScHVjM2ROOWY3MEQ0d9IBTEFVX3lxTE03Q0RqV0pKdjJBVmR4TlI1SV94UVlsNVBsc1NjMmlsdXlpNzVjZlVYUHlUaUN6QzNuTFliYzdKYVpJaXJYX3plcEF0Zmg?oc=5",
+      "source": "ETtoday星光雲",
+      "date": "2026-05-05",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "汪東城鐵粉險害飛輪海出車禍！「炎亞綸留言認證」 火大下車開罵 ETtoday星光雲",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 4079,
       "title": "Technogym Sustainability Technogym in the Dow Jones Best in Class 2026 Index",
       "url": "https://www.technogym.com/en-US/stories/dow-jones-best-in-class-index/",
@@ -47203,6 +48925,20 @@
       "product_category": "other"
     },
     {
+      "id": 7912,
+      "title": "Work on a £1.2m project to improve Woking Leisure Centre with new gym equipment and studios has completed its first stage. More here: https://bbc.in/4trywo4",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONzNsNU5jbjJ2OVRyelRVSmYxRmdHLTNnZUVIeFBoZjdETWppNFh2RkpHTXJsNllub1hfMnV1eUV0RXNXUlpWbmhUMl9HZzRRUTdneE1XOUQ1SVgxZkkwS0M0QWc2dHBpd2ZKV2oyeGZta1Q5TElST1Q3aTM3OWhwMFlyMGhUUzBHV0Y1RW5odDI3aWpKMFNHeU1sVk5fWk1IV01YMkNELWhCdEpLRG9SQ3NCVWpQcFRTbGZiNHRWdWIxZFFZd3JGMjU0MTJzbWotS1JiWm1R?oc=5",
+      "source": "facebook.com",
+      "date": "2026-04-06",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Work on a £1.2m project to improve Woking Leisure Centre with new gym equipment and studios has completed its first stage. More here: https://bbc.in/4trywo4 facebook.com",
+      "source_type": "press_release",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 970,
       "title": "Fitness expert shares the 10 exercise equipment you need for a full-body workout at home without going to the gym | Health",
       "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxQT19WVFlTb3pqMmVhd0N2NnpJRkRBV19GOGQ5bG9oUDRZXzlFenQzWDVYUUZxb0RSRGt0T185SzJkRThYcUdhVWs1cms2eHZaZG5iTXkxVG9teDBGS09Pdm5UTS13bF81djFXSUtYdUtiZDR4OE9zbWlMUGJNWGNDSVFmbU9jTnNLd2gyZ0NibkwzTTRPbEdYZE5ZS2NTc3RLMHQwcm1yQ0V1enlBa2xDTUIwR1BmX2YtT3p1RTdHcUkyNzQtUzhZMURSYjVMbWp2UlgyTDhsSjhKQW1MQzlRc2xJMWxTVzFzdURIZUJ2TklWMVNxLUlGX3hLYUNRb3VZOU50alhOWGdvRE1FZ2xn0gGUAkFVX3lxTE44RU5iX3VLc1ZmYmk5ZW94WU5VTnRxWTdMTFN4b2g5ekVmZmdCN004Tm1kRkhUVGJ4RG14WjNmNVZDYUlpTk05QkFwS0tGQ2NuYzRINUQtZjExSlNYX1pvS3RlUkk3U0lJRDY5QmZjNC11Q1kyeGxBbHhNNmNhaVY5Q2FrNHpsWS1WWVRnWEdDbU1WR3k4Zy0tWk10YXVrLURiYkE0a1k4cm0xZDkxR3h2b2dZZHFYWm4zN2d2MmhteGYwTjVMTXNFWVZPVGduVXJHdjJpSnV6WXF5NldtLVcwRk1WWHdxbkFYMjZacjFfS0lvODdWOTdtQmduZW5XNFBsM2hvTC1FeFltOGs3X2p5aEU3Vg?oc=5",
@@ -47634,6 +49370,20 @@
       "summary": "「騎飛輪收300萬」沒出現在法院判決新聞稿 張育萌酸：敵人就在本能寺 自由時報",
       "source_type": "google_news",
       "first_seen": "2026-08-16",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7831,
+      "title": "SOLE F85 Treadmill Model With Touchscreen & Home Workout App Features Announced",
+      "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQRjdWMFAyNUZ5WG52c0Q0aS04d3pTRXdCSHVZNnF2SjBVdXV4R05kRWVQbEVkRUp0NjB0bEVuaUNUOWFOUmdjWmlNeVFxaXdPVHg1aHJvWTlFTjVncE5CQ0tVeFdtVnhuUW43TG8ycVB1cVpsdXFFeC1teWlnbnAtc3AtRzRuM0tIRzFydmxPeEY4OVhNU1R2OXFBZzgyai1FVGRoTDFkVWh1WTRnNUptcENFelA1TkRPSUFWdzFKbDBYelQ1dUdjbkJWc0lrUG4zUmhvTDQ3WnBPbUF2anNF?oc=5",
+      "source": "FinancialContent",
+      "date": "2026-04-03",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Sole",
+      "summary": "SOLE F85 Treadmill Model With Touchscreen & Home Workout App Features Announced FinancialContent",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -49328,6 +51078,20 @@
       "summary": "Media Matrix Worldwide: Mahendra Nahata Acquires Additional 10 Lakh Shares in Open Market Transaction scanx.trade",
       "source_type": "google_news",
       "first_seen": "2026-08-18",
+      "product_category": "other"
+    },
+    {
+      "id": 7782,
+      "title": "Fitness: Stand-up paddler wants others to get on board",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPVDFWd3VfRmxMZWlvZWMxdHNub3BLQ2V6R0QxdGNEM0puVDg3bEF6aFhSUklkZnR1Wng5QTBRRTBlWmNIdXNuOVB2a01BNEMzTTZEeWliaU5JTWNtS1cxYWZQbWhRbnpPb25TNFlYdXFyOGh3SmhReUxCdjZVaE0yWFFONzVCSHZFc2lOVTBWWGVPTXI2UXg4ZmpDLW95UmhpU25N?oc=5",
+      "source": "Montreal Gazette",
+      "date": "2026-03-27",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness: Stand-up paddler wants others to get on board Montreal Gazette",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -53559,6 +55323,20 @@
       "product_category": "other"
     },
     {
+      "id": 7889,
+      "title": "Multi Gym With Weights Home Exercise Equipment Now Available for Sale Online by Strongway Gym Supplies",
+      "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPVHlWeUVLSHlfbE5JMkIwdVpUMVNaYWdRc1g3RVVjU3c5M3lJd3g2dlpYUkdvaXlFYlNadngtT0lEY0wwZG5vUmktaHhSVTBnNkdZYVgtQkFpRDlJYnl4TTZBUG5KZEExMlBDYVJVMjhPTXNHZHNEeG5VMTRkS1EyMmdqLUYxWHlRc05Tb0U2X255MVNWdW9ZOThkbzg4RHlCQTNkRXFyT2NBVUt4b0tGTmhlUnVfSFZPN3g3a0ltZ09nSXp3a3dTODR0dG8wdmlxT0EzZVlNYW45NC1tZ0EyUXVoczJ1NHlRVkZncDlyQ1JweGlOUTZVSQ?oc=5",
+      "source": "MetroWest Daily News",
+      "date": "2026-03-09",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Multi Gym With Weights Home Exercise Equipment Now Available for Sale Online by Strongway Gym Supplies MetroWest Daily News",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 1216,
       "title": "Fitness: Want to boost your daily step count? Consider location, location, location",
       "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQNEhWT2tHM1VZQWNNSVAyRTFmcUlnRTFWTnQ0eXdhVk1nR2EwLVlYQVY5dzd1WGtuODU0cWRBaWs1Q0dsbVp3VThaM3lPbV9EOVdVSkR0NDlUM0M0WWNQT212RVZEN09lWkZGWC1JMUoxbFdaVm9ZVTZ3YURuR2NkdFdPUG5CN29LYXVQaFVXUWVHbnpJYi05RGVsQXhsUzRpWUIxVi1DTms1NGVuVFg0TXByd1NLTWwwMDZLMk5CQ1BQTklGQlE?oc=5",
@@ -54301,6 +56079,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7829,
+      "title": "Peloton Plans Bike Refresh, AI Integration As It Looks To Rejuvenate Sales: Report",
+      "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPeWpydEtNSWloU1E0bEdXdTMwb0xPNFFMV1gwSjFYa19oVTNLUi02WXFzLURHREtSZUZoa0ZUMWVsYXVPSEhxTGRCUFZBcF9iWUV5OXlCMkhJdWdCb2ZpRUJvRENUNUtZY3FpME83bVFXTjNTU3pVMi1waTdoNTIxTGhnSkM2Q09lX21WNmg4SXNOcnhYQXJvNGdVUW95cjVsZHNoQ1Jqdm1iMGNOY3ppTnhQQ0t6R1pPaW9V?oc=5",
+      "source": "Stocktwits",
+      "date": "2026-03-05",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton Plans Bike Refresh, AI Integration As It Looks To Rejuvenate Sales: Report Stocktwits",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 1248,
       "title": "Reddit Traders Continue to Like Peloton (PTON) Stock’s Volatility",
       "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNR3h6dnZWdElIYk41a1JhUV80aWxOczg3Q3Q3R1dZbjIwWUZLaTR3SkNFTWlpeDZIZ3dOMjNiWWhBWHFFdmRDcGdONFh6NEJ5bWwyb1hNY21hRnlsbkJ3UHJqMmdUb2lWaHJpMFZPYzQ4NC1fc1F6YW5KV2xtNm1GVXRXY0wxVGl0Tnc?oc=5",
@@ -54522,6 +56314,20 @@
       "summary": "Low-intensity treadmill exercise preconditioning mitigates post-stroke injury in mouse models EurekAlert!",
       "source_type": "google_news",
       "first_seen": "2026-08-21",
+      "product_category": "cardio"
+    },
+    {
+      "id": 7884,
+      "title": "Xenjoy Cube Cycle Exercise Bike Doubles as Living Room Furniture",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOLXplNGZkcnpWWmF0UTNuc2ZpUFVGcGUtZklwUkVTUUNXX2RwZC03T2NvSVNPS0FkVzJlazlEY1U2Z2V0LUNITDBacHF0UXFPNTJVYjFUMHFQMHZqREYwUDgtY3FkeFhoOEZaelZwWGFZVkZ1NXEzNmllUTJDenhIWERLb2hoZjIzUURuc0E5QUFCM1VkWGJCVw?oc=5",
+      "source": "Gadget Review",
+      "date": "2026-03-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Xenjoy Cube Cycle Exercise Bike Doubles as Living Room Furniture Gadget Review",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "cardio"
     },
     {
@@ -54957,6 +56763,20 @@
       "source_type": "press_release",
       "first_seen": "2026-08-04",
       "product_category": "cardio"
+    },
+    {
+      "id": 7908,
+      "title": "New Peloton \"Jump Training\" Classes, Plus New Weighted Vest Class Types & Menopause Classes",
+      "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5OM0FHNXYxdDBrMVpvNlBCOFFMYnJQY1ZQenNaY3cxTlpWaEdEcVdFdjV1NldIR1RaaWw0MklQaTFYQWhfMmpTNjM4QzFrWkp1VXpxQlRBMWV5UG56S05B?oc=5",
+      "source": "Peloton Buddy",
+      "date": "2026-03-02",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "New Peloton \"Jump Training\" Classes, Plus New Weighted Vest Class Types & Menopause Classes Peloton Buddy",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
     },
     {
       "id": 1271,
@@ -56569,6 +58389,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7781,
+      "title": "Fitness: Olympic success is a lifetime in the making",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxORXBQY183VTNZSUFHR0JCUnNzcUxWaHVUNGttVFlEY3lTaFRHRUdGY05fRFpWaDRZaklydWVxTW1hcG1PcllxOUpXeS15SVdUX1drN3IwellaeWkxUUZXbmhCMno5VmJ5SkdFNUhZWXZSamMxSGVLRjQ5alNFWFZOVlBJVm9wZUtCRjlGTUpFRUdyTkhVVzg4eUdWOFN3alJu?oc=5",
+      "source": "Montreal Gazette",
+      "date": "2026-02-22",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness: Olympic success is a lifetime in the making Montreal Gazette",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 3230,
       "title": "New Book Stop the Forking Madness Delivers a Bold Wake-Up Call to Transform Health, Habits, and Mindset",
       "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNZGJGUDc1QUFvX2tkajJHTDlIVXZPX1k3bkw0OU1IU3RxSS1ocnh3V0JNbXNrRlRaODN4MU9UMjVuWHFSOEYyU21qTk5XSmJYUnFnblZxaVNTUE5GWFlrdzVXdVJBZHp4c1Z4Y1FJYmVKNkk2dUlkX3JGTVdVSTFHZDBCX1lYSTdOTWprcXFmZ1h5OG56WTdiNWZRTS1zZjVkNnFnZFk4NldMb1I0a2puYTJhaGNoQVNtQ3RBMlNzRUlkYUJfMlQwZFNpN3BNb1BnU05aanBRdWQ2Um5oQm8wb0xFVVN6NXY0cHc?oc=5",
@@ -56622,6 +58456,20 @@
       "summary": "King-Size Cover-Up: Florida gym goer points gun at man, later claims it was a 'Snickers' WPEC",
       "source_type": "google_news",
       "first_seen": "2026-08-23",
+      "product_category": "other"
+    },
+    {
+      "id": 7776,
+      "title": "VIDEO: Body Rhythms Life Fitness offers free classes",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5zSzA2dXVudzRMZ29WM3BMc1cxOFc3NHFVNTltcTJfMWxYTjNrMjVZN29IYWU5ZDZLSjJ2eWZJbll3NHBkSGFPeF9CNWQxUERZV3d0WQ?oc=5",
+      "source": "York Daily Record",
+      "date": "2026-02-21",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Life Fitness",
+      "summary": "VIDEO: Body Rhythms Life Fitness offers free classes York Daily Record",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -58193,6 +60041,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7906,
+      "title": "12 Editor-Tested Supplements That Can Help Men Hit Their Nutrition Goals",
+      "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE03V29EYTljRjNZOWpOS1ZSTURPazlhdXJTWl9lMXdrZ2szdHNqanZCd2JEMldHa1lOQVhNM05ONGN0Y2d2U25LZ2taWmxSd01xZ0I2bXFvc3NybzRnc0xTNldwVk45a0ZtSXA2UDUwV3lmSm9xRC1QR0pXUEc?oc=5",
+      "source": "Men's Health",
+      "date": "2026-02-13",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "12 Editor-Tested Supplements That Can Help Men Hit Their Nutrition Goals Men's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 1379,
       "title": "Where Will Peloton Stock Be in 5 Years?",
       "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOV1RjVnE1d0xZVjdfV2dlSF92RkZ5M2MtOEhrUXloMkIxbGF5bU43LUM1T1NONVNmNGRtaGN5M2hqTEdmeUtYbmxtWUlKcmY1NHpTRldBQ09FeGtpN09kblpCYXJwMmF4cHhjZDIyVkwzOG9IZHVIbzhNMjhqLVcwSWdxbHI3QnA5?oc=5",
@@ -59045,6 +60907,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-16",
       "product_category": "other"
+    },
+    {
+      "id": 7905,
+      "title": "I Got to Test Out Lululemon's New Strength Training-Focused Gear Early. Here's What I Thought.",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQdHJnS0w3dTgxUUdtYzc2WFdCaFhFaGVtV1JhalVXc1NOSWcyNjFSdlVxM2pQNzJ5N1FXanRUWUE4bXJQek1LalMydDE3X2FNeXBTWkw5a0ZfRkViTi04Q0FhOENVeFd4N0J3X09Sd2YwVG5IMWl4ME8wRXQzR0I2Y1dNVkJseXoxZUVpcEZ3?oc=5",
+      "source": "Men's Health",
+      "date": "2026-02-10",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "I Got to Test Out Lululemon's New Strength Training-Focused Gear Early. Here's What I Thought. Men's Health",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
     },
     {
       "id": 1413,
@@ -63345,6 +65221,20 @@
       "product_category": "strength"
     },
     {
+      "id": 7894,
+      "title": "Planet Fitness opens new location in Downvalley",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNc3lZWnhjOE1FQnRUN21kYXhld19GaktEcERKeTl2NHJvVHpLSmN4NG8zbHBlc0V1Tzd3NUh6d1dacm1oR09oWF9JNE1taWlLUk93SFUteDZ1N1NqV3ZLeXBON3BKaEZqS3kzTXBWUmdfTHZ5cEVRM3dGdXFqR05OTjBMTUd4S0U3RHg3Y0JqWFdJUEFDc2tR?oc=5",
+      "source": "Scranton Times-Tribune",
+      "date": "2026-01-22",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Planet Fitness opens new location in Downvalley Scranton Times-Tribune",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 1597,
       "title": "Incline Treadmill Benefits for Health and Fitness (2026)",
       "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9xY3NGSXcxRTFMNlJVTlZzaEJ2d0hVRkNUV0FqeTcwZ3NLaWpMSXBDYlpjMTZKaWgyc2d5b0lPZ25DNWV5bXBIeXFGYklmaTYxS1JXT2ZJaUNUUG9zTUZxXzZTSnZucU81YVdB?oc=5",
@@ -65303,6 +67193,20 @@
       "source_type": "press_release",
       "first_seen": "2026-08-22",
       "product_category": "other"
+    },
+    {
+      "id": 7800,
+      "title": "Modern Luxury Cardio Lines: Matrix Fitness Introduces the Ultra-Slick Onyx Collection",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBZUDBjd0gtcUZ5bXpnaTBpTk84WnRpaTVqREtqQXlBbWJ0WFNFb3dTc09KZ0laejNnSWFzdWZTdnJ3Q1JtRjByM0w4UlhqcXNBQl9oTUoyOTVDZzh3MEE?oc=5",
+      "source": "Trend Hunter",
+      "date": "2026-01-14",
+      "category": "brand",
+      "categoryName": "喬山品牌動態",
+      "brand": "Matrix",
+      "summary": "Modern Luxury Cardio Lines: Matrix Fitness Introduces the Ultra-Slick Onyx Collection Trend Hunter",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
     },
     {
       "id": 1663,
@@ -69939,6 +71843,20 @@
       "product_category": "other"
     },
     {
+      "id": 7888,
+      "title": "Must-Have Workout Equipment for Those New Year's Resolutions",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFAwNnBtQVFFWGVHR29OM2ZvZk1neVZHeWhxRDRSaVppUnN1UFlkSmlvS3ZaVGVEWG9BcXA4a0FfcWluVmpsZXV6dTBLRjYzVW5ET0hBaWpTT1B4SXJQVDd4QVdUamlMeGZGOEhOQ2dOZ3k4NkU?oc=5",
+      "source": "TMZ",
+      "date": "2025-12-24",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Must-Have Workout Equipment for Those New Year's Resolutions TMZ",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 1833,
       "title": "Salman Khan Fitness Goals: Salman Khan turns ‘Fitness Beast’ ahead of 60th Birthday – Gym photos breaks Internet",
       "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNdm1vclIzbXY1b0c0dFJqSTFuTmxUazBLUjdVYW44UU9VUmJGYnE5WWxaYXo5WWlrOGUzRnpxN2x2VDE3Y1RUbEF0a3RwSHVGQUk5MVBxVmQ0b0pIN1ZCQlM4RHlWSWtmNmVvbEFUODQ5TXhjMVBybXZOQkJVbE5rNUNB0gGHAUFVX3lxTFB1UVhxNEZEMXRhT2VNYU9jd0ZWcVRmTkNKTkhjRXBGUzdWbDBncTM3TE1rNUlOYVlVVHEyRmFRMmcxY1hfX0NGblJuYkppVDdfbG94TjJUTENPVVZYSUs2TF9NeF9USFFDenkzNmJLWUlYOGJmV2hSZGhIR1lxZ3hLUlQ2S20xdw?oc=5",
@@ -70384,6 +72302,20 @@
       "summary": "支援營醫療連健身社體能訓練 培養運動風氣 強化官兵體能 matsu-news.gov.tw",
       "source_type": "google_news",
       "first_seen": "2026-08-22",
+      "product_category": "other"
+    },
+    {
+      "id": 7865,
+      "title": "Leisure Facilities Stocks Q3 Recap: Benchmarking Xponential Fitness (NYSE:XPOF)",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQajFpYUpMNWZkUkJpTmtOMExhdDhsTVBLV3ExeHFZZ09KZWdUb1dnalp2MVBjOFZSYUFJVVVMU3YyVUhuYmRvcTJkWGxSTmJQcDl1XzIzYTFFcDJUTjI1aWFqRm5vMW1zdUJFUWhtUXJlQnhEMG9oYllxNHpyWkR5RHdwVF94R19wUmtUOThBOVhHM25xVFBIQnBwV1J5bmU3R29WRmVFR0NPbThrQnJEZWxRbTdkQW9YMUlvNUxFLVJSWFZXUGE1OG0wTXc?oc=5",
+      "source": "StockStory",
+      "date": "2025-12-22",
+      "category": "finance",
+      "categoryName": "財經/股市",
+      "brand": null,
+      "summary": "Leisure Facilities Stocks Q3 Recap: Benchmarking Xponential Fitness (NYSE:XPOF) StockStory",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -75287,6 +77219,20 @@
       "product_category": "other"
     },
     {
+      "id": 7851,
+      "title": "QUICK DEAL – Save $50 on the Rogue Echo Rower",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1uTWhnd19wRzNXTjdBMUNyNFdmcU9XRFpwZUtFZjRkNG5vMl9zclM5UXZKbXN2UGlOMkdWOFN0Z1JMSkpUcmJhYWRwV1pIZDB5LWM0bWhjRkNJSmlmTjdQOVBRc0xnMmdBX3NFTU5RNjRPbEN2?oc=5",
+      "source": "BOXROX",
+      "date": "2025-11-22",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "QUICK DEAL – Save $50 on the Rogue Echo Rower BOXROX",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "cardio"
+    },
+    {
       "id": 2040,
       "title": "‘Wicked’ Star Cynthia Erivo Joins Peloton Instructors in Exclusive Class",
       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQd2laaUN1T3lKYlIwUUJHeUtvNm56Ml9Vem1mVVNlNm82NjlTb2pDczI0THNuZTRYbTB6VTRuVTl6TjRRV01iOTRRUVBvVXhTd1E0d1FZSlloYzdGNGQ3ellFRjZnZFM5bFBpXzFFeDZQLWZJOXpmcUNBNjd6Z001dTR4RnlLX0lyWDBhM2RYUGp5VFEwUVE4TUZhZ2Jndw?oc=5",
@@ -77681,6 +79627,20 @@
       "product_category": "cardio"
     },
     {
+      "id": 7780,
+      "title": "Fitness: Get outdoors and play, whether young or old",
+      "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQLXItejR1RUFXT3Aya1R6Q3NwRHMwdUVVQ216cDRhNVdpN2R4UHBYa0Z0czIwZnhhNGdCdmk2aGU0bTlpMm0xQ3pHRGVlOU1hZDVsTDRUUkdDYml6X1Y5TFVqajBuZ3N0c2x0Y001SW9nNjFHd1ZLVlVSMkphZk1lMTZR?oc=5",
+      "source": "Montreal Gazette",
+      "date": "2025-11-09",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness: Get outdoors and play, whether young or old Montreal Gazette",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 2119,
       "title": "The three best treadmill workouts to try in under 40 minutes",
       "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQdFdCZXJzelZ4Y2p5MFlTZWkxYmZGMDBoX0hPX3FmNkQ2d3duQWt4ZWd0S3Zubm4yMWxFSG10c1lZZTNFTDNnd3dvalZUNkJXUmVWY3RnOEprUEJKOU16b1Q0M01tbVQ1NmZEQkVJUHViSzNCblk1dXFjNkJJamRwZ0duZWhoWnUtN21MQnJHNENSaVFRbFhKZA?oc=5",
@@ -78099,6 +80059,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-18",
       "product_category": "other"
+    },
+    {
+      "id": 7854,
+      "title": "Tia-Clair Toomey-Orr Drops to 3rd in Rogue Points System Rankings",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNSko4cEtDNHlLRldvWlk1cWRHZjY4NFlhVU5zc1pJdXB1RnJiYXVBOWMzN2EwRnNJSV9oQ3NYRVVidHhMOGd0MWxQenRITndZUVpyd285OHZWemVXc2VxUzc5LWxoSnF6UDlUc2UtQ3JUQ1E0cjFGQS1Pbk9keEl2bzNZX3ZCVkJTVjFGeTJlTmNKaWJGeHlPV0o5SzM5VkFGUUxB?oc=5",
+      "source": "The Barbell Spin",
+      "date": "2025-11-07",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Tia-Clair Toomey-Orr Drops to 3rd in Rogue Points System Rankings The Barbell Spin",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
     },
     {
       "id": 2133,
@@ -80817,6 +82791,20 @@
       "product_category": "other"
     },
     {
+      "id": 7892,
+      "title": "Get Pro-Level Fitness at Home With Up to 33% Off Smart Home Gyms",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQbjUwZ2NNa0xVSjNzRnU2cFNIOERQVmJyX0tSTE55T2U2VzhNaGh5WjF2bF94bUtKR0RLWjdWLS1YdkNkRzFza0J1aUZlYUFoZTZMc0puRVV3cFRRcFRrZ1NISy1idURPdU40M0VRbW52ejdpZ19aYTBaQnBBZFVrYWZzUkFVTWc?oc=5",
+      "source": "Reviewed",
+      "date": "2025-10-28",
+      "category": "tech",
+      "categoryName": "健身科技研發",
+      "brand": null,
+      "summary": "Get Pro-Level Fitness at Home With Up to 33% Off Smart Home Gyms Reviewed",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
+    },
+    {
       "id": 2224,
       "title": "Technogym and World Athletics present RUN XTM, the first World Treadmill Championship | PRESS-RELEASES",
       "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOeDM5VEVrQjhyVlBXV01jbTFsT2MwN2ZWYVViNHljSlVEQkJEbmFsdnBrdjVlNzZqMG9KZ09FbVBCMUUzLS04Qm5mXzFCVDFWYjRwdkltbzlEYV9DeW04ZWJ5OWZZQkhJd1VpMnc1bzR2b0lUcFZISlY2czNhWGZ6d2dNTHVxeGttdVdBdGUyT1NoNGpMRWc?oc=5",
@@ -81095,6 +83083,20 @@
       "source_type": "google_news",
       "first_seen": "2026-08-05",
       "product_category": "strength"
+    },
+    {
+      "id": 7779,
+      "title": "Fitness: Physical education has no age limit",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOMGR0WXFIdV96NVppbnVnTUJDemt2YmR0QkpLcEVCX0tLaURyYm5xa2VhX0JncFlPZkRyaEZPMWp3MmNkcFBFNzV0UktuanBuU0x1M0RpbjZ1RnpPMk1tTUFxTWVOZmkwRjZwRzRKelV2NWwtVVdCZ3NCV1BObHVqR0hUY2RmSDloVy1WNzlUYnZnTWstNWc?oc=5",
+      "source": "Montreal Gazette",
+      "date": "2025-10-26",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Fitness: Physical education has no age limit Montreal Gazette",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "other"
     },
     {
       "id": 2234,
@@ -82987,6 +84989,20 @@
       "product_category": "other"
     },
     {
+      "id": 7849,
+      "title": "Rogue Loadable Dumbbells – Why You Need them for Your Home Gym",
+      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE00T19LSFF1TTR6Z21Ydk1fXzFKWVQtWFpMcXVqWlVraTgwQW54aklRNE9BcGxESWxWVklxYmF5ejh1ZjhJX0F4OWVKOGhnZVF3U2lKZXg5d3ZhTXZU?oc=5",
+      "source": "BOXROX",
+      "date": "2025-10-15",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Rogue Loadable Dumbbells – Why You Need them for Your Home Gym BOXROX",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
       "id": 2312,
       "title": "Have You Ever Taken the Cooper Fitness Test?",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBlZEJhbUtZelBVa2lpUUNaVHRIaXV6NFViU1AwTEREdWw2ZTNydW10Y2JmYWd1cWdwRVVVRnluTVRtMVNScEtKM1ZGRGQ2RzNCN3ZRYmsySjZCQnhUc2k0bEV2UlZ2Z9IBa0FVX3lxTE5pT2FORF9FZmFLMDRHUk1zdzViYTctb096TDcxeDVFa1d3NW9sZDI1eVg5UUl6Q2NVaGNoSUdubU5TNHA1UWRRcV9ZY25tb2dfS09Uc29TeEc3cTVuTFNlN0xwcWhZV2hYUGJn?oc=5",
@@ -83236,6 +85252,20 @@
       "summary": "A 73-year-old fitness instructor shares her simple longevity routine, from extra protein to lifting heavy weights businessinsider.com",
       "source_type": "google_news",
       "first_seen": "2026-08-09",
+      "product_category": "other"
+    },
+    {
+      "id": 7863,
+      "title": "John Candy's son makes 'heart-wrenching' admission about his late dad's weight",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPU3FqLXk0aG03UDZLMkxXNjNmbGxTMEJUVXlNaWNrb040WGZObmZHaVJUSEt5eTlhaF9IWEQ5TnNRb29rSEN0OWdDNXg1Y3NweDVHSWZYNkdybUhnSV9Vd3V3MHNQVzFwZUNJX242ZzhNQnRULVhVYkVkR09OeVFWV3JSZXVBbVd3bzJNaU9NTV9QaFJicExud3JiWTBzcWdYNF9jLS1WYnJNdUhiQ2hSWmJCd2FDR3Y5Z09RNU95S290WWFUZGhteExn?oc=5",
+      "source": "HELLO! Magazine",
+      "date": "2025-10-14",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "John Candy's son makes 'heart-wrenching' admission about his late dad's weight HELLO! Magazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -85616,6 +87646,20 @@
       "summary": "Peloton Introduces Commercial Equipment Line SGB Media",
       "source_type": "google_news",
       "first_seen": "2026-08-20",
+      "product_category": "other"
+    },
+    {
+      "id": 7907,
+      "title": "Peloton jacks membership prices and leans into AI in post-pandemic comeback push",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNZE0wZFJHRXBqN1Q2WDQ3VmpzaDk5V2xoMTE2b2UzN1poM0laamlIdmRZR0xsMlJmVUN5Vzd2MjlKZTNLZ3psN3JlS2JPZFpuVm9STjFBNTRvWno3WUExRTI0Wk5xZzVLUjlyWDJSMWkxZ3dnN1MzY3NfSF85WWhGMXpPb2poM0ptLUNRbEZlZw?oc=5",
+      "source": "Yahoo! Finance Canada",
+      "date": "2025-10-01",
+      "category": "competitor",
+      "categoryName": "競品情報動態",
+      "brand": "Peloton",
+      "summary": "Peloton jacks membership prices and leans into AI in post-pandemic comeback push Yahoo! Finance Canada",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -89651,6 +91695,20 @@
       "product_category": "other"
     },
     {
+      "id": 7853,
+      "title": "Rogue Invitational Qualifier Workouts Revealed",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPRDhMV3cwdERLM0JVQjAtdDFYbWthTUVDOGhBaXNLUk1pUEJoZU5CbTlPM1BfeHZMN1k2dWxIcmRyNnh5UlJMTl91Yy1tMVZqQjY1ZFNlU0dkbW1LOXJKRDkyXzVSLWNSQ0g2RTEtalVsbXFpMVhjLTE4NE16cDVYUV9haWhiTVdRUm5NOW5QZw?oc=5",
+      "source": "The Barbell Spin",
+      "date": "2025-09-04",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Rogue Invitational Qualifier Workouts Revealed The Barbell Spin",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
+      "product_category": "strength"
+    },
+    {
       "id": 2553,
       "title": "The Rise of Lifestyle Hospitality and Why Fitness Matters More Than Ever",
       "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQZ2Q4dWw2QTNpWWRMRzZUZXlrWm1vWUxIWWJXQjI1UnZnRTlWc0hSVDFjZS1QUnIwLVJiUVVaS2p5Ujl2R2s3RTF2VzRQLU1CWFFub1BjNVZ2VDV0TWdxT1F1a2NVcm1SSi1sX040U0djbnhYUG1wYlk0RHI0RFZvVkdibFpkRlh1dVlubG1YZVRxN3hyQVpWUmxqbw?oc=5",
@@ -89760,6 +91818,20 @@
       "summary": "Original Peloton Bike is currently not available for sale in US & Canada (in advance of fall refresh?) Peloton Buddy",
       "source_type": "google_news",
       "first_seen": "2026-08-25",
+      "product_category": "other"
+    },
+    {
+      "id": 7861,
+      "title": "Michael Strahan makes weight loss revelation on return to GMA",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPcmx1N05rRDQtN3ZfTHUybGM4ZG5uS2hEVFliekVkOHlqVnVmcGRGYzlvc3JHRUdzN2xNVm1nN3VqVUY4cmtPYUFFVFZZN0ktcGJYcjNPc0dmT0F0Q0k4WlBJM1lCcVNPckh6NWZlQnF0YUJuREx5QjVFeGV5dFVCdnJYVDN6MlJ2VmFmWWUtc2lBNzVpTjVQTGw4ZHVSWHBZbnJGaERubnQyeUhGYW5zdllMc29OMUlpV0Q4SXJrMlBEYVFvbTlMNUJ1Zw?oc=5",
+      "source": "HELLO! Magazine",
+      "date": "2025-09-03",
+      "category": "market",
+      "categoryName": "全球市場趨勢",
+      "brand": null,
+      "summary": "Michael Strahan makes weight loss revelation on return to GMA HELLO! Magazine",
+      "source_type": "google_news",
+      "first_seen": "2026-08-27",
       "product_category": "other"
     },
     {
@@ -99410,36 +101482,36 @@
     }
   ],
   "stats": {
-    "total": 7070,
+    "total": 7218,
     "by_category": {
-      "competitor": 1244,
-      "tech": 1241,
-      "market": 3559,
-      "brand": 216,
-      "finance": 810
+      "competitor": 1296,
+      "tech": 1267,
+      "market": 3621,
+      "brand": 219,
+      "finance": 815
     },
     "by_brand": {
-      "Life Fitness": 51,
-      "Technogym": 196,
-      "Precor": 26,
-      "Matrix": 30,
+      "Life Fitness": 54,
+      "Technogym": 197,
+      "Precor": 28,
+      "Matrix": 33,
       "Vision": 8,
-      "Hammer Strength": 3,
+      "Hammer Strength": 4,
       "Cybex": 1,
       "Star Trac": 0,
-      "TRUE Fitness": 1,
+      "TRUE Fitness": 2,
       "Nautilus": 4,
-      "SHUA": 69,
-      "NordicTrack": 79,
-      "Peloton": 921,
-      "Sole": 9,
+      "SHUA": 70,
+      "NordicTrack": 101,
+      "Peloton": 928,
+      "Sole": 11,
       "Bowflex": 53,
-      "Schwinn": 4,
+      "Schwinn": 5,
       "Horizon": 3,
-      "Tonal": 29,
-      "ProForm": 10,
-      "Sunny Health": 10,
-      "Rogue": 12,
+      "Tonal": 30,
+      "ProForm": 16,
+      "Sunny Health": 13,
+      "Rogue": 13,
       "REP": 43,
       "Force USA": 18,
       "Titan": 5,
@@ -99449,8 +101521,26 @@
       "Johnson": 180
     },
     "by_source": {
-      "Yahoo Finance": 216,
-      "fuelcarmagazine": 20,
+      "China Daily": 3,
+      "Nomad Lawyer": 2,
+      "ANI News": 5,
+      "The Bolton News": 3,
+      "7NEWS": 2,
+      "The Leamington Observer": 1,
+      "fuelcarmagazine": 93,
+      "For Women First": 2,
+      "Gogi Tech": 1,
+      "dars.gov.et": 15,
+      "MarketBeat": 22,
+      "The Malone Telegram": 1,
+      "Intelligent Living": 1,
+      "The Advocate": 1,
+      "MoneyDJ": 19,
+      "LINE TODAY": 21,
+      "证券之星": 6,
+      "中金在线": 1,
+      "Athletech News": 450,
+      "Yahoo Finance": 217,
       "GlobeNewswire": 15,
       "Ad-hoc-news.de": 4,
       "bollywoodhungama.com": 1,
@@ -99466,11 +101556,11 @@
       "Yahoo": 38,
       "Flaunt Magazine": 1,
       "openPR.com": 16,
-      "证券之星": 5,
       "hi.chinanews.com.cn": 1,
-      "Athletech News": 439,
+      "Nautilus | Science": 8,
+      "Mashable": 16,
       "qz.com": 7,
-      "Peloton Buddy": 223,
+      "Peloton Buddy": 224,
       "Comic Basics": 1,
       "Daily Mail": 5,
       "NST Online": 1,
@@ -99480,6 +101570,7 @@
       "The Manila Times": 5,
       "KTVN": 1,
       "Villa de la Orotava": 1,
+      "EdgeProp": 3,
       "Men's Fitness": 6,
       "Moneycontrol.com": 6,
       "Hürriyet Daily News": 1,
@@ -99487,7 +101578,7 @@
       "Richmondshire Today": 1,
       "Runner's Tribe": 1,
       "Women's Health": 80,
-      "Trend Hunter": 54,
+      "Trend Hunter": 55,
       "KXII": 2,
       "SportsTiger": 1,
       "Seattle Post-Intelligencer": 1,
@@ -99498,8 +101589,7 @@
       "Royston Crow": 1,
       "Lovin Malta": 1,
       "TechMitra": 2,
-      "Mashable": 14,
-      "Men's Health": 119,
+      "Men's Health": 122,
       "DVIDS": 14,
       "Lancashire Evening Post": 3,
       "Trefis": 4,
@@ -99509,10 +101599,8 @@
       "Men's Journal": 40,
       "Dunyo.info": 1,
       "Forbes": 22,
-      "China Daily": 2,
       "Health Club Management": 2,
-      "dars.gov.et": 14,
-      "The Barbell Spin": 11,
+      "The Barbell Spin": 13,
       "9to5Google": 1,
       "spaopportunities.com": 1,
       "Wyre Council": 2,
@@ -99520,7 +101608,6 @@
       "Muscle & Fitness": 6,
       "The Inventory": 1,
       "Free Press Journal": 3,
-      "MarketBeat": 21,
       "Binghamton University": 1,
       "Borok Times": 1,
       "Bike World News": 1,
@@ -99546,7 +101633,6 @@
       "BigGo 財經": 1,
       "優分析UAnalyze": 1,
       "CMoney投資網誌": 47,
-      "LINE TODAY": 19,
       "Cool3c": 3,
       "Fortune": 22,
       "Hospitality Net": 4,
@@ -99558,6 +101644,7 @@
       "Cosmopolitan": 1,
       "财富号": 3,
       "simplywall.st": 25,
+      "FinancialContent": 4,
       "thegolfwire.com": 1,
       "SGB Media Online": 8,
       "Ministry of Sport": 1,
@@ -99580,7 +101667,7 @@
       "自由時報": 20,
       "livemint.com": 5,
       "hk.on.cc": 1,
-      "Fitness Volt": 51,
+      "Fitness Volt": 52,
       "Yahoo新聞": 37,
       "TAPinto": 22,
       "TipRanks": 1,
@@ -99607,7 +101694,7 @@
       "Daily Express": 2,
       "Univest": 1,
       "Good Housekeeping": 21,
-      "Diócesis de Salamanca": 15,
+      "Diócesis de Salamanca": 18,
       "upi.com": 1,
       "IGN Southeast Asia": 5,
       "Microsoft Source": 1,
@@ -99618,7 +101705,7 @@
       "獨立媒體": 1,
       "PinalCentral.com": 1,
       "fox10tv.com": 1,
-      "AOL.com": 10,
+      "AOL.com": 11,
       "reveliolabs.com": 1,
       "Physician's Weekly": 1,
       "dakotanewsnow.com": 1,
@@ -99636,11 +101723,11 @@
       "知新聞": 1,
       "鏡報": 2,
       "e0734.com": 1,
-      "StockStory": 12,
+      "StockStory": 13,
       "ZDNET": 2,
       "WKOW": 1,
       "news.com.au": 1,
-      "The Independent": 16,
+      "The Independent": 17,
       "明報新聞網": 1,
       "The Daily Jagran": 1,
       "Finance & Commerce": 1,
@@ -99681,7 +101768,6 @@
       "中華新聞雲/中華日報": 2,
       "xyxww.com.cn": 1,
       "Dexerto": 1,
-      "Nautilus | Science": 7,
       "Gulf News": 5,
       "太報 TaiSounds": 1,
       "Yahoo Finance Singapore": 3,
@@ -99698,7 +101784,6 @@
       "Investing.com Canada": 6,
       "Minichart": 2,
       "自由財經": 8,
-      "MoneyDJ": 18,
       "PChome Online 新聞": 6,
       "Boutique Hotelier": 6,
       "hotel magazine": 3,
@@ -99794,7 +101879,6 @@
       "Reuters": 12,
       "KNWA FOX24": 1,
       "Revelio Labs": 5,
-      "FinancialContent": 2,
       "Siliconindia": 1,
       "afr.com": 1,
       "Passionate In Marketing": 4,
@@ -99840,10 +101924,9 @@
       "Quiver Quantitative": 5,
       "The Guardian": 8,
       "Santa Barbara News-Press": 1,
-      "Fit&Well": 35,
+      "Fit&Well": 36,
       "Yahoo Life UK": 1,
       "LehighValleyLive.com": 3,
-      "EdgeProp": 2,
       "RiverBender.com": 1,
       "SNS Insider": 2,
       "ELLE": 2,
@@ -99852,7 +101935,7 @@
       "Mobile01": 6,
       "Manila Bulletin": 1,
       "FloElite": 1,
-      "Yahoo! Finance Canada": 1,
+      "Yahoo! Finance Canada": 2,
       "udnSTYLE": 1,
       "Telangana Today": 3,
       "Outside Magazine": 6,
@@ -99911,6 +101994,7 @@
       "Restaurant Business": 1,
       "Medscape": 1,
       "BOSS Publishing": 1,
+      "The MoCo Show -": 2,
       "Real Simple": 7,
       "GMA Network": 2,
       "BusinessWorld Online": 1,
@@ -99922,9 +102006,11 @@
       "menshealth.com": 4,
       "marketbeat.com": 1,
       "shape.com": 17,
+      "speed.ph": 1,
       "Edinburgh News": 2,
       "pacaf.af.mil": 1,
       "Hindustan Times": 12,
+      "Good Morning America": 2,
       "franchisetimes.com": 2,
       "Cleveland Browns": 1,
       "女人我最大": 2,
@@ -99996,13 +102082,14 @@
       "communityimpact.com": 2,
       "Cambrian News": 1,
       "TechloMedia": 1,
-      "BOXROX": 19,
+      "BOXROX": 21,
       "The Observatory of Economic Complexity": 1,
       "驱动之家": 1,
       "ramstein.af.mil": 1,
       "realty.economictimes.indiatimes.com": 1,
       "roomie.tw": 2,
       "Business Standard": 6,
+      "KSL News": 1,
       "IndexBox": 10,
       "Indian Startup Times": 1,
       "InsideHook": 14,
@@ -100012,7 +102099,7 @@
       "巴士的報": 1,
       "運動筆記HK": 4,
       "蕃新聞": 3,
-      "Montreal Gazette": 25,
+      "Montreal Gazette": 29,
       "facilitiesmanagement-now.com": 1,
       "sepolia.net": 1,
       "新住民全球新聞網": 1,
@@ -100021,11 +102108,10 @@
       "BoxLife Magazine": 6,
       "Shropshire Star": 1,
       "Escape Collective": 2,
-      "Stocktwits": 4,
+      "Stocktwits": 5,
       "Carroll County Mirror-Democrat": 1,
       "壹蘋新聞網": 5,
       "CNN": 6,
-      "For Women First": 1,
       "Yahoo Creators": 3,
       "WPLG Local 10": 2,
       "KevinMD.com": 1,
@@ -100073,7 +102159,7 @@
       "India Today": 3,
       "民報": 1,
       "ServeTheHome": 2,
-      "NOWnews今日新聞": 12,
+      "NOWnews今日新聞": 13,
       "三立新聞": 3,
       "信傳媒": 1,
       "servethehome.com": 1,
@@ -100130,7 +102216,7 @@
       "Blackpool Gazette": 2,
       "Fox News": 8,
       "ET BrandEquity": 4,
-      "TMZ": 3,
+      "TMZ": 4,
       "metroindia.net": 1,
       "Cycling Weekly": 8,
       "科技島": 1,
@@ -100204,7 +102290,7 @@
       "JUKSY 街星": 2,
       "Dunfermline Press": 2,
       "Zee News": 1,
-      "Nomad Lawyer": 1,
+      "CrossFit Games": 1,
       "Architecture & Design": 2,
       "Construction World": 1,
       "The Business of Fashion": 3,
@@ -100267,7 +102353,7 @@
       "Brampton Guardian": 1,
       "KLSE Screener": 1,
       "Hims & Hers Newsroom": 1,
-      "facebook.com": 15,
+      "facebook.com": 16,
       "Glamsham.com": 1,
       "International Business Times UK": 3,
       "99.9 KTDY": 1,
@@ -100287,8 +102373,7 @@
       "fool.com": 1,
       "andovermanews.com": 1,
       "EQS News": 1,
-      "The MoCo Show -": 1,
-      "Gadget Review": 3,
+      "Gadget Review": 4,
       "Winnipeg Free Press": 1,
       "Modern Ghana": 2,
       "CoinWeek": 1,
@@ -100334,7 +102419,6 @@
       "Hostinger": 1,
       "Arkansas Times": 1,
       "Inquirer.net": 2,
-      "ANI News": 4,
       "Luxury Bazaar": 5,
       "Future Market Insights": 10,
       "IMDb": 2,
@@ -100412,6 +102496,7 @@
       "LincolnshireWorld": 1,
       "Cult of Mac": 1,
       "Sassy Mama Singapore": 2,
+      "ETtoday星光雲": 4,
       "TheWire.in": 3,
       "Scott Coop": 1,
       "AFR": 4,
@@ -100461,7 +102546,6 @@
       "TNGlobal": 1,
       "Market Research Future": 3,
       "Radio & Television Business Report": 1,
-      "7NEWS": 1,
       "The Brighter Side of News": 2,
       "Music Ally": 1,
       "Spotify": 1,
@@ -100727,6 +102811,7 @@
       "Kilkenny Live": 1,
       "echo live": 1,
       "Los Angeles Review of Books": 1,
+      "MetroWest Daily News": 2,
       "Garmin Rumors": 2,
       "Gadgets & Wearables": 2,
       "Kent Online": 1,
@@ -100783,7 +102868,6 @@
       "Vocal": 5,
       "FBC News": 1,
       "USNI News": 1,
-      "MetroWest Daily News": 1,
       "Voyage Raleigh": 1,
       "WBIR": 1,
       "PhillyBurbs": 3,
@@ -100794,6 +102878,7 @@
       "The Indian EYE": 2,
       "Evanston RoundTable": 1,
       "24-7 Press Release Newswire": 2,
+      "York Daily Record": 1,
       "St Helens Borough Council": 1,
       "St Helens Star": 2,
       "V13 Media": 1,
@@ -100829,7 +102914,6 @@
       "Insightace Analytic": 1,
       "Homeland Security Today": 1,
       "inventiva.co.in": 1,
-      "ETtoday星光雲": 3,
       "噓!星聞": 2,
       "自由娛樂": 11,
       "news.u-car.com.tw": 1,
@@ -100893,7 +102977,6 @@
       "Eye Witness News – Bahamas Latest News": 1,
       "IWF": 2,
       "Daily Record": 4,
-      "The Bolton News": 2,
       "Courthouse News": 1,
       "Orbital Today": 1,
       "Denver's Mile High Magazine": 1,
@@ -100924,12 +103007,13 @@
       "KCRG": 1,
       "The Dartmouth": 1,
       "Burlington Free Press": 1,
+      "Scranton Times-Tribune": 1,
       "Cathay Pacific": 1,
       "Wandsworth Borough Council": 1,
       "Detroit Catholic": 1,
       "Oracle Blogs": 4,
       "Design Milk": 1,
-      "Reviewed": 1,
+      "Reviewed": 2,
       "acc.af.mil": 1,
       "P&J Live": 1,
       "Bizcommunity": 2,
@@ -101022,7 +103106,6 @@
       "Cornwall Live": 1,
       "玩具人 TOY PEOPLE": 1,
       "Post and Courier": 1,
-      "Good Morning America": 1,
       "동아사이언스": 1,
       "BBC Science Focus Magazine": 1,
       "SELF Magazine": 7,
@@ -101292,6 +103375,7 @@
       "KSL.com": 1,
       "Victorville Daily Press": 1,
       "businessinsider.com": 1,
+      "HELLO! Magazine": 3,
       "eCoustics": 1,
       "The Napa Valley Register": 1,
       "汽機車": 1,
@@ -101410,7 +103494,6 @@
       "404 Media": 1,
       "bestproducts.com": 1,
       "StartUs Insights": 1,
-      "HELLO! Magazine": 1,
       "Planet Princeton": 1,
       "Boss Hunting": 1,
       "University of Liverpool": 1,
@@ -101528,15 +103611,15 @@
       "Exchange4Media": 1
     },
     "by_source_type": {
-      "google_news": 6546,
+      "google_news": 6679,
       "official": 18,
-      "press_release": 506
+      "press_release": 521
     },
     "by_product_category": {
-      "cardio": 1210,
-      "strength": 352,
-      "wearable": 111,
-      "other": 5397
+      "cardio": 1277,
+      "strength": 363,
+      "wearable": 114,
+      "other": 5464
     },
     "timeline": [
       {
@@ -102305,11 +104388,11 @@
       },
       {
         "date": "2025-09-03",
-        "count": 8
+        "count": 9
       },
       {
         "date": "2025-09-04",
-        "count": 17
+        "count": 18
       },
       {
         "date": "2025-09-05",
@@ -102417,7 +104500,7 @@
       },
       {
         "date": "2025-10-01",
-        "count": 52
+        "count": 53
       },
       {
         "date": "2025-10-02",
@@ -102469,11 +104552,11 @@
       },
       {
         "date": "2025-10-14",
-        "count": 18
+        "count": 19
       },
       {
         "date": "2025-10-15",
-        "count": 11
+        "count": 12
       },
       {
         "date": "2025-10-16",
@@ -102517,7 +104600,7 @@
       },
       {
         "date": "2025-10-26",
-        "count": 2
+        "count": 3
       },
       {
         "date": "2025-10-27",
@@ -102525,7 +104608,7 @@
       },
       {
         "date": "2025-10-28",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2025-10-29",
@@ -102565,7 +104648,7 @@
       },
       {
         "date": "2025-11-07",
-        "count": 23
+        "count": 24
       },
       {
         "date": "2025-11-08",
@@ -102573,7 +104656,7 @@
       },
       {
         "date": "2025-11-09",
-        "count": 4
+        "count": 5
       },
       {
         "date": "2025-11-10",
@@ -102625,7 +104708,7 @@
       },
       {
         "date": "2025-11-22",
-        "count": 6
+        "count": 7
       },
       {
         "date": "2025-11-23",
@@ -102745,7 +104828,7 @@
       },
       {
         "date": "2025-12-22",
-        "count": 20
+        "count": 21
       },
       {
         "date": "2025-12-23",
@@ -102753,7 +104836,7 @@
       },
       {
         "date": "2025-12-24",
-        "count": 4
+        "count": 5
       },
       {
         "date": "2025-12-26",
@@ -102833,7 +104916,7 @@
       },
       {
         "date": "2026-01-14",
-        "count": 23
+        "count": 24
       },
       {
         "date": "2026-01-15",
@@ -102865,7 +104948,7 @@
       },
       {
         "date": "2026-01-22",
-        "count": 28
+        "count": 29
       },
       {
         "date": "2026-01-23",
@@ -102941,7 +105024,7 @@
       },
       {
         "date": "2026-02-10",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2026-02-11",
@@ -102953,7 +105036,7 @@
       },
       {
         "date": "2026-02-13",
-        "count": 13
+        "count": 14
       },
       {
         "date": "2026-02-14",
@@ -102985,11 +105068,11 @@
       },
       {
         "date": "2026-02-21",
-        "count": 4
+        "count": 5
       },
       {
         "date": "2026-02-22",
-        "count": 8
+        "count": 9
       },
       {
         "date": "2026-02-23",
@@ -103021,7 +105104,7 @@
       },
       {
         "date": "2026-03-02",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-03-03",
@@ -103029,11 +105112,11 @@
       },
       {
         "date": "2026-03-04",
-        "count": 16
+        "count": 17
       },
       {
         "date": "2026-03-05",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2026-03-06",
@@ -103049,7 +105132,7 @@
       },
       {
         "date": "2026-03-09",
-        "count": 22
+        "count": 23
       },
       {
         "date": "2026-03-10",
@@ -103121,7 +105204,7 @@
       },
       {
         "date": "2026-03-27",
-        "count": 25
+        "count": 26
       },
       {
         "date": "2026-03-28",
@@ -103149,7 +105232,7 @@
       },
       {
         "date": "2026-04-03",
-        "count": 15
+        "count": 16
       },
       {
         "date": "2026-04-04",
@@ -103161,7 +105244,7 @@
       },
       {
         "date": "2026-04-06",
-        "count": 17
+        "count": 18
       },
       {
         "date": "2026-04-07",
@@ -103277,7 +105360,7 @@
       },
       {
         "date": "2026-05-05",
-        "count": 17
+        "count": 18
       },
       {
         "date": "2026-05-06",
@@ -103401,7 +105484,7 @@
       },
       {
         "date": "2026-06-05",
-        "count": 27
+        "count": 28
       },
       {
         "date": "2026-06-06",
@@ -103413,7 +105496,7 @@
       },
       {
         "date": "2026-06-08",
-        "count": 21
+        "count": 22
       },
       {
         "date": "2026-06-09",
@@ -103477,7 +105560,7 @@
       },
       {
         "date": "2026-06-24",
-        "count": 34
+        "count": 35
       },
       {
         "date": "2026-06-25",
@@ -103489,7 +105572,7 @@
       },
       {
         "date": "2026-06-27",
-        "count": 14
+        "count": 15
       },
       {
         "date": "2026-06-28",
@@ -103501,7 +105584,7 @@
       },
       {
         "date": "2026-06-30",
-        "count": 38
+        "count": 39
       },
       {
         "date": "2026-07-01",
@@ -103517,7 +105600,7 @@
       },
       {
         "date": "2026-07-04",
-        "count": 12
+        "count": 14
       },
       {
         "date": "2026-07-05",
@@ -103529,7 +105612,7 @@
       },
       {
         "date": "2026-07-07",
-        "count": 14
+        "count": 16
       },
       {
         "date": "2026-07-08",
@@ -103541,15 +105624,15 @@
       },
       {
         "date": "2026-07-10",
-        "count": 12
+        "count": 14
       },
       {
         "date": "2026-07-11",
-        "count": 4
+        "count": 5
       },
       {
         "date": "2026-07-12",
-        "count": 10
+        "count": 12
       },
       {
         "date": "2026-07-13",
@@ -103557,11 +105640,11 @@
       },
       {
         "date": "2026-07-14",
-        "count": 18
+        "count": 19
       },
       {
         "date": "2026-07-15",
-        "count": 23
+        "count": 24
       },
       {
         "date": "2026-07-16",
@@ -103573,19 +105656,19 @@
       },
       {
         "date": "2026-07-18",
-        "count": 6
+        "count": 8
       },
       {
         "date": "2026-07-19",
-        "count": 6
+        "count": 7
       },
       {
         "date": "2026-07-20",
-        "count": 25
+        "count": 27
       },
       {
         "date": "2026-07-21",
-        "count": 35
+        "count": 38
       },
       {
         "date": "2026-07-22",
@@ -103601,11 +105684,11 @@
       },
       {
         "date": "2026-07-25",
-        "count": 16
+        "count": 18
       },
       {
         "date": "2026-07-26",
-        "count": 8
+        "count": 9
       },
       {
         "date": "2026-07-27",
@@ -103613,7 +105696,7 @@
       },
       {
         "date": "2026-07-28",
-        "count": 48
+        "count": 49
       },
       {
         "date": "2026-07-29",
@@ -103621,15 +105704,15 @@
       },
       {
         "date": "2026-07-30",
-        "count": 47
+        "count": 49
       },
       {
         "date": "2026-07-31",
-        "count": 40
+        "count": 41
       },
       {
         "date": "2026-08-01",
-        "count": 7
+        "count": 9
       },
       {
         "date": "2026-08-02",
@@ -103637,7 +105720,7 @@
       },
       {
         "date": "2026-08-03",
-        "count": 65
+        "count": 66
       },
       {
         "date": "2026-08-04",
@@ -103645,7 +105728,7 @@
       },
       {
         "date": "2026-08-05",
-        "count": 42
+        "count": 44
       },
       {
         "date": "2026-08-06",
@@ -103653,51 +105736,51 @@
       },
       {
         "date": "2026-08-07",
-        "count": 49
+        "count": 50
       },
       {
         "date": "2026-08-08",
-        "count": 17
+        "count": 19
       },
       {
         "date": "2026-08-09",
-        "count": 13
+        "count": 14
       },
       {
         "date": "2026-08-10",
-        "count": 41
+        "count": 42
       },
       {
         "date": "2026-08-11",
-        "count": 54
+        "count": 56
       },
       {
         "date": "2026-08-12",
-        "count": 39
+        "count": 44
       },
       {
         "date": "2026-08-13",
-        "count": 40
+        "count": 43
       },
       {
         "date": "2026-08-14",
-        "count": 44
+        "count": 47
       },
       {
         "date": "2026-08-15",
-        "count": 18
+        "count": 21
       },
       {
         "date": "2026-08-16",
-        "count": 15
+        "count": 17
       },
       {
         "date": "2026-08-17",
-        "count": 44
+        "count": 45
       },
       {
         "date": "2026-08-18",
-        "count": 45
+        "count": 46
       },
       {
         "date": "2026-08-19",
@@ -103705,7 +105788,7 @@
       },
       {
         "date": "2026-08-20",
-        "count": 28
+        "count": 30
       },
       {
         "date": "2026-08-21",
@@ -103713,7 +105796,7 @@
       },
       {
         "date": "2026-08-22",
-        "count": 7
+        "count": 8
       },
       {
         "date": "2026-08-23",
@@ -103721,13 +105804,21 @@
       },
       {
         "date": "2026-08-24",
-        "count": 24
+        "count": 25
       },
       {
         "date": "2026-08-25",
-        "count": 28
+        "count": 36
+      },
+      {
+        "date": "2026-08-26",
+        "count": 44
+      },
+      {
+        "date": "2026-08-27",
+        "count": 5
       }
     ],
-    "updated": "2026-08-26T00:04:40.787753+00:00"
+    "updated": "2026-08-27T05:08:05.675036+00:00"
   }
 }
