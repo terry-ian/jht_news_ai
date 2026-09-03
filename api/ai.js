@@ -55,9 +55,9 @@ const { GoogleAuth } = require('google-auth-library');
 // ---------------------------------------------------------------------------
 // 可調整參數（環境變數，皆有合理預設值）
 // ---------------------------------------------------------------------------
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash';
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 const GCP_PROJECT_ID = process.env.GCP_PROJECT_ID || 'jht-pm';
-const GCP_LOCATION = process.env.GCP_LOCATION || 'asia-northeast1';
+const GCP_LOCATION = process.env.GCP_LOCATION || 'us';
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 
 const REQUEST_TIMEOUT_MS = 60000; // 單次上游請求逾時（毫秒）
@@ -133,6 +133,21 @@ function buildGeminiRequestBody(prompt, systemInstruction) {
   return body;
 }
 
+function getVertexHost(location) {
+  if (!location || location === 'global') {
+    return 'aiplatform.googleapis.com';
+  }
+  // 處理多區域端點 (us / eu)
+  if (location === 'us') {
+    return 'aiplatform.us.rep.googleapis.com';
+  }
+  if (location === 'eu') {
+    return 'aiplatform.eu.rep.googleapis.com';
+  }
+  // 標準 Regional 端點 (例如 us-central1, asia-northeast1)
+  return `${location}-aiplatform.googleapis.com`;
+}
+
 function getEndpointAndAuth(streamMode) {
   const method = streamMode ? 'streamGenerateContent' : 'generateContent';
   if (useApiKeyMode()) {
@@ -140,7 +155,8 @@ function getEndpointAndAuth(streamMode) {
     const url = streamMode ? `${base}?alt=sse&key=${GEMINI_API_KEY}` : `${base}?key=${GEMINI_API_KEY}`;
     return { url, needsAuthToken: false };
   }
-  const base = `https://${GCP_LOCATION}-aiplatform.googleapis.com/v1/projects/${GCP_PROJECT_ID}/locations/${GCP_LOCATION}/publishers/google/models/${encodeURIComponent(GEMINI_MODEL)}:${method}`;
+  const host = getVertexHost(GCP_LOCATION);
+  const base = `https://${host}/v1/projects/${GCP_PROJECT_ID}/locations/${GCP_LOCATION}/publishers/google/models/${encodeURIComponent(GEMINI_MODEL)}:${method}`;
   // Vertex AI 的 streamGenerateContent 加上 alt=sse 會以 Server-Sent Events 格式回傳
   // （與 Google AI Studio 相同格式），方便前後端用同一套解析邏輯。
   const url = streamMode ? `${base}?alt=sse` : base;
