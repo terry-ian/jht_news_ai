@@ -22,20 +22,47 @@ const CATEGORY_COLORS = {
 };
 const FAV_STORAGE_KEY = 'fitness-dashboard-favorites-v1';
 
-// 產品分類（product_category）：與上方 category（market/tech/competitor/finance/brand）為不同維度，
-// 兩者互不覆蓋，可疊加篩選。值只有以下 4 種；缺欄位／未知值一律歸類為 other（向下相容舊資料）。
+// 產品分類（product_category / product_categories）：與上方 category（market/tech/competitor/finance/brand）為不同維度，
+// 兩者互不覆蓋，可疊加篩選。product_categories 為多值陣列（回填/重標中，欄位可能尚未出現），
+// 缺欄位／未知值一律歸類為 other（向下相容舊資料）。
 const PRODUCT_CATEGORY_NAME_MAP = {
-  cardio: '有氧',
-  strength: '重訓',
+  cardio: '有氧器材',
+  strength: '力量器材',
   wearable: '穿戴裝置',
+  recovery: '恢復保健',
+  nutrition: '營養補給',
+  apparel: '運動服飾',
+  studio: '團課工作室',
+  digital: '數位健身',
+  facility: '場館營運',
   other: '其他'
 };
-const PRODUCT_CATEGORY_ORDER = ['cardio', 'strength', 'wearable', 'other'];
+const PRODUCT_CATEGORY_ORDER = ['cardio', 'strength', 'wearable', 'recovery', 'nutrition', 'apparel', 'studio', 'digital', 'facility', 'other'];
 const PRODUCT_CATEGORY_COLORS = {
-  cardio: { bg: '#e0f2fe', text: '#0369a1', border: '#7dd3fc' },   // sky
-  strength: { bg: '#fce7f3', text: '#a21caf', border: '#f0abfc' }, // fuchsia
-  wearable: { bg: '#ede9fe', text: '#6d28d9', border: '#c4b5fd' }, // violet
-  other: { bg: '#f1f5f9', text: '#475569', border: '#cbd5e1' }     // slate
+  cardio: { bg: '#e0f2fe', text: '#0369a1', border: '#7dd3fc' },     // sky
+  strength: { bg: '#fce7f3', text: '#a21caf', border: '#f0abfc' },   // fuchsia
+  wearable: { bg: '#ede9fe', text: '#6d28d9', border: '#c4b5fd' },   // violet
+  recovery: { bg: '#dcfce7', text: '#15803d', border: '#86efac' },   // green
+  nutrition: { bg: '#fef9c3', text: '#a16207', border: '#fde047' },  // yellow
+  apparel: { bg: '#ffe4e6', text: '#be123c', border: '#fda4af' },    // rose
+  studio: { bg: '#e0e7ff', text: '#4338ca', border: '#a5b4fc' },     // indigo
+  digital: { bg: '#cffafe', text: '#0e7490', border: '#67e8f9' },    // cyan
+  facility: { bg: '#ffedd5', text: '#c2410c', border: '#fdba74' },   // orange
+  other: { bg: '#f1f5f9', text: '#475569', border: '#cbd5e1' }       // slate
+};
+
+// 受眾標籤（audience_tags）：PM / Design / Marketing，可複選（OR 邏輯），與產品分類為不同維度。
+// audience_tags_source 標示信心來源：keyword（高信心，關鍵字命中）／structural（推導，精準度較低）。
+const AUDIENCE_TAG_ORDER = ['PM', 'Design', 'Marketing'];
+const AUDIENCE_TAG_NAME_MAP = {
+  PM: 'PM 產品管理',
+  Design: 'Design 設計體驗',
+  Marketing: 'Marketing 行銷成長'
+};
+const AUDIENCE_TAG_COLORS = {
+  PM: { bg: '#dbeafe', text: '#1d4ed8', border: '#93c5fd' },
+  Design: { bg: '#fae8ff', text: '#a21caf', border: '#e9d5ff' },
+  Marketing: { bg: '#ffedd5', text: '#c2410c', border: '#fdba74' }
 };
 
 // 追蹤品牌總清單（含喬山自家品牌 Johnson）。用於品牌聲量圖表／KPI，
@@ -54,7 +81,10 @@ let newsData = null;      // 完整 news.json 內容
 let articles = [];        // 目前使用的文章陣列
 let stats = null;         // 目前使用的統計資料（含 fallback 補值）
 let currentCategory = 'all';
-let currentProductCategory = 'all'; // 產品分類篩選（獨立於 currentCategory 之外的另一維度）
+let currentProductCategory = 'all'; // 產品分類篩選（獨立於 currentCategory 之外的另一維度，比對採多值 includes）
+let currentAudienceTag = '';        // 受眾標籤篩選（單選）：'' ＝ 全部，其餘為 PM / Design / Marketing
+let audienceHighConfidenceOnly = false; // 「只看高信心標籤」開關：只保留 audience_tags_source === 'keyword' 的文章
+let hideNoise = true;               // 「隱藏雜訊」開關：預設隱藏 is_noise === true 的內容農場等雜訊情報
 let onlyShowFavorites = false;
 let includeFinanceInAll = false; // 「綜合情報」預設排除 finance 分類雜訊，可由使用者切換
 const PAGE_SIZE = 10;      // 每個分類每次顯示的情報數量
@@ -157,6 +187,8 @@ function buildStatsWithFallback(rawStats, articleList) {
     by_brand: (rawStats && rawStats.by_brand) ? rawStats.by_brand : fallback.by_brand,
     by_source: (rawStats && rawStats.by_source) ? rawStats.by_source : fallback.by_source,
     by_product_category: (rawStats && rawStats.by_product_category) ? rawStats.by_product_category : fallback.by_product_category,
+    by_product_categories: (rawStats && rawStats.by_product_categories) ? rawStats.by_product_categories : fallback.by_product_categories,
+    by_audience_tags: (rawStats && rawStats.by_audience_tags) ? rawStats.by_audience_tags : fallback.by_audience_tags,
     timeline: (rawStats && Array.isArray(rawStats.timeline) && rawStats.timeline.length) ? rawStats.timeline : fallback.timeline,
     updated: (rawStats && rawStats.updated) ? rawStats.updated : (newsData && newsData.generated_at) || null
   };
@@ -164,12 +196,52 @@ function buildStatsWithFallback(rawStats, articleList) {
 }
 
 /**
- * 回傳文章的「有效產品分類」。product_category 只允許 cardio/strength/wearable/other 四種值；
- * 若欄位缺漏（舊資料 / 尚未重跑爬蟲）或出現未知值，一律向下相容歸類為 other，不可讓頁面報錯或空白。
+ * 回傳文章的「有效產品分類」（單一值，供既有呼叫點沿用）。優先讀 product_category；
+ * 若缺漏則退而使用 product_categories 陣列的第一個值；仍取不到或為未知值一律向下
+ * 相容歸類為 other，不可讓頁面報錯或空白。
  */
 function getEffectiveProductCategory(art) {
   const v = art && art.product_category;
-  return PRODUCT_CATEGORY_ORDER.includes(v) ? v : 'other';
+  if (PRODUCT_CATEGORY_ORDER.includes(v)) return v;
+  const arr = art && Array.isArray(art.product_categories) ? art.product_categories : null;
+  if (arr && arr.length && PRODUCT_CATEGORY_ORDER.includes(arr[0])) return arr[0];
+  return 'other';
+}
+
+/**
+ * 回傳文章的「產品分類陣列」（多值），供多值比對篩選使用。
+ * 優先讀 product_categories（新欄位，回填中可能尚未出現或為空陣列＝未分類）；
+ * 缺欄位時由 getEffectiveProductCategory() 推導成單元素陣列，確保永遠回傳非空陣列。
+ */
+function getProductCategories(art) {
+  const arr = art && Array.isArray(art.product_categories) ? art.product_categories : null;
+  if (arr && arr.length) {
+    const filtered = arr.filter(v => PRODUCT_CATEGORY_ORDER.includes(v) && v !== 'other');
+    if (filtered.length) return filtered;
+  }
+  return [getEffectiveProductCategory(art)];
+}
+
+/**
+ * 回傳文章的「受眾標籤陣列」（PM/Design/Marketing）。欄位缺漏時預設為空陣列（未分類），不報錯。
+ */
+function getAudienceTags(art) {
+  const arr = art && Array.isArray(art.audience_tags) ? art.audience_tags : null;
+  if (!arr) return [];
+  return arr.filter(v => AUDIENCE_TAG_ORDER.includes(v));
+}
+
+/**
+ * 回傳文章 audience_tags 的信心來源：'keyword'（高信心）或 'structural'（推導）。
+ * 欄位缺漏時預設為 'structural'，與規格一致。
+ */
+function getAudienceTagsSource(art) {
+  return (art && art.audience_tags_source === 'keyword') ? 'keyword' : 'structural';
+}
+
+/** 是否為雜訊情報（is_noise）。欄位缺漏時預設為 false（不視為雜訊），不會誤篩掉正常資料。 */
+function isNoiseArticle(art) {
+  return !!(art && art.is_noise === true);
 }
 
 function computeFallbackStats(articleList) {
@@ -177,6 +249,8 @@ function computeFallbackStats(articleList) {
   const by_brand = {};
   const by_source = {};
   const by_product_category = {};
+  const by_product_categories = {};
+  const by_audience_tags = {};
   const timelineMap = {};
 
   articleList.forEach(a => {
@@ -186,6 +260,10 @@ function computeFallbackStats(articleList) {
     if (a.date) timelineMap[a.date] = (timelineMap[a.date] || 0) + 1;
     const pc = getEffectiveProductCategory(a);
     by_product_category[pc] = (by_product_category[pc] || 0) + 1;
+    getProductCategories(a).forEach(key => {
+      by_product_categories[key] = (by_product_categories[key] || 0) + 1;
+    });
+    getAudienceTags(a).forEach(tag => { by_audience_tags[tag] = (by_audience_tags[tag] || 0) + 1; });
   });
 
   const timeline = Object.keys(timelineMap).sort().map(date => ({ date, count: timelineMap[date] }));
@@ -196,6 +274,8 @@ function computeFallbackStats(articleList) {
     by_brand,
     by_source,
     by_product_category,
+    by_product_categories,
+    by_audience_tags,
     timeline,
     updated: null
   };
@@ -612,7 +692,7 @@ function escapeHTML(str) {
 /**
  * 產生單篇文章卡片上的「產品分類」小標籤（badge）HTML。
  * 沿用既有卡片標籤的圓角/字級（text-[11px] font-bold px-2.5 py-0.5 rounded-full border），
- * 僅以 inline style 依 PRODUCT_CATEGORY_COLORS 區分四種顏色，不另創視覺語言。
+ * 僅以 inline style 依 PRODUCT_CATEGORY_COLORS 區分色彩，不另創視覺語言。
  * 缺欄位或未知值一律以 getEffectiveProductCategory() 向下相容為 other，不會報錯。
  */
 function renderProductCategoryBadge(art) {
@@ -620,6 +700,35 @@ function renderProductCategoryBadge(art) {
   const label = PRODUCT_CATEGORY_NAME_MAP[key] || '未分類';
   const c = PRODUCT_CATEGORY_COLORS[key] || PRODUCT_CATEGORY_COLORS.other;
   return `<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border" style="background:${c.bg};color:${c.text};border-color:${c.border}">${escapeHTML(label)}</span>`;
+}
+
+/**
+ * 產生單篇文章卡片上的「子分類」小標籤（subcategoryName）。欄位缺漏或為空字串時不顯示任何標籤，
+ * 不會出現「undefined」或空白徽章。
+ */
+function renderSubcategoryBadge(art) {
+  const label = art && art.subcategoryName;
+  if (!label) return '';
+  return `<span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">${escapeHTML(label)}</span>`;
+}
+
+/**
+ * 產生單篇文章卡片上的「受眾標籤」小標籤群（PM/Design/Marketing）。
+ * audience_tags_source 為 'structural'（推導，精準度較低）時，改用虛線邊框＋較淡文字做視覺區隔，
+ * 讓使用者能一眼分辨高信心（keyword）與推導（structural）標籤。欄位缺漏時回傳空字串，不報錯。
+ */
+function renderAudienceTagBadges(art) {
+  const tags = getAudienceTags(art);
+  if (!tags.length) return '';
+  const isStructural = getAudienceTagsSource(art) !== 'keyword';
+  return tags.map(tag => {
+    const c = AUDIENCE_TAG_COLORS[tag] || AUDIENCE_TAG_COLORS.PM;
+    const style = isStructural
+      ? `background:#fff;color:${c.text};border-color:${c.border};border-style:dashed;opacity:.75`
+      : `background:${c.bg};color:${c.text};border-color:${c.border}`;
+    const title = isStructural ? '系統依分類推導，精準度較低' : '關鍵字命中，高信心';
+    return `<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border" style="${style}" title="${escapeHTML(title)}">${escapeHTML(AUDIENCE_TAG_NAME_MAP[tag] || tag)}</span>`;
+  }).join('');
 }
 
 function renderArticles() {
@@ -638,16 +747,16 @@ function renderArticles() {
     return;
   }
 
-  // 先套用「產品分類」以外的所有既有篩選條件（分類頁籤/搜尋/收藏/財經雜訊開關），
-  // 用這份結果動態計算產品分類篩選器各選項的筆數（隨其他篩選條件即時變動）。
+  // 先套用「產品分類／受眾標籤以外」的所有既有篩選條件（分類頁籤/搜尋/收藏/財經雜訊開關/
+  // 隱藏雜訊/高信心標籤開關），用這份結果動態計算產品分類與受眾標籤兩個篩選器各選項的筆數
+  // （彼此互相依對方目前選取狀態即時計算，與既有 renderProductCategoryTabs 行為一致）。
   const baseFiltered = computeBaseFilteredArticles();
-  renderProductCategoryTabs(baseFiltered);
+  renderProductCategoryTabs(baseFiltered.filter(audienceTagsMatch));
+  renderAudienceTagFilters(baseFiltered.filter(productCategoryMatches));
+  updateNoiseHiddenCount();
 
-  const filtered = baseFiltered.filter(art => {
-    // 產品分類篩選：與 category 為不同維度，可疊加使用，不覆蓋既有邏輯
-    if (currentProductCategory !== 'all' && getEffectiveProductCategory(art) !== currentProductCategory) return false;
-    return true;
-  }).sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const filtered = baseFiltered.filter(productCategoryMatches).filter(audienceTagsMatch)
+    .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   if (filtered.length === 0) {
     container.innerHTML = `
@@ -678,6 +787,8 @@ function renderArticles() {
             <span class="text-[11px] font-bold text-brand bg-brand-light px-2.5 py-0.5 rounded-full border border-brand/10">${escapeHTML(categoryName)}</span>
             ${art.brand ? `<span class="text-[11px] font-medium text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">${escapeHTML(art.brand)}</span>` : ''}
             ${renderProductCategoryBadge(art)}
+            ${renderSubcategoryBadge(art)}
+            ${renderAudienceTagBadges(art)}
           </div>
           <div class="flex items-center space-x-2">
             <span class="text-xs text-slate-400 font-mono">${escapeHTML(art.date || '')}</span>
@@ -743,16 +854,17 @@ function loadMoreArticles() {
 }
 
 // ------------------------------------------------------------------------
-// 產品分類篩選（product_category：cardio/strength/wearable/other）
-// 與既有 category（market/tech/competitor/finance/brand）為不同維度，可疊加篩選。
+// 產品分類篩選（product_category / product_categories：cardio/strength/wearable/
+// recovery/nutrition/apparel/studio/digital/facility/other）與受眾標籤篩選
+// （audience_tags：PM/Design/Marketing）。兩者與既有 category（market/tech/
+// competitor/finance/brand）皆為不同維度，可疊加篩選；產品分類支援多值比對（OR）。
 // ------------------------------------------------------------------------
 
 /**
- * 套用「產品分類以外」的既有篩選條件（情報分類頁籤 / 搜尋 / 收藏 / 財經雜訊開關），
- * 供 renderArticles() 取得最終結果，同時也讓產品分類篩選器可依此計算各選項的動態筆數。
+ * 套用「情報分類頁籤 / 搜尋 / 收藏 / 財經雜訊開關」這幾項既有篩選條件，
  * 邏輯與原本寫在 renderArticles() 內的 filter 完全相同，僅抽出為共用函式，不改變既有行為。
  */
-function computeBaseFilteredArticles() {
+function computeCategorySearchFavFilteredArticles() {
   const searchInputEl = document.getElementById('search-input');
   const searchVal = ((searchInputEl ? searchInputEl.value : '') || '').toLowerCase();
 
@@ -779,18 +891,44 @@ function computeBaseFilteredArticles() {
 }
 
 /**
+ * 在「情報分類頁籤 / 搜尋 / 收藏 / 財經雜訊開關」之上，再套用「隱藏雜訊」與
+ * 「只看高信心標籤」兩個全域開關，供 renderArticles() 取得最終結果，同時也讓
+ * 產品分類與受眾標籤兩個篩選器可依此計算各選項的動態筆數。
+ */
+function computeBaseFilteredArticles() {
+  return computeCategorySearchFavFilteredArticles().filter(art => {
+    if (hideNoise && isNoiseArticle(art)) return false;
+    if (audienceHighConfidenceOnly && getAudienceTagsSource(art) !== 'keyword') return false;
+    return true;
+  });
+}
+
+/** 文章是否符合目前選取的產品分類（多值 includes 比對，currentProductCategory 為單選，'all' 代表不篩選）。 */
+function productCategoryMatches(art) {
+  if (currentProductCategory === 'all') return true;
+  return getProductCategories(art).includes(currentProductCategory);
+}
+
+/** 文章是否符合目前選取的受眾標籤（單選；currentAudienceTag 為空字串代表不篩選）。 */
+function audienceTagsMatch(art) {
+  if (!currentAudienceTag) return true;
+  return getAudienceTags(art).includes(currentAudienceTag);
+}
+
+/**
  * 依目前「產品分類以外」的篩選結果，動態渲染產品分類篩選器按鈕與筆數。
- * 筆數不寫死，每次 renderArticles() 都會依當前其他篩選條件重新計算。
- * @param {Array} baseList - computeBaseFilteredArticles() 的結果
+ * 筆數不寫死，每次 renderArticles() 都會依當前其他篩選條件（含受眾標籤選取）重新計算。
+ * product_categories 為多值欄位，一篇文章可同時計入多個分類的筆數。
+ * @param {Array} baseList - 已套用「產品分類以外」全部篩選條件（含受眾標籤）的文章清單
  */
 function renderProductCategoryTabs(baseList) {
   const container = document.getElementById('product-category-tabs');
   if (!container) return;
 
-  const counts = { all: baseList.length, cardio: 0, strength: 0, wearable: 0, other: 0 };
+  const counts = { all: baseList.length };
+  PRODUCT_CATEGORY_ORDER.forEach(key => { counts[key] = 0; });
   baseList.forEach(art => {
-    const key = getEffectiveProductCategory(art);
-    counts[key] = (counts[key] || 0) + 1;
+    getProductCategories(art).forEach(key => { counts[key] = (counts[key] || 0) + 1; });
   });
 
   const items = [{ key: 'all', label: '全部' }].concat(
@@ -808,6 +946,67 @@ function switchProductCategory(cat) {
   currentProductCategory = cat;
   visibleCount = PAGE_SIZE; // 切換產品分類篩選時，顯示數量重置回第一頁（與其他篩選器行為一致）
   renderArticles();
+}
+
+/**
+ * 依目前「受眾標籤以外」的篩選結果（含當前產品分類選取），動態渲染受眾標籤篩選器按鈕與筆數。
+ * 單選；audience_tags 保證每篇至少一個標籤，故不提供「未分類」選項。
+ * @param {Array} baseList - 已套用「受眾標籤以外」全部篩選條件（含產品分類）的文章清單
+ */
+function renderAudienceTagFilters(baseList) {
+  const container = document.getElementById('audience-tag-filters');
+  if (!container) return;
+
+  const counts = { all: baseList.length };
+  AUDIENCE_TAG_ORDER.forEach(key => { counts[key] = 0; });
+  baseList.forEach(art => {
+    getAudienceTags(art).forEach(tag => { counts[tag] = (counts[tag] || 0) + 1; });
+  });
+
+  const items = [{ key: 'all', label: '全部' }]
+    .concat(AUDIENCE_TAG_ORDER.map(key => ({ key, label: AUDIENCE_TAG_NAME_MAP[key] })));
+
+  container.innerHTML = items.map(({ key, label }) => {
+    const active = key === 'all' ? currentAudienceTag === '' : currentAudienceTag === key;
+    const activeClass = active ? 'bg-brand text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200';
+    return `<button type="button" data-audtag="${key}" onclick="switchAudienceTag('${key}')" aria-pressed="${active}" class="audtag-btn px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${activeClass}">${escapeHTML(label)} (${counts[key] || 0})</button>`;
+  }).join('');
+}
+
+/**
+ * 切換受眾標籤（單選）。點擊「全部」或再次點擊已選取的標籤都會回到不篩選狀態。
+ */
+function switchAudienceTag(key) {
+  currentAudienceTag = (key === 'all' || key === currentAudienceTag) ? '' : key;
+  visibleCount = PAGE_SIZE; // 篩選條件變動時，顯示數量重置回第一頁
+  renderArticles();
+}
+
+function toggleAudienceHighConfidence(checked) {
+  audienceHighConfidenceOnly = !!checked;
+  visibleCount = PAGE_SIZE;
+  renderArticles();
+}
+
+function toggleHideNoise(checked) {
+  hideNoise = !!checked;
+  visibleCount = PAGE_SIZE;
+  renderArticles();
+}
+
+/**
+ * 更新「隱藏雜訊」checkbox 旁的動態筆數提示：在目前其他篩選條件下，
+ * 有多少筆會因為 is_noise === true 而被隱藏（僅在 hideNoise 開啟時顯示數字）。
+ */
+function updateNoiseHiddenCount() {
+  const el = document.getElementById('noise-hidden-count');
+  if (!el) return;
+  if (!hideNoise) { el.innerText = ''; return; }
+  const preNoise = computeCategorySearchFavFilteredArticles().filter(art =>
+    !(audienceHighConfidenceOnly && getAudienceTagsSource(art) !== 'keyword')
+  );
+  const hiddenCount = preNoise.filter(isNoiseArticle).length;
+  el.innerText = `（已隱藏 ${hiddenCount} 筆）`;
 }
 
 // ------------------------------------------------------------------------
