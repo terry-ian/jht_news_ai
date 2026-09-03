@@ -254,11 +254,32 @@
             </label>
           </div>
 
-          <!-- 產品分類篩選（cardio/strength/wearable/other，與上方情報分類為不同維度，可疊加篩選） -->
+          <!-- 產品分類篩選（cardio/strength/wearable/recovery/nutrition/apparel/studio/digital/facility/other，
+               與上方情報分類為不同維度，可疊加篩選；比對支援多值 product_categories） -->
           <div class="border-t border-slate-100 pt-3 space-y-2">
             <p class="text-[11px] font-bold text-slate-400 tracking-wide">產品分類篩選</p>
             <div class="flex flex-wrap gap-1.5" id="product-category-tabs">
               <!-- 由 assets/app.js 的 renderProductCategoryTabs() 動態產生，筆數依當前其他篩選條件即時計算 -->
+            </div>
+          </div>
+
+          <!-- 受眾標籤篩選（PM/Design/Marketing，多選 OR 邏輯，與其他篩選可疊加） -->
+          <div class="border-t border-slate-100 pt-3 space-y-2">
+            <p class="text-[11px] font-bold text-slate-400 tracking-wide">受眾標籤篩選（可多選）</p>
+            <div class="flex flex-wrap gap-1.5" id="audience-tag-filters">
+              <!-- 由 assets/app.js 的 renderAudienceTagFilters() 動態產生，筆數依當前其他篩選條件即時計算 -->
+            </div>
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5 pt-1">
+              <label class="flex items-center gap-1.5 text-[11px] text-slate-500 cursor-pointer select-none" title="勾選後只顯示 audience_tags_source 為 keyword（高信心）的標籤結果">
+                <input type="checkbox" id="audience-high-confidence-toggle" onchange="toggleAudienceHighConfidence(this.checked)" class="accent-brand w-3.5 h-3.5 rounded">
+                只看高信心標籤
+                <span class="text-slate-400">（structural 為系統依分類推導，精準度較低）</span>
+              </label>
+              <label class="flex items-center gap-1.5 text-[11px] text-slate-500 cursor-pointer select-none" title="預設隱藏 is_noise 為 true 的內容農場等雜訊情報">
+                <input type="checkbox" id="hide-noise-toggle" checked onchange="toggleHideNoise(this.checked)" class="accent-brand w-3.5 h-3.5 rounded">
+                隱藏雜訊
+                <span id="noise-hidden-count" class="text-slate-400"></span>
+              </label>
             </div>
           </div>
         </div>
