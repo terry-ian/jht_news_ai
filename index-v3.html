@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>全球健身產業 AI 情報平台 v3</title>
+<link rel="icon" href="./assets/img/johnson-logo-v2.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
+<link rel="stylesheet" href="./assets/style-v3.css">
+</head>
+<body class="v3-body">
+
+<div id="v3-status-banner" class="v3-status-banner is-loading" role="status" aria-live="polite">
+  <span class="v3-status-spinner" aria-hidden="true"></span>
+  <span class="v3-status-text" data-i18n="common.loadingNews">情報資料載入中(約9.5MB,8311篇),請稍候...</span>
+</div>
+
+<header class="v3-header">
+  <div class="v3-header-inner">
+    <div class="v3-brand">
+      <img src="./assets/img/johnson-logo-v2.png" alt="喬山健康科技 Johnson Health Tech Logo" class="v3-logo">
+      <span class="v3-site-title" data-i18n="hdr.title">全球健身產業 AI 情報平台</span>
+    </div>
+
+    <nav class="v3-nav" aria-label="主導覽">
+      <button type="button" id="v3-nav-overview" class="is-active" data-i18n="nav.overview">總覽</button>
+      <button type="button" id="v3-nav-explore" data-i18n="nav.explore">探索情報</button>
+      <button type="button" id="v3-nav-ai" data-i18n="nav.ai">AI 助理</button>
+    </nav>
+
+    <div class="v3-user-block">
+      <button type="button" id="v3-user-btn" class="v3-user-btn" aria-haspopup="true" aria-expanded="false" aria-controls="v3-user-menu">
+        <span id="v3-user-avatar" class="v3-user-avatar">GM</span>
+        <span id="v3-user-name" class="v3-user-name">Global Marketing</span>
+        <svg class="v3-caret" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+
+      <div id="v3-user-menu" class="v3-user-menu" hidden role="menu" aria-label="使用者選單">
+        <button type="button" id="v3-menu-lang" class="v3-menu-item" role="menuitem" data-i18n="hdr.langToggle">切換語系</button>
+        <button type="button" id="v3-menu-ai" class="v3-menu-item" role="menuitem" data-i18n="hdr.aiSettings">AI 設定</button>
+        <a id="v3-menu-feedback" class="v3-menu-item" role="menuitem"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSe4Zs8Ry3LJH9l-8Uljlmxse1pieT6H4-DFJDbkNlGdOZ7N3w/viewform"
+           target="_blank" rel="noopener noreferrer" data-i18n="hdr.feedback">意見回饋</a>
+        <a id="v3-menu-logout" class="v3-menu-item" role="menuitem" href="/api/logout" data-i18n="hdr.logout">登出</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="v3-main">
+
+  <section id="v3-view-overview">
+
+    <div class="v3-view-head">
+      <h1 id="v3-ov-title">Dashboard</h1>
+      <p id="v3-ov-sub" data-i18n="ov.sub">值得關注的競品動態、功能更新和產品機會，都幫你整理好了。</p>
+      <p id="v3-ov-updated" class="mono"><span data-i18n="ov.updatedPrefix">最後更新：</span><span id="v3-ov-updated-value">--</span></p>
+    </div>
+
+    <div class="v3-filter-bar">
+      <div class="v3-filter-group">
+        <span class="v3-filter-label" data-i18n="ov.filterRole">角色</span>
+        <div id="v3-role-tabs" class="v3-segmented" role="tablist" aria-label="角色">
+          <button type="button" class="is-active" data-value="all" data-i18n="common.all">全部</button>
+          <button type="button" data-value="PM">PM</button>
+          <button type="button" data-value="Marketing" data-i18n="ov.roleMarketing">Marketing</button>
+          <button type="button" data-value="Design" data-i18n="ov.roleDesign">Design</button>
+        </div>
+      </div>
+      <div class="v3-filter-group">
+        <span class="v3-filter-label" data-i18n="ov.filterAttention">關注領域</span>
+        <div id="v3-attention-tabs" class="v3-segmented" role="tablist" aria-label="關注領域">
+          <button type="button" class="is-active" data-value="all" data-i18n="common.all">全部</button>
+          <button type="button" data-value="Commercial" data-i18n="tag.attentionCommercial">商用</button>
+          <button type="button" data-value="Home" data-i18n="tag.attentionHome">家用</button>
+          <button type="button" data-value="Digital" data-i18n="tag.attentionDigital">軟體</button>
+        </div>
+      </div>
+      <div class="v3-filter-right">
+        <div class="v3-filter-group">
+          <span class="v3-filter-label" data-i18n="ov.filterRange">時間範圍</span>
+          <div class="v3-filter-right-row">
+            <div id="v3-range-tabs" class="v3-segmented" role="tablist" aria-label="時間範圍">
+              <button type="button" class="is-active" data-value="week" data-i18n="common.rangeWeek">本週</button>
+              <button type="button" data-value="month" data-i18n="common.rangeMonth">本月</button>
+              <button type="button" data-value="quarter" data-i18n="common.rangeQuarter">本季</button>
+            </div>
+            <button type="button" id="v3-refresh-btn" class="v3-refresh-btn"
+                    title="重新整理僅重新讀取同一份 news.json，不會觸發爬蟲更新資料"
+                    data-i18n-title="ov.refreshTitle">
+              <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M20 11A8 8 0 1 0 6.7 17.3"></path>
+                <polyline points="20 4 20 11 13 11"></polyline>
+              </svg>
+              <span data-i18n="ov.refresh">重新整理</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="v3-ov-section">
+      <h2 class="v3-section-title" data-i18n="ov.kpiTitle">情報概況</h2>
+      <div id="v3-kpi-grid" class="v3-kpi-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="v3-ov-section">
+      <h2 class="v3-section-title" data-i18n="ov.trendTitle">情報趨勢</h2>
+      <div class="v3-trend-grid">
+        <div class="v3-trend-card">
+          <h3 class="v3-trend-card-title" data-i18n="ov.trendTopics">熱門情報主題 Top 5</h3>
+          <div id="v3-trend-topics" class="v3-trend-list" aria-live="polite"></div>
+        </div>
+        <div class="v3-trend-card">
+          <h3 class="v3-trend-card-title" data-i18n="ov.trendBrands">品牌情報熱度 Top 5</h3>
+          <div id="v3-trend-brands" class="v3-trend-list" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-ov-section">
+      <div class="v3-section-head">
+        <div class="v3-section-head-text">
+          <h2 class="v3-section-title" data-i18n="ov.focusTitle">焦點情報</h2>
+          <p data-i18n="ov.focusSub">AI 從產品情報中，挑出最值得你先看的 3 則。</p>
+        </div>
+        <button type="button" id="v3-more-focus" class="v3-more">
+          <span data-i18n="ov.more">查看更多</span>
+          <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+      </div>
+      <div id="v3-focus-cards" class="v3-card-grid v3-card-grid--3" aria-live="polite"></div>
+    </section>
+
+    <section class="v3-ov-section">
+      <div class="v3-section-head">
+        <div class="v3-section-head-text">
+          <h2 class="v3-section-title" data-i18n="ov.competitorTitle">競品與產品更新</h2>
+          <p data-i18n="ov.competitorSub">快速掌握競品推出了什麼、改了什麼，以及策略往哪裡走。</p>
+        </div>
+        <button type="button" id="v3-more-competitor" class="v3-more">
+          <span data-i18n="ov.more">查看更多</span>
+          <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+      </div>
+      <div id="v3-competitor-cards" class="v3-card-grid v3-card-grid--3" aria-live="polite"></div>
+    </section>
+
+    <section class="v3-ov-section">
+      <div class="v3-section-head">
+        <div class="v3-section-head-text">
+          <h2 class="v3-section-title" data-i18n="ov.softwareTitle">軟體與 AI 功能動態</h2>
+          <p data-i18n="ov.softwareSub">看看競品如何運用 AI、數據和個人化體驗，持續推進產品功能。</p>
+        </div>
+        <button type="button" id="v3-more-software" class="v3-more">
+          <span data-i18n="ov.more">查看更多</span>
+          <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 6 15 12 9 18"></polyline></svg>
+        </button>
+      </div>
+      <div id="v3-software-cards" class="v3-card-grid v3-card-grid--3" aria-live="polite"></div>
+    </section>
+
+    <section class="v3-ov-section">
+      <div class="v3-section-head">
+        <div class="v3-section-head-text">
+          <h2 class="v3-section-title" data-i18n="ov.insightTitle">產品洞察</h2>
+          <p data-i18n="ov.insightSub">綜合多篇情報，整理出 3 個值得留意的產品變化與機會。</p>
+        </div>
+      </div>
+      <div id="v3-insight-empty" class="v3-insight-empty">
+        <p data-i18n="ov.insightEmpty">按下按鈕，讓 AI 從近期情報中整理出值得留意的產品變化與機會。</p>
+        <button type="button" id="v3-insight-gen" class="v3-btn-primary">
+          <svg class="v3-icon-sparkle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2c0 4.2-1 6.2-4.2 7.2C11 10.2 12 12.2 12 16.4c0-4.2 1-6.2 4.2-7.2C13 8.2 12 6.2 12 2z"></path></svg>
+          <span data-i18n="ov.insightGen">生成產品洞察</span>
+        </button>
+        <p id="v3-insight-stale" class="v3-insight-stale" hidden data-i18n="ov.insightStale">篩選條件已變更，可重新生成</p>
+      </div>
+      <div id="v3-insight-cards" class="v3-insight-grid" aria-live="polite"></div>
+    </section>
+
+    <footer class="v3-footer">
+      <span data-i18n="footer.copy">喬山健康科技股份有限公司 © 2026 Johnson Health Tech. All Rights Reserved. AI 產業情報模組版權所有。</span>
+      <span data-i18n="footer.note">本看板資料來源為自動化蒐集彙整之公開新聞，僅供內部決策參考，請自行審閱原文之準確性。</span>
+    </footer>
+  </section>
+
+  <section id="v3-view-explore" hidden>
+
+    <div class="v3-ex-head">
+      <div class="v3-ex-head-text">
+        <h1 id="v3-ex-title" data-i18n="ex.title">探索情報<span id="v3-ex-count" class="mono"> 0 <span data-i18n="ex.countSuffix">筆情報</span></span></h1>
+      </div>
+      <div id="v3-ex-range-tabs" class="v3-segmented" role="tablist" aria-label="時間範圍">
+        <button type="button" data-value="week" data-i18n="common.rangeWeek">本週</button>
+        <button type="button" data-value="month" data-i18n="common.rangeMonth">本月</button>
+        <button type="button" class="is-active" data-value="quarter" data-i18n="common.rangeQuarter">本季</button>
+      </div>
+    </div>
+
+    <div class="v3-filter-card">
+      <div class="v3-filter-row">
+        <div class="v3-search-wrap">
+          <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="v3-search" placeholder="搜尋品牌、產品、功能或市場趨勢"
+                 data-i18n-placeholder="ex.searchPlaceholder" aria-label="搜尋" data-i18n-aria="ex.searchPlaceholder">
+        </div>
+        <label class="v3-select-wrap">
+          <span data-i18n="ex.role">角色</span>
+          <select id="v3-sel-role">
+            <option value="all" data-i18n="common.all">全部</option>
+            <option value="PM" data-i18n="ov.roleP">PM</option>
+            <option value="Marketing" data-i18n="ov.roleMarketing">Marketing</option>
+            <option value="Design" data-i18n="ov.roleDesign">Design</option>
+          </select>
+        </label>
+        <label class="v3-select-wrap">
+          <span data-i18n="ex.attention">領域</span>
+          <select id="v3-sel-attention">
+            <option value="all" data-i18n="common.all">全部</option>
+            <option value="Commercial" data-i18n="tag.attentionCommercial">商用</option>
+            <option value="Home" data-i18n="tag.attentionHome">家用</option>
+            <option value="Digital" data-i18n="tag.attentionDigital">軟體</option>
+          </select>
+        </label>
+        <label class="v3-select-wrap">
+          <span data-i18n="ex.type">情報類型</span>
+          <select id="v3-sel-type">
+            <option value="all" data-i18n="ex.typeAll">全部</option>
+          </select>
+        </label>
+        <label class="v3-select-wrap">
+          <span data-i18n="ex.country">地區</span>
+          <select id="v3-sel-country">
+            <option value="全部" data-i18n="tag.countryAll">全部</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="v3-filter-divider"></div>
+
+      <div class="v3-chip-row">
+        <span class="v3-chip-row-label" data-i18n="ex.brand">Brand：</span>
+        <div id="v3-brand-chips" class="v3-chip-list">
+          <button type="button" class="v3-chip is-on" data-value="全部" data-i18n="tag.brandAll">全部</button>
+        </div>
+        <button type="button" id="v3-brand-more" class="v3-chip-more" data-i18n="ex.brandMore">+更多</button>
+      </div>
+
+      <div class="v3-chip-row">
+        <span class="v3-chip-row-label" data-i18n="ex.ptype">Product Type：</span>
+        <div id="v3-ptype-chips" class="v3-chip-list">
+          <button type="button" class="v3-chip is-on" data-value="全部" data-i18n="tag.ptypeAll">全部</button>
+        </div>
+      </div>
+
+      <div class="v3-chip-row v3-chip-row--wrap">
+        <span class="v3-chip-row-label" data-i18n="ex.topic">Topic：</span>
+        <div id="v3-topic-chips" class="v3-chip-list">
+          <button type="button" class="v3-chip is-on" data-value="全部" data-i18n="tag.topicAll">全部</button>
+        </div>
+        <button type="button" id="v3-clear-filters" class="v3-chip-more" data-i18n="ex.clear">清除篩選條件</button>
+      </div>
+    </div>
+
+    <div id="v3-ex-cards" class="v3-card-grid v3-card-grid--3" aria-live="polite"></div>
+
+    <button type="button" id="v3-load-more" class="v3-load-more-btn">
+      <span data-i18n="ex.loadMore">查看更多情報</span>
+      <span id="v3-load-more-count" class="mono">（0 則）</span>
+      <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><polyline points="9 6 15 12 9 18"></polyline></svg>
+    </button>
+
+    <div id="v3-ex-empty" class="v3-ex-empty" hidden>
+      <p data-i18n="ex.empty">查無符合條件的情報，試試調整篩選條件。</p>
+    </div>
+  </section>
+</main>
+
+<div id="v3-ai-overlay" class="v3-ai-overlay"></div>
+<aside id="v3-ai-drawer" class="v3-ai-drawer" role="dialog" aria-modal="true" aria-labelledby="v3-ai-drawer-title">
+  <div class="v3-ai-head">
+    <span class="v3-ai-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2c0 4.2-1 6.2-4.2 7.2C11 10.2 12 12.2 12 16.4c0-4.2 1-6.2 4.2-7.2C13 8.2 12 6.2 12 2z"></path></svg>
+    </span>
+    <div class="v3-ai-head-text">
+      <span id="v3-ai-drawer-title" data-i18n="ai.name">喬山 AI 產業情報助理</span>
+      <span class="v3-ai-head-sub">
+        <span data-i18n="ai.poweredBy">Powered by Google Gemini</span>
+        （<span id="v3-ai-model-label">gemini-3.8-flash</span>）
+      </span>
+    </div>
+    <button type="button" id="v3-ai-close" class="v3-icon-btn" aria-label="關閉" data-i18n-aria="common.close">
+      <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+    </button>
+  </div>
+
+  <div id="v3-ai-messages" class="v3-ai-messages">
+    <div class="v3-ai-msg v3-ai-msg-bot">
+      <span class="v3-ai-msg-avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2c0 4.2-1 6.2-4.2 7.2C11 10.2 12 12.2 12 16.4c0-4.2 1-6.2 4.2-7.2C13 8.2 12 6.2 12 2z"></path></svg>
+      </span>
+      <div class="v3-ai-msg-bubble" data-i18n="ai.welcome">您好，我是喬山 AI 產業情報小助手。近期情報已幫你整理好了！想了解競品最近在做什麼、市場有哪些新趨勢，或有哪些值得關注的變化，都可以問我。</div>
+    </div>
+  </div>
+
+  <div class="v3-ai-footer">
+    <span class="v3-ai-quick-label" data-i18n="ai.quickLabel">快速諮詢</span>
+    <div id="v3-ai-quick" class="v3-ai-quick">
+      <button type="button" class="v3-ai-quick-btn" data-i18n="ai.quick1">2026 健身科技趨勢</button>
+      <button type="button" class="v3-ai-quick-btn" data-i18n="ai.quick2">近期競品重要動態</button>
+      <button type="button" class="v3-ai-quick-btn" data-i18n="ai.quick3">熱門 AI 應用與功能</button>
+    </div>
+    <div class="v3-ai-input-row">
+      <input type="text" id="v3-ai-input" placeholder="詢問情報小助手"
+             data-i18n-placeholder="ai.inputPlaceholder" aria-label="詢問情報小助手" data-i18n-aria="ai.inputPlaceholder">
+      <button type="button" id="v3-ai-send" aria-label="送出" data-i18n-aria="common.send">
+        <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+    <p class="v3-ai-note" data-i18n="ai.note">回覆由 AI 依公開情報整理，建議搭配原始來源確認。</p>
+  </div>
+</aside>
+
+<div id="v3-modal-overlay" class="v3-modal-overlay" hidden></div>
+<div id="v3-modal" class="v3-modal" role="dialog" aria-modal="true" aria-labelledby="v3-modal-title" hidden>
+  <div class="v3-modal-head">
+    <h2 id="v3-modal-title" data-i18n="modal.title">AI 智能深度分析摘要</h2>
+    <button type="button" id="v3-modal-close" class="v3-icon-btn" aria-label="關閉視窗" data-i18n-aria="modal.close">
+      <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><line x1="6" y1="6" x2="18" y2="18"></line><line x1="18" y1="6" x2="6" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="v3-modal-body">
+    <div class="v3-modal-section">
+      <span class="v3-modal-section-label" data-i18n="modal.originalLabel">情報原文標題</span>
+      <p id="v3-modal-art-title" class="v3-modal-art-title">-</p>
+      <p id="v3-modal-art-meta" class="v3-modal-art-meta mono"></p>
+      <a id="v3-modal-art-link" class="v3-modal-art-link" href="#" target="_blank" rel="noopener">
+        <span data-i18n="modal.link">前往原文連結</span>
+        <svg class="v3-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
+    </div>
+    <div class="v3-modal-divider"></div>
+    <div class="v3-modal-section">
+      <div class="v3-modal-ai-head">
+        <span class="v3-modal-section-label" data-i18n="modal.aiLabel">AI 深度提煉</span>
+        <span class="v3-modal-model mono">MODEL <b id="v3-modal-model">-</b></span>
+      </div>
+      <div id="v3-modal-content" class="v3-modal-content"></div>
+    </div>
+  </div>
+  <div class="v3-modal-foot">
+    <button type="button" id="v3-modal-copy" class="v3-btn-ghost" data-i18n="modal.copy">複製摘要內容</button>
+  </div>
+</div>
+
+<script src="./assets/tag-map-v3.js"></script>
+<script src="./assets/app-v3.js"></script>
+</body>
+</html>
