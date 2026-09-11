@@ -512,6 +512,122 @@ def detect_brand(text: str):
     return None
 
 
+# ---------------------------------------------------------------------------
+# v3 多值品牌判定（docs/v3-spec.md 3-1 / 第 10 節）：規則精神移植自
+# assets/tag-map-v3.js 的 BRAND_DEFS（已用 8311 篇驗證），本檔為落地後的唯一
+# 真實來源。完全獨立於上方既有 detect_brand()/BRAND_DETECT_PATTERNS，不改動
+# 既有單值 brand 欄位判定邏輯。
+# ---------------------------------------------------------------------------
+
+def _build_v3_regex(tokens=None, phrases=None):
+    """依 tokens（自動加人工詞界）與 phrases（原樣拼接）組出一個大 regex，
+    精神對應 assets/tag-map-v3.js 的 buildRegex()。"""
+    parts = []
+    if tokens:
+        parts.append("(?:^|[^a-zA-Z0-9])(?:" + "|".join(tokens) + ")(?:$|[^a-zA-Z0-9])")
+    if phrases:
+        parts.append("|".join(phrases))
+    if not parts:
+        return None
+    return re.compile("|".join(parts), re.IGNORECASE)
+
+
+BRANDS_V3 = [
+    "Peloton", "Technogym", "NordicTrack", "Johnson", "ProForm", "SHUA",
+    "Life Fitness", "Bowflex", "REP", "Matrix", "Precor", "Tonal", "Sole",
+    "Concept2", "Sunny Health", "Force USA", "Rogue", "Schwinn", "Assault",
+    "Vision", "Hammer Strength", "Titan", "Eleiko", "Horizon", "TRUE Fitness",
+    "Nautilus", "Cybex", "Spirit", "Inspire", "Dyaco", "Impulse", "Keiser",
+    "Star Trac", "CORE Fitness", "EGYM", "DRAX",
+]
+
+_FIT_CTX_V3_TOKENS = [
+    "fitness", "gym", "treadmill", "elliptical", "equipment", "strength",
+    "cardio", "rower", "rowing", "workout", "exercise", "machine", "trainer",
+    "weights", "barbell", "dumbbell", "rack", "kettlebell", "bike", "bikes",
+]
+_FIT_CTX_V3_RE = _build_v3_regex(_FIT_CTX_V3_TOKENS, ["home gym"])
+BRAND_DEFS_V3 = [
+    {"name": "Peloton", "strong_tokens": ["peloton"]},
+    {"name": "Technogym", "strong_tokens": ["technogym"]},
+    {"name": "NordicTrack", "strong_tokens": ["nordictrack"], "strong_phrases": ["nordic track"]},
+    {"name": "Johnson", "strong_phrases": ["johnson health tech", "johnson fitness", "喬山"]},
+    {"name": "ProForm", "strong_tokens": ["proform"],
+     "strong_phrases": ["pro-form fitness", "proform carbon", "proform ifit"]},
+    {"name": "SHUA", "strong_tokens": ["shua"], "strong_phrases": ["舒華", "舒华"]},
+    {"name": "Life Fitness", "strong_phrases": ["life fitness"]},
+    {"name": "Bowflex", "strong_tokens": ["bowflex"]},
+    {"name": "REP", "strong_phrases": ["rep fitness"], "weak_tokens": ["rep"],
+     "exclude": ["one rep max", "one-rep max", "per rep", "rep range", "rep count",
+                 "each rep", "reps and sets", "sets and reps", "personal rep",
+                 "sales rep", "press rep"]},
+    {"name": "Matrix", "strong_phrases": ["matrix fitness", "matrix strength"], "weak_tokens": ["matrix"],
+     "exclude": ["matrix service", "the matrix", "risk matrix", "decision matrix",
+                 "skills matrix", "matrix organization"]},
+    {"name": "Precor", "weak_tokens": ["precor"]},
+    {"name": "Tonal", "weak_tokens": ["tonal"],
+     "exclude": ["tonal shift", "tonal dressing", "tonal colorway", "tonal quality",
+                 "atonal", "tonal palette", "tonal range"]},
+    {"name": "Sole", "strong_phrases": ["sole fitness", "sole treadmill"], "weak_tokens": ["sole"]},
+    {"name": "Concept2", "strong_tokens": ["concept2"], "strong_phrases": ["concept 2"]},
+    {"name": "Sunny Health", "strong_phrases": ["sunny health"]},
+    {"name": "Force USA", "strong_phrases": ["force usa"]},
+    {"name": "Rogue", "strong_phrases": ["rogue fitness", "rogue ohio bar"], "weak_tokens": ["rogue"]},
+    {"name": "Schwinn", "weak_tokens": ["schwinn"]},
+    {"name": "Assault", "strong_phrases": ["assault fitness", "assault bike", "assaultbike",
+                                            "assault runner", "assault air"], "weak_tokens": ["assault"],
+     "exclude": ["sexual assault", "assault charges", "assault rifle", "assault weapon",
+                 "assaulted", "armed assault", "military assault"]},
+    {"name": "Vision", "strong_phrases": ["vision fitness"], "weak_tokens": ["vision"]},
+    {"name": "Hammer Strength", "strong_phrases": ["hammer strength"]},
+    {"name": "Titan", "strong_phrases": ["titan fitness"], "weak_tokens": ["titan"]},
+    {"name": "Eleiko", "strong_tokens": ["eleiko"]},
+    {"name": "Horizon", "strong_phrases": ["horizon fitness"], "weak_tokens": ["horizon"]},
+    {"name": "TRUE Fitness", "strong_phrases": ["true fitness", "true treadmill", "true trainer",
+                                                 "trueform runner", "true fitness technology"]},
+    {"name": "Nautilus", "strong_phrases": ["nautilus fitness", "nautilus inc", "nautilus, inc"],
+     "weak_tokens": ["nautilus"],
+     "exclude": ["nautilus biotechnology", "patek philippe", "marine insurance", "(naut)"]},
+    {"name": "Cybex", "strong_phrases": ["cybex eagle", "cybex international", "arc trainer"],
+     "weak_tokens": ["cybex"]},
+    {"name": "Spirit", "strong_phrases": ["spirit fitness"], "weak_tokens": ["spirit"]},
+    {"name": "Inspire", "strong_phrases": ["inspire fitness"], "weak_tokens": ["inspire"]},
+    {"name": "Dyaco", "weak_tokens": ["dyaco"]},
+    {"name": "Impulse", "strong_phrases": ["impulse fitness"], "weak_tokens": ["impulse"]},
+    {"name": "Keiser", "weak_tokens": ["keiser"]},
+    {"name": "Star Trac", "strong_phrases": ["star trac"]},
+    {"name": "CORE Fitness", "strong_phrases": ["core fitness"]},
+    {"name": "EGYM", "weak_tokens": ["egym"]},
+    {"name": "DRAX", "weak_tokens": ["drax"]},
+]
+
+for _bd in BRAND_DEFS_V3:
+    _bd["_exclude_re"] = _build_v3_regex(None, _bd.get("exclude")) if _bd.get("exclude") else None
+    _bd["_strong_re"] = _build_v3_regex(_bd.get("strong_tokens"), _bd.get("strong_phrases"))
+    _bd["_weak_re"] = _build_v3_regex(_bd.get("weak_tokens")) if _bd.get("weak_tokens") else None
+
+BRAND_DEF_BY_NAME_V3 = {_bd["name"]: _bd for _bd in BRAND_DEFS_V3}
+
+
+def _brand_hit_v3(brand_def, text):
+    if brand_def["_exclude_re"] and brand_def["_exclude_re"].search(text):
+        return False
+    if brand_def["_strong_re"] and brand_def["_strong_re"].search(text):
+        return True
+    if brand_def["_weak_re"] and brand_def["_weak_re"].search(text) and _FIT_CTX_V3_RE.search(text):
+        return True
+    return False
+
+
+def detect_brands(text: str) -> list:
+    """回傳多值品牌清單（36 品牌，見 docs/v3-spec.md 3-1）。供新增欄位 brands
+    使用，取代既有單值 detect_brand()；不影響既有 detect_brand()/brand 欄位。
+    呼叫端若既有單值 brand 非 None，須自行併入結果（本函式只吃 text，不吃
+    既有 brand，保留單一職責）。"""
+    text = text or ""
+    return [name for name in BRANDS_V3 if _brand_hit_v3(BRAND_DEF_BY_NAME_V3[name], text)]
+
+
 def is_finance(text: str) -> bool:
     return any(p.search(text) for p in FINANCE_PATTERNS)
 
@@ -1019,6 +1135,297 @@ def classify_noise(title: str, summary: str = "", source: str = ""):
             return True, "keyword_stuffing"
 
     return False, None
+
+
+# ---------------------------------------------------------------------------
+# v3 標籤判定（topic_tags / product_types / attention_tags / country）：
+# docs/v3-spec.md 第 3 節 / 第 10 節。規則精神移植自 assets/tag-map-v3.js
+# （已用 8311 篇驗證），本檔為落地後的唯一真實來源；tag-map-v3.js 之後降級
+# 為 fallback／相容層。
+# ---------------------------------------------------------------------------
+
+TOPICS_V3 = [
+    "新品發布", "產品改版", "AI 功能", "個人化推薦", "訓練計畫", "數據追蹤", "裝置串接",
+    "第三方整合", "訂閱方案", "市場擴張", "新品宣傳", "品牌 Campaign", "品牌合作", "代言人",
+    "產品賣點", "品牌定位", "價格策略", "促銷活動", "內容策略", "市場趨勢", "其他",
+]
+
+SUBCATEGORY_TOPIC_MAP_V3 = {
+    "product_launch": ["新品發布"],
+    "product_line": ["新品發布"],
+    "ai_training": ["AI 功能"],
+    "connected_app": ["裝置串接", "第三方整合"],
+    "wearable_device": ["裝置串接"],
+    "product_review": ["產品賣點"],
+    "training_science": ["訓練計畫"],
+    "wellness_trend": ["市場趨勢"],
+    "home_fitness_trend": ["市場趨勢"],
+    "market_research": ["市場趨勢"],
+    "channel_partnership": ["市場擴張"],
+    "commercial_channel": ["市場擴張"],
+    "international_brand": ["市場擴張"],
+    "china_brand": ["市場擴張"],
+    "brand_risk": ["品牌定位"],
+}
+TOPIC_KEYWORDS_V3 = {
+    "新品發布": {"tokens": ["launches", "launch", "unveils", "debuts", "introduces"],
+              "phrases": ["new product", "product line", "上市", "推出", "發表", "新品"]},
+    "產品改版": {"tokens": ["upgraded", "updated", "redesigned", "revamp", "refresh"],
+              "phrases": ["new version", "next generation", "next-gen", "升級", "改版", "改款"]},
+    "AI 功能": {"tokens": ["ai"],
+             "phrases": ["ai coach", "artificial intelligence", "generative ai", "machine learning",
+                         "ai-powered", "ai analysis", "smart algorithm", "ai 教練", "人工智慧", "ai 功能"]},
+    "個人化推薦": {"tokens": ["personalized", "personalization", "recommends"],
+              "phrases": ["personalized plan", "tailored workout", "custom workout",
+                          "recommendation engine", "personalized experience",
+                          "tailored recommendations", "ai recommendations", "curated for you",
+                          "個人化", "推薦", "客製化", "智慧推薦", "量身打造"]},
+    "訓練計畫": {"tokens": [],
+              "phrases": ["training program", "workout plan", "training plan", "program design",
+                          "coaching plan", "structured training", "訓練計畫", "課程規劃"]},
+    "數據追蹤": {"tokens": ["analytics"],
+              "phrases": ["workout data", "health data", "recovery data", "biometric data",
+                          "data tracking", "performance metrics", "progress tracking",
+                          "activity tracking", "health metrics", "fitness data",
+                          "數據追蹤", "健康數據", "生理數據", "追蹤數據"]},
+    "裝置串接": {"tokens": ["sensor"],
+              "phrases": ["device integration", "connected device", "smart sensor",
+                          "pairs with", "syncs with", "裝置串接", "感測器"]},
+    "第三方整合": {"tokens": ["strava"],
+               "phrases": ["apple health", "google fit", "third-party integration",
+                           "api integration", "integrates with", "第三方整合", "串接"]},
+    "訂閱方案": {"tokens": ["membership", "subscription"],
+              "phrases": ["monthly plan", "annual plan", "subscription fee", "subscription service",
+                          "tiered pricing", "free trial", "premium tier", "subscriber base",
+                          "訂閱", "會員方案", "免費試用", "付費會員"]},
+    "市場擴張": {"tokens": ["expansion"],
+              "phrases": ["new market", "expands into", "new country", "opens in",
+                          "enters market", "new distributor", "市場擴張", "進軍", "拓展"]},
+    "新品宣傳": {"tokens": [],
+              "phrases": ["launch event", "unveiling event", "product reveal", "promotional launch",
+                          "marketing launch", "teaser campaign", "marketing push", "launch marketing",
+                          "pr campaign", "media blitz", "press tour", "rolling out",
+                          "宣傳", "造勢", "宣傳活動", "造勢活動"]},
+    "品牌 Campaign": {"tokens": [],
+                    "phrases": ["ad campaign", "marketing campaign", "brand campaign",
+                                "advertising campaign", "campaign launch", "brand awareness",
+                                "commercial spot", "tv spot", "廣告活動", "品牌活動", "品牌廣告", "形象廣告"]},
+    "品牌合作": {"tokens": ["collaboration"],
+              "phrases": ["collaborates with", "teams up with", "co-branded", "joint venture",
+                          "partnership announcement", "strategic partnership",
+                          "brand collaboration", "cross-promotion",
+                          "合作", "聯名", "策略合作", "異業合作"]},
+    "代言人": {"tokens": ["ambassador", "endorsement", "spokesperson", "influencer"],
+             "phrases": ["athlete partnership", "celebrity endorsement", "代言", "大使"]},
+    "產品賣點": {"tokens": [],
+              "phrases": ["key feature", "standout feature", "unique selling point", "core feature",
+                          "sets it apart", "賣點", "特色"]},
+    "品牌定位": {"tokens": ["rebrand", "repositioning", "positioning"],
+              "phrases": ["brand positioning", "brand identity", "target audience",
+                          "positions itself", "brand strategy", "brand image",
+                          "market positioning", "品牌定位", "重新定位", "品牌策略", "品牌形象"]},
+    "價格策略": {"tokens": [],
+              "phrases": ["price increase", "price cut", "pricing strategy", "price drop",
+                          "priced at", "price point", "msrp", "raises prices", "lowers prices",
+                          "value proposition", "漲價", "降價", "定價策略", "售價", "調漲", "調降"]},
+    "促銷活動": {"tokens": ["discount", "promo", "promotion", "coupon"],
+              "phrases": ["black friday", "holiday sale", "limited time offer", "flash sale",
+                          "clearance sale", "special offer", "折扣", "促銷", "優惠", "特賣", "清倉"]},
+    "內容策略": {"tokens": [],
+              "phrases": ["content strategy", "video content", "social media content",
+                          "on-demand content", "class library", "workout video", "video series",
+                          "content library", "digital content", "streaming content",
+                          "內容策略", "影音內容", "內容行銷", "影片系列"]},
+    "市場趨勢": {"tokens": ["trend"],
+              "phrases": ["industry trend", "market trend", "consumer demand", "growing demand",
+                          "market outlook", "市場趨勢", "產業趨勢"]},
+}
+
+TOPIC_RE_V3 = {
+    name: _build_v3_regex(kw.get("tokens"), kw.get("phrases"))
+    for name, kw in TOPIC_KEYWORDS_V3.items()
+}
+
+
+def classify_topic_tags(title: str, summary: str, subcategory: str = None) -> list:
+    """回傳多值 topic 標籤（見 docs/v3-spec.md 3-3）。(a) 先用既有 subcategory
+    做確定性映射，(b) 再用中英關鍵字補足，(c) 去重排序，(d) 全部沒中回 ['其他']。"""
+    text = f"{title or ''} {summary or ''}"
+    result = []
+
+    def _add(name):
+        if name not in result:
+            result.append(name)
+
+    mapped = SUBCATEGORY_TOPIC_MAP_V3.get(subcategory) if subcategory else None
+    if mapped:
+        for name in mapped:
+            _add(name)
+
+    for name, pattern in TOPIC_RE_V3.items():
+        if pattern and pattern.search(text):
+            _add(name)
+
+    if not result:
+        return ["其他"]
+    result.sort(key=TOPICS_V3.index)
+    return result
+
+PRODUCT_TYPES_V3 = ["Cardio", "Strength", "Connected Fitness", "APP", "Console",
+                     "Wearable", "Digital Service", "Web"]
+
+PTYPE_KEYWORDS_V3 = {
+    "Cardio": {"tokens": ["treadmill", "elliptical", "rower", "bike"],
+               "phrases": ["exercise bike", "rowing machine"]},
+    "Strength": {"tokens": ["rack", "dumbbell", "barbell", "plate"],
+                 "phrases": ["smith machine"]},
+    "APP": {"tokens": ["app", "ios", "android"], "phrases": ["mobile app"]},
+    "Console": {"tokens": ["touchscreen", "console", "display"], "phrases": ["hd screen"]},
+    "Web": {"tokens": ["website", "browser"], "phrases": ["web portal"]},
+    "Digital Service": {"tokens": ["streaming"],
+                         "phrases": ["subscription platform", "on-demand class", "on demand class"]},
+    "Connected Fitness": {"tokens": ["connected", "iot"],
+                           "phrases": ["smart equipment", "sensor-linked", "sensor linked"]},
+}
+PTYPE_RE_V3 = {
+    name: _build_v3_regex(kw.get("tokens"), kw.get("phrases"))
+    for name, kw in PTYPE_KEYWORDS_V3.items()
+}
+DIGITAL_SUB_TYPES_V3 = ["APP", "Console", "Web", "Digital Service", "Connected Fitness"]
+SUPPLEMENT_TYPES_V3 = ["Cardio", "Strength", "APP", "Console", "Web", "Digital Service", "Connected Fitness"]
+
+
+def classify_product_types(title: str, summary: str, product_categories=None) -> list:
+    """回傳多值 product_type 標籤（見 docs/v3-spec.md 3-2）。可回傳 0 個，不強制填值。"""
+    text = f"{title or ''} {summary or ''}"
+    pcs = product_categories or []
+    result = []
+
+    def _add(name):
+        if name not in result:
+            result.append(name)
+
+    if "cardio" in pcs:
+        _add("Cardio")
+    if "strength" in pcs:
+        _add("Strength")
+    if "wearable" in pcs:
+        _add("Wearable")
+    if "digital" in pcs:
+        matched_any = False
+        for name in DIGITAL_SUB_TYPES_V3:
+            if name == "Digital Service":
+                continue
+            if PTYPE_RE_V3.get(name) and PTYPE_RE_V3[name].search(text):
+                _add(name)
+                matched_any = True
+        if PTYPE_RE_V3.get("Digital Service") and PTYPE_RE_V3["Digital Service"].search(text):
+            _add("Digital Service")
+            matched_any = True
+        if not matched_any:
+            _add("Digital Service")
+
+    for name in SUPPLEMENT_TYPES_V3:
+        if PTYPE_RE_V3.get(name) and PTYPE_RE_V3[name].search(text):
+            _add(name)
+
+    result.sort(key=PRODUCT_TYPES_V3.index)
+    return result
+
+ATTENTION_V3 = ["Commercial", "Home", "Digital"]
+
+COMMERCIAL_BRANDS_V3 = [
+    "Johnson", "Matrix", "Life Fitness", "Technogym", "Precor", "TRUE Fitness",
+    "CORE Fitness", "EGYM", "Hammer Strength", "SHUA", "Concept2", "Rogue",
+    "Spirit", "Star Trac", "Cybex", "Vision", "Eleiko", "Keiser", "Assault",
+    "Impulse", "Dyaco", "DRAX",
+]
+HOME_BRANDS_V3 = [
+    "Peloton", "NordicTrack", "Bowflex", "ProForm", "Tonal", "Sole", "Schwinn",
+    "Horizon", "REP", "Force USA", "Sunny Health", "Inspire", "Titan", "Nautilus",
+]
+BRAND_SEGMENT_MAP_V3 = {b: "Commercial" for b in COMMERCIAL_BRANDS_V3}
+BRAND_SEGMENT_MAP_V3.update({b: "Home" for b in HOME_BRANDS_V3})
+
+DIGITAL_PTYPES_V3 = ["APP", "Console", "Web", "Digital Service", "Connected Fitness"]
+DIGITAL_TOPICS_V3 = ["AI 功能", "數據追蹤", "第三方整合", "裝置串接", "訂閱方案", "內容策略"]
+
+
+def classify_attention_tags(brands=None, product_types=None, topic_tags=None,
+                             product_categories=None) -> list:
+    """回傳多值 attention 標籤（Commercial / Home / Digital，可同時成立，見
+    docs/v3-spec.md 3-4）。三者皆未命中時回空陣列，屬預期行為。"""
+    brands = brands or []
+    product_types = product_types or []
+    topic_tags = topic_tags or []
+    pcs = product_categories or []
+    result = []
+
+    def _add(name):
+        if name not in result:
+            result.append(name)
+
+    for b in brands:
+        seg = BRAND_SEGMENT_MAP_V3.get(b)
+        if seg:
+            _add(seg)
+
+    is_digital = (
+        any(t in product_types for t in DIGITAL_PTYPES_V3)
+        or any(t in topic_tags for t in DIGITAL_TOPICS_V3)
+        or "digital" in pcs
+    )
+    if is_digital:
+        _add("Digital")
+
+    result.sort(key=ATTENTION_V3.index)
+    return result
+
+COUNTRIES_V3 = ["全部", "全球", "亞洲", "北美", "歐洲", "大洋洲", "其他地區"]
+
+_ASIA_TLDS_V3 = (".tw", ".cn", ".hk", ".jp", ".kr", ".my", ".vn", ".in")
+_EUROPE_TLDS_V3 = (".uk", ".de", ".fi", ".lt", ".eu")
+_OCEANIA_TLDS_V3 = (".au", ".nz", ".fj")
+_NA_TLDS_V3 = (".us",)
+_CJK_RE_V3 = re.compile(
+    "[" + chr(0x4e00) + "-" + chr(0x9fff) + chr(0x3040) + "-" + chr(0x30ff)
+    + chr(0xac00) + "-" + chr(0xd7af) + "]"
+)
+
+
+def _hostname_v3(url):
+    if not url:
+        return ""
+    try:
+        return (urlparse(url).hostname or "").lower()
+    except (ValueError, TypeError):
+        return ""
+
+
+def classify_country(title: str, resolved_url: str = None, url: str = None) -> str:
+    """判定文章所屬地區（stub，見 docs/v3-spec.md 3-5）。
+    已知限制：87% 文章 resolved_url 未解析（停在 google.com），故絕大多數會落在
+    「其他地區」，屬已知限制。country 的「全球」判定邏輯之後由使用者補上
+    （見 docs/v3-spec.md 第 10 節），此函式現階段只做 TLD／CJK 字元兩條最低成本線索。
+    TODO(user): 補上更完整的地區判定邏輯（例如來源媒體地區、品牌市場等）。"""
+    # 型別正規化：title / resolved_url / url 若非字串（例如 None 以外的
+    # int、dict），一律視為空字串，避免 urlparse 丟出未被攔截的例外中斷排程。
+    title = title if isinstance(title, str) else ""
+    resolved_url = resolved_url if isinstance(resolved_url, str) else ""
+    url = url if isinstance(url, str) else ""
+    hostname = _hostname_v3(resolved_url) or _hostname_v3(url)
+    if hostname:
+        if hostname.endswith(_ASIA_TLDS_V3):
+            return "亞洲"
+        if hostname.endswith(_EUROPE_TLDS_V3):
+            return "歐洲"
+        if hostname.endswith(_OCEANIA_TLDS_V3):
+            return "大洋洲"
+        if hostname.endswith(_NA_TLDS_V3):
+            return "北美"
+    if title and _CJK_RE_V3.search(title):
+        return "亞洲"
+    return "其他地區"
 
 
 MILITARY_KEYWORDS = [
@@ -2168,6 +2575,38 @@ def load_existing():
             is_noise, noise_reason = classify_noise(
                 title, _summary_for_cls, a.get("source", ""))
 
+        # 「鍵是否存在」判斷（見 docs/v3-spec.md 12-5）：空陣列是合法值，
+        # 只有鍵完全不存在時才現算，避免規則調整後新舊資料混用卻無法察覺。
+        if "brands" in a:
+            brands = a.get("brands") or []
+        else:
+            brands = detect_brands(f"{title} {_summary_for_cls}")
+        if a.get("brand") and a.get("brand") not in brands and a.get("brand") in BRAND_DEF_BY_NAME_V3:
+            brands.append(a.get("brand"))
+            brands.sort(key=BRANDS_V3.index)
+        # 「鍵是否存在」判斷（見 docs/v3-spec.md 12-5）：空陣列是合法值。
+        if "product_types" in a:
+            product_types = a.get("product_types") or []
+        else:
+            product_types = classify_product_types(title, _summary_for_cls, product_categories)
+        # 「鍵是否存在」判斷（見 docs/v3-spec.md 12-5）：空陣列是合法值。
+        if "topic_tags" in a:
+            topic_tags = a.get("topic_tags") or []
+        else:
+            topic_tags = classify_topic_tags(title, _summary_for_cls, subcategory)
+        # 「鍵是否存在」判斷（見 docs/v3-spec.md 12-5）：空陣列是合法值。
+        if "attention_tags" in a:
+            attention_tags = a.get("attention_tags") or []
+        else:
+            attention_tags = classify_attention_tags(
+                brands, product_types, topic_tags, product_categories)
+        # 「鍵是否存在」判斷（見 docs/v3-spec.md 12-5）：country 為字串型別，
+        # 同樣採鍵是否存在（而非值是否為真）判斷，與其他四個新欄位邏輯一致。
+        if "country" in a:
+            country = a.get("country")
+        else:
+            country = classify_country(title, a.get("resolved_url"), url)
+
         normalized.append({
             "id": a.get("id"),
             "title": title,
@@ -2195,6 +2634,13 @@ def load_existing():
             # 雜訊標記（新增）：只標記，不刪除
             "is_noise": is_noise,
             "noise_reason": noise_reason,
+            # v3 標籤欄位（新增，見 docs/v3-spec.md 第 10 節）：brands 多值品牌、
+            # topic_tags/product_types/attention_tags 多值、country 為 stub 單值
+            "brands": brands,
+            "topic_tags": topic_tags,
+            "product_types": product_types,
+            "attention_tags": attention_tags,
+            "country": country,
             # 保留摘要回填模式（--enrich-summary）寫入的欄位，否則每次執行會被洗掉
             "resolved_url": a.get("resolved_url"),
             "summary_source": a.get("summary_source", "rss_fallback"),
@@ -2453,6 +2899,15 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
             title, summary, category, product_categories)
         subcategory, subcategoryName = classify_subcategory(category, title, summary)
         is_noise, noise_reason = classify_noise(title, summary, source)
+        brands = detect_brands(f"{title} {summary}")
+        if brand and brand not in brands and brand in BRAND_DEF_BY_NAME_V3:
+            brands.append(brand)
+            brands.sort(key=BRANDS_V3.index)
+        product_types = classify_product_types(title, summary, product_categories)
+        topic_tags = classify_topic_tags(title, summary, subcategory)
+        attention_tags = classify_attention_tags(
+            brands, product_types, topic_tags, product_categories)
+        country = classify_country(title, None, link)
         new_articles.append({
             "id": next_id,
             "title": title,
@@ -2473,6 +2928,11 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
             "subcategoryName": subcategoryName,
             "is_noise": is_noise,
             "noise_reason": noise_reason,
+            "brands": brands,
+            "topic_tags": topic_tags,
+            "product_types": product_types,
+            "attention_tags": attention_tags,
+            "country": country,
             "resolved_url": None,
             "summary_source": "rss_fallback",
             "enrich_attempts": 0,
@@ -2502,6 +2962,11 @@ def compute_stats(articles, generated_at):
     by_product_categories = {name: 0 for name in PRODUCT_CATEGORY_ORDER}
     by_audience_tags = {"PM": 0, "Design": 0, "Marketing": 0}
     by_subcategory = {}
+    by_country = {}
+    by_topic_tags = {name: 0 for name in TOPICS_V3}
+    by_product_types = {name: 0 for name in PRODUCT_TYPES_V3}
+    by_attention_tags = {name: 0 for name in ATTENTION_V3}
+    multi_brand_count = 0
 
     for a in articles:
         cat = a.get("category", "market")
@@ -2541,6 +3006,31 @@ def compute_stats(articles, generated_at):
         sub_key = f"{cat}:{sub}"
         by_subcategory[sub_key] = by_subcategory.get(sub_key, 0) + 1
 
+        # v3 標籤統計（新增）：brands/topic_tags/product_types/attention_tags/country
+        v3_brands = a.get("brands")
+        if not isinstance(v3_brands, list):
+            v3_brands = detect_brands(f"{a.get('title', '')} {a.get('summary', '')}")
+        if len(v3_brands) > 1:
+            multi_brand_count += 1
+        v3_topics = a.get("topic_tags")
+        if not isinstance(v3_topics, list):
+            v3_topics = classify_topic_tags(a.get("title", ""), a.get("summary", ""), sub)
+        for _t in v3_topics:
+            by_topic_tags[_t] = by_topic_tags.get(_t, 0) + 1
+        v3_ptypes = a.get("product_types")
+        if not isinstance(v3_ptypes, list):
+            v3_ptypes = classify_product_types(a.get("title", ""), a.get("summary", ""), pcs)
+        for _t in v3_ptypes:
+            by_product_types[_t] = by_product_types.get(_t, 0) + 1
+        v3_attention = a.get("attention_tags")
+        if not isinstance(v3_attention, list):
+            v3_attention = classify_attention_tags(v3_brands, v3_ptypes, v3_topics, pcs)
+        for _t in v3_attention:
+            by_attention_tags[_t] = by_attention_tags.get(_t, 0) + 1
+        v3_country = a.get("country") or classify_country(
+            a.get("title", ""), a.get("resolved_url"), a.get("url"))
+        by_country[v3_country] = by_country.get(v3_country, 0) + 1
+
     timeline = [{"date": d, "count": c} for d, c in sorted(by_date.items(), key=lambda kv: kv[0])]
 
     return {
@@ -2553,6 +3043,11 @@ def compute_stats(articles, generated_at):
         "by_product_categories": by_product_categories,
         "by_audience_tags": by_audience_tags,
         "by_subcategory": by_subcategory,
+        "by_country": by_country,
+        "by_topic_tags": by_topic_tags,
+        "by_product_types": by_product_types,
+        "by_attention_tags": by_attention_tags,
+        "multi_brand_count": multi_brand_count,
         "timeline": timeline,
         "updated": generated_at,
     }
@@ -2927,6 +3422,15 @@ def run_reclassify(dry_run: bool):
     noise_total = 0
     sample_diffs = []
 
+    by_brands_v3 = {name: 0 for name in BRANDS_V3}
+    brands_hit_total = 0
+    multi_brand_count = 0
+    by_topic_tags = {name: 0 for name in TOPICS_V3}
+    by_product_types = {name: 0 for name in PRODUCT_TYPES_V3}
+    by_attention_tags = {name: 0 for name in ATTENTION_V3}
+    attention_none_count = 0
+    by_country = {}
+
     for a in articles:
         title = a.get("title", "") or ""
         summary = a.get("summary", "") or ""
@@ -2943,6 +3447,16 @@ def run_reclassify(dry_run: bool):
             title, summary, category, product_categories)
         subcategory, subcategoryName = classify_subcategory(category, title, summary)
         is_noise, noise_reason = classify_noise(title, summary, source)
+
+        brands = detect_brands(f"{title} {summary}")
+        if brand and brand not in brands and brand in BRAND_DEF_BY_NAME_V3:
+            brands.append(brand)
+            brands.sort(key=BRANDS_V3.index)
+        product_types = classify_product_types(title, summary, product_categories)
+        topic_tags = classify_topic_tags(title, summary, subcategory)
+        attention_tags = classify_attention_tags(
+            brands, product_types, topic_tags, product_categories)
+        country = classify_country(title, a.get("resolved_url"), a.get("url"))
 
         if not product_categories:
             no_product_category += 1
@@ -2972,6 +3486,27 @@ def run_reclassify(dry_run: bool):
         a["subcategoryName"] = subcategoryName
         a["is_noise"] = is_noise
         a["noise_reason"] = noise_reason
+        a["brands"] = brands
+        a["topic_tags"] = topic_tags
+        a["product_types"] = product_types
+        a["attention_tags"] = attention_tags
+        a["country"] = country
+
+        if brands:
+            brands_hit_total += 1
+        if len(brands) > 1:
+            multi_brand_count += 1
+        for _b in brands:
+            by_brands_v3[_b] = by_brands_v3.get(_b, 0) + 1
+        for _t in topic_tags:
+            by_topic_tags[_t] = by_topic_tags.get(_t, 0) + 1
+        for _t in product_types:
+            by_product_types[_t] = by_product_types.get(_t, 0) + 1
+        for _t in attention_tags:
+            by_attention_tags[_t] = by_attention_tags.get(_t, 0) + 1
+        if not attention_tags:
+            attention_none_count += 1
+        by_country[country] = by_country.get(country, 0) + 1
 
     log(f"product_categories 命中統計：{by_product_categories}（未命中任何類：{no_product_category}）")
     log(f"audience_tags 命中統計：{by_audience_tags}；來源分布：{audience_source_counts}")
@@ -2980,17 +3515,27 @@ def run_reclassify(dry_run: bool):
     log("樣本前後對照（最多 20 筆變動）：")
     for line in sample_diffs:
         log(f"  {line}")
+    log(f"[v3] brands 命中統計（至少一個品牌 {brands_hit_total} 篇，multi_brand {multi_brand_count} 篇）：{by_brands_v3}")
+    log(f"[v3] topic_tags 命中統計：{by_topic_tags}")
+    log(f"[v3] product_types 命中統計：{by_product_types}")
+    log(f"[v3] attention_tags 命中統計（三者皆無 {attention_none_count} 篇）：{by_attention_tags}")
+    log(f"[v3] country 命中統計：{by_country}")
 
     if dry_run:
         log("=== dry-run 結束（未寫入任何檔案）===")
         return
 
     data["articles"] = articles
-    generated_at = datetime.now(timezone.utc).isoformat()
-    data["stats"] = compute_stats(articles, generated_at)
-    data["generated_at"] = generated_at
+    # 決議：回填保留原 generated_at 不變（v3 前端以此當篩選基準日，改掉會讓
+    # 「本週」幾乎清空），另外新增 reclassified_at 記錄本次重算時間。
+    original_generated_at = data.get("generated_at") or datetime.now(timezone.utc).isoformat()
+    reclassified_at = datetime.now(timezone.utc).isoformat()
+    data["stats"] = compute_stats(articles, original_generated_at)
+    data["generated_at"] = original_generated_at
+    data["reclassified_at"] = reclassified_at
     write_output_atomic(data)
     log(f"完成：已重算 {len(articles)} 篇文章的分類欄位並寫回 {OUTPUT_FILE}")
+    log(f"generated_at 維持原值：{original_generated_at}；reclassified_at：{reclassified_at}")
     log("=== 分類重算模式結束 ===")
 
 
