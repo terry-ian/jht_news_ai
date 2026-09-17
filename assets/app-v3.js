@@ -155,6 +155,7 @@ var I18N_PAIRS = {
   'chat.thinking': ['思考中...', 'Thinking...'],
   'chat.failed': ['抱歉，這次呼叫失敗了，請稍後再試一次。', 'Sorry, this request failed. Please try again later.'],
   'chat.noContent': ['（AI 未回傳內容）', '(AI returned no content)'],
+  'chat.cancelled': ['（此則已取消）', '(this request was cancelled)'],
 
   'modal.title': ['AI 智能深度分析摘要', 'AI In-depth Analysis Summary'],
   'modal.close': ['關閉視窗', 'Close dialog'],
@@ -657,7 +658,9 @@ function renderCardHTML(a) {
     ? '<a class="v3-btn-ghost" data-act="read" href="' + escapeHTML(safeLink) + '" target="_blank" rel="noopener">' + readIconSvg + escapeHTML(t('card.readOriginal')) + '</a>'
     : '<button type="button" class="v3-btn-ghost" disabled>' + readIconSvg + escapeHTML(t('card.readOriginal')) + '</button>';
   var isLoading = !!S.aiLoading[a.id];
-  html += '<button type="button" class="v3-btn-ghost" data-act="ai" data-id="' + escapeHTML(String(a.id)) + '"' + (isLoading ? ' disabled' : '') + '>' +
+  // loading 中的按鈕帶 .is-loading（spinner 由 CSS ::before 畫出），這樣卡片被
+  // 重繪（翻譯完成 / 切語系 / 重新篩選）時動畫狀態不會掉。
+  html += '<button type="button" class="v3-btn-ghost' + (isLoading ? ' is-loading' : '') + '" data-act="ai" data-id="' + escapeHTML(String(a.id)) + '"' + (isLoading ? ' disabled aria-busy="true"' : '') + '>' +
     '<svg class="v3-icon-sparkle" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2c0 4.2-1 6.2-4.2 7.2C11 10.2 12 12.2 12 16.4c0-4.2 1-6.2 4.2-7.2C13 8.2 12 6.2 12 2z"></path></svg>' +
     escapeHTML(isLoading ? t('card.aiLoading') : t('card.aiSummary')) + '</button>';
   html += '</div></article>';
@@ -918,6 +921,18 @@ function renderInsightSection() {
   var cardsEl = document.getElementById('v3-insight-cards');
   var staleEl = document.getElementById('v3-insight-stale');
   var genBtn = document.getElementById('v3-insight-gen');
+
+  // 生成中：只鋪骨架卡就收工。不能往下走 hasItems 為 false 時的 cardsEl 清空
+  // 邏輯（會把骨架清掉），也不要覆寫按鈕文案（generateInsights 已設為
+  // ov.insightLoading）。#v3-insight-cards 帶 aria-live="polite"，骨架本身無文字
+  // 不會被朗讀，另補 aria-busy 讓輔助科技知道正在載入。
+  if (S.insightLoading) {
+    cardsEl.setAttribute('aria-busy', 'true');
+    cardsEl.innerHTML = v3InsightSkeletonHTML(3);
+    return;
+  }
+  cardsEl.removeAttribute('aria-busy');
+
   var cache = S.insightCache;
   var hasItems = !!(cache && cache.items && cache.items.length);
 
@@ -1398,6 +1413,53 @@ function v3RenderAIErrorHTML(err) {
 }
 
 /* ------------------------------------------------------------------------
+ * 18-1. AI 運作中（loading / thinking）視覺的 HTML 產生器
+ * --------------------------------------------------------------------
+ * 四個 AI 區塊（卡片按鈕 / 摘要 Modal / 產品洞察 / 對話抽屜）共用同一組純 CSS
+ * 動畫（見 style-v3.css 檔尾「AI 運作中動畫」區段），這裡只負責產生對應 HTML；
+ * 動畫本身完全交給 keyframes，不用 setInterval 手動改 DOM。
+ * ---------------------------------------------------------------------- */
+
+/** 跳動三點 + 說明文字的 thinking 指示器；三點為純裝飾故 aria-hidden。 */
+function v3ThinkingHTML(labelText) {
+  return '<span class="v3-ai-thinking">' +
+    '<span class="v3-ai-dots" aria-hidden="true"><span></span><span></span><span></span></span>' +
+    '<span class="v3-ai-loading-text">' + escapeHTML(labelText || '') + '</span></span>';
+}
+
+/** n 行 shimmer 骨架，模擬即將出現的段落；純裝飾故整塊 aria-hidden。 */
+function v3SkeletonLinesHTML(n) {
+  var widths = ['', ' v3-skel-line--mid', ' v3-skel-line--short'];
+  var total = n || 3;
+  var html = '<div class="v3-ai-skel" aria-hidden="true">';
+  for (var i = 0; i < total; i++) {
+    html += '<span class="v3-skel v3-skel-line' + widths[i % widths.length] + '"></span>';
+  }
+  return html + '</div>';
+}
+
+/** 產品洞察生成中的骨架卡；版型對齊真實 .v3-insight-card，純裝飾故 aria-hidden。 */
+function v3InsightSkeletonHTML(count) {
+  var one = '<article class="v3-insight-card v3-insight-skel" aria-hidden="true">' +
+    '<div class="v3-insight-top"><span class="v3-skel v3-skel-badge"></span>' +
+    '<span class="v3-skel v3-skel-count"></span></div>' +
+    '<div class="v3-insight-skel-title"><span class="v3-skel v3-skel-line v3-skel-title"></span>' +
+    '<span class="v3-skel v3-skel-line v3-skel-title v3-skel-line--mid"></span></div>';
+  for (var s = 0; s < 3; s++) {
+    one += '<div class="v3-insight-section"><span class="v3-skel v3-skel-label"></span>' +
+      '<span class="v3-skel v3-skel-line"></span>' +
+      '<span class="v3-skel v3-skel-line v3-skel-line--short"></span></div>';
+  }
+  one += '<div class="v3-insight-divider"></div><span class="v3-skel v3-skel-label"></span>' +
+    '<div class="v3-insight-source-list"><span class="v3-skel v3-skel-chip"></span>' +
+    '<span class="v3-skel v3-skel-chip"></span></div></article>';
+  var out = '';
+  var total = count || 3;
+  for (var i = 0; i < total; i++) out += one;
+  return out;
+}
+
+/* ------------------------------------------------------------------------
  * 19. 卡片 AI 一鍵摘要 + AI 摘要 Modal（第 5-7 節 DOM 契約 + 第 7-1 節規範）
  * ---------------------------------------------------------------------- */
 var v3SummaryModalArticleId = null;
@@ -1477,6 +1539,10 @@ function closeSummaryModal() {
   if (v3SummaryAbortController) { v3SummaryAbortController.abort(); v3SummaryAbortController = null; }
   document.getElementById('v3-modal-overlay').hidden = true;
   document.getElementById('v3-modal').hidden = true;
+  // 清掉內容區，避免 abort 後殘留 thinking 動畫或骨架（下次開啟一律會重新渲染
+  // cache 或重新生成，不依賴這裡留下的內容）。
+  var contentEl = document.getElementById('v3-modal-content');
+  if (contentEl) contentEl.innerHTML = '';
   v3UnlockScroll();
   v3SummaryModalArticleId = null;
 }
@@ -1486,6 +1552,11 @@ function setCardAIButtonLoading(id, loading) {
   S.aiLoading[id] = loading;
   document.querySelectorAll('[data-act="ai"][data-id="' + id + '"]').forEach(function (btn) {
     btn.disabled = loading;
+    // spinner 由 CSS .v3-btn-ghost.is-loading::before 產生，刻意不插入實體子節點，
+    // 否則下面用 btn.lastChild 取文字節點改字的既有邏輯會失效。
+    btn.classList.toggle('is-loading', loading);
+    if (loading) btn.setAttribute('aria-busy', 'true');
+    else btn.removeAttribute('aria-busy');
     var label = btn.lastChild;
     if (label && label.nodeType === 3) label.textContent = loading ? t('card.aiLoading') : t('card.aiSummary');
   });
@@ -1501,7 +1572,10 @@ async function generateSummaryInModal(id) {
   var signal = v3SummaryAbortController.signal;
   setCardAIButtonLoading(id, true);
 
-  contentEl.innerHTML = '<span class="v3-ai-loading-text">' + escapeHTML(t('modal.loading')) + '</span>';
+  // 等待期間顯示跳動三點 + 三行 shimmer 骨架；第一個串流 delta 進來時
+  // renderer.update() 會整塊覆寫 innerHTML，不會有殘留。
+  contentEl.innerHTML = '<div role="status">' + v3ThinkingHTML(t('modal.loading')) + '</div>' +
+    v3SkeletonLinesHTML(3);
   var scrollEl = document.getElementById('v3-modal-content');
   var renderer = v3CreateStreamRenderer(contentEl, scrollEl);
   var isEn = LANG === 'en';
@@ -1566,7 +1640,12 @@ async function generateInsights() {
   var genBtn = document.getElementById('v3-insight-gen');
   S.insightLoading = true;
   genBtn.disabled = true;
+  genBtn.classList.add('is-loading');
+  genBtn.setAttribute('aria-busy', 'true');
   genBtn.querySelector('span').textContent = t('ov.insightLoading');
+  // 這裡走非串流 v3CallAI，可能等十秒以上，先鋪三張 shimmer 骨架卡把
+  // #v3-insight-cards 的空白填住，讓使用者看得出系統正在運作。
+  renderInsightSection();
 
   var isEn = LANG === 'en';
   var sysInstruction = isEn
@@ -1590,6 +1669,8 @@ async function generateInsights() {
   } finally {
     S.insightLoading = false;
     genBtn.disabled = false;
+    genBtn.classList.remove('is-loading');
+    genBtn.removeAttribute('aria-busy');
     renderInsightSection();
   }
 }
@@ -1641,6 +1722,21 @@ function renderAIQuickPills() {
  * ---------------------------------------------------------------------- */
 var v3ChatAbortController = null;
 
+/** 進行中的對話請求數。用計數器而非布林，避免前一次請求被 abort 後（它的 finally
+ *  比新請求啟動還晚跑）誤把送出鈕解鎖。 */
+var v3ChatPending = 0;
+
+/** 同步送出鈕的處理中視覺；spinner 由 CSS #v3-ai-send.is-loading::after 產生。 */
+function syncChatSendButton() {
+  var btn = document.getElementById('v3-ai-send');
+  if (!btn) return;
+  var busy = v3ChatPending > 0;
+  btn.disabled = busy;
+  btn.classList.toggle('is-loading', busy);
+  if (busy) btn.setAttribute('aria-busy', 'true');
+  else btn.removeAttribute('aria-busy');
+}
+
 function renderChatMessages() {
   var el = document.getElementById('v3-ai-messages');
   if (!el) return;
@@ -1651,17 +1747,25 @@ function renderChatMessages() {
     if (m.who === 'me') {
       return '<div class="v3-ai-msg v3-ai-msg-user"><div class="v3-ai-msg-bubble">' + escapeHTML(m.text) + '</div></div>';
     }
+    // 還沒收到第一個串流 delta 的 AI 泡泡（text 為空）顯示 typing indicator，不再
+    // 留下空白泡泡；被後續送出中斷的（m.aborted）改顯示已取消，避免動畫一直轉。
+    var thinking = !m.text && !m.aborted;
+    var bubbleInner = m.text ? '' : (thinking
+      ? v3ThinkingHTML(t('chat.thinking'))
+      : '<span class="v3-ai-loading-text">' + escapeHTML(t('chat.cancelled')) + '</span>');
     return '<div class="v3-ai-msg v3-ai-msg-bot"><span class="v3-ai-msg-avatar" aria-hidden="true">' +
       '<svg viewBox="0 0 24 24" focusable="false"><path d="M12 2c0 4.2-1 6.2-4.2 7.2C11 10.2 12 12.2 12 16.4c0-4.2 1-6.2 4.2-7.2C13 8.2 12 6.2 12 2z"></path></svg></span>' +
-      '<div class="v3-ai-msg-bubble" id="v3-ai-bubble-' + idx + '"></div></div>';
+      '<div class="v3-ai-msg-bubble" id="v3-ai-bubble-' + idx + '"' + (thinking ? ' role="status"' : '') + '>' + bubbleInner + '</div></div>';
   }).join('');
+  // S.chatThinking 的獨立泡泡（送出瞬間）同樣用動畫版，不留純文字。
   if (S.chatThinking) {
-    rest += '<div class="v3-ai-msg v3-ai-msg-bot"><div class="v3-ai-msg-bubble">' + escapeHTML(t('chat.thinking')) + '</div></div>';
+    rest += '<div class="v3-ai-msg v3-ai-msg-bot"><div class="v3-ai-msg-bubble" role="status">' + v3ThinkingHTML(t('chat.thinking')) + '</div></div>';
   }
   el.innerHTML = welcome + rest;
   S.chat.forEach(function (m, idx) {
     var bubble = document.getElementById('v3-ai-bubble-' + idx);
-    if (bubble && m.who !== 'me') v3RenderMarkdown(bubble, m.text);
+    // m.text 為空時泡泡內已是 indicator，不可再用 v3RenderMarkdown 覆寫成空白。
+    if (bubble && m.who !== 'me' && m.text) v3RenderMarkdown(bubble, m.text);
   });
   el.scrollTop = el.scrollHeight;
 }
@@ -1670,6 +1774,8 @@ async function sendChat(text) {
   if (v3ChatAbortController) v3ChatAbortController.abort();
   v3ChatAbortController = new AbortController();
   var signal = v3ChatAbortController.signal;
+  v3ChatPending++;
+  syncChatSendButton();
   S.chat.push({ who: 'me', text: text });
   var input = document.getElementById('v3-ai-input');
   if (input) input.value = '';
@@ -1703,9 +1809,23 @@ async function sendChat(text) {
     v3ScrollToBottomIfNear(scrollEl);
   } catch (err) {
     renderer.cancelPending();
-    if (err && err.name === 'AbortError') return;
+    if (err && err.name === 'AbortError') {
+      // 被後續送出中斷：把那顆泡泡的 typing 動畫換成「已取消」，否則會一直轉。
+      // 這裡重新用 id 查節點（不用上面的 bubbleEl），因為新一輪 sendChat 已經重繪
+      // 過訊息列，舊的 bubbleEl 早已是脫離文件的孤立節點。
+      S.chat[aiIdx].aborted = true;
+      var staleBubble = document.getElementById('v3-ai-bubble-' + aiIdx);
+      if (staleBubble) {
+        staleBubble.removeAttribute('role');
+        staleBubble.innerHTML = '<span class="v3-ai-loading-text">' + escapeHTML(t('chat.cancelled')) + '</span>';
+      }
+      return;
+    }
     S.chat[aiIdx].text = t('chat.failed');
     if (bubbleEl) bubbleEl.innerHTML = v3RenderAIErrorHTML(err);
+  } finally {
+    v3ChatPending--;
+    syncChatSendButton();
   }
 }
 

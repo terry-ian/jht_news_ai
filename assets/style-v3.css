@@ -652,3 +652,126 @@
   .v3-ai-cursor { animation: none; }
   .v3-toast { transition: none; }
 }
+
+/* ==========================================================================
+   AI 運作中（loading / thinking）動畫 -- 四個 AI 區塊共用
+   --------------------------------------------------------------------------
+   對應 app-v3.js 的四個 AI 入口：
+     (1) 卡片「AI一鍵摘要」按鈕 -> .v3-btn-ghost.is-loading
+     (2) AI 摘要 Modal         -> .v3-ai-thinking + .v3-ai-skel
+     (3) 產品洞察              -> .v3-btn-primary.is-loading + .v3-insight-skel
+     (4) AI 助理對話抽屜        -> .v3-ai-thinking（泡泡內）+ #v3-ai-send.is-loading
+   三顆按鈕的 spinner 一律用 ::before / ::after 產生，刻意不插入實體子節點：
+   setCardAIButtonLoading() 靠 btn.lastChild 取文字節點改字、generateInsights()
+   靠 genBtn.querySelector('span') 取標籤節點，插入真實子節點會弄壞那兩段邏輯。
+   spinner 一律複用檔頭既有的 @keyframes v3-spin，不另外定義同義 keyframe。
+   ========================================================================== */
+
+/* ---------- (1) 卡片「AI一鍵摘要」按鈕：sparkle 換成旋轉 spinner ----------
+   .v3-btn-ghost.is-loading 的 opacity / cursor 沿用前面既有規則，這裡只補
+   spinner。隱藏 sparkle 屬必要的 display 覆寫，作法同既有的
+   .v3-status-banner.is-error .v3-status-spinner { display: none }。 */
+.v3-btn-ghost.is-loading::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--v3-primary-border);
+  border-top-color: var(--v3-primary);
+  flex-shrink: 0;
+  animation: v3-spin 0.8s linear infinite;
+}
+.v3-btn-ghost.is-loading .v3-icon-sparkle { display: none; }
+
+/* ---------- (3a) 產品洞察主按鈕：紅底上的白色 spinner ----------
+   按鈕底色為 --v3-primary，故 spinner 用半透明白 + 白色前緣
+   （#fff 已是本檔 .v3-btn-primary 既有用色，非新增品牌色）。 */
+.v3-btn-primary.is-loading { opacity: .9; cursor: default; }
+.v3-btn-primary.is-loading::before {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .45);
+  border-top-color: #fff;
+  flex-shrink: 0;
+  animation: v3-spin 0.8s linear infinite;
+}
+.v3-btn-primary.is-loading .v3-icon-sparkle { display: none; }
+
+/* ---------- (4a) AI 抽屜送出鈕：處理中改為 spinner，同時避免重複送出 ---------- */
+#v3-ai-send.is-loading { opacity: .82; cursor: default; }
+#v3-ai-send.is-loading .v3-icon { display: none; }
+#v3-ai-send.is-loading::after {
+  content: '';
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, .45);
+  border-top-color: #fff;
+  flex-shrink: 0;
+  animation: v3-spin 0.8s linear infinite;
+}
+
+/* ---------- thinking 指示器：跳動三點 + 說明文字（Modal 與對話泡泡共用） ---------- */
+.v3-ai-thinking {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.v3-ai-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.v3-ai-dots > span {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--v3-primary);
+  animation: v3-dot-bounce 1.2s ease-in-out infinite;
+}
+.v3-ai-dots > span:nth-child(2) { animation-delay: .16s; }
+.v3-ai-dots > span:nth-child(3) { animation-delay: .32s; }
+@keyframes v3-dot-bounce {
+  0%, 70%, 100% { transform: translateY(0); opacity: .35; }
+  35% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* ---------- shimmer 骨架方塊（Modal 段落骨架與洞察骨架卡共用） ---------- */
+.v3-skel {
+  display: block;
+  background-image: linear-gradient(90deg, var(--v3-chip-bg) 25%, var(--v3-border) 37%, var(--v3-chip-bg) 63%);
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+  border-radius: var(--v3-radius-sm);
+  animation: v3-shimmer 1.6s ease-in-out infinite;
+}
+@keyframes v3-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+.v3-skel-line { height: 12px; margin-bottom: 8px; }
+.v3-skel-line:last-child { margin-bottom: 0; }
+.v3-skel-line--mid { width: 78%; }
+.v3-skel-line--short { width: 56%; }
+.v3-skel-badge { width: 92px; height: 22px; border-radius: 999px; }
+.v3-skel-count { width: 64px; height: 14px; }
+.v3-skel-title { height: 16px; }
+.v3-skel-label { width: 64px; height: 12px; margin-bottom: 6px; }
+.v3-skel-chip { width: 104px; height: 14px; }
+
+/* ---------- (2) AI 摘要 Modal：thinking 指示器下方的段落骨架 ---------- */
+.v3-ai-skel { margin-top: 16px; }
+
+/* ---------- (3b) 產品洞察骨架卡：外框沿用 .v3-insight-card，內部區塊比例對齊
+   真實卡片（badge / count / 兩行標題 / 三個 section / divider / sources）。
+   三張卡的 shimmer 各差 0.15s，避免整排同步閃動。 ---------- */
+.v3-insight-skel-title { margin-bottom: 14px; }
+.v3-insight-skel:nth-child(2) .v3-skel { animation-delay: .15s; }
+.v3-insight-skel:nth-child(3) .v3-skel { animation-delay: .3s; }
+
+/* reduced-motion 降級：停掉動畫但保留「正在載入」的可見狀態 -- spinner 保留環狀
+   與有色前緣、三點保留三顆實心圓（改為全不透明）、骨架保留灰色底塊，再加上各
+   區塊本來就有的 loading 文字（card.aiLoading / modal.loading /
+   ov.insightLoading / chat.thinking），使用者仍看得出系統正在運作。 */
+@media (prefers-reduced-motion: reduce) {
+  .v3-btn-ghost.is-loading::before { animation: none; }
+  .v3-btn-primary.is-loading::before { animation: none; }
+  #v3-ai-send.is-loading::after { animation: none; }
+  .v3-ai-dots > span { animation: none; opacity: 1; }
+  .v3-skel { animation: none; }
+}
