@@ -1,59 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-fetch_news.py
-喬山 Johnson 全球健身器材產業情報看板 - 新聞爬蟲
-
-資料來源：
-- Google News RSS（公開、合法、低負載，不需登入/破解任何驗證）
-- 各追蹤品牌「官方 newsroom / blog / press / 新品發布」來源
-  (優先嘗試品牌官網 RSS/Atom feed；無 feed 者退而抓 newsroom/blog 列表頁 HTML)
-- 新品發布導向 Google News 查詢（new product / launch / unveils / releases）
-- 產業新聞稿來源（PR Newswire / Business Wire / Athletech News 等）
-
-輸出：../data/news.json
-
-版本 v6（本次改版重點）：
-- 【官方站快速失敗】官方 stories/blog/news 列表頁與 feed 一律「快速失敗」：
-  連線逾時 5 秒、讀取逾時 8 秒、不重試（最多 1 次），失敗立即略過並記 log。
-  移除舊版對每品牌暴力探測 14 條 feed 路徑（是 40+ 分鐘的主因），改為
-  curated 已知 feed + curated 列表頁，讓整支腳本數分鐘內跑完，適合每日排程。
-  （Google News RSS 仍維持原本 retry/politeness，只有官方站快速失敗。）
-- 【改抓品牌故事/文章列表頁】以 Technogym stories 頁為範本，解析列表頁中「真正的
-  文章連結」（標題 + 絕對 URL + 日期），標記 source_type="official"。
-- 【過濾導覽/選單雜訊】只取列表頁「文章區塊」內、路徑位於該內容區段（stories/blog/
-  news/press/article/learn…）且更深一層、非 category/tag/collections/product 等
-  導覽路徑、標題夠長（非單一分類名詞）的連結；排除 Room planner / Multi Family
-  Housing / Dumbbells & Kettlebells / Flexibility & stretching 這類選單/分類。
-- 【清理既有庫存雜訊（只清雜訊、不刪真實新聞）】啟動時保守清除先前官方抓取誤收的
-  非文章項目（品牌官方來源但 URL 非文章區段/是購物頁/分類頁），以及少數 brand=None
-  且明顯與健身無關卻被標 product 的項目（犯罪、球鞋、汽車、Prime Day 等）。
-  Google News 真實新聞(source_type=google_news)與正常品牌文章一律保留。
-
-版本 v5 重點：
-- 【合併累加、絕不刪舊】啟動時先讀取既有 news.json 的 articles，抓到的新資料只做「追加」。
-  舊有文章一律保留，不因日期舊或本次沒抓到而刪除。
-- 【去重】以「正規化 URL + 正規化標題」為 key。與既有庫存重複者不重加（保留既有那筆）。
-- 【穩定 ID】新文章 id 由「既有最大 id + 1」往上給，維持穩定。
-- 【first_seen】每篇加 first_seen（首次入庫日期，UTC）。既有文章不更動其 first_seen
-  （首次執行時對舊資料補回填，之後不再變動）。
-- 【source_type】每篇加 source_type：
-  "google_news" | "official" | "product" | "press_release"。
-- 【日期上限只作用於本次新抓項目】MAX_ARTICLE_AGE_DAYS 僅用來過濾「本次新抓進來」的過舊項目，
-  絕不套用於已入庫的既有資料。
-- 【idempotent】重複執行安全：同一天再跑，只會新增當天新出現且去重後不重覆的項目。
-- 【log】寫入 scraper/scrape_log.txt（時間 / 本次新增數 / 合併後總數 / 失敗來源）。
-- 【lock】以 lock 檔簡易防重入，避免同時多開。
-- 【安全寫檔】先寫暫存檔再原子替換，避免中途中斷破壞既有 news.json。
-
-設計原則：
-- requests + timeout + 指數退避 retry；404/410 立即略過不重試
-- 每個 request 之間 sleep，避免對來源造成負載
-- 單一來源失敗（403/429/timeout/XML parse error/HTML 解析失敗）僅記錄失敗，不中斷整體流程
-- 清理 Google News 標題結尾 " - 來源媒體" 後綴，解析出真實 source
-- 依關鍵字分類 competitor / tech / market / brand / finance，並嘗試辨識品牌
+健身產業情報爬蟲 v7.1（2026-09-18）
+預設輸出 ../data/news.json；沿用 Google News RSS / 官方 newsroom 與 blog。
+本版：所有來源補抓原文摘要、可續跑修復、20 主題/8 產品/36 品牌分類。
+summary 與 resolved_url 維持前端契約；未知資訊不造假，空陣列代表證據不足。
+一般排程預設補抓最多 100 篇、600 秒；完整指令見 --help 與 README.md。
 """
 
 import argparse
+import base64
 import json
 import os
 import random
@@ -95,8 +50,18 @@ SLEEP_MAX = 1.0
 # 官方站 stories/blog/news 頁與 feed：快速失敗設定
 # (連線逾時 5 秒 / 讀取逾時 8 秒 / 不重試，失敗立即略過)
 OFFICIAL_CONNECT_TIMEOUT = 5
-OFFICIAL_READ_TIMEOUT = 8
+# 2026-09-14：8 秒過嚴（實測 Life Fitness TTFB 在 1.60-2.25s 間波動 40%、
+# Johnson 1.85s），網路稍慢就讓整個品牌歸零。放寬到 12 秒並允許重試 1 次，
+# 同時以 OFFICIAL_TOTAL_BUDGET_SECONDS 限制整個官方階段的總耗時避免惡化。
+OFFICIAL_READ_TIMEOUT = 12
 OFFICIAL_TIMEOUT = (OFFICIAL_CONNECT_TIMEOUT, OFFICIAL_READ_TIMEOUT)
+# 只對「暫時性錯誤」（逾時／連線中斷）重試，HTTP 4xx/5xx 一律不重試。
+OFFICIAL_MAX_RETRIES = 1
+# 官方來源階段的全域時間預算（秒）。超過即略過所有剩餘官方來源，
+# 避免放寬逾時後最壞情況把每日排程整體拖長。
+OFFICIAL_TOTAL_BUDGET_SECONDS = 180
+# 由 run() 在進入官方來源階段前設定為 time.monotonic() + 預算；None 表示未設限。
+_official_deadline = None
 # 官方站之間的 sleep（快速，避免整體拖慢）
 PROBE_SLEEP_MIN = 0.2
 PROBE_SLEEP_MAX = 0.5
@@ -136,6 +101,8 @@ BRAND_QUERY_NAMES = [
     "Horizon Fitness", "Tonal Fitness", "ProForm Fitness", "Sunny Health Fitness",
     "Rogue Fitness", "REP Fitness", "Force USA", "Titan Fitness", "Eleiko Fitness",
     "Concept2 Fitness", "Assault Fitness", "Johnson Health Tech",
+    "Spirit Fitness", "Inspire Fitness", "Dyaco", "Impulse Fitness", "Keiser Fitness",
+    "Core Health Fitness", "EGYM", "DRAX Fitness",
 ]
 
 PUBLIC_BRANDS = [
@@ -289,33 +256,32 @@ CATEGORY_NOUN_TITLES = {
 }
 
 BRAND_STORY_SOURCES = {
+    # 2026-09-14：改用正式 newsroom（實測 200、server-rendered、h1="Newsroom"，
+    # 可取得真實新聞稿；文章路徑為 /en-us/about/newsroom/<slug>，會由
+    # ARTICLE_SECTION_PATTERN 的 /newsroom/ 標記命中）。原 education-hub/blog 為衛教
+    # 內容，非消息型新聞。此來源標題自帶「Life Fitness / Hammer Strength」雙品牌。
     "Life Fitness": {
         "feeds": [],
-        "pages": ["https://www.lifefitness.com/en-us/customer-support/education-hub/blog",
-                  "https://www.lifefitness.com/en-us/company/newsroom"]},
+        "pages": ["https://www.lifefitness.com/en-us/newsroom"]},
     "Technogym": {
         "feeds": [],
-        "pages": ["https://www.technogym.com/en-INT/stories/",
-                  "https://www.technogym.com/en-US/stories/"]},
+        "pages": ["https://www.technogym.com/en-US/stories/"]},
     "Precor": {
         "feeds": [],
         "pages": ["https://www.precor.com/en-US/blog"]},
     "Matrix": {
         "feeds": [],
-        "pages": ["https://www.matrixfitness.com/us/eng/blog",
-                  "https://www.matrixfitness.com/en/blog"]},
+        "pages": ["https://www.matrixfitness.com/en/blog"]},
     "Vision": {
         "feeds": [],
         "pages": ["https://www.visionfitness.com/zht/insights"]},
-    "Star Trac": {
+    "CORE Fitness": {
         "feeds": [],
         "pages": ["https://www.corehandf.com/blogs/shop-hs"]},
     "TRUE Fitness": {
         "feeds": ["https://truefitness.com/feed/"],
         "pages": ["https://truefitness.com/blog/"]},
-    "Nautilus": {
-        "feeds": [],
-        "pages": ["https://www.bowflex.com/blog/"]},
+
     "SHUA": {
         "feeds": [],
         "pages": ["https://shuafitness.com/news/all/"]},
@@ -335,9 +301,8 @@ BRAND_STORY_SOURCES = {
     "Schwinn": {
         "feeds": [],
         "pages": ["https://www.schwinnfitness.com/blog"]},
-    "Horizon": {
-        "feeds": [],
-        "pages": ["https://www.horizonfitness.com/blog"]},
+    # 註：Horizon 已於 2026-09-14 移除——實測 horizonfitness.com/blog 會 302 到
+    # johnsonfitness.com/blog/，與下方 Johnson 來源重複，保留只會多打一次請求。
     "Tonal": {
         "feeds": ["https://www.tonal.com/blogs/all.atom"],
         "pages": ["https://www.tonal.com/blog/"]},
@@ -346,7 +311,7 @@ BRAND_STORY_SOURCES = {
         "pages": ["https://www.proform.com/blog"]},
     "Sunny Health": {
         "feeds": [],
-        "pages": ["https://www.sunnyhealthfitness.com/blogs/motivation"]},
+        "pages": ["https://sunnyhealthfitness.com/blogs/index"]},
     "Rogue": {
         "feeds": [],
         "pages": ["https://www.roguefitness.com/the-index"]},
@@ -475,11 +440,17 @@ TECH_KEYWORDS = [
     "ai", "artificial intelligence", "smart", "sensor", "patent",
     "edge computing", "algorithm", "machine learning", "iot",
     "wearable", "biometric", "app", "software", "virtual reality", "vr",
+    # 2026-09-14：補既有詞的複數形。改用詞界比對後，原本 `k in text` 子字串
+    # 比對可命中的複數形會漏判（實測 "Fitness Apps" / "Wearables" / "sensors"
+    # 等 32 篇科技新聞被誤判）。僅補複數，不新增全新關鍵字。
+    "sensors", "patents", "algorithms", "wearables", "biometrics", "apps",
 ]
 
 MARKET_KEYWORDS = [
     "market", "trend", "forecast", "growth", "share", "industry report",
     "cagr", "outlook", "demand",
+    # 2026-09-14：同上，補既有詞的複數形。
+    "markets", "trends", "forecasts", "outlooks",
 ]
 
 CATEGORY_NAME_MAP = {
@@ -501,7 +472,34 @@ def _compile_keyword_list(keywords):
     return patterns
 
 
+def _compile_keyword_list_ascii_bound(keywords):
+    r"""與 _compile_keyword_list() 相同用途，但改用 [^a-zA-Z0-9] 作為詞界，
+    而非 Python 原生 \b。
+
+    原因：Python 的 \w 包含 CJK 字元，因此 \bai\b 對「長者AI健身器材」不會命中
+    （"I" 與 "健" 之間沒有 word boundary），導致中文科技新聞被漏判。
+    改用 [^a-zA-Z0-9] 邊界後，CJK 字元被視為邊界，可正確命中，同時仍能排除
+    ag(ai)nst / tr(ai)ner / blackm(ai)l 這類英文子字串誤命中。
+    非純英數的關鍵字（含空白或 CJK）維持原樣以子字串比對。
+    """
+    patterns = []
+    for kw in keywords:
+        if re.match(r"^[a-zA-Z0-9]+$", kw):
+            patterns.append(re.compile(
+                r"(?:^|[^a-zA-Z0-9])" + re.escape(kw) + r"(?:$|[^a-zA-Z0-9])",
+                re.IGNORECASE))
+        else:
+            patterns.append(re.compile(re.escape(kw), re.IGNORECASE))
+    return patterns
+
+
 FINANCE_PATTERNS = _compile_keyword_list(FINANCE_KEYWORDS)
+
+# 使用 _compile_keyword_list_ascii_bound()：Python 的 \b 會把 CJK 當作 \w，
+# 導致「長者AI健身器材」這類中文科技新聞漏判（實測 22 篇中文文章被誤搬到
+# market）。改用 [^a-zA-Z0-9] 邊界可同時正確處理 CJK 與英文子字串誤命中。
+TECH_PATTERNS = _compile_keyword_list_ascii_bound(TECH_KEYWORDS)
+MARKET_PATTERNS = _compile_keyword_list_ascii_bound(MARKET_KEYWORDS)
 
 
 def detect_brand(text: str):
@@ -541,10 +539,18 @@ BRANDS_V3 = [
     "Star Trac", "CORE Fitness", "EGYM", "DRAX",
 ]
 
+# 2026-09-14 修正：原清單只列單數，token regex 尾端的 (?:$|[^a-zA-Z0-9]) 邊界
+# 導致複數形不命中（實測 "Rogue Dumbbell review" 命中、"Rogue Dumbbells vs.
+# REP Dumbbells" 漏標）。補齊既有詞的複數形並補上完全缺漏的 bench/benches。
+# 刻意不併入 FITNESS_TERMS（實算顯示會讓 Matrix 由 41 篇暴增到 113 篇，因該清單
+# 含 earnings/revenue/club 等非健身情境詞，作為品牌情境詞過鬆）。
 _FIT_CTX_V3_TOKENS = [
-    "fitness", "gym", "treadmill", "elliptical", "equipment", "strength",
-    "cardio", "rower", "rowing", "workout", "exercise", "machine", "trainer",
-    "weights", "barbell", "dumbbell", "rack", "kettlebell", "bike", "bikes",
+    "fitness", "gym", "gyms", "treadmill", "treadmills", "elliptical",
+    "ellipticals", "equipment", "strength", "cardio", "rower", "rowers",
+    "rowing", "workout", "workouts", "exercise", "exercises", "machine",
+    "machines", "trainer", "trainers", "weights", "barbell", "barbells",
+    "dumbbell", "dumbbells", "rack", "racks", "kettlebell", "kettlebells",
+    "bench", "benches", "bike", "bikes",
 ]
 _FIT_CTX_V3_RE = _build_v3_regex(_FIT_CTX_V3_TOKENS, ["home gym"])
 BRAND_DEFS_V3 = [
@@ -596,7 +602,10 @@ BRAND_DEFS_V3 = [
     {"name": "Impulse", "strong_phrases": ["impulse fitness"], "weak_tokens": ["impulse"]},
     {"name": "Keiser", "weak_tokens": ["keiser"]},
     {"name": "Star Trac", "strong_phrases": ["star trac"]},
-    {"name": "CORE Fitness", "strong_phrases": ["core fitness"]},
+    # 2026-09-14 修正：原本無詞界，"hardcore fitness" 與 "Lifecore Fitness"（另一家公司）
+    # 都會被誤判為 CORE Fitness。phrases 在 _build_v3_regex() 中是原樣拼接，故直接內嵌詞界。
+    {"name": "CORE Fitness",
+     "strong_phrases": [r"(?:^|[^a-zA-Z0-9])core fitness(?:$|[^a-zA-Z0-9])"]},
     {"name": "EGYM", "weak_tokens": ["egym"]},
     {"name": "DRAX", "weak_tokens": ["drax"]},
 ]
@@ -643,10 +652,10 @@ def classify(title: str, summary: str, brand: str = None):
             return "brand"
         return "competitor"
 
-    if any(k in text for k in TECH_KEYWORDS):
+    if any(p.search(text) for p in TECH_PATTERNS):
         return "tech"
 
-    if any(k in text for k in MARKET_KEYWORDS):
+    if any(p.search(text) for p in MARKET_PATTERNS):
         return "market"
 
     return "market"
@@ -705,6 +714,11 @@ FITNESS_TERMS += [
     # 補劑（補漏）
     "supplement", "supplements", "protein", "electrolyte", "amino acid",
     "補劑", "保健食品", "高蛋白",
+    # 2026-09-14 修正：補既有單數詞缺漏的複數形（實測 3 篇 Kettlebells 導購文
+    # 因無複數形被誤判 no_relevance）。注意：規格原要求同時補 "benches"，但
+    # "benches" 已存在於本清單第一段（"bench", "benches", ...，見上方），
+    # 故依規格「不要重複加」的原則只補 kettlebells / barbells。
+    "kettlebells", "barbells",
 ]
 FITNESS_TERM_PATTERNS = _compile_keyword_list(FITNESS_TERMS)
 
@@ -1144,288 +1158,185 @@ def classify_noise(title: str, summary: str = "", source: str = ""):
 # 為 fallback／相容層。
 # ---------------------------------------------------------------------------
 
-TOPICS_V3 = [
-    "新品發布", "產品改版", "AI 功能", "個人化推薦", "訓練計畫", "數據追蹤", "裝置串接",
-    "第三方整合", "訂閱方案", "市場擴張", "新品宣傳", "品牌 Campaign", "品牌合作", "代言人",
-    "產品賣點", "品牌定位", "價格策略", "促銷活動", "內容策略", "市場趨勢", "其他",
-]
+# v7: 使用者指定分類；不足的證據保留空陣列，不以品牌強塞產品或主題。
+TOPICS_V3 = ['新品發布','產品改版','AI 功能','個人化推薦','訓練計畫','數據追蹤',
+ '裝置串接','第三方整合','訂閱方案','市場擴張','新品宣傳','品牌 Campaign','品牌合作',
+ '代言人','產品賣點','品牌定位','價格策略','促銷活動','內容策略','市場趨勢']
+PRODUCT_TYPES_V3 = ['Cardio','Strength','Connected Fitness','APP','Console','Wearable','Digital Service','Web']
+ATTENTION_V3 = ['Commercial','Home','Digital']
+COUNTRIES_V3 = ['全部','全球','亞洲','北美','歐洲','大洋洲','其他地區']
+COMMERCIAL_BRANDS_V3 = ['Johnson','Matrix','Life Fitness','Technogym','Precor','TRUE Fitness',
+ 'CORE Fitness','EGYM','Hammer Strength','SHUA','Concept2','Rogue','Spirit','Star Trac','Cybex',
+ 'Vision','Eleiko','Keiser','Assault','Impulse','Dyaco','DRAX']
+HOME_BRANDS_V3 = ['Peloton','NordicTrack','Bowflex','ProForm','Tonal','Sole','Schwinn','Horizon',
+ 'REP','Force USA','Sunny Health','Inspire','Titan','Nautilus']
+BRAND_SEGMENT_MAP_V3 = {**dict.fromkeys(COMMERCIAL_BRANDS_V3,'Commercial'), **dict.fromkeys(HOME_BRANDS_V3,'Home')}
 
-SUBCATEGORY_TOPIC_MAP_V3 = {
-    "product_launch": ["新品發布"],
-    "product_line": ["新品發布"],
-    "ai_training": ["AI 功能"],
-    "connected_app": ["裝置串接", "第三方整合"],
-    "wearable_device": ["裝置串接"],
-    "product_review": ["產品賣點"],
-    "training_science": ["訓練計畫"],
-    "wellness_trend": ["市場趨勢"],
-    "home_fitness_trend": ["市場趨勢"],
-    "market_research": ["市場趨勢"],
-    "channel_partnership": ["市場擴張"],
-    "commercial_channel": ["市場擴張"],
-    "international_brand": ["市場擴張"],
-    "china_brand": ["市場擴張"],
-    "brand_risk": ["品牌定位"],
-}
-TOPIC_KEYWORDS_V3 = {
-    "新品發布": {"tokens": ["launches", "launch", "unveils", "debuts", "introduces"],
-              "phrases": ["new product", "product line", "上市", "推出", "發表", "新品"]},
-    "產品改版": {"tokens": ["upgraded", "updated", "redesigned", "revamp", "refresh"],
-              "phrases": ["new version", "next generation", "next-gen", "升級", "改版", "改款"]},
-    "AI 功能": {"tokens": ["ai"],
-             "phrases": ["ai coach", "artificial intelligence", "generative ai", "machine learning",
-                         "ai-powered", "ai analysis", "smart algorithm", "ai 教練", "人工智慧", "ai 功能"]},
-    "個人化推薦": {"tokens": ["personalized", "personalization", "recommends"],
-              "phrases": ["personalized plan", "tailored workout", "custom workout",
-                          "recommendation engine", "personalized experience",
-                          "tailored recommendations", "ai recommendations", "curated for you",
-                          "個人化", "推薦", "客製化", "智慧推薦", "量身打造"]},
-    "訓練計畫": {"tokens": [],
-              "phrases": ["training program", "workout plan", "training plan", "program design",
-                          "coaching plan", "structured training", "訓練計畫", "課程規劃"]},
-    "數據追蹤": {"tokens": ["analytics"],
-              "phrases": ["workout data", "health data", "recovery data", "biometric data",
-                          "data tracking", "performance metrics", "progress tracking",
-                          "activity tracking", "health metrics", "fitness data",
-                          "數據追蹤", "健康數據", "生理數據", "追蹤數據"]},
-    "裝置串接": {"tokens": ["sensor"],
-              "phrases": ["device integration", "connected device", "smart sensor",
-                          "pairs with", "syncs with", "裝置串接", "感測器"]},
-    "第三方整合": {"tokens": ["strava"],
-               "phrases": ["apple health", "google fit", "third-party integration",
-                           "api integration", "integrates with", "第三方整合", "串接"]},
-    "訂閱方案": {"tokens": ["membership", "subscription"],
-              "phrases": ["monthly plan", "annual plan", "subscription fee", "subscription service",
-                          "tiered pricing", "free trial", "premium tier", "subscriber base",
-                          "訂閱", "會員方案", "免費試用", "付費會員"]},
-    "市場擴張": {"tokens": ["expansion"],
-              "phrases": ["new market", "expands into", "new country", "opens in",
-                          "enters market", "new distributor", "市場擴張", "進軍", "拓展"]},
-    "新品宣傳": {"tokens": [],
-              "phrases": ["launch event", "unveiling event", "product reveal", "promotional launch",
-                          "marketing launch", "teaser campaign", "marketing push", "launch marketing",
-                          "pr campaign", "media blitz", "press tour", "rolling out",
-                          "宣傳", "造勢", "宣傳活動", "造勢活動"]},
-    "品牌 Campaign": {"tokens": [],
-                    "phrases": ["ad campaign", "marketing campaign", "brand campaign",
-                                "advertising campaign", "campaign launch", "brand awareness",
-                                "commercial spot", "tv spot", "廣告活動", "品牌活動", "品牌廣告", "形象廣告"]},
-    "品牌合作": {"tokens": ["collaboration"],
-              "phrases": ["collaborates with", "teams up with", "co-branded", "joint venture",
-                          "partnership announcement", "strategic partnership",
-                          "brand collaboration", "cross-promotion",
-                          "合作", "聯名", "策略合作", "異業合作"]},
-    "代言人": {"tokens": ["ambassador", "endorsement", "spokesperson", "influencer"],
-             "phrases": ["athlete partnership", "celebrity endorsement", "代言", "大使"]},
-    "產品賣點": {"tokens": [],
-              "phrases": ["key feature", "standout feature", "unique selling point", "core feature",
-                          "sets it apart", "賣點", "特色"]},
-    "品牌定位": {"tokens": ["rebrand", "repositioning", "positioning"],
-              "phrases": ["brand positioning", "brand identity", "target audience",
-                          "positions itself", "brand strategy", "brand image",
-                          "market positioning", "品牌定位", "重新定位", "品牌策略", "品牌形象"]},
-    "價格策略": {"tokens": [],
-              "phrases": ["price increase", "price cut", "pricing strategy", "price drop",
-                          "priced at", "price point", "msrp", "raises prices", "lowers prices",
-                          "value proposition", "漲價", "降價", "定價策略", "售價", "調漲", "調降"]},
-    "促銷活動": {"tokens": ["discount", "promo", "promotion", "coupon"],
-              "phrases": ["black friday", "holiday sale", "limited time offer", "flash sale",
-                          "clearance sale", "special offer", "折扣", "促銷", "優惠", "特賣", "清倉"]},
-    "內容策略": {"tokens": [],
-              "phrases": ["content strategy", "video content", "social media content",
-                          "on-demand content", "class library", "workout video", "video series",
-                          "content library", "digital content", "streaming content",
-                          "內容策略", "影音內容", "內容行銷", "影片系列"]},
-    "市場趨勢": {"tokens": ["trend"],
-              "phrases": ["industry trend", "market trend", "consumer demand", "growing demand",
-                          "market outlook", "市場趨勢", "產業趨勢"]},
-}
+# 英文使用邊界，中文不套用 ASCII 詞界；所有規則以標題與實際摘要判讀。
+def _rule(pattern):
+    return re.compile(pattern, re.I)
 
-TOPIC_RE_V3 = {
-    name: _build_v3_regex(kw.get("tokens"), kw.get("phrases"))
-    for name, kw in TOPIC_KEYWORDS_V3.items()
-}
+TOPIC_RE_V3 = {k:_rule(v) for k,v in {
+ '新品發布': r'\b(?:launch(?:es|ed|ing)?|unveil(?:s|ed|ing)?|debut(?:s|ed)?|introduc(?:es|ed|ing))\b|新(?:品|產品|服务|服務|設備).{0,10}(?:上市|發布|发布|發表|推出)|推出|發表|发布',
+ '產品改版': r'\b(?:upgrad(?:e|es|ed|ing)|updat(?:e|es|ed|ing)|redesign(?:ed)?|revamp(?:ed)?|refresh(?:ed)?|next[- ]gen(?:eration)?|new version|firmware)\b|升級|升级|改版|改款|版本更新',
+ 'AI 功能': r'\b(?:AI|artificial intelligence|generative AI|machine learning|computer vision)\b|人工智[慧能]|生成式|智能教練|智能教练',
+ '個人化推薦': r'\b(?:personali[sz](?:ed|ation)|recommendation engine|tailored (?:workouts?|plans?|recommendations?)|adaptive training|customi[sz]ed (?:workouts?|plans?))\b|個人化|个性化|客製化|定制訓練|量身打造|智慧推薦|智能推荐',
+ '訓練計畫': r'\b(?:(?:training|workout|coaching|fitness) (?:programs?|plans?|routines?)|structured training|periodi[sz]ation)\b|訓練計[畫划]|训练计划|運動課程|训练课程|課程規劃',
+ '數據追蹤': r'\b(?:analytics|(?:workout|health|recovery|fitness|biometric|training) (?:data|metrics|tracking)|(?:progress|activity|performance|recovery) tracking|heart[- ]rate (?:monitoring|tracking)|HRV)\b|數據追蹤|数据追踪|健康數據|健康数据|訓練紀錄|運動紀錄|心率監測',
+ '裝置串接': r'\b(?:bluetooth|ANT\+|FTMS|sensors?|device (?:integration|connectivity)|pairs? with|syncs? with)\b|裝置串接|设备连接|設備連接|感測器|传感器|藍[牙芽]|蓝牙',
+ '第三方整合': r'\b(?:Apple Health(?:Kit)?|HealthKit|Health Connect|Google Fit|Samsung Health|Strava|Garmin Connect|third[- ]party integration|API integration|integrat(?:es|ed|ion) with)\b|第三方整合|第三方集成',
+ '訂閱方案': r'\b(?:memberships?|subscriptions?|monthly plan|annual plan|free trial|premium tier|subscriber(?:s| base)?)\b|訂閱|订阅|會員方案|会员方案|付費會員|免费试用',
+ '市場擴張': r'\b(?:expan(?:ds?|sion|ding)|new markets?|new distributor|enters? (?:the )?(?:market|Europe|Asia|Japan|US)|opens? (?:in|its|new)|rolls? out in)\b|市場擴張|市场扩张|進軍|进军|拓展|展店|新據點|新市场',
+ '新品宣傳': r'\b(?:launch event|unveiling event|product reveal|teaser campaign|launch marketing|press tour|promotional launch)\b|新品宣傳|新品宣传|新品發表會|新品发布会|上市宣傳|造勢',
+ '品牌 Campaign': r'\b(?:(?:brand|ad|marketing|advertising|global|new) campaign|TV (?:spot|commercial)|brand awareness)\b|品牌活動|品牌活动|品牌廣告|品牌广告|形象廣告',
+ '品牌合作': r'\b(?:partnerships?|partners? with|partnering with|collaborat(?:ion|ions|es|ed)|teams? up with|co[- ]brand(?:ed|ing)?|joint venture)\b|聯名|联名|合作',
+ '代言人': r'\b(?:ambassadors?|endorsement|spokesperson|influencers?|celebrity partnership)\b|代言|品牌大使',
+ '產品賣點': r'\b(?:reviews?|hands[- ]on|key features?|standout features?|unique selling point|core features?|specifications|worth it|we tested|tested|I tried|best (?:treadmills?|fitness trackers?|dumbbells?|exercise bikes?|resistance bands?|rowing machines?))\b|評測|评测|開箱|开箱|實測|实测|賣點|卖点|產品特色|核心功能',
+ '品牌定位': r'\b(?:rebrand(?:ing)?|repositioning|brand (?:positioning|identity|strategy|image)|target audience|positions itself)\b|品牌定位|品牌形象|品牌策略|重新定位',
+ '價格策略': r'\b(?:pric(?:e|ing) (?:increase|cut|strategy|drop|change)|priced at|price point|MSRP|raises? prices|lowers? prices)\b|定價|定价|售價|售价|漲價|涨价|降價|降价|調漲|調降',
+ '促銷活動': r'\b(?:discounts?|promo(?:tion)?s?|coupons?|Black Friday|Cyber Monday|Prime Day|holiday sale|flash sale|clearance|limited[- ]time offer|deals?|on sale|savings)\b|折扣|促銷|促销|優惠|优惠|特賣|清倉',
+ '內容策略': r'\b(?:content (?:strategy|library)|video (?:content|series)|social media content|on[- ]demand (?:content|classes)|class library|workout videos?|streaming content)\b|內容策略|内容策略|影音內容|內容行銷|影片系列|課程內容',
+ '市場趨勢': r'\b(?:trends?|market (?:outlook|research|size|growth|report|forecast|share)|consumer demand|growing demand|industry outlook|CAGR)\b|市場趨勢|市场趋势|產業趨勢|产业趋势|市場規模|市场规模|消費需求|產業報告',
+}.items()}
+PTYPE_RE_V3 = {k:_rule(v) for k,v in {
+ 'Cardio':r'\b(?:cardio|treadmills?|ellipticals?|rowers?|rowing machines?|stair ?(?:climbers?|mills?)|stepmills?|exercise bikes?|stationary bikes?|spin bikes?|indoor cycling|air bikes?|SkiErg|RowErg|BikeErg|walking pads?)\b|跑步[機机]|橢圓[機机]|椭圆机|划船[機机]|飛輪|飞轮|健身[車车]|登[階阶][機机]|爬樓[機机]|有氧器材',
+ 'Strength':r'\b(?:strength|resistance training|weight training|weightlifting|dumbbells?|barbells?|kettlebells?|power racks?|squat racks?|weight plates?|smith machines?|functional trainers?|cable machines?|weight benches|adjustable benches|bench presses|(?:chest|leg|shoulder) presses|lat pulldowns?|cable crossovers?|resistance bands?|Pilates reformers?|home gyms?|smart gyms?)\b|重訓|重训|力量訓練|力量训练|啞鈴|哑铃|槓鈴|杠铃|壺鈴|壶铃|史密斯|深蹲架|重量訓練',
+ 'Connected Fitness':r'\b(?:connected fitness|connected (?:equipment|bikes?|treadmills?|gyms?)|smart (?:equipment|gyms?|bikes?|treadmills?)|IoT|FTMS|Bluetooth|ANT\+)\b|智慧健身器材|智能健身器材|聯網健身|联网健身|藍[牙芽]|蓝牙',
+ 'APP':r'\b(?:apps?|iOS|Android|iFIT|JRNY|atZone|FitDisplay|HealthKit|Health Connect)\b|應用程式|应用程序|手機應用|手机应用',
+ 'Console':r'\b(?:consoles?|touchscreens?|touch screens?|HD screens?|P82|P84|P94|XUR|XIR)\b|觸控螢幕|触摸屏|控制台|觸控面板|儀表板軟體',
+ 'Wearable':r'\b(?:wearables?|smartwatches?|smart watches?|fitness trackers?|fitness bands?|smart rings?|Apple Watch|Oura|Whoop|Fitbit|Garmin watch(?:es)?)\b|穿戴|智慧手[錶表]|智能手表|智能戒指|智慧戒指|運動手環',
+ 'Digital Service':r'\b(?:digital (?:services?|platforms?|fitness)|streaming|on[- ]demand classes|virtual (?:coaching|training)|online coaching|fitness platform|cloud platform|SaaS|AI[- ](?:powered|coach)|software|firmware|iFIT|JRNY)\b|數位服務|数字服务|線上課程|在线课程|雲端平台|軟體|软件|虛擬教練',
+ 'Web':r'\b(?:websites?|browsers?|web (?:portals?|apps?|platforms?|dashboards?)|online portals?)\b|網站|网站|網頁|网页|網路平台',
+}.items()}
 
+def classify_topic_tags(title, summary='', subcategory=None):
+    text = f'{title or ""} {summary or ""}'
+    return [k for k in TOPICS_V3 if TOPIC_RE_V3[k].search(text)]
 
-def classify_topic_tags(title: str, summary: str, subcategory: str = None) -> list:
-    """回傳多值 topic 標籤（見 docs/v3-spec.md 3-3）。(a) 先用既有 subcategory
-    做確定性映射，(b) 再用中英關鍵字補足，(c) 去重排序，(d) 全部沒中回 ['其他']。"""
-    text = f"{title or ''} {summary or ''}"
-    result = []
+def classify_product_types(title, summary='', product_categories=None):
+    text = f'{title or ""} {summary or ""}'
+    found = {k for k,p in PTYPE_RE_V3.items() if p.search(text)}
+    # 產品專有詞需有健身品牌情境；一般自行車不等於健身器材。
+    if re.search(r'\b(?:Peloton|NordicTrack|Schwinn|Assault)\b.{0,35}\bbikes?\b',text,re.I): found.add('Cardio')
+    return [k for k in PRODUCT_TYPES_V3 if k in found]
 
-    def _add(name):
-        if name not in result:
-            result.append(name)
+def classify_attention_tags(brands=None, product_types=None, topic_tags=None, product_categories=None):
+    found = {BRAND_SEGMENT_MAP_V3[b] for b in brands or [] if b in BRAND_SEGMENT_MAP_V3}
+    # 會員促銷、社群影片與螢幕硬體本身不自動變成軟體情報。
+    if set(product_types or []) & {'APP','Web','Digital Service'} or set(topic_tags or []) & {'AI 功能','第三方整合','數據追蹤'}:
+        found.add('Digital')
+    return [k for k in ATTENTION_V3 if k in found]
 
-    mapped = SUBCATEGORY_TOPIC_MAP_V3.get(subcategory) if subcategory else None
-    if mapped:
-        for name in mapped:
-            _add(name)
-
-    for name, pattern in TOPIC_RE_V3.items():
-        if pattern and pattern.search(text):
-            _add(name)
-
-    if not result:
-        return ["其他"]
-    result.sort(key=TOPICS_V3.index)
-    return result
-
-PRODUCT_TYPES_V3 = ["Cardio", "Strength", "Connected Fitness", "APP", "Console",
-                     "Wearable", "Digital Service", "Web"]
-
-PTYPE_KEYWORDS_V3 = {
-    "Cardio": {"tokens": ["treadmill", "elliptical", "rower", "bike"],
-               "phrases": ["exercise bike", "rowing machine"]},
-    "Strength": {"tokens": ["rack", "dumbbell", "barbell", "plate"],
-                 "phrases": ["smith machine"]},
-    "APP": {"tokens": ["app", "ios", "android"], "phrases": ["mobile app"]},
-    "Console": {"tokens": ["touchscreen", "console", "display"], "phrases": ["hd screen"]},
-    "Web": {"tokens": ["website", "browser"], "phrases": ["web portal"]},
-    "Digital Service": {"tokens": ["streaming"],
-                         "phrases": ["subscription platform", "on-demand class", "on demand class"]},
-    "Connected Fitness": {"tokens": ["connected", "iot"],
-                           "phrases": ["smart equipment", "sensor-linked", "sensor linked"]},
-}
-PTYPE_RE_V3 = {
-    name: _build_v3_regex(kw.get("tokens"), kw.get("phrases"))
-    for name, kw in PTYPE_KEYWORDS_V3.items()
-}
-DIGITAL_SUB_TYPES_V3 = ["APP", "Console", "Web", "Digital Service", "Connected Fitness"]
-SUPPLEMENT_TYPES_V3 = ["Cardio", "Strength", "APP", "Console", "Web", "Digital Service", "Connected Fitness"]
-
-
-def classify_product_types(title: str, summary: str, product_categories=None) -> list:
-    """回傳多值 product_type 標籤（見 docs/v3-spec.md 3-2）。可回傳 0 個，不強制填值。"""
-    text = f"{title or ''} {summary or ''}"
-    pcs = product_categories or []
-    result = []
-
-    def _add(name):
-        if name not in result:
-            result.append(name)
-
-    if "cardio" in pcs:
-        _add("Cardio")
-    if "strength" in pcs:
-        _add("Strength")
-    if "wearable" in pcs:
-        _add("Wearable")
-    if "digital" in pcs:
-        matched_any = False
-        for name in DIGITAL_SUB_TYPES_V3:
-            if name == "Digital Service":
-                continue
-            if PTYPE_RE_V3.get(name) and PTYPE_RE_V3[name].search(text):
-                _add(name)
-                matched_any = True
-        if PTYPE_RE_V3.get("Digital Service") and PTYPE_RE_V3["Digital Service"].search(text):
-            _add("Digital Service")
-            matched_any = True
-        if not matched_any:
-            _add("Digital Service")
-
-    for name in SUPPLEMENT_TYPES_V3:
-        if PTYPE_RE_V3.get(name) and PTYPE_RE_V3[name].search(text):
-            _add(name)
-
-    result.sort(key=PRODUCT_TYPES_V3.index)
-    return result
-
-ATTENTION_V3 = ["Commercial", "Home", "Digital"]
-
-COMMERCIAL_BRANDS_V3 = [
-    "Johnson", "Matrix", "Life Fitness", "Technogym", "Precor", "TRUE Fitness",
-    "CORE Fitness", "EGYM", "Hammer Strength", "SHUA", "Concept2", "Rogue",
-    "Spirit", "Star Trac", "Cybex", "Vision", "Eleiko", "Keiser", "Assault",
-    "Impulse", "Dyaco", "DRAX",
-]
-HOME_BRANDS_V3 = [
-    "Peloton", "NordicTrack", "Bowflex", "ProForm", "Tonal", "Sole", "Schwinn",
-    "Horizon", "REP", "Force USA", "Sunny Health", "Inspire", "Titan", "Nautilus",
-]
-BRAND_SEGMENT_MAP_V3 = {b: "Commercial" for b in COMMERCIAL_BRANDS_V3}
-BRAND_SEGMENT_MAP_V3.update({b: "Home" for b in HOME_BRANDS_V3})
-
-DIGITAL_PTYPES_V3 = ["APP", "Console", "Web", "Digital Service", "Connected Fitness"]
-DIGITAL_TOPICS_V3 = ["AI 功能", "數據追蹤", "第三方整合", "裝置串接", "訂閱方案", "內容策略"]
-
-
-def classify_attention_tags(brands=None, product_types=None, topic_tags=None,
-                             product_categories=None) -> list:
-    """回傳多值 attention 標籤（Commercial / Home / Digital，可同時成立，見
-    docs/v3-spec.md 3-4）。三者皆未命中時回空陣列，屬預期行為。"""
-    brands = brands or []
-    product_types = product_types or []
-    topic_tags = topic_tags or []
-    pcs = product_categories or []
-    result = []
-
-    def _add(name):
-        if name not in result:
-            result.append(name)
-
-    for b in brands:
-        seg = BRAND_SEGMENT_MAP_V3.get(b)
-        if seg:
-            _add(seg)
-
-    is_digital = (
-        any(t in product_types for t in DIGITAL_PTYPES_V3)
-        or any(t in topic_tags for t in DIGITAL_TOPICS_V3)
-        or "digital" in pcs
-    )
-    if is_digital:
-        _add("Digital")
-
-    result.sort(key=ATTENTION_V3.index)
-    return result
-
-COUNTRIES_V3 = ["全部", "全球", "亞洲", "北美", "歐洲", "大洋洲", "其他地區"]
-
-_ASIA_TLDS_V3 = (".tw", ".cn", ".hk", ".jp", ".kr", ".my", ".vn", ".in")
-_EUROPE_TLDS_V3 = (".uk", ".de", ".fi", ".lt", ".eu")
-_OCEANIA_TLDS_V3 = (".au", ".nz", ".fj")
-_NA_TLDS_V3 = (".us",)
-_CJK_RE_V3 = re.compile(
-    "[" + chr(0x4e00) + "-" + chr(0x9fff) + chr(0x3040) + "-" + chr(0x30ff)
-    + chr(0xac00) + "-" + chr(0xd7af) + "]"
-)
-
+REGION_PATTERNS = {k:_rule(v) for k,v in {
+ '亞洲':r'\b(?:Asia|Taiwan|China|Japan|Korea|India|Singapore|Hong Kong|Malaysia|Thailand|Vietnam|Indonesia|Philippines|Dubai|UAE|Saudi Arabia)\b|亞洲|亚洲|台灣|臺灣|中国|中國|日本|韓國|韩国|印度|新加坡|香港|泰國|泰国',
+ '北美':r'\b(?:North America|United States|U\.S\.(?:A\.)?|USA|US|Canada|Canadian|Mexico|California|New York|Texas|Florida|Chicago|Los Angeles|Boston)\b|北美|美國|美国|加拿大|墨西哥',
+ '歐洲':r'\b(?:Europe|European|United Kingdom|UK|Britain|British|England|Germany|German|France|French|Italy|Italian|Spain|Sweden|Finland|Netherlands|London|Berlin|FIBO)\b|歐洲|欧洲|英國|英国|德國|德国|法國|法国|義大利|意大利|西班牙',
+ '大洋洲':r'\b(?:Oceania|Australia|Australian|New Zealand|Auckland|Sydney|Melbourne|Fiji)\b|大洋洲|澳洲|澳大利亞|澳大利亚|紐西蘭|新西兰',
+ '其他地區':r'\b(?:Africa|Brazil|Argentina|South America|Latin America|Chile|Colombia|Kenya|Nigeria|South Africa)\b|非洲|南美|拉丁美洲|巴西|阿根廷',
+}.items()}
+REGION_TLDS = {'亞洲':('.tw','.cn','.hk','.jp','.kr','.in','.sg','.my','.vn','.th','.id','.ph','.ae','.sa'),
+ '北美':('.us','.ca','.mx'),'歐洲':('.uk','.de','.fr','.it','.es','.se','.no','.dk','.fi','.nl','.eu','.pl','.ch','.at','.ie','.pt','.be','.lt'),
+ '大洋洲':('.au','.nz','.fj'),'其他地區':('.br','.ar','.cl','.co','.za','.ng','.ke')}
 
 def _hostname_v3(url):
-    if not url:
-        return ""
-    try:
-        return (urlparse(url).hostname or "").lower()
-    except (ValueError, TypeError):
-        return ""
+    try: return (urlparse(url or '').hostname or '').lower()
+    except (ValueError,TypeError): return ''
 
+def region_details(title, summary='', urls=(), language=''):
+    # 主題地區優先於媒體所在地；Force USA 為品牌名稱，不是地域證據。
+    text = re.sub(r'\bForce USA\b','',f'{title or ""} {summary or ""}',flags=re.I)
+    if re.search(r'\b(?:global|worldwide|international markets|around the world)\b|全球|世界各地',text,re.I):
+        return '全球','content_global'
+    hits = [k for k,p in REGION_PATTERNS.items() if p.search(text)]
+    if len(hits)>1: return '全球','content_multi_region'
+    if hits: return hits[0],'content_region'
+    for url in urls:
+        host = _hostname_v3(url)
+        if host in ('news.google.com','google.com'): continue
+        for region,suffixes in REGION_TLDS.items():
+            if host.endswith(suffixes): return region,'publisher_domain'
+        path = urlparse(url or '').path.lower()
+        for region,codes in {'亞洲':'tw|cn|hk|jp|kr|sg|in','北美':'us|ca|mx','歐洲':'gb|uk|de|fr|it|es|eu','大洋洲':'au|nz'}.items():
+            if re.search(r'/(?:[a-z]{2}[-_])?(?:'+codes+r')(?:/|$)',path): return region,'publisher_locale'
+    lang=(language or '').lower()
+    if re.search(r'[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]',text) or lang.startswith(('zh','ja','ko','th','vi')):
+        return '亞洲','language_inference'
+    if lang.startswith(('de','fr','it','nl','sv','fi','pl')): return '歐洲','language_inference'
+    # 英語及 .com 無法單獨證明北美或全球。
+    return '其他地區','unknown'
 
-def classify_country(title: str, resolved_url: str = None, url: str = None) -> str:
-    """判定文章所屬地區（stub，見 docs/v3-spec.md 3-5）。
-    已知限制：87% 文章 resolved_url 未解析（停在 google.com），故絕大多數會落在
-    「其他地區」，屬已知限制。country 的「全球」判定邏輯之後由使用者補上
-    （見 docs/v3-spec.md 第 10 節），此函式現階段只做 TLD／CJK 字元兩條最低成本線索。
-    TODO(user): 補上更完整的地區判定邏輯（例如來源媒體地區、品牌市場等）。"""
-    # 型別正規化：title / resolved_url / url 若非字串（例如 None 以外的
-    # int、dict），一律視為空字串，避免 urlparse 丟出未被攔截的例外中斷排程。
-    title = title if isinstance(title, str) else ""
-    resolved_url = resolved_url if isinstance(resolved_url, str) else ""
-    url = url if isinstance(url, str) else ""
-    hostname = _hostname_v3(resolved_url) or _hostname_v3(url)
-    if hostname:
-        if hostname.endswith(_ASIA_TLDS_V3):
-            return "亞洲"
-        if hostname.endswith(_EUROPE_TLDS_V3):
-            return "歐洲"
-        if hostname.endswith(_OCEANIA_TLDS_V3):
-            return "大洋洲"
-        if hostname.endswith(_NA_TLDS_V3):
-            return "北美"
-    if title and _CJK_RE_V3.search(title):
-        return "亞洲"
-    return "其他地區"
+def classify_country(title, resolved_url=None, url=None):
+    return region_details(title,urls=(resolved_url,url))[0]
+
+BRAND_ALIASES_V7 = {'Johnson':['喬山','乔山'], 'Matrix':['喬山 Matrix','矩陣健身'],
+ 'Vision':['Vision Fitness','Vision Console','Vision App'],'SHUA':['舒華','舒华'],
+ 'Dyaco':['岱宇'],'Impulse':['英派斯'],'Horizon':['Horizon Fitness','Horizon 7.0','Horizon 7.4','Horizon 7.8'],
+ 'Tonal':['Tonal 2'],'CORE Fitness':['Core Health & Fitness','Core Health and Fitness'],
+ 'Life Fitness':['力健'],'Technogym':['泰諾健','泰诺健'],'ProForm':['Pro-Form']}
+BRAND_DOMAINS_V7 = {'onepeloton.com':'Peloton','technogym.com':'Technogym','nordictrack.com':'NordicTrack',
+ 'johnsonfitness.com':'Johnson','johnsonhealthtech.com':'Johnson','proform.com':'ProForm','shuafitness.com':'SHUA',
+ 'lifefitness.com':'Life Fitness','bowflex.com':'Bowflex','repfitness.com':'REP','matrixfitness.com':'Matrix',
+ 'precor.com':'Precor','tonal.com':'Tonal','soletreadmills.com':'Sole','solefitness.com':'Sole',
+ 'concept2.com':'Concept2','sunnyhealthfitness.com':'Sunny Health','forceusa.com':'Force USA',
+ 'roguefitness.com':'Rogue','schwinnfitness.com':'Schwinn','assaultfitness.com':'Assault',
+ 'visionfitness.com':'Vision','hammerstrength.com':'Hammer Strength','titan.fitness':'Titan','eleiko.com':'Eleiko',
+ 'horizonfitness.com':'Horizon','truefitness.com':'TRUE Fitness','nautilus.com':'Nautilus',
+ 'cybexintl.com':'Cybex','spiritfitness.com':'Spirit','inspirefitness.com':'Inspire','dyaco.com':'Dyaco',
+ 'impulsefitness.com':'Impulse','keiser.com':'Keiser','startrac.com':'Star Trac','corehandf.com':'CORE Fitness',
+ 'egym.com':'EGYM','draxfit.com':'DRAX'}
+
+def classify_article(a):
+    title=a.get('title') or ''; summary=a.get('summary') or ''
+    text=f'{title} {summary}'
+    brands=set(detect_brands(text))
+    # 辨識度高的品牌不要求額外 fitness 詞，避免漏掉財報、併購及短標題。
+    for name in ('Precor','Tonal','Dyaco','Keiser','EGYM','DRAX','Nautilus'):
+        definition=BRAND_DEF_BY_NAME_V3[name]
+        excluded=definition.get('_exclude_re')
+        if re.search(r'\b'+re.escape(name)+r'\b',text,re.I) and not (excluded and excluded.search(text)):
+            brands.add(name)
+    for brand,aliases in BRAND_ALIASES_V7.items():
+        if any(alias.casefold() in text.casefold() for alias in aliases): brands.add(brand)
+    for url in (a.get('resolved_url'),a.get('publisher_url'),a.get('url')):
+        host=_hostname_v3(url)
+        for domain,brand in BRAND_DOMAINS_V7.items():
+            if host==domain or host.endswith('.'+domain): brands.add(brand)
+    if a.get('source_type')=='official' and a.get('brand') in BRANDS_V3: brands.add(a['brand'])
+    # 抑制常見一般用語：vision / spirit / inspire 等不可僅靠同篇的 gym 就視為品牌。
+    for name in ('Vision','Spirit','Inspire','Impulse','Sole','Horizon','Titan','Matrix','REP','Assault'):
+        strong=BRAND_DEF_BY_NAME_V3[name].get('_strong_re')
+        aliases=BRAND_ALIASES_V7.get(name,[])
+        domain_hit=any(BRAND_DOMAINS_V7.get(_hostname_v3(u).removeprefix('www.'))==name for u in (a.get('resolved_url'),a.get('publisher_url'),a.get('url')))
+        product_near=re.search(r'\b'+re.escape(name)+r'\s+(?:[A-Z]?\d[\w.-]*|(?:fitness|treadmills?|bikes?|dumbbells?|racks?|equipment|console|app|home gym))\b',text,re.I)
+        if name in brands and not ((strong and strong.search(text)) or any(x.casefold() in text.casefold() for x in aliases) or domain_hit or product_near or (a.get('source_type')=='official' and a.get('brand')==name)):
+            brands.remove(name)
+    a['brands']=[b for b in BRANDS_V3 if b in brands]
+    a['brand']=a.get('brand') if a.get('brand') in brands else next(iter(a['brands']),None)
+    a['product_types']=classify_product_types(title,summary)
+    a['topic_tags']=classify_topic_tags(title,summary)
+    a['attention_tags']=classify_attention_tags(a['brands'],a['product_types'],a['topic_tags'])
+    if 'Console' in a['product_types'] and re.search(r'\b(?:software|firmware|UI|UX|interface|OS|update)\b|軟體|软件|介面|更新',text,re.I):
+        if 'Digital' not in a['attention_tags']: a['attention_tags'].append('Digital')
+    topics=set(a['topic_tags']); types=set(a['product_types']); audiences=set()
+    if types or topics & set(TOPICS_V3[:9]+['產品賣點']): audiences.add('PM')
+    if re.search(r'\b(?:UI|UX|interface|usability|ergonomics?|design|user experience|redesigned|accessibility)\b|介面|界面|設計|设计|人體工學|易用性',text,re.I): audiences.add('Design')
+    if topics & set(TOPICS_V3[8:]): audiences.add('Marketing')
+    a['audience_tags']=[x for x in ('PM','Design','Marketing') if x in audiences]
+    a['audience_tags_source']='content_rules_v7'
+    a['country'],a['country_source']=region_details(title,summary,(a.get('resolved_url'),a.get('publisher_url'),a.get('url')),a.get('language',''))
+    a['category']=classify(title,summary,a.get('brand')); a['categoryName']=CATEGORY_NAME_MAP[a['category']]
+    a['subcategory'],a['subcategoryName']=classify_subcategory(a['category'],title,summary)
+    pcs=classify_product_categories(title,summary,None)
+    for pc,pt in [('cardio','Cardio'),('strength','Strength'),('wearable','Wearable')]:
+        if pt in types and pc not in pcs: pcs.append(pc)
+    if 'digital' in pcs and 'Digital' not in a['attention_tags']: pcs.remove('digital')
+    if 'Digital' in a['attention_tags'] and 'digital' not in pcs: pcs.append('digital')
+    a['product_categories']=pcs; a['product_category']=pcs[0] if pcs else 'other'
+    a['is_noise'],a['noise_reason']=classify_noise(title,summary,a.get('source',''))
+    a['tagging_version']='v7.1'
+    a['tagging_basis']='title_and_summary' if summary else 'title_only'
+    a['tag_review_required']=not bool(a['topic_tags'])
+    return a
 
 
 MILITARY_KEYWORDS = [
@@ -1982,214 +1893,316 @@ def extract_published_date(url: str):
 #   2) POST batchexecute，帶入 article id + ts + sg，回應內含原文網址。
 # ---------------------------------------------------------------------------
 
-ENRICH_TIMEOUT = (5, 15)          # (connect, read)
-ENRICH_SLEEP_MIN = 1.5            # 每次外部請求之間至少 sleep 1.5 秒（禮貌性限流）
+# v7 原文與摘要：保留來源證據；不生成假摘要，不把媒體首頁當文章。
+ENRICH_TIMEOUT = (5, 12)
+ENRICH_SLEEP_MIN = 1.5
 ENRICH_SLEEP_MAX = 2.2
-ENRICH_MAX_RETRIES = 2            # 單篇最多重試 2 次
-
-_GN_ARTICLE_ID_PATTERN = re.compile(r"/rss/articles/([^/?]+)")
-_GN_TS_PATTERN = re.compile(r'data-n-a-ts="(\d+)"')
-_GN_SG_PATTERN = re.compile(r'data-n-a-sg="([^"]+)"')
-
-_ENRICH_META_CANDIDATES = [
-    ("og_description", "property", "og:description"),
-    ("meta_description", "name", "description"),
-    ("twitter_description", "name", "twitter:description"),
-]
+ENRICH_MAX_RETRIES = 2
+ENRICH_SUCCESS_SOURCES = {'og_description','meta_description','twitter_description','jsonld_description','article_paragraph','rss_description'}
+ENRICH_CHECKPOINT_EVERY = 25
+_ENRICH_HTTP_ERRORS = {}
+_HOST_COOLDOWNS = {}
+_RESOLVE_CACHE = {}
+_DESCRIPTION_CACHE = {}
+ENRICH_VERSION = 'v7.1'
 
 
 def enrich_sleep():
     time.sleep(random.uniform(ENRICH_SLEEP_MIN, ENRICH_SLEEP_MAX))
 
 
-def _enrich_get(url: str, accept: str = "text/html,application/xhtml+xml,application/xml"):
-    """摘要回填專用 GET：最多重試 ENRICH_MAX_RETRIES 次；403/404/410/429 立即放棄不重試。"""
-    last_exc = None
-    for attempt in range(1, ENRICH_MAX_RETRIES + 1):
+def is_google_news(url):
+    return _hostname_v3(url) == 'news.google.com'
+
+
+def valid_article_url(url):
+    try:
+        p=urlparse(url or '')
+        return (p.scheme in ('http','https') and bool(p.hostname) and not p.username
+                and p.hostname not in ('news.google.com','consent.google.com','accounts.google.com')
+                and p.path.strip('/') != '' and not re.search(r'[\s<>"\\]',url))
+    except (ValueError,TypeError):
+        return False
+
+
+def _enrich_get(url, accept='text/html,application/xhtml+xml'):
+    host=_hostname_v3(url)
+    if _HOST_COOLDOWNS.get(host,0)>time.time():
+        _ENRICH_HTTP_ERRORS[url]='host_cooldown'; return None
+    for attempt in range(ENRICH_MAX_RETRIES):
         try:
-            resp = requests.get(
-                url,
-                headers={"User-Agent": USER_AGENT, "Accept": accept},
-                timeout=ENRICH_TIMEOUT,
-            )
-            if resp.status_code == 200:
-                return resp
-            if resp.status_code in (403, 404, 410, 429):
-                log(f"  [enrich] 狀態碼 {resp.status_code}，略過：{url}")
-                return None
-            last_exc = f"status={resp.status_code}"
-        except requests.exceptions.RequestException as e:
-            last_exc = str(e)
-        if attempt < ENRICH_MAX_RETRIES:
-            enrich_sleep()
-    log(f"  [enrich] 重試 {ENRICH_MAX_RETRIES} 次後放棄：{url}（{last_exc}）")
+            resp=requests.get(url,headers={'User-Agent':USER_AGENT,'Accept':accept},timeout=ENRICH_TIMEOUT)
+            if resp.status_code==200:
+                _ENRICH_HTTP_ERRORS.pop(url,None); return resp
+            _ENRICH_HTTP_ERRORS[url]=f'http_{resp.status_code}'
+            if resp.status_code==429:
+                try: delay=max(300,int(resp.headers.get('Retry-After','300')))
+                except ValueError: delay=900
+                _HOST_COOLDOWNS[host]=time.time()+min(delay,86400)
+            if resp.status_code in (401,403,404,410,429): return None
+        except requests.RequestException as e:
+            _ENRICH_HTTP_ERRORS[url]=type(e).__name__
+        if attempt+1<ENRICH_MAX_RETRIES: enrich_sleep()
     return None
 
 
-def _decode_js_string(s: str) -> str:
-    r"""還原 batchexecute 回應中的 JS/JSON 字串轉義，並去除尾端反斜線。
-
-    回應是雙層 JSON 編碼：URL 裡的 = 會變成 \\u003d（外層再把反斜線
-    escape 一次）。必須先收合成對的反斜線，再解 \uXXXX；順序反了會殘留
-    一個反斜線（例：?x\=123），導致抓原文頁 404/500。"""
-    prev = None
-    for _ in range(3):
-        if s == prev:
-            break
-        prev = s
-        s = s.replace("\\\\", "\\")
-        s = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), s)
-        s = s.replace("\\/", "/")
-    return s.rstrip("\\")
-
-
-def resolve_google_news_url(url: str):
-    """把 Google News RSS 文章連結（不透明轉址）還原成原文網址。
-    任何一步失敗（抓不到 article id / ts / sg，或 batchexecute 回應無可用網址）都
-    回傳 None，絕不拋出例外。"""
-    if not url or "news.google.com" not in url:
-        return None
-    m = _GN_ARTICLE_ID_PATTERN.search(url)
-    if not m:
-        log(f"  [enrich] 網址不含 rss/articles article id，略過：{url}")
-        return None
-    article_id = m.group(1)
-
+def decode_legacy_google_url(url):
+    """只接受 protobuf length-delimited 裡的完整 http URL；新不透明 ID 留給線上解析。"""
+    if not is_google_news(url): return None
+    m=re.search(r'/(?:rss/)?articles/([^/?]+)',url)
+    if not m: return None
     try:
-        sep = "&" if "?" in url else "?"
-        fetch_url = f"{url}{sep}hl=en-US&gl=US&ceid=US:en"
-        resp = _enrich_get(fetch_url)
-        if resp is None:
-            return None
-        html = resp.text
-        ts_m = _GN_TS_PATTERN.search(html)
-        sg_m = _GN_SG_PATTERN.search(html)
-        if not ts_m or not sg_m:
-            log(f"  [enrich] 找不到 data-n-a-ts/data-n-a-sg，略過：{url}")
-            return None
-        ts = int(ts_m.group(1))
-        sg = sg_m.group(1)
+        raw=base64.urlsafe_b64decode(m[1]+'='*(-len(m[1])%4))
+        i=0
+        def varint(pos):
+            value=0; shift=0
+            while pos<len(raw) and shift<64:
+                b=raw[pos]; pos+=1; value|=(b&127)<<shift
+                if not b&128: return value,pos
+                shift+=7
+            raise ValueError('invalid protobuf varint')
+        while i<len(raw):
+            key,i=varint(i); wire=key&7
+            if wire==0: _,i=varint(i)
+            elif wire==2:
+                n,i=varint(i); value=raw[i:i+n]; i+=n
+                if len(value)!=n: return None
+                candidate=value.decode('utf-8',errors='ignore')
+                if valid_article_url(candidate): return candidate
+            elif wire==1: i+=8
+            elif wire==5: i+=4
+            else: break
+    except (ValueError,UnicodeError): pass
+    return None
 
+
+def parse_google_rpc(text):
+    """分層 JSON 解析 RPC；只取 garturlres 的 URL，避免 regex 誤抓跳脫字元與無關 URL。"""
+    decoder=json.JSONDecoder()
+    def walk(obj,depth=0):
+        if depth>8: return None
+        if isinstance(obj,list):
+            if len(obj)>1 and obj[0]=='garturlres' and isinstance(obj[1],str) and valid_article_url(obj[1]): return obj[1]
+            for v in obj:
+                result=walk(v,depth+1)
+                if result: return result
+        elif isinstance(obj,str) and obj.lstrip().startswith(('[','{')):
+            try: return walk(json.loads(obj),depth+1)
+            except ValueError: pass
+        return None
+    for m in re.finditer(r'\[',text):
+        try: obj,_=decoder.raw_decode(text[m.start():])
+        except ValueError: continue
+        result=walk(obj)
+        if result: return result
+    return None
+
+
+def resolve_google_news_url(url):
+    if not is_google_news(url): return url if valid_article_url(url) else None
+    if url in _RESOLVE_CACHE: return _RESOLVE_CACHE[url]
+    legacy=decode_legacy_google_url(url)
+    if legacy:
+        _RESOLVE_CACHE[url]=legacy; return legacy
+    m=re.search(r'/(?:rss/)?articles/([^/?]+)',url)
+    if not m: return None
+    article_id=m[1]
+    resp=_enrich_get(url)
+    if resp is None: return None
+    if valid_article_url(resp.url):
+        _RESOLVE_CACHE[url]=resp.url; return resp.url
+    soup=BeautifulSoup(resp.content,'html.parser')
+    sig=soup.select_one('[data-n-a-sg][data-n-a-ts]')
+    if not sig:
+        # 某些版本只在 /articles/ 頁提供 signature；遇到封鎖不改端點重試。
+        alternate='https://news.google.com/articles/'+article_id
+        if urlparse(url).path.startswith('/rss/'):
+            enrich_sleep(); other=_enrich_get(alternate)
+            if other is not None:
+                if valid_article_url(other.url): return other.url
+                sig=BeautifulSoup(other.content,'html.parser').select_one('[data-n-a-sg][data-n-a-ts]')
+        if not sig:
+            _ENRICH_HTTP_ERRORS[url]='google_signature_missing'; return None
+    try:
+        inner=['garturlreq',[["en-US","US",["FINANCE_TOP_INDICES","WEB_TEST_1_0_0"],None,None,1,1,"US:en",None,180,None,None,None,None,None,0,None,None,[1608992183,723341000]],"en-US","US",1,[2,3,4,8],1,0,"655000234",0,0,None,0],article_id,int(sig['data-n-a-ts']),sig['data-n-a-sg']]
+        payload=json.dumps([[['Fbv4je',json.dumps(inner,separators=(',',':')),None,'generic']]],separators=(',',':'))
         enrich_sleep()
-
-        inner = json.dumps(
-            [
-                "garturlreq",
-                [
-                    ["en-US", "US", ["FINANCE_TOP_INDICES", "WEB_TEST_1_0_0"], None, None,
-                     1, 1, "US:en", None, 180, None, None, None, None, None, 0, None, None,
-                     [1608992183, 723341000]],
-                    "en-US", "US", 1, [2, 3, 4, 8], 1, 0, "655000234", 0, 0, None, 0,
-                ],
-                article_id, ts, sg,
-            ],
-            separators=(",", ":"),
-        )
-        outer = json.dumps([[["Fbv4je", inner, None, "generic"]]], separators=(",", ":"))
-        body = "f.req=" + quote(outer)
-
-        try:
-            resp2 = requests.post(
-                "https://news.google.com/_/DotsSplashUi/data/batchexecute",
-                headers={
-                    "User-Agent": USER_AGENT,
-                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-                },
-                data=body,
-                timeout=ENRICH_TIMEOUT,
-            )
-        except requests.exceptions.RequestException as e:
-            log(f"  [enrich] batchexecute 請求失敗，略過：{e}")
+        rpc=requests.post('https://news.google.com/_/DotsSplashUi/data/batchexecute',
+            params={'rpcids':'Fbv4je'},data={'f.req':payload},headers={'User-Agent':USER_AGENT},timeout=ENRICH_TIMEOUT)
+        if rpc.status_code!=200:
+            _ENRICH_HTTP_ERRORS[url]=f'google_rpc_http_{rpc.status_code}'
+            if rpc.status_code==429: _HOST_COOLDOWNS['news.google.com']=time.time()+900
             return None
-        if resp2.status_code != 200:
-            log(f"  [enrich] batchexecute 狀態碼 {resp2.status_code}，略過")
-            return None
-
-        for cand in re.findall(r'"(https?:[^"]+)"', resp2.text):
-            real = _decode_js_string(cand)
-            netloc = urlparse(real).netloc.lower()
-            if netloc and "google" not in netloc:
-                return real
-        log(f"  [enrich] batchexecute 回應中找不到可用網址，略過：{url}")
-        return None
-    except Exception as e:
-        log(f"  [enrich] resolve_google_news_url 發生例外，略過：{e}")
-        return None
-
-
-def _valid_enriched_summary(text: str, title: str) -> bool:
-    """接受條件：長度 > 40 字元，且不等於／不以 title 前 40 字元開頭（避免把
-    「標題+來源」誤當真摘要）。"""
-    text = (text or "").strip()
-    if len(text) <= 40:
-        return False
-    title_prefix = (title or "").strip().lower()[:40]
-    if title_prefix and text.lower().startswith(title_prefix):
-        return False
-    return True
-
-
-def fetch_real_description(url: str, title: str):
-    """抓原文網址頁面，依序嘗試 og:description -> description -> twitter:description ->
-    內文第一段 <p>，回傳 (summary, summary_source)；都拿不到回傳 (None, None)。"""
-    try:
-        resp = _enrich_get(url)
-        if resp is None:
-            return None, None
-        try:
-            soup = BeautifulSoup(resp.content, "html.parser")
-        except Exception as e:
-            log(f"  [enrich] 原文頁 HTML 解析失敗：{e}")
-            return None, None
-
-        for source_name, attr, val in _ENRICH_META_CANDIDATES:
-            tag = soup.find("meta", attrs={attr: val})
-            if tag and tag.get("content"):
-                text = clean_html(tag["content"])
-                if _valid_enriched_summary(text, title):
-                    return text, source_name
-
-        p = soup.find("p")
-        if p:
-            text = clean_html(str(p))
-            if _valid_enriched_summary(text, title):
-                return text, "first_paragraph"
-
-        return None, None
-    except Exception as e:
-        log(f"  [enrich] fetch_real_description 發生例外，略過：{e}")
-        return None, None
-
-
-def enrich_summary(article: dict) -> dict:
-    """整合 resolve_google_news_url + fetch_real_description。
-    成功：回傳真實 summary / resolved_url / summary_source。
-    失敗：保留原 summary，summary_source 設為 "rss_fallback"。絕不拋出例外。"""
-    result = {
-        "summary": article.get("summary"),
-        "resolved_url": article.get("resolved_url"),
-        "summary_source": "rss_fallback",
-    }
-    url = article.get("url", "")
-    title = article.get("title", "")
-
-    resolved = resolve_google_news_url(url)
-    if not resolved:
+        result=parse_google_rpc(rpc.text)
+        if result: _RESOLVE_CACHE[url]=result
+        else: _ENRICH_HTTP_ERRORS[url]='google_rpc_unresolved'
         return result
-    result["resolved_url"] = resolved
+    except (requests.RequestException,ValueError,KeyError) as e:
+        _ENRICH_HTTP_ERRORS[url]=type(e).__name__; return None
 
-    enrich_sleep()
 
-    real_summary, source_name = fetch_real_description(resolved, title)
-    if real_summary:
-        result["summary"] = real_summary
-        result["summary_source"] = source_name
+def _summary_text(text):
+    return re.sub(r'\s+',' ',unescape(BeautifulSoup(text or '', 'html.parser').get_text(' ',strip=True))).strip()
+
+
+def usable_summary(text, title='', source=''):
+    text=unicodedata.normalize('NFKC',_summary_text(text))
+    title=unicodedata.normalize('NFKC',_summary_text(title))
+    if len(text)<24: return ''
+    # 標題/摘要常有 NFKC、破折號、引號或媒體後綴差異；比對時忽略標點。
+    def key(value): return re.sub(r'[^\w]','',value.casefold())
+    text_key,title_key=key(text),key(title)
+    if title_key and text_key.startswith(title_key):
+        tail_key=text_key[len(title_key):]
+        if len(tail_key)<24 or tail_key==key(source or ''): return ''
+    if title and text.casefold().startswith(title.casefold()):
+        tail=text[len(title):].strip(' -–—|:：')
+        if len(tail)<30 or tail.casefold()==unicodedata.normalize('NFKC',source or '').casefold(): return ''
+    if re.match(r'(?i)^(?:accept (?:all )?cookies|we use cookies|cookie policy|enable javascript|access denied|just a moment|subscribe to (?:our|the) newsletter|sign in to continue|please enable)',text): return ''
+    if re.search(r'(?i)(?:captcha|verify (?:that )?you are human|browser is not supported)',text): return ''
+    if re.match(r'(?i)^(?:you are (?:using|viewing)|your browser)',text): return ''
+    if re.search(r'(?i)(?:select market data provided|FactSet Research Systems|decrease font size|increase font size|browser does not support JavaScript|sign up with your email)',text): return ''
+    if re.match(r'(?i)^(?:partly cloudy skies|cloudy skies|mostly sunny|NSE:|the magazine of hip hop|By .{0,60} News Network -)',text): return ''
+    return text[:700]
+
+
+def _valid_enriched_summary(text,title):
+    return bool(usable_summary(text,title))
+
+
+def extract_description(html,title,source=''):
+    soup=BeautifulSoup(html,'html.parser')
+    for label,key in [('og_description','og:description'),('meta_description','description'),('twitter_description','twitter:description')]:
+        for tag in soup.find_all('meta'):
+            if str(tag.get('property') or tag.get('name') or '').lower()==key:
+                value=usable_summary(tag.get('content',''),title,source)
+                if value: return value,label
+    def nodes(obj):
+        if isinstance(obj,dict):
+            yield obj
+            for value in obj.values(): yield from nodes(value)
+        elif isinstance(obj,list):
+            for value in obj: yield from nodes(value)
+    for script in soup.find_all('script',type='application/ld+json'):
+        try: obj=json.loads(script.string or script.get_text())
+        except (ValueError,TypeError): continue
+        for node in nodes(obj):
+            types=node.get('@type',[]); types=[types] if isinstance(types,str) else types
+            if not any(x in ('Article','NewsArticle','BlogPosting','Report','TechArticle') for x in types or []): continue
+            desc=node.get('description','')
+            if isinstance(desc,str):
+                value=usable_summary(desc,title,source)
+                if value: return value,'jsonld_description'
+    for junk in soup.select('script,style,nav,header,footer,aside,form,[role="navigation"],.cookie-banner,.newsletter,.related-posts'):
+        junk.decompose()
+    root=soup.select_one('[itemprop="articleBody"],.article-body,.entry-content,.post-content,article')
+    if root:
+        for p in root.find_all('p'):
+            if len(p.get_text(' ',strip=True))<40: continue
+            if sum(len(a.get_text()) for a in p.find_all('a'))>len(p.get_text())*.5: continue
+            value=usable_summary(p.get_text(' ',strip=True),title,source)
+            if value: return value,'article_paragraph'
+    return None,None
+
+
+def fetch_real_description(url,title):
+    key=(url,title)
+    if key in _DESCRIPTION_CACHE: return _DESCRIPTION_CACHE[key]
+    resp=_enrich_get(url)
+    if resp is None: return None,None
+    if is_google_news(resp.url) or 'consent.' in _hostname_v3(resp.url): return None,None
+    if 'text/html' not in resp.headers.get('Content-Type','text/html') and 'xhtml' not in resp.headers.get('Content-Type',''): return None,None
+    result=extract_description(resp.content,title)
+    _DESCRIPTION_CACHE[key]=result
     return result
 
 
-# ---------------------------------------------------------------------------
-# 工具函式
-# ---------------------------------------------------------------------------
+def normalize_article_content(a):
+    title=a.get('title',''); source=a.get('source','')
+    candidate=a.get('summary') or ''
+    summary=usable_summary(candidate,title,source)
+    if not summary and a.get('description'):
+        summary=usable_summary(a['description'],title,source)
+    if not summary and candidate:
+        a.setdefault('raw_summary',candidate)
+    a['summary']=summary
+    a['description']=summary  # 前端讀 summary；description 為其他消費端提供同值。
+    if not summary: a['summary_source']='missing'
+    elif a.get('summary_source') in (None,'rss_fallback','missing'): a['summary_source']='rss_description'
+    resolved=a.get('resolved_url')
+    if not valid_article_url(resolved):
+        resolved=decode_legacy_google_url(a.get('url','')) if is_google_news(a.get('url')) else (a.get('url') if valid_article_url(a.get('url')) else None)
+    a['resolved_url']=resolved
+    a['original_url']=resolved
+    a['link_status']='resolved' if resolved else 'unresolved'
+    a['summary_status']='available' if summary else 'missing'
+    a['enrich_status']='complete' if resolved and summary else ('partial' if resolved or summary else 'pending')
+    if resolved and summary:
+        a['enrich_error']=None
+        a['enrich_next_retry_at']=None
+    return a
+
+
+def enrich_summary(article):
+    a=normalize_article_content(dict(article))
+    url=a.get('url',''); resolved=a.get('resolved_url')
+    if not resolved: resolved=resolve_google_news_url(url)
+    if resolved:
+        a['resolved_url']=resolved; a['original_url']=resolved; a['link_status']='resolved'
+        if not a['summary']:
+            enrich_sleep()
+            summary,kind=fetch_real_description(resolved,a.get('title',''))
+            if summary:
+                a['summary']=summary; a['description']=summary; a['summary_source']=kind; a['summary_status']='available'
+    success=bool(a.get('resolved_url') and a.get('summary'))
+    a['enrich_status']='complete' if success else ('partial' if a.get('resolved_url') or a.get('summary') else 'pending')
+    a['enrich_error']=None if success else (_ENRICH_HTTP_ERRORS.get(resolved or url) or _ENRICH_HTTP_ERRORS.get(url) or ('description_not_found' if resolved else 'original_url_unresolved'))
+    now=datetime.now(timezone.utc)
+    a['enrich_checked_at']=now.isoformat()
+    a['enrich_attempts']=(article.get('enrich_attempts') or 0)+1
+    a['enrich_version']=ENRICH_VERSION
+    delay=7 if a.get('enrich_error') in ('http_403','http_404','http_410') else 1
+    a['enrich_next_retry_at']=None if success else (now+timedelta(days=delay)).isoformat()
+    return classify_article(a)
+
+
+def select_articles_for_enrich(articles,limit,since):
+    now=datetime.now(timezone.utc).isoformat()
+    pool=[]
+    for a in articles:
+        if a.get('is_noise'): continue
+        if since and (a.get('date') or '')<since: continue
+        if a.get('resolved_url') and a.get('summary'): continue
+        # 舊版累積兩次失敗不再永久封鎖；新版本可重試，之後依冷卻期。
+        if a.get('enrich_version')==ENRICH_VERSION and (a.get('enrich_next_retry_at') or '')>now: continue
+        pool.append(a)
+    pool.sort(key=lambda a:(-(bool(a.get('resolved_url'))), tuple(-ord(c) for c in a.get('date','')),a.get('enrich_attempts',0)))
+    return pool[:limit] if limit>0 else pool
+
+
+def enrich_batch(articles,limit=100,since=None,budget_seconds=600,checkpoint=None):
+    selected=select_articles_for_enrich(articles,limit,since)
+    deadline=time.monotonic()+budget_seconds if budget_seconds>0 else float('inf')
+    done=0
+    for a in selected:
+        if time.monotonic()>=deadline: break
+        if not a.get('resolved_url') and is_google_news(a.get('url')) and _HOST_COOLDOWNS.get('news.google.com',0)>time.time(): continue
+        try:
+            a.update(enrich_summary(a))
+        except Exception as exc:
+            # 單篇異常不能使長時間回填中止；保留原本可用內容。
+            log(f'單篇補抓失敗 id={a.get("id")}：{type(exc).__name__}')
+            now=datetime.now(timezone.utc)
+            a.update(enrich_status='pending',enrich_error=type(exc).__name__,
+                enrich_checked_at=now.isoformat(),enrich_version=ENRICH_VERSION,
+                enrich_attempts=(a.get('enrich_attempts') or 0)+1,
+                enrich_next_retry_at=(now+timedelta(days=1)).isoformat())
+        done+=1
+        if checkpoint and done%ENRICH_CHECKPOINT_EVERY==0: checkpoint()
+        enrich_sleep()
+    log(f'原文/摘要補抓：候選 {len(selected)}，實際處理 {done}；失敗項目依冷卻期續跑。')
+    return done
+
 
 def log(msg: str):
     ts = datetime.now().strftime("%H:%M:%S")
@@ -2241,27 +2254,44 @@ def fetch_with_retry(url: str, accept: str = "application/rss+xml, application/x
 
 
 def fetch_fast(url: str, accept: str = "text/html,application/xhtml+xml,application/xml"):
-    """官方站/stories/feed 專用「快速失敗」GET：單次請求、不重試、
-    連線逾時 5 秒 / 讀取逾時 8 秒，任何失敗立即回 None 並記 log。"""
-    try:
-        resp = requests.get(
-            url,
-            headers={"User-Agent": USER_AGENT, "Accept": accept},
-            timeout=OFFICIAL_TIMEOUT,
-            allow_redirects=True,
-        )
-    except requests.exceptions.Timeout:
-        log(f"  [快速失敗] 逾時略過：{url}")
+    """官方站/stories/feed 專用 GET：連線 5 秒 / 讀取 12 秒。
+    只對暫時性錯誤（逾時、連線中斷）重試 OFFICIAL_MAX_RETRIES 次；
+    HTTP 4xx/5xx 與 SSL 錯誤一律不重試，立即回 None 並記 log（含狀態碼）。
+    受 _official_deadline 全域時間預算限制，超出預算即直接略過。"""
+    if _official_deadline is not None and time.monotonic() > _official_deadline:
+        log(f"  [官方預算用盡] 略過：{url}")
         return None
-    except requests.exceptions.SSLError:
-        log(f"  [快速失敗] SSL 錯誤略過：{url}")
+    last_err = None
+    for attempt in range(OFFICIAL_MAX_RETRIES + 1):
+        try:
+            resp = requests.get(
+                url,
+                headers={"User-Agent": USER_AGENT, "Accept": accept},
+                timeout=OFFICIAL_TIMEOUT,
+                allow_redirects=True,
+            )
+        except requests.exceptions.SSLError:
+            # 注意：SSLError 是 ConnectionError 的子類別，必須放在
+            # (Timeout, ConnectionError) 之前，否則會被前者攔截而錯誤重試。
+            log(f"  [快速失敗] SSL 錯誤略過（不重試）：{url}")
+            return None
+        except (requests.exceptions.Timeout,
+                requests.exceptions.ConnectionError) as e:
+            # 暫時性錯誤：還有重試額度就再試一次
+            last_err = f"{type(e).__name__}"
+            if attempt < OFFICIAL_MAX_RETRIES:
+                log(f"  [重試 {attempt + 1}/{OFFICIAL_MAX_RETRIES}] {last_err}：{url}")
+                probe_sleep()
+                continue
+            log(f"  [快速失敗] {last_err}（已重試 {OFFICIAL_MAX_RETRIES} 次）略過：{url}")
+            return None
+        except requests.exceptions.RequestException as e:
+            log(f"  [快速失敗] 連線錯誤略過（不重試）：{url}（{type(e).__name__}）")
+            return None
+        if resp.status_code == 200:
+            return resp
+        log(f"  [快速失敗] 狀態碼 {resp.status_code} 略過（不重試）：{url}")
         return None
-    except requests.exceptions.RequestException as e:
-        log(f"  [快速失敗] 連線錯誤略過：{url}（{type(e).__name__}）")
-        return None
-    if resp.status_code == 200:
-        return resp
-    log(f"  [快速失敗] 狀態碼 {resp.status_code} 略過：{url}")
     return None
 
 
@@ -2334,7 +2364,11 @@ def fetch_feed_entries(url: str):
     except Exception as e:
         log(f"  feed 解析失敗：{e}")
         return [], False
-    return list(feed.entries), True
+    entries=list(feed.entries)
+    for entry in entries:
+        if not entry.get('language') and feed.feed.get('language'):
+            entry['language']=feed.feed['language']
+    return entries, True
 
 
 def entry_to_raw(entry, source_type, brand=None, source=None):
@@ -2343,11 +2377,21 @@ def entry_to_raw(entry, source_type, brand=None, source=None):
     if not raw_title or not link:
         return None
     raw_summary = getattr(entry, "summary", "") or getattr(entry, "description", "")
-    summary = clean_html(raw_summary)
+    # Atom/RSS content:encoded often carries the only real article excerpt.
+    content = getattr(entry, "content", []) or []
+    title_for_summary = split_title_source(raw_title)[0] if is_google_news(link) else raw_title
+    summary = usable_summary(raw_summary, title_for_summary)
+    if not summary:
+        for part in content:
+            summary = usable_summary(part.get("value", ""), title_for_summary)
+            if summary: break
+    publisher = getattr(entry, "source", {}) or {}
     real_date = parse_pubdate_real(entry)
     return {
         "raw_title": raw_title,
         "link": link,
+        "publisher_url": publisher.get("href"),
+        "language": getattr(entry, "language", None),
         "summary": summary,
         "date": real_date or RUN_DATE,
         "date_is_real": real_date is not None,
@@ -2608,6 +2652,7 @@ def load_existing():
             country = classify_country(title, a.get("resolved_url"), url)
 
         normalized.append({
+            **a,
             "id": a.get("id"),
             "title": title,
             "url": url,
@@ -2635,7 +2680,7 @@ def load_existing():
             "is_noise": is_noise,
             "noise_reason": noise_reason,
             # v3 標籤欄位（新增，見 docs/v3-spec.md 第 10 節）：brands 多值品牌、
-            # topic_tags/product_types/attention_tags 多值、country 為 stub 單值
+            # topic_tags/product_types/attention_tags 多值、country 為單值地域分類
             "brands": brands,
             "topic_tags": topic_tags,
             "product_types": product_types,
@@ -2859,7 +2904,7 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
             dedupe_within += 1
             continue
 
-        summary = item.get("summary") or title
+        summary = item.get("summary") or ""
         stype = item.get("source_type", "google_news")
         brand = item.get("brand") or detect_brand(f"{title} {summary}")
 
@@ -2920,6 +2965,8 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
             "summary": summary,
             "source_type": item.get("source_type", "google_news"),
             "first_seen": RUN_DATE,
+            "publisher_url": item.get("publisher_url"),
+            "language": item.get("language"),
             "product_category": product_category,
             "product_categories": product_categories,
             "audience_tags": audience_tags,
@@ -2945,6 +2992,9 @@ def build_new_articles(raw_items, existing_url_set, existing_title_set, start_id
         "too_old": too_old,
         "exclusion_counts": exclusion_counts,
     }
+    for article in new_articles:
+        normalize_article_content(article)
+        classify_article(article)
     return new_articles, stats
 
 
@@ -2993,7 +3043,7 @@ def compute_stats(articles, generated_at):
 
         # 受眾標籤統計（新增）
         ats = a.get("audience_tags")
-        if not isinstance(ats, list) or not ats:
+        if not isinstance(ats, list):
             ats, _ats_src = classify_audience_tags(
                 a.get("title", ""), a.get("summary", ""), cat, pcs)
         for t in ats:
@@ -3058,24 +3108,19 @@ def compute_stats(articles, generated_at):
 # ---------------------------------------------------------------------------
 
 def acquire_lock():
-    if LOCK_FILE.exists():
-        try:
-            age = time.time() - LOCK_FILE.stat().st_mtime
-        except OSError:
-            age = 0
-        if age < LOCK_STALE_SECONDS:
-            log(f"偵測到 lock 檔（{LOCK_FILE.name}，{int(age)}s 前建立），可能已有另一實例在執行，本次略過。")
-            return False
-        log(f"偵測到 stale lock（{int(age)}s），移除後繼續。")
-        try:
-            LOCK_FILE.unlink()
-        except OSError:
-            pass
+    LOCK_FILE.parent.mkdir(parents=True,exist_ok=True)
     try:
-        LOCK_FILE.write_text(f"pid={os.getpid()} started={datetime.now().isoformat()}", encoding="utf-8")
-    except OSError as e:
-        log(f"無法建立 lock 檔：{e}（繼續執行）")
-    return True
+        # Existing locks are not removed automatically: an unrestricted backfill may last hours.
+        fd=os.open(str(LOCK_FILE),os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
+        with os.fdopen(fd,'w',encoding='utf-8') as f:
+            f.write(f'pid={os.getpid()} started={datetime.now(timezone.utc).isoformat()}')
+        return True
+    except FileExistsError:
+        log(f'已有執行鎖：{LOCK_FILE}。確認舊程序停止後才可手動刪除。')
+        return False
+    except OSError as exc:
+        log(f'無法建立鎖，停止寫入：{exc}')
+        return False
 
 
 def release_lock():
@@ -3102,7 +3147,7 @@ def append_log(added, total, sources_failed):
 
 def write_output_atomic(output):
     """先寫暫存檔再原子替換，避免中途中斷破壞既有 news.json。"""
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
     tmp = OUTPUT_FILE.with_suffix(".json.tmp")
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
@@ -3125,7 +3170,11 @@ def run():
         log(f"既有庫存：{len(existing_articles)} 篇（最大 id={max_id}）")
 
         # 1b) 既有庫存：日期修正 + 只留官方消息型 + product 併入 google_news
-        existing_articles, clean_report = clean_existing_noise(existing_articles)
+        clean_report = dict.fromkeys(('removed_howto','removed_no_real_date','removed_offtopic',
+            'removed_celebrity_noise','removed_brand_ambiguous','removed_total','date_corrected','product_to_gnews'),0)
+        for article in existing_articles:
+            normalize_article_content(article)
+            classify_article(article)
         log(f"既有庫存清理：官方非消息型(how-to/產品/分類)移除 {clean_report['removed_howto']} 筆；"
             f"官方補不到真實日期移除 {clean_report['removed_no_real_date']} 筆；"
             f"離題 product 移除 {clean_report['removed_offtopic']} 筆；"
@@ -3166,9 +3215,13 @@ def run():
             if i < len(feed_sources) - 1:
                 polite_sleep()
 
-        # 3) 抓品牌官方「故事/文章列表頁」（已知 feed 優先，退而抓 stories 頁；全部快速失敗）
+        # 3) 抓品牌官方「故事/文章列表頁」（已知 feed 優先，退而抓 stories 頁）
+        global _official_deadline
+        _official_deadline = time.monotonic() + OFFICIAL_TOTAL_BUDGET_SECONDS
         official_results = {}
-        log(f"品牌官方 stories/文章來源共 {len(BRAND_STORY_SOURCES)} 個（快速失敗模式）")
+        log(f"品牌官方 stories/文章來源共 {len(BRAND_STORY_SOURCES)} 個"
+            f"（逾時 {OFFICIAL_CONNECT_TIMEOUT}/{OFFICIAL_READ_TIMEOUT}s、"
+            f"重試 {OFFICIAL_MAX_RETRIES} 次、總預算 {OFFICIAL_TOTAL_BUDGET_SECONDS}s）")
         for brand, cfg in BRAND_STORY_SOURCES.items():
             try:
                 items, info = fetch_brand_stories(brand, cfg)
@@ -3224,6 +3277,12 @@ def run():
         # 7) 安全寫檔（原子替換）
         write_output_atomic(output)
 
+        # 每日排程也會補抓摘要，含官方來源、新聞稿、歷史待修資料。
+        if AUTO_ENRICH_LIMIT != 0:
+            enrich_batch(merged,AUTO_ENRICH_LIMIT,budget_seconds=ENRICH_BUDGET_SECONDS,
+                checkpoint=lambda: save_repaired_data(output))
+            save_repaired_data(output)
+
         # 8) log
         append_log(len(new_articles), stats["total"], sources_failed)
 
@@ -3252,299 +3311,70 @@ def run():
 # ---------------------------------------------------------------------------
 
 # 註：first_paragraph 已移除 -- 實測會抓到氣象小工具/導覽列等非文章內容。
-ENRICH_MAX_ATTEMPTS = 2  # 同一篇最多嘗試幾次；超過即不再重試（避免每次重跑都撞已知 403/404 站）
-ENRICH_CHECKPOINT_EVERY = 25  # 每處理 25 篇寫檔一次（避免長時間執行中斷後全部重做）
+AUTO_ENRICH_LIMIT = 100
+ENRICH_BUDGET_SECONDS = 600
 
-ENRICH_SUCCESS_SOURCES = {"og_description", "meta_description", "twitter_description"}
+
+def save_repaired_data(data):
+    data['stats']=compute_stats(data['articles'],data.get('generated_at'))
+    data['reclassified_at']=datetime.now(timezone.utc).isoformat()
+    data['repair_version']=ENRICH_VERSION
+    write_output_atomic(data)
+
+
+def repair_existing(online=False,limit=100,since=None,dry_run=False):
+    if not OUTPUT_FILE.exists():
+        raise SystemExit(f'找不到資料檔：{OUTPUT_FILE}')
+    with OUTPUT_FILE.open(encoding='utf-8') as f: data=json.load(f)
+    for article in data['articles']:
+        normalize_article_content(article)
+        classify_article(article)
+    selected=select_articles_for_enrich(data['articles'],limit,since)
+    log(f"重算 {len(data['articles'])} 篇；待補抓 {len(selected)} 篇（本批上限 {limit}）。")
+    if dry_run: return data
+    # 先存已完成的離線修正，長時間補抓期間每 25 篇 checkpoint。
+    save_repaired_data(data)
+    if online:
+        enrich_batch(data['articles'],limit,since,ENRICH_BUDGET_SECONDS,lambda:save_repaired_data(data))
+        save_repaired_data(data)
+    return data
 
 
 def parse_cli_args(argv=None):
-    parser = argparse.ArgumentParser(
-        description="fetch_news.py -- 喬山產業情報新聞爬蟲（含 --enrich-summary 摘要回填模式）")
-    parser.add_argument("--enrich-summary", action="store_true",
-                         help="啟用 Google News 真實摘要回填模式。不帶此參數時行為與一般排程完全相同。")
-    parser.add_argument("--enrich-limit", type=int, default=20,
-                         help="摘要回填模式最多處理幾篇（預設 20）")
-    parser.add_argument("--enrich-since", type=str, default=None,
-                         help="摘要回填模式只處理此日期（含，YYYY-MM-DD）之後的文章")
-    parser.add_argument("--enrich-dry-run", action="store_true",
-                         help="只列出將處理的文章與預估請求數，不發送任何請求、不寫檔")
-    parser.add_argument("--reclassify", action="store_true",
-                         help="對既有 news.json 全量重算 product_categories/audience_tags/"
-                              "subcategory/is_noise 等分類欄位並寫回（不改動 category/"
-                              "categoryName，不刪除文章）")
-    parser.add_argument("--reclassify-dry-run", action="store_true",
-                         help="只印出各分類欄位命中統計與前後對照，不寫檔")
-    return parser.parse_args(argv)
+    p=argparse.ArgumentParser(description='健身情報 v7：爬取、原文/摘要修復、分類回填；前端相容。')
+    p.add_argument('--data-file',type=Path,default=OUTPUT_FILE,help='指定 news.json；預設 ../data/news.json')
+    modes=p.add_mutually_exclusive_group()
+    modes.add_argument('--repair-data',action='store_true',help='修正既有資料並連網補抓原文與摘要，不新增文章')
+    modes.add_argument('--enrich-summary',action='store_true',help='相容舊指令，同 --repair-data')
+    modes.add_argument('--reclassify',action='store_true',help='離線修正摘要污染、網址及全量標籤')
+    modes.add_argument('--enrich-dry-run',action='store_true',help='不連網、不寫檔，顯示補抓候選數')
+    modes.add_argument('--reclassify-dry-run',action='store_true',help='不連網、不寫檔，試算分類')
+    p.add_argument('--enrich-limit',type=int,default=100,help='每輪補抓上限；0 不限（仍受時間預算限制）')
+    p.add_argument('--enrich-since',default=None,help='只補抓 YYYY-MM-DD 起的文章；分類仍處理全量')
+    p.add_argument('--enrich-budget-seconds',type=int,default=600,help='補抓階段時間預算；0 不限')
+    p.add_argument('--skip-enrich',action='store_true',help='一般排程只抓 RSS/官方來源，不連網補抓摘要')
+    args=p.parse_args(argv)
+    if args.enrich_limit<0 or args.enrich_budget_seconds<0: p.error('上限及時間預算不得為負數')
+    if args.enrich_since:
+        try: datetime.strptime(args.enrich_since,'%Y-%m-%d')
+        except ValueError: p.error('--enrich-since 必須是 YYYY-MM-DD')
+    return args
 
 
-# 內容農場 / 關鍵字堆砌垃圾站：實測其還原網址為 productSearch、shop/sold 等
-# 非文章頁，一律 500/404，回填必然失敗。跳過可省下大量無效請求。
-ENRICH_SKIP_SOURCES = (
-    "fuelcarmagazine",
-    "krepsiniozinios",
-    "mshale",
-)
-
-
-def _neg_date_key(a):
-    """讓日期新的排前面（字串日期無法直接取負，改用反轉比較用的 tuple）。"""
-    d = a.get("date") or ""
-    return tuple(-ord(c) for c in d)
-
-
-def select_articles_for_enrich(articles, limit, since):
-    """挑選待回填摘要的文章：僅 source_type=google_news 且尚未成功回填過
-    （summary_source 不在 ENRICH_SUCCESS_SOURCES 內），可選 since 日期下限。
-    依日期新到舊排序後取前 limit 筆（limit<=0 視為不限）。"""
-    pool = []
-    for a in articles:
-        if a.get("source_type") != "google_news":
-            continue
-        src_l = (a.get("source") or "").lower()
-        if any(bad in src_l for bad in ENRICH_SKIP_SOURCES):
-            continue
-        if (a.get("enrich_attempts") or 0) >= ENRICH_MAX_ATTEMPTS:
-            continue
-        if a.get("summary_source") in ENRICH_SUCCESS_SOURCES:
-            continue
-        if since and (a.get("date") or "") < since:
-            continue
-        pool.append(a)
-    # 優先處理「從未嘗試」的文章（attempts 少的先做），同 attempts 內再依日期新到舊。
-    pool.sort(key=lambda a: ((a.get("enrich_attempts") or 0), _neg_date_key(a)))
-    if limit and limit > 0:
-        pool = pool[:limit]
-    return pool
-
-
-def run_enrich_summary(limit: int, since, dry_run: bool):
-    """獨立回填流程：讀取既有 news.json，對選中的 google_news 文章嘗試還原原文網址
-    並抓取真實摘要，成功則更新 summary/resolved_url/summary_source 並寫回。
-    dry_run=True 時只列出將處理的文章與預估請求數，不發送任何請求、不寫檔。"""
-    log("=== Google News 真實摘要回填模式（--enrich-summary） ===")
-    if not OUTPUT_FILE.exists():
-        log(f"找不到 {OUTPUT_FILE}，中止。")
-        return
-    try:
-        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except Exception as e:
-        log(f"讀取 {OUTPUT_FILE} 失敗（{e}），中止。")
-        return
-
-    articles = data.get("articles", [])
-    selected = select_articles_for_enrich(articles, limit, since)
-
-    log(f"news.json 總文章數：{len(articles)}")
-    since_note = f"、date >= {since}" if since else ""
-    log(f"符合條件（source_type=google_news 且尚未回填成功{since_note}）：{len(selected)} 篇"
-        f"（--enrich-limit {limit}）")
-
-    if dry_run:
-        est_requests = len(selected) * 3
-        log("[dry-run] 不會發送任何請求，以下為將處理的文章：")
-        for a in selected:
-            log(f"  id={a.get('id')} date={a.get('date')} title={(a.get('title') or '')[:60]}")
-        log(f"[dry-run] 預估請求數：約 {est_requests}（{len(selected)} 篇 x 最多 3 個請求/篇）")
-        log("=== dry-run 結束（未發送任何請求、未寫入任何檔案）===")
-        return
-
-    if not selected:
-        log("沒有符合條件的文章可處理。")
-        return
-
-    by_id = {a.get("id"): a for a in articles}
-    success = 0
-    fallback = 0
-    for i, a in enumerate(selected):
-        log(f"[{i + 1}/{len(selected)}] 處理 id={a.get('id')}：{(a.get('title') or '')[:60]}")
-        result = enrich_summary(a)
-        target = by_id.get(a.get("id"))
-        if target is not None:
-            target["summary"] = result["summary"]
-            target["resolved_url"] = result["resolved_url"]
-            target["summary_source"] = result["summary_source"]
-            target["enrich_attempts"] = (a.get("enrich_attempts") or 0) + 1
-        if result["summary_source"] in ENRICH_SUCCESS_SOURCES:
-            success += 1
-            log(f"    成功（{result['summary_source']}）：{(result['summary'] or '')[:80]}")
-        else:
-            fallback += 1
-            log("    未取得真實摘要，保留原 summary（rss_fallback）")
-        # 分批寫檔：長時間回填（數百筆約需 1~2 小時）中途若中斷，
-        # 已完成的成果不會損失，可直接重跑續做。
-        if (i + 1) % ENRICH_CHECKPOINT_EVERY == 0:
-            data["articles"] = articles
-            write_output_atomic(data)
-            log(f"    [checkpoint] 已寫檔，進度 {i + 1}/{len(selected)}（成功 {success} / 退回 {fallback}）")
-        if i < len(selected) - 1:
-            enrich_sleep()
-
-    data["articles"] = articles
-    write_output_atomic(data)
-    log(f"完成：成功回填 {success} 篇、退回 rss_fallback {fallback} 篇，已寫回 {OUTPUT_FILE}")
-    log("=== 回填模式結束 ===")
-
-
-# ---------------------------------------------------------------------------
-# CLI：--reclassify / --reclassify-dry-run 分類重算模式
-# ---------------------------------------------------------------------------
-#
-# 全量重算 product_categories / product_category / audience_tags /
-# audience_tags_source / subcategory / subcategoryName / is_noise / noise_reason。
-# 絕不改動 category / categoryName，絕不刪除任何文章。
-# --reclassify-dry-run 只印出統計與前後對照，不寫檔。
-# ---------------------------------------------------------------------------
-
-def run_reclassify(dry_run: bool):
-    """對既有 news.json 全量重算分類欄位。dry_run=True 時只統計、不寫檔。"""
-    log("=== 分類重算模式（--reclassify） ===")
-    if not OUTPUT_FILE.exists():
-        log(f"找不到 {OUTPUT_FILE}，中止。")
-        return
-    try:
-        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except Exception as e:
-        log(f"讀取 {OUTPUT_FILE} 失敗（{e}），中止。")
-        return
-
-    articles = data.get("articles", [])
-    log(f"news.json 總文章數：{len(articles)}")
-
-    by_product_categories = {name: 0 for name in PRODUCT_CATEGORY_ORDER}
-    no_product_category = 0
-    by_audience_tags = {"PM": 0, "Design": 0, "Marketing": 0}
-    audience_source_counts = {"keyword": 0, "structural": 0}
-    by_subcategory = {}
-    noise_reason_counts = {}
-    noise_total = 0
-    sample_diffs = []
-
-    by_brands_v3 = {name: 0 for name in BRANDS_V3}
-    brands_hit_total = 0
-    multi_brand_count = 0
-    by_topic_tags = {name: 0 for name in TOPICS_V3}
-    by_product_types = {name: 0 for name in PRODUCT_TYPES_V3}
-    by_attention_tags = {name: 0 for name in ATTENTION_V3}
-    attention_none_count = 0
-    by_country = {}
-
-    for a in articles:
-        title = a.get("title", "") or ""
-        summary = a.get("summary", "") or ""
-        category = a.get("category", "market")
-        source = a.get("source", "") or ""
-        brand = a.get("brand")
-
-        old_pc = a.get("product_category")
-        old_pcs = a.get("product_categories")
-
-        product_categories = classify_product_categories(title, summary, brand)
-        product_category = product_categories[0] if product_categories else "other"
-        audience_tags, audience_tags_source = classify_audience_tags(
-            title, summary, category, product_categories)
-        subcategory, subcategoryName = classify_subcategory(category, title, summary)
-        is_noise, noise_reason = classify_noise(title, summary, source)
-
-        brands = detect_brands(f"{title} {summary}")
-        if brand and brand not in brands and brand in BRAND_DEF_BY_NAME_V3:
-            brands.append(brand)
-            brands.sort(key=BRANDS_V3.index)
-        product_types = classify_product_types(title, summary, product_categories)
-        topic_tags = classify_topic_tags(title, summary, subcategory)
-        attention_tags = classify_attention_tags(
-            brands, product_types, topic_tags, product_categories)
-        country = classify_country(title, a.get("resolved_url"), a.get("url"))
-
-        if not product_categories:
-            no_product_category += 1
-        for pc in product_categories:
-            by_product_categories[pc] = by_product_categories.get(pc, 0) + 1
-        for t in audience_tags:
-            by_audience_tags[t] = by_audience_tags.get(t, 0) + 1
-        audience_source_counts[audience_tags_source] = (
-            audience_source_counts.get(audience_tags_source, 0) + 1)
-        sub_key = f"{category}:{subcategory}"
-        by_subcategory[sub_key] = by_subcategory.get(sub_key, 0) + 1
-        if is_noise:
-            noise_total += 1
-            noise_reason_counts[noise_reason] = noise_reason_counts.get(noise_reason, 0) + 1
-
-        if len(sample_diffs) < 20 and (old_pc != product_category or old_pcs != product_categories):
-            sample_diffs.append(
-                f"id={a.get('id')} title={title[:50]!r} "
-                f"product_category:{old_pc!r}->{product_category!r} "
-                f"product_categories:{old_pcs!r}->{product_categories!r}")
-
-        a["product_categories"] = product_categories
-        a["product_category"] = product_category
-        a["audience_tags"] = audience_tags
-        a["audience_tags_source"] = audience_tags_source
-        a["subcategory"] = subcategory
-        a["subcategoryName"] = subcategoryName
-        a["is_noise"] = is_noise
-        a["noise_reason"] = noise_reason
-        a["brands"] = brands
-        a["topic_tags"] = topic_tags
-        a["product_types"] = product_types
-        a["attention_tags"] = attention_tags
-        a["country"] = country
-
-        if brands:
-            brands_hit_total += 1
-        if len(brands) > 1:
-            multi_brand_count += 1
-        for _b in brands:
-            by_brands_v3[_b] = by_brands_v3.get(_b, 0) + 1
-        for _t in topic_tags:
-            by_topic_tags[_t] = by_topic_tags.get(_t, 0) + 1
-        for _t in product_types:
-            by_product_types[_t] = by_product_types.get(_t, 0) + 1
-        for _t in attention_tags:
-            by_attention_tags[_t] = by_attention_tags.get(_t, 0) + 1
-        if not attention_tags:
-            attention_none_count += 1
-        by_country[country] = by_country.get(country, 0) + 1
-
-    log(f"product_categories 命中統計：{by_product_categories}（未命中任何類：{no_product_category}）")
-    log(f"audience_tags 命中統計：{by_audience_tags}；來源分布：{audience_source_counts}")
-    log(f"subcategory 命中統計：{by_subcategory}")
-    log(f"is_noise 總筆數：{noise_total}；各 reason：{noise_reason_counts}")
-    log("樣本前後對照（最多 20 筆變動）：")
-    for line in sample_diffs:
-        log(f"  {line}")
-    log(f"[v3] brands 命中統計（至少一個品牌 {brands_hit_total} 篇，multi_brand {multi_brand_count} 篇）：{by_brands_v3}")
-    log(f"[v3] topic_tags 命中統計：{by_topic_tags}")
-    log(f"[v3] product_types 命中統計：{by_product_types}")
-    log(f"[v3] attention_tags 命中統計（三者皆無 {attention_none_count} 篇）：{by_attention_tags}")
-    log(f"[v3] country 命中統計：{by_country}")
-
-    if dry_run:
-        log("=== dry-run 結束（未寫入任何檔案）===")
-        return
-
-    data["articles"] = articles
-    # 決議：回填保留原 generated_at 不變（v3 前端以此當篩選基準日，改掉會讓
-    # 「本週」幾乎清空），另外新增 reclassified_at 記錄本次重算時間。
-    original_generated_at = data.get("generated_at") or datetime.now(timezone.utc).isoformat()
-    reclassified_at = datetime.now(timezone.utc).isoformat()
-    data["stats"] = compute_stats(articles, original_generated_at)
-    data["generated_at"] = original_generated_at
-    data["reclassified_at"] = reclassified_at
-    write_output_atomic(data)
-    log(f"完成：已重算 {len(articles)} 篇文章的分類欄位並寫回 {OUTPUT_FILE}")
-    log(f"generated_at 維持原值：{original_generated_at}；reclassified_at：{reclassified_at}")
-    log("=== 分類重算模式結束 ===")
-
-
-if __name__ == "__main__":
-    _args = parse_cli_args()
-    if _args.enrich_summary or _args.enrich_dry_run:
-        run_enrich_summary(limit=_args.enrich_limit, since=_args.enrich_since,
-                            dry_run=_args.enrich_dry_run)
-    elif _args.reclassify or _args.reclassify_dry_run:
-        run_reclassify(dry_run=_args.reclassify_dry_run)
+if __name__ == '__main__':
+    args=parse_cli_args()
+    OUTPUT_FILE=args.data_file.resolve()
+    DATA_DIR=OUTPUT_FILE.parent
+    LOCK_FILE=OUTPUT_FILE.with_suffix('.lock')
+    DATA_DIR.mkdir(parents=True,exist_ok=True)
+    ENRICH_BUDGET_SECONDS=args.enrich_budget_seconds
+    # -1 是 enrich_batch 的不限筆數值；0 專供 skip。
+    AUTO_ENRICH_LIMIT=0 if args.skip_enrich else (args.enrich_limit or -1)
+    if args.repair_data or args.enrich_summary or args.reclassify or args.enrich_dry_run or args.reclassify_dry_run:
+        if not acquire_lock(): raise SystemExit(1)
+        try:
+            repair_existing(online=args.repair_data or args.enrich_summary,limit=args.enrich_limit,
+                since=args.enrich_since,dry_run=args.enrich_dry_run or args.reclassify_dry_run)
+        finally: release_lock()
     else:
         run()
